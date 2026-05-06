@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datas EON - Calendário de Eventos | Endurance On</title>
+    <meta name="description" content="Confira o calendário completo de treinos e eventos da Endurance On">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <img src="../images/logo/logo-new-white.png" alt="Endurance On">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h2>Calendário de Eventos</h2>
+            <p>Fique por dentro de todos os treinos e eventos da Endurance On</p>
+        </div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="filters">
+        <div class="container">
+            <div class="filter-group">
+                <label for="filter-tipo">Tipo:</label>
+                <select id="filter-tipo">
+                    <option value="">Todos</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="filter-modalidade">Modalidade:</label>
+                <select id="filter-modalidade">
+                    <option value="">Todas</option>
+                </select>
+            </div>
+            <button id="clear-filters" class="btn-clear">Limpar Filtros</button>
+        </div>
+    </section>
+
+    <!-- Lista de Eventos -->
+    <section class="events-section">
+        <div class="container">
+            <!-- Loading -->
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Carregando eventos...</p>
+            </div>
+
+            <!-- Lista -->
+            <div id="events-list" class="events-list"></div>
+
+            <!-- Sem eventos -->
+            <div id="no-events" class="no-events" style="display: none;">
+                <p>Nenhum evento encontrado.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Detalhes do Evento -->
+    <div id="event-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <h3 id="modal-title"></h3>
+            </div>
+            <div class="modal-body">
+                <div class="modal-info">
+                    <span>📅 Data:</span>
+                    <p id="modal-date"></p>
+                </div>
+                <div class="modal-info">
+                    <span>🕐 Horário:</span>
+                    <p id="modal-time"></p>
+                </div>
+                <div class="modal-info">
+                    <span>📋 Tipo:</span>
+                    <p id="modal-tipo"></p>
+                </div>
+                <div class="modal-info">
+                    <span>🏃 Modalidade:</span>
+                    <p id="modal-modalidade"></p>
+                </div>
+                <div class="modal-info">
+                    <span>📍 Local:</span>
+                    <p id="modal-local"></p>
+                </div>
+                <div class="modal-info">
+                    <span>ℹ️ Informações:</span>
+                    <p id="modal-info"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn btn-close-modal">Fechar</button>
+                <a id="modal-maps-link" href="#" target="_blank" class="modal-btn btn-maps" style="display: none;">Ver no Maps</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Endurance On. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

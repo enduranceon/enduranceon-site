@@ -1,0 +1,491 @@
+/* Estilos para a página de Calculadoras */
+
+/* Grid das Calculadoras */
+.calculadoras-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Card da Calculadora */
+.calculadora-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.calculadora-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-color: #FF8012;
+}
+
+.calculadora-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #38B6FF, #FF8012);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+    color: white;
+}
+
+.calculadora-titulo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.calculadora-descricao {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+.calculadora-btn {
+    background: linear-gradient(135deg, #38B6FF, #FF8012);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+}
+
+.calculadora-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 128, 18, 0.3);
+}
+
+/* Modal da Calculadora */
+.calculadora-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #38B6FF, #FF8012);
+    color: white;
+    padding: 20px 25px;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.modal-close:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.modal-body {
+    padding: 40px 25px;
+}
+
+/* Display dos valores */
+.display-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.display-box {
+    background: #000;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    min-width: 150px;
+    text-align: center;
+}
+
+.display-box input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    outline: none;
+}
+
+/* Slider */
+.slider-container {
+    margin: 40px 0;
+    padding: 0 20px;
+}
+
+.slider-track {
+    position: relative;
+    height: 8px;
+    background: #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.slider-handle {
+    position: absolute;
+    top: -12px;
+    width: 32px;
+    height: 32px;
+    background: var(--azul);
+    border-radius: 4px;
+    cursor: grab;
+    transition: transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(56, 182, 255, 0.3);
+}
+
+.slider-handle:hover {
+    transform: scale(1.1);
+}
+
+.slider-handle:active {
+    cursor: grabbing;
+    transform: scale(1.05);
+}
+
+/* Campos Editáveis */
+.input-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.input-group input {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #FF8012;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .calculadoras-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+    
+    .modal-body {
+        padding: 30px 20px;
+    }
+    
+    .input-fields {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .display-box {
+        font-size: 1.2rem;
+        padding: 12px 20px;
+        min-width: 120px;
+    }
+    
+    .display-box input {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculadora-card {
+        padding: 20px;
+    }
+    
+    .calculadora-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .calculadora-titulo {
+        font-size: 1.3rem;
+    }
+    
+    .slider-container {
+        padding: 0 10px;
+    }
+}
+
+
+/* Estilos para a Calculadora de Tempo/Pace/Distância */
+
+.calc-tempo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.calc-campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.calc-campo label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* Campos de Tempo */
+.tempo-inputs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tempo-inputs input {
+    width: 60px;
+    padding: 12px 8px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.tempo-inputs span {
+    font-weight: 600;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Campos de Pace */
+.pace-inputs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pace-inputs input {
+    width: 70px;
+    padding: 12px 8px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.pace-inputs span {
+    font-weight: 600;
+    color: #666;
+    font-size: 1.2rem;
+}
+
+/* Campo de Distância */
+#distancia-input {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    max-width: 200px;
+}
+
+/* Focus nos inputs */
+.tempo-inputs input:focus,
+.pace-inputs input:focus,
+#distancia-input:focus {
+    outline: none;
+    border-color: #FF8012;
+}
+
+/* Botões de Ação */
+.calc-botoes {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.calc-btn-limpar,
+.calc-btn-calcular {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+}
+
+.calc-btn-limpar {
+    background: #6c757d;
+    color: white;
+}
+
+.calc-btn-limpar:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+.calc-btn-calcular {
+    background: linear-gradient(135deg, #38B6FF, #FF8012);
+    color: white;
+}
+
+.calc-btn-calcular:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 128, 18, 0.3);
+}
+
+/* Resultado */
+.resultado-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+.resultado-box {
+    background: linear-gradient(135deg, #38B6FF, #FF8012);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.resultado-box h4 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.resultado-box p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .calc-tempo-grid {
+        gap: 20px;
+    }
+    
+    .tempo-inputs {
+        justify-content: center;
+    }
+    
+    .pace-inputs {
+        justify-content: center;
+    }
+    
+    .calc-botoes {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .calc-btn-limpar,
+    .calc-btn-calcular {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .tempo-inputs input,
+    .pace-inputs input {
+        width: 50px;
+        padding: 10px 6px;
+    }
+    
+    #distancia-input {
+        width: 100%;
+        max-width: none;
+    }
+}
+

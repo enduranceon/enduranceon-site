@@ -1,0 +1,239 @@
+/* 
+* Endurance On - Assessoria Esportiva
+* Animações
+*/
+
+/* Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* Seções com animação ao scroll */
+.section {
+    opacity: 0;
+    transition: all 0.8s ease;
+}
+
+.section.fade-in {
+    opacity: 1;
+}
+
+/* Animação do banner */
+@keyframes bannerScale {
+    from {
+        transform: scale(1.05);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+#banner, #banner-modalidade {
+    animation: bannerScale 10s ease-out forwards;
+}
+
+/* Animação dos cards de modalidades */
+@keyframes cardPop {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modalidade-card, .plano-card {
+    opacity: 0;
+}
+
+.modalidade-card.animated, .plano-card.animated {
+    animation: cardPop 0.5s ease forwards;
+}
+
+.modalidade-card:nth-child(1).animated, .plano-card:nth-child(1).animated {
+    animation-delay: 0.1s;
+}
+
+.modalidade-card:nth-child(2).animated, .plano-card:nth-child(2).animated {
+    animation-delay: 0.2s;
+}
+
+.modalidade-card:nth-child(3).animated, .plano-card:nth-child(3).animated {
+    animation-delay: 0.3s;
+}
+
+/* Animação dos passos */
+@keyframes stepIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.step {
+    opacity: 0;
+}
+
+.step.animated {
+    animation: stepIn 0.5s ease forwards;
+}
+
+.step:nth-child(1).animated {
+    animation-delay: 0.1s;
+}
+
+.step:nth-child(2).animated {
+    animation-delay: 0.3s;
+}
+
+.step:nth-child(3).animated {
+    animation-delay: 0.5s;
+}
+
+/* Animação dos depoimentos */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.depoimento {
+    opacity: 0;
+    display: none;
+}
+
+.depoimento.active {
+    display: block;
+    animation: slideIn 0.5s ease forwards;
+}
+
+/* Animação do formulário */
+@keyframes formReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.formulario {
+    opacity: 0;
+}
+
+.formulario.animated {
+    animation: formReveal 0.8s ease forwards;
+}
+
+/* Animação dos itens de contato */
+@keyframes contactPop {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.contato-item {
+    opacity: 0;
+}
+
+.contato-item.animated {
+    animation: contactPop 0.5s ease forwards;
+}
+
+.contato-item:nth-child(1).animated {
+    animation-delay: 0.1s;
+}
+
+.contato-item:nth-child(2).animated {
+    animation-delay: 0.2s;
+}
+
+.contato-item:nth-child(3).animated {
+    animation-delay: 0.3s;
+}
+
+/* Animação da renovação automática */
+@keyframes pulseText {
+    0% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+.renovacao-automatica {
+    animation: pulseText 3s infinite;
+}
+
+/* Animação do botão de contratar */
+@keyframes buttonPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 128, 18, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 128, 18, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 128, 18, 0);
+    }
+}
+
+.contratar-button {
+    animation: buttonPulse 2s infinite;
+}
+
+/* Animação do destaque "Melhor custo-benefício" */
+@keyframes highlightPulse {
+    0% {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+.melhor-opcao {
+    animation: highlightPulse 2s infinite;
+}

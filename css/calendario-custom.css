@@ -1,0 +1,438 @@
+/* Estilos personalizados para a página de Calendário */
+
+/* Container principal dos filtros */
+.filtros-calendario {
+    background-color: #e0f2f7; /* Azul claro para o fundo da área de filtros */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column; /* Empilha os grupos de filtros e o botão limpar */
+    align-items: center; /* Centraliza os grupos de filtros */
+    gap: 15px; /* Espaço entre os grupos de filtros */
+}
+
+/* Container para os grupos de botões de modalidade e distância */
+.filtros-modalidade-distancia {
+    display: flex;
+    flex-direction: column; /* Garante que modalidade e distância fiquem em linhas separadas */
+    align-items: center; /* Centraliza os grupos de botões */
+    width: 100%; /* Ocupa a largura total para melhor centralização */
+    gap: 15px; /* Espaço entre o grupo de modalidade e distância */
+}
+
+/* Grupo de botões de filtro (modalidade, distância, limpar) */
+.filtro-botoes-grupo {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os botões quebrem linha */
+    gap: 10px; /* Espaço entre os botões dentro de um grupo */
+    justify-content: center;
+}
+
+/* Estilo base para os botões de filtro */
+.botao-filtro {
+    background-color: #ffffff;
+    color: #007bff; /* Azul primário */
+    border: 1px solid #007bff;
+    padding: 10px 20px;
+    border-radius: 20px; /* Botões arredondados */
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre ícone e texto, se houver */
+}
+
+.botao-filtro:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+/* Estilo para o botão de filtro ativo */
+.botao-filtro.active {
+    background-color: #fd7e14; /* Laranja para o botão ativo */
+    color: #ffffff;
+    border-color: #fd7e14;
+}
+
+/* Estilo específico para o botão Limpar Filtros */
+.botao-limpar {
+    background-color: #6c757d; /* Cinza para o botão limpar */
+    color: #ffffff;
+    border-color: #6c757d;
+}
+
+.botao-limpar:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* Estilos para os Cards de Prova (base) */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajustado para melhor encaixe */
+    gap: 25px;
+}
+
+/* Estilo do card conforme referência visual */
+.prova-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    height: 100%; /* Garante que todos os cards tenham a mesma altura */
+    min-height: 400px; /* Altura mínima para acomodar conteúdo */
+}
+
+.prova-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Estilo específico para o card de prova fora do calendário */
+.prova-card.prova-fora-calendario {
+    background-color: #fff;
+    border-top: none;
+}
+
+.prova-logo-container {
+    text-align: center;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Altura fixa para o container do logo - aumentada */
+}
+
+.prova-logo {
+    max-width: 160px; /* Tamanho máximo para o logo da prova - aumentado */
+    max-height: 80px; /* Altura máxima para o logo - aumentada */
+    object-fit: contain;
+}
+
+.prova-titulo {
+    font-size: 1.05rem; /* Tamanho da fonte reduzido */
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+    line-height: 1.4;
+    min-height: 50px; /* Altura mínima para acomodar títulos maiores */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-wrap: break-word; /* Garante quebra de palavras longas */
+    overflow-wrap: break-word; /* Suporte adicional para quebra de palavras */
+    hyphens: auto; /* Adiciona hifenização quando necessário */
+}
+
+.prova-info-container {
+    margin-bottom: 20px;
+}
+
+.prova-info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre ícone e texto */
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.prova-info-icon {
+    width: 20px; /* Tamanho dos ícones */
+    height: 20px;
+    color: #38b6ff; /* Cor azul para os ícones */
+}
+
+/* Estilos para os botões de ação nos cards */
+.prova-botoes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto; /* Empurra os botões para o final do card */
+}
+
+/* Estilos para a área de detalhes por dia */
+.prova-detalhes-container {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn-toggle-detalhes {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #f8f9fa;
+    color: #555;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-toggle-detalhes:hover {
+    background-color: #e9ecef;
+}
+
+.btn-toggle-detalhes.active {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+.prova-detalhes-content {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    padding: 15px;
+    margin-top: -5px;
+    transition: all 0.3s ease;
+}
+
+.prova-detalhes-content h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #444;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.prova-detalhes-content ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.prova-detalhes-content li {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+    padding: 5px 0;
+    border-bottom: 1px dotted #ddd;
+}
+
+.prova-detalhes-content li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* Estilo para o botão de informações (contorno) */
+.btn-informacoes {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    background-color: transparent;
+    color: #38b6ff;
+    border: 1px solid #38b6ff;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-informacoes:hover {
+    background-color: #f0f8ff;
+}
+
+/* Estilo para o botão de confirmar presença (preenchido) */
+.btn-confirmar-presenca {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #38b6ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-confirmar-presenca:hover {
+    background-color: #2793d7;
+}
+
+/* Mensagem quando não há provas */
+.mensagem-vazia {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    color: #6c757d;
+    font-size: 1.1rem;
+}
+
+/* Ajustes de Responsividade para Filtros e Cards */
+@media (max-width: 1200px) {
+    .cards-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .filtros-modalidade-distancia {
+        flex-direction: column; 
+        align-items: stretch; 
+    }
+
+    .filtro-botoes-grupo {
+        justify-content: center; 
+    }
+
+    .botao-filtro {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estilos para o Modal de Confirmação de Presença */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
+    display: flex; /* Controlado por JS para exibir/ocultar, mas padrão flex para centralizar */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999 !important; /* Z-index MUITO ALTO para garantir que fique na frente */
+    padding: 20px;
+    opacity: 1 !important; /* Garantir opacidade total */
+    visibility: visible !important; /* Garantir visibilidade */
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    animation: fadeInModal 0.3s ease-out;
+    z-index: 10000 !important; /* Acima do overlay */
+    opacity: 1 !important;
+    visibility: visible !important;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    z-index: 10001; /* Acima do conteúdo do modal */
+}
+
+.modal-close-button:hover,
+.modal-close-button:focus {
+    color: #333;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.modal-content form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+.modal-content form input[type="text"],
+.modal-content form input[type="date"],
+.modal-content form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.modal-content form input[type="text"]:focus,
+.modal-content form input[type="date"]:focus,
+.modal-content form select:focus {
+    border-color: #38b6ff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(56, 182, 255, 0.25);
+}
+
+.modal-content form button[type="submit"] {
+    background-color: #38b6ff; 
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    width: 100%;
+    transition: background-color 0.2s ease;
+}
+
+.modal-content form button[type="submit"]:hover {
+    background-color: #2793d7; 
+}
+
+/* Ajustes para responsividade do modal */
+@media (max-width: 600px) {
+    .modal-content {
+        padding: 20px;
+    }
+    .modal-content h3 {
+        font-size: 1.3em;
+    }
+    .modal-content form input[type="text"],
+    .modal-content form input[type="date"],
+    .modal-content form select,
+    .modal-content form button[type="submit"] {
+        font-size: 0.95em;
+    }
+}

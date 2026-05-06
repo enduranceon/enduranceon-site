@@ -1,0 +1,468 @@
+// ID da planilha do Google Sheets
+const SHEET_ID = '1A3qKSO2XwuZuvFlSV0H4CkCBM6J5H02PSU2IdxAQJJ8';
+const SHEET_NAME = 'Datas EON';
+
+// URL da API do Google Sheets
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
+
+let allEvents = [];
+let filteredEvents = [];
+let currentWeekStart = null;
+
+// Meses em português
+const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+const diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+
+// Carregar eventos ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+    initCalendar();
+    setupFilters();
+    setupNavigation();
+    setupModal();
+});
+
+// Inicializar calendário
+function initCalendar() {
+    // Define semana atual (começando na segunda-feira)
+    const today = new Date();
+    currentWeekStart = getMonday(today);
+    loadEvents();
+}
+
+// Obter segunda-feira da semana
+function getMonday(date) {
+    const d = new Date(date);
+    const day = d.getDay();
+    const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+    return new Date(d.setDate(diff));
+}
+
+// Função para carregar eventos do Google Sheets
+async function loadEvents() {
+    try {
+        const response = await fetch(SHEET_URL);
+        const text = await response.text();
+        
+        // Remove o prefixo do Google e converte para JSON
+        const json = JSON.parse(text.substring(47).slice(0, -2));
+        
+        // Processa os dados
+        const rows = json.table.rows;
+        allEvents = [];
+        
+        rows.forEach(row => {
+            const cells = row.c;
+            
+            // Pula linhas vazias
+            if (!cells || !cells[0] || !cells[0].v) return;
+            
+            const event = {
+                data: cells[0]?.f || cells[0]?.v || '', // Usa formato DD/MM/YYYY
+                horario: cells[1]?.f || cells[1]?.v || '', // Usa formato HH:MM:SS
+                horarioFim: cells[2]?.f || cells[2]?.v || '', // Horário de encerramento (opcional)
+                tipo: cells[3]?.v || '',
+                modalidade: cells[4]?.v || '',
+                nome: cells[5]?.v || '',
+                local: cells[6]?.v || '',
+                linkMaps: cells[7]?.v || '',
+                informacoes: cells[8]?.v || ''
+            };
+            
+            // Adiciona apenas eventos com data válida
+            if (event.data) {
+                allEvents.push(event);
+            }
+        });
+        
+        filteredEvents = [...allEvents];
+        console.log('Total de eventos carregados:', allEvents.length);
+        console.log('Eventos:', allEvents);
+        renderCalendar();
+        populateFilters();
+        
+    } catch (error) {
+        console.error('Erro ao carregar eventos:', error);
+        // Mesmo com erro, mostra o calendário vazio
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('loading').innerHTML = `
+            <p style="color: #e74c3c; font-weight: 600;">Erro ao carregar eventos. Por favor, tente novamente mais tarde.</p>
+        `;
+    }
+}
+
+// Função para converter data string em objeto Date
+function parseDate(dateStr) {
+    if (!dateStr) return new Date(0);
+    
+    // Formato: DD/MM/YYYY
+    const parts = dateStr.split('/');
+    if (parts.length === 3) {
+        const day = parseInt(parts[0]);
+        const month = parseInt(parts[1]) - 1;
+        const year = parseInt(parts[2]);
+        return new Date(year, month, day);
+    }
+    
+    return new Date(dateStr);
+}
+
+// Função para formatar data
+function formatDateStr(date) {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+}
+
+// Função para renderizar calendário
+function renderCalendar() {
+    const loading = document.getElementById('loading');
+    const calendarGrid = document.getElementById('calendar-grid');
+    const noEvents = document.getElementById('no-events');
+    
+    loading.style.display = 'none';
+    
+    // Atualiza título da semana
+    updateWeekTitle();
+    
+    // Limpa células
+    const dayCells = document.querySelectorAll('.day-cell');
+    dayCells.forEach(cell => {
+        cell.innerHTML = '';
+    });
+    
+    // Preenche cada dia da semana
+    let hasEvents = false;
+    let totalDayEvents = 0;
+    
+    for (let i = 0; i < 7; i++) {
+        const currentDate = new Date(currentWeekStart);
+        currentDate.setDate(currentWeekStart.getDate() + i);
+        
+        const dayCell = dayCells[i];
+        const dateStr = formatDateStr(currentDate);
+        
+        // Adiciona número do dia
+        const dayNumber = document.createElement('div');
+        dayNumber.className = 'day-number';
+        
+        // Marca dia atual
+        const today = new Date();
+        if (currentDate.toDateString() === today.toDateString()) {
+            dayNumber.classList.add('today');
+        }
+        
+        dayNumber.textContent = currentDate.getDate();
+        dayCell.appendChild(dayNumber);
+        
+        // Container de eventos
+        const eventsContainer = document.createElement('div');
+        eventsContainer.className = 'events-container';
+        
+        // Filtra eventos deste dia
+        const dayEvents = filteredEvents.filter(event => {
+            return event.data === dateStr;
+        });
+        
+        // Ordena eventos por horário
+        dayEvents.sort((a, b) => {
+            if (!a.horario) return 1;
+            if (!b.horario) return -1;
+            return a.horario.localeCompare(b.horario);
+        });
+        
+        // Renderiza eventos
+        dayEvents.forEach(event => {
+            hasEvents = true;
+            totalDayEvents++;
+            const eventCard = createEventCard(event);
+            eventsContainer.appendChild(eventCard);
+        });
+        
+        dayCell.appendChild(eventsContainer);
+    }
+    
+    // Sempre mostra o calendário
+    calendarGrid.style.display = 'block';
+    noEvents.style.display = hasEvents ? 'none' : 'block';
+    
+    console.log('Total de eventos renderizados nesta semana:', totalDayEvents);
+}
+
+// Formatar horário para formato 12h (am/pm)
+function formatTime12h(timeStr) {
+    if (!timeStr) return '';
+    
+    // Remove segundos se existir (05:45:00 -> 05:45)
+    const timeParts = timeStr.split(':');
+    let hours = parseInt(timeParts[0]);
+    const minutes = timeParts[1];
+    
+    // Determina AM ou PM
+    const period = hours >= 12 ? 'pm' : 'am';
+    
+    // Converte para formato 12h
+    if (hours === 0) {
+        hours = 12; // Meia-noite
+    } else if (hours > 12) {
+        hours = hours - 12;
+    }
+    
+    // Retorna sem zero à esquerda
+    return `${hours}:${minutes}${period}`;
+}
+
+// Formatar intervalo de horário (início - fim)
+function formatTimeRange(startTime, endTime) {
+    if (!startTime) return '';
+    
+    const formattedStart = formatTime12h(startTime);
+    
+    // Se não tem horário fim, retorna apenas o início
+    if (!endTime || endTime.trim() === '') {
+        return formattedStart;
+    }
+    
+    // Se tem horário fim, retorna o intervalo
+    const formattedEnd = formatTime12h(endTime);
+    return `${formattedStart} - ${formattedEnd}`;
+}
+
+// Criar card de evento
+function createEventCard(event) {
+    const card = document.createElement('div');
+    card.className = 'event-card-mini';
+    
+    // Adiciona classe de tipo
+    if (event.tipo) {
+        const tipoClass = 'tipo-' + event.tipo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        card.classList.add(tipoClass);
+    }
+    
+    // Título/Nome
+    if (event.nome) {
+        const titleEl = document.createElement('div');
+        titleEl.className = 'event-title';
+        titleEl.textContent = event.nome;
+        card.appendChild(titleEl);
+    }
+    
+    // Horário (abaixo do título, formato 12h com intervalo se tiver horário fim)
+    if (event.horario) {
+        const timeEl = document.createElement('div');
+        timeEl.className = 'event-time';
+        timeEl.textContent = formatTimeRange(event.horario, event.horarioFim);
+        card.appendChild(timeEl);
+    }
+    
+    // Detalhes (Modalidade + Local)
+    const detailsEl = document.createElement('div');
+    detailsEl.className = 'event-details';
+    
+    const details = [];
+    if (event.modalidade) details.push(event.modalidade);
+    if (event.local) details.push(event.local);
+    
+    detailsEl.textContent = details.join(' • ');
+    card.appendChild(detailsEl);
+    
+    // Evento de clique
+    card.addEventListener('click', () => {
+        showEventModal(event);
+    });
+    
+    return card;
+}
+
+// Atualizar título da semana
+function updateWeekTitle() {
+    const weekEnd = new Date(currentWeekStart);
+    weekEnd.setDate(currentWeekStart.getDate() + 6);
+    
+    const startDay = currentWeekStart.getDate();
+    const startMonth = meses[currentWeekStart.getMonth()];
+    const endDay = weekEnd.getDate();
+    const endMonth = meses[weekEnd.getMonth()];
+    const year = currentWeekStart.getFullYear();
+    
+    let title;
+    if (currentWeekStart.getMonth() === weekEnd.getMonth()) {
+        title = `${startDay} a ${endDay} de ${startMonth} de ${year}`;
+    } else {
+        title = `${startDay} de ${startMonth} a ${endDay} de ${endMonth} de ${year}`;
+    }
+    
+    document.getElementById('week-title').textContent = title.toUpperCase();
+}
+
+// Mostrar modal com detalhes do evento
+function showEventModal(event) {
+    const modal = document.getElementById('event-modal');
+    const modalBody = document.getElementById('modal-body');
+    
+    // Monta HTML do modal
+    let html = '<div class="modal-event">';
+    
+    // Cabeçalho com badges
+    html += '<div class="modal-event-header">';
+    if (event.tipo) {
+        const tipoClass = 'tipo-' + event.tipo.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        html += `<span class="modal-badge ${tipoClass}">${event.tipo}</span>`;
+    }
+    if (event.modalidade) {
+        html += `<span class="modal-badge" style="background: #f5f5f5; color: #333;">${event.modalidade}</span>`;
+    }
+    html += '</div>';
+    
+    // Título
+    if (event.nome) {
+        html += `<h3 class="modal-event-title">${event.nome}</h3>`;
+    }
+    
+    // Informações
+    html += '<div class="modal-event-info">';
+    
+    if (event.data) {
+        const date = parseDate(event.data);
+        const dateFormatted = `${date.getDate()} de ${meses[date.getMonth()]} de ${date.getFullYear()}`;
+        html += `
+            <div class="modal-info-item">
+                <span class="modal-info-label">Data:</span>
+                <span>${dateFormatted}</span>
+            </div>
+        `;
+    }
+    
+    if (event.horario) {
+        const timeDisplay = formatTimeRange(event.horario, event.horarioFim);
+        html += `
+            <div class="modal-info-item">
+                <span class="modal-info-label">Horário:</span>
+                <span>${timeDisplay}</span>
+            </div>
+        `;
+    }
+    
+    if (event.local) {
+        html += `
+            <div class="modal-info-item">
+                <span class="modal-info-label">Local:</span>
+                <span>${event.local}</span>
+            </div>
+        `;
+    }
+    
+    html += '</div>';
+    
+    // Informações adicionais
+    if (event.informacoes) {
+        html += `<div class="modal-event-description">${event.informacoes}</div>`;
+    }
+    
+    // Botão Maps
+    if (event.linkMaps) {
+        html += `<a href="${event.linkMaps}" target="_blank" class="btn-maps">Ver no Maps</a>`;
+    }
+    
+    html += '</div>';
+    
+    modalBody.innerHTML = html;
+    modal.classList.add('active');
+}
+
+// Configurar modal
+function setupModal() {
+    const modal = document.getElementById('event-modal');
+    const closeBtn = modal.querySelector('.modal-close');
+    const overlay = modal.querySelector('.modal-overlay');
+    
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+    
+    overlay.addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+}
+
+// Configurar navegação
+function setupNavigation() {
+    const prevBtn = document.getElementById('prev-week');
+    const nextBtn = document.getElementById('next-week');
+    const todayBtn = document.getElementById('today-btn');
+    
+    prevBtn.addEventListener('click', () => {
+        currentWeekStart.setDate(currentWeekStart.getDate() - 7);
+        renderCalendar();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        currentWeekStart.setDate(currentWeekStart.getDate() + 7);
+        renderCalendar();
+    });
+    
+    todayBtn.addEventListener('click', () => {
+        const today = new Date();
+        currentWeekStart = getMonday(today);
+        renderCalendar();
+    });
+}
+
+// Configurar filtros
+function setupFilters() {
+    const tipoSelect = document.getElementById('filter-tipo');
+    const modalidadeSelect = document.getElementById('filter-modalidade');
+    const clearButton = document.getElementById('clear-filters');
+    
+    tipoSelect.addEventListener('change', applyFilters);
+    modalidadeSelect.addEventListener('change', applyFilters);
+    clearButton.addEventListener('click', clearFilters);
+}
+
+// Popular filtros
+function populateFilters() {
+    const tipoSelect = document.getElementById('filter-tipo');
+    const modalidadeSelect = document.getElementById('filter-modalidade');
+    
+    // Extrai valores únicos
+    const tipos = [...new Set(allEvents.map(e => e.tipo).filter(t => t))].sort();
+    const modalidades = [...new Set(allEvents.map(e => e.modalidade).filter(m => m))].sort();
+    
+    // Popula select de tipos
+    tipos.forEach(tipo => {
+        const option = document.createElement('option');
+        option.value = tipo;
+        option.textContent = tipo;
+        tipoSelect.appendChild(option);
+    });
+    
+    // Popula select de modalidades
+    modalidades.forEach(modalidade => {
+        const option = document.createElement('option');
+        option.value = modalidade;
+        option.textContent = modalidade;
+        modalidadeSelect.appendChild(option);
+    });
+}
+
+// Aplicar filtros
+function applyFilters() {
+    const tipoValue = document.getElementById('filter-tipo').value;
+    const modalidadeValue = document.getElementById('filter-modalidade').value;
+    
+    filteredEvents = allEvents.filter(event => {
+        const matchTipo = !tipoValue || event.tipo === tipoValue;
+        const matchModalidade = !modalidadeValue || event.modalidade === modalidadeValue;
+        return matchTipo && matchModalidade;
+    });
+    
+    renderCalendar();
+}
+
+// Limpar filtros
+function clearFilters() {
+    document.getElementById('filter-tipo').value = '';
+    document.getElementById('filter-modalidade').value = '';
+    filteredEvents = [...allEvents];
+    renderCalendar();
+}

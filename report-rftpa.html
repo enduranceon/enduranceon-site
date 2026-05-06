@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Teste rFTPa - Endurance On</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 20px;
+        }
+        
+        .report-logo {
+            height: 60px;
+        }
+        
+        .report-title {
+            text-align: center;
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        
+        .report-title h1 {
+            margin: 0;
+            color: #38B6FF;
+            font-size: 1.8rem;
+        }
+        
+        .report-title h2 {
+            margin: 5px 0 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #38B6FF;
+        }
+        
+        .report-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .report-info-item {
+            flex: 1;
+            margin-right: 20px;
+        }
+        
+        .report-info-item:last-child {
+            margin-right: 0;
+            text-align: right;
+        }
+        
+        .report-info-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        
+        .report-info-value {
+            font-size: 1.1rem;
+        }
+        
+        .report-section {
+            margin-bottom: 40px;
+        }
+        
+        .report-section-title {
+            color: #38B6FF;
+            border-bottom: 2px solid #FF8012;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .result-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .result-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #38B6FF;
+        }
+        
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .result-description {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .protocol-steps {
+            background-color: #f8f9fa;
+            border-left: 4px solid #38B6FF;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        
+        .protocol-steps h3 {
+            margin-top: 0;
+            color: #38B6FF;
+        }
+        
+        .protocol-steps ol {
+            padding-left: 20px;
+        }
+        
+        .athlete-level {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        /* Estilos para a tabela de zonas de treino */
+        .training-zones-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .training-zones-table th, .training-zones-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .training-zones-table th {
+            background-color: #f4f4f4;
+            font-weight: 600;
+        }
+        
+        /* Cores para as zonas de treino */
+        .zone-z0 {
+            background-color: #E6E6FA;
+        }
+        
+        .zone-z1 {
+            background-color: #C3E6BA;
+        }
+        
+        .zone-z2 {
+            background-color: #FFE699;
+        }
+        
+        .zone-z3 {
+            background-color: #F8CBAD;
+        }
+        
+        .zone-z4 {
+            background-color: #FF9999;
+        }
+        
+        .zone-z5 {
+            background-color: #FF5555;
+        }
+        
+        .zone-z6 {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+
+        .report-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+            position: relative;
+        }
+        
+        .report-footer-logo {
+            height: 40px;
+        }
+        
+        .print-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #FF8012;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 20px;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .print-button:hover {
+            background-color: #e67300;
+        }
+        
+        @media print {
+            .no-print {
+                display: none;
+            }
+            
+            .training-zones-table {
+                page-break-inside: avoid;
+            }
+            
+            /* Forçar impressão de cores de fundo */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            /* Garantir que as cores das zonas sejam impressas */
+            .zone-z0 {
+                background-color: #E6E6FA !important;
+            }
+            
+            .zone-z1 {
+                background-color: #C3E6BA !important;
+            }
+            
+            .zone-z2 {
+                background-color: #FFE699 !important;
+            }
+            
+            .zone-z3 {
+                background-color: #F8CBAD !important;
+            }
+            
+            .zone-z4 {
+                background-color: #FF9999 !important;
+            }
+            
+            .zone-z5 {
+                background-color: #FF5555 !important;
+            }
+            
+            .zone-z6 {
+                background-color: #000000 !important;
+                color: #FFFFFF !important;
+            }
+            
+            @page {
+                margin: 2cm;
+            }
+            
+            .report-footer {
+                position: relative;
+                margin-top: 30px;
+            }
+            
+            body {
+                background-color: #fff;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="print-button no-print" onclick="window.print()">
+            <i class="fas fa-print"></i> Imprimir Relatório / Salvar PDF
+        </button>
+        
+        <div class="report-header">
+            <img src="img/logo-horizontal-preta.png" alt="Endurance On" class="report-logo">
+            <div class="report-title">
+                <h1>Relatório de Teste rFTPa</h1>
+                <h2>Endurance On Assessoria Esportiva</h2>
+            </div>
+        </div>
+        
+        <div class="report-info">
+            <div class="report-info-item">
+                <div class="report-info-label">Atleta:</div>
+                <div class="report-info-value" id="aluno-nome"></div>
+            </div>
+
+            <div class="report-info-item">
+                <div class="report-info-label">Data do Teste:</div>
+                <div class="report-info-value" id="data-teste"></div>
+            </div>
+
+        </div>
+        
+        <div class="report-section">
+            <h2 class="report-section-title">Protocolo do Teste rFTPa</h2>
+            <div class="protocol-steps">
+                <h3>Como o teste foi realizado:</h3>
+                <ol>
+                    <li>Aquecimento: 15' leve se preparando para um esforço máximo.</li>
+                    <li>Realização de um esforço máximo de 3'.</li>
+                    <li>Recuperativo de 5' caminhando ou parado, seguido de 10' leve.</li>
+                    <li>Realização de um esforço máximo de 9'.</li>
+                    <li>Volta à calma: 10' leve.</li>
+                </ol>
+                <p><strong>Cálculo do rFTPa:</strong> Média dos paces dos dois intervalos + 10% dessa média.</p>
+            </div>
+        </div>
+        
+        <div class="report-section">
+            <h2 class="report-section-title">Resultados do Teste</h2>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+                <div style="flex: 1; background-color: #e6f7ff; border-radius: 10px; padding: 15px; margin-right: 15px; text-align: center;">
+                    <div style="font-weight: 600; margin-bottom: 10px; color: #38B6FF;">Intervalo de 3 minutos</div>
+                    <div style="font-size: 1.8rem; font-weight: 700;" id="pace-3min">-</div>
+                    <div style="color: #666;">Pace médio</div>
+                </div>
+                <div style="flex: 1; background-color: #fff2e6; border-radius: 10px; padding: 15px; text-align: center;">
+                    <div style="font-weight: 600; margin-bottom: 10px; color: #FF8012;">Intervalo de 9 minutos</div>
+                    <div style="font-size: 1.8rem; font-weight: 700;" id="pace-9min">-</div>
+                    <div style="color: #666;">Pace médio</div>
+                </div>
+            </div>
+            <div style="margin-bottom: 20px; text-align: right; color: #666; font-size: 0.9rem;">
+                <span>Média dos paces: </span><span id="pace-media">-</span>
+            </div>
+            
+            <div class="result-card">
+                <div class="result-title">Resultado Final - rFTPa</div>
+                <div class="result-value" id="rftpa-value">-</div>
+                <div class="result-description">Pace de referência para treinamentos</div>
+            </div>
+        </div>
+        
+        <div class="report-section">
+            <h2 class="report-section-title">Nível do Atleta e Zonas de Treino</h2>
+            <div class="athlete-level" id="athlete-level"></div>
+            <div id="training-zones-container">
+                <!-- Tabela de zonas de treino será inserida aqui via JavaScript -->
+            </div>
+        </div>
+        
+        <div class="report-footer">
+            <img src="img/logo-simbolo-preta.png" alt="Endurance On" class="report-footer-logo">
+            <div>
+                <p>© 2025 Endurance On Assessoria Esportiva</p>
+                <p>Todos os direitos reservados</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Função para formatar data
+        function formatarData(dataString) {
+            if (!dataString) return '-';
+            
+            // Corrigir problema de timezone que fazia a data aparecer um dia antes
+            const [ano, mes, dia] = dataString.split('-');
+            const data = new Date(ano, mes - 1, dia);
+            return data.toLocaleDateString('pt-BR');
+        }
+        
+        // Função para formatar data e hora
+        function formatarDataHora(data) {
+            return data.toLocaleDateString('pt-BR') + ' ' + 
+                   data.toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'});
+        }
+        
+        // Função para gerar tabela de zonas de treino
+        function gerarTabelaZonasTreino(nivel, rftpaPace) {
+            const container = document.getElementById('training-zones-container');
+            
+            // Limpar conteúdo anterior
+            container.innerHTML = '';
+            
+            // Converter pace (min:seg) para segundos totais
+            function paceParaSegundos(paceStr) {
+                const [min, seg] = paceStr.split(':').map(num => parseInt(num));
+                return min * 60 + seg;
+            }
+            
+            // Converter segundos totais para pace (min:seg)
+            function segundosParaPace(segundos) {
+                const min = Math.floor(segundos / 60);
+                const seg = Math.round(segundos % 60);
+                return `${min}:${seg.toString().padStart(2, '0')}`;
+            }
+            
+            // Calcular pace com base na porcentagem do rFTPa
+            function calcularPaceComPorcentagem(rftpaPaceStr, porcentagem) {
+                const rftpaSegundos = paceParaSegundos(rftpaPaceStr);
+                const paceSegundos = rftpaSegundos / (porcentagem / 100);
+                return segundosParaPace(paceSegundos);
+            }
+            
+            // Criar tabela
+            const table = document.createElement('table');
+            table.className = 'training-zones-table';
+            
+            // Cabeçalho da tabela
+            const thead = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            
+            // Colunas do cabeçalho
+            const headers = ['Zona', 'Intensidade', 'Pace'];
+            headers.forEach(text => {
+                const th = document.createElement('th');
+                th.textContent = text;
+                headerRow.appendChild(th);
+            });
+            
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+            
+            // Corpo da tabela
+            const tbody = document.createElement('tbody');
+            
+            // Definir zonas de treino baseadas no nível do atleta
+            let zonas = [];
+            
+            if (nivel === 'N1') {
+                // Zonas para atletas N1 (rFTPa >= 4:31 min/km)
+                zonas = [
+                    {
+                        zona: 'Z1',
+                        descricao: 'Recuperação Ativa',
+                        intensidade: '75-85% rFTPa',
+                        paceMin: 75,
+                        paceMax: 85,
+                        classe: 'zone-z1'
+                    },
+                    {
+                        zona: 'Z2',
+                        descricao: 'Endurance Aeróbica',
+                        intensidade: '85,01-90% rFTPa',
+                        paceMin: 85.01,
+                        paceMax: 90,
+                        classe: 'zone-z2'
+                    },
+                    {
+                        zona: 'Z3',
+                        descricao: 'Limiar Aeróbico',
+                        intensidade: '90,01-95% rFTPa',
+                        paceMin: 90.01,
+                        paceMax: 95,
+                        classe: 'zone-z3'
+                    },
+                    {
+                        zona: 'Z4',
+                        descricao: 'Limiar Anaeróbico',
+                        intensidade: '95,01-100% rFTPa',
+                        paceMin: 95.01,
+                        paceMax: 100,
+                        classe: 'zone-z4'
+                    },
+                    {
+                        zona: 'Z5',
+                        descricao: 'VO2max',
+                        intensidade: '100,01-115% rFTPa',
+                        paceMin: 100.01,
+                        paceMax: 115,
+                        classe: 'zone-z5'
+                    }
+                ];
+            } else {
+                // Zonas para atletas N2 (rFTPa <= 4:30 min/km)
+                zonas = [
+                    {
+                        zona: 'Z0',
+                        descricao: 'Recuperação Passiva',
+                        intensidade: '60-70% rFTPa',
+                        paceMin: 60,
+                        paceMax: 70,
+                        classe: 'zone-z0'
+                    },
+                    {
+                        zona: 'Z1',
+                        descricao: 'Recuperação Ativa',
+                        intensidade: '70,01-78% rFTPa',
+                        paceMin: 70.01,
+                        paceMax: 78,
+                        classe: 'zone-z1'
+                    },
+                    {
+                        zona: 'Z2',
+                        descricao: 'Endurance Aeróbica',
+                        intensidade: '78,01-88% rFTPa',
+                        paceMin: 78.01,
+                        paceMax: 88,
+                        classe: 'zone-z2'
+                    },
+                    {
+                        zona: 'Z3',
+                        descricao: 'Limiar Aeróbico',
+                        intensidade: '88,01-95% rFTPa',
+                        paceMin: 88.01,
+                        paceMax: 95,
+                        classe: 'zone-z3'
+                    },
+                    {
+                        zona: 'Z4',
+                        descricao: 'Limiar Anaeróbico',
+                        intensidade: '95-101% rFTPa',
+                        paceMin: 95,
+                        paceMax: 101,
+                        classe: 'zone-z4'
+                    },
+                    {
+                        zona: 'Z5',
+                        descricao: 'VO2max',
+                        intensidade: '101,01-108% rFTPa',
+                        paceMin: 101.01,
+                        paceMax: 108,
+                        classe: 'zone-z5'
+                    },
+                    {
+                        zona: 'Z6',
+                        descricao: 'Anaeróbico',
+                        intensidade: '108,01-120% rFTPa',
+                        paceMin: 108.01,
+                        paceMax: 120,
+                        classe: 'zone-z6'
+                    }
+                ];
+            }
+            
+            // Adicionar linhas para cada zona
+            zonas.forEach(zona => {
+                const row = document.createElement('tr');
+                row.className = zona.classe;
+                
+                // Coluna Zona
+                const tdZona = document.createElement('td');
+                tdZona.textContent = zona.zona;
+                row.appendChild(tdZona);
+                
+                // Coluna Intensidade
+                const tdIntensidade = document.createElement('td');
+                tdIntensidade.textContent = zona.intensidade;
+                row.appendChild(tdIntensidade);
+                
+                // Coluna Pace
+                const tdPace = document.createElement('td');
+                const paceLento = calcularPaceComPorcentagem(rftpaPace, zona.paceMax);
+                const paceRapido = calcularPaceComPorcentagem(rftpaPace, zona.paceMin);
+                tdPace.textContent = `${paceLento} - ${paceRapido} min/km`;
+                row.appendChild(tdPace);
+                
+                tbody.appendChild(row);
+            });
+            
+            table.appendChild(tbody);
+            container.appendChild(table);
+            
+            // Adicionar tabela de paces para provas
+            gerarTabelaPacesProvas(rftpaPace, container);
+        }
+        
+        // Função para gerar tabela de paces para provas
+        function gerarTabelaPacesProvas(rftpaPace, container) {
+            // Converter pace (min:seg) para segundos totais
+            function paceParaSegundos(paceStr) {
+                const [min, seg] = paceStr.split(':').map(num => parseInt(num));
+                return min * 60 + seg;
+            }
+            
+            // Converter segundos totais para pace (min:seg)
+            function segundosParaPace(segundos) {
+                const min = Math.floor(segundos / 60);
+                const seg = Math.round(segundos % 60);
+                return `${min}:${seg.toString().padStart(2, '0')}`;
+            }
+            
+            // Calcular pace com base na porcentagem do rFTPa
+            function calcularPaceComPorcentagem(rftpaPaceStr, porcentagem) {
+                const rftpaSegundos = paceParaSegundos(rftpaPaceStr);
+                const paceSegundos = rftpaSegundos / (porcentagem / 100);
+                return segundosParaPace(paceSegundos);
+            }
+            
+            // Adicionar título da seção
+            const titleProvas = document.createElement('h3');
+            titleProvas.textContent = 'Paces Recomendados para Provas';
+            titleProvas.style.color = '#38B6FF';
+            titleProvas.style.marginTop = '30px';
+            titleProvas.style.marginBottom = '15px';
+            container.appendChild(titleProvas);
+            
+            // Criar tabela de provas
+            const tableProvas = document.createElement('table');
+            tableProvas.className = 'training-zones-table';
+            tableProvas.style.marginBottom = '20px';
+            
+            // Cabeçalho da tabela de provas
+            const theadProvas = document.createElement('thead');
+            const headerRowProvas = document.createElement('tr');
+            
+            const headersProvas = ['Distância', '% da Velocidade (min-máx)', 'Pace Recomendado'];
+            headersProvas.forEach(text => {
+                const th = document.createElement('th');
+                th.textContent = text;
+                headerRowProvas.appendChild(th);
+            });
+            
+            theadProvas.appendChild(headerRowProvas);
+            tableProvas.appendChild(theadProvas);
+            
+            // Corpo da tabela de provas
+            const tbodyProvas = document.createElement('tbody');
+            
+            // Definir dados das provas
+            const provas = [
+                {
+                    distancia: '5km',
+                    porcentagemMin: 102,
+                    porcentagemMax: 105,
+                    intensidade: '102% - 105%'
+                },
+                {
+                    distancia: '10km',
+                    porcentagemMin: 98,
+                    porcentagemMax: 100,
+                    intensidade: '98% - 100%'
+                },
+                {
+                    distancia: 'Meia Maratona (21k)',
+                    porcentagemMin: 94,
+                    porcentagemMax: 97,
+                    intensidade: '94% - 97%'
+                },
+                {
+                    distancia: 'Maratona (42k)',
+                    porcentagemMin: 90,
+                    porcentagemMax: 93,
+                    intensidade: '90% - 93%'
+                }
+            ];
+            
+            // Adicionar linhas para cada prova
+            provas.forEach((prova, index) => {
+                const row = document.createElement('tr');
+                
+                // Alternar cores de fundo para melhor legibilidade
+                if (index % 2 === 0) {
+                    row.style.backgroundColor = '#f8f9fa';
+                }
+                
+                // Coluna Distância
+                const tdDistancia = document.createElement('td');
+                tdDistancia.textContent = prova.distancia;
+                tdDistancia.style.fontWeight = '600';
+                row.appendChild(tdDistancia);
+                
+                // Coluna Porcentagem
+                const tdPorcentagem = document.createElement('td');
+                tdPorcentagem.textContent = prova.intensidade;
+                row.appendChild(tdPorcentagem);
+                
+                // Coluna Pace
+                const tdPaceProva = document.createElement('td');
+                const paceRapido = calcularPaceComPorcentagem(rftpaPace, prova.porcentagemMax);
+                const paceLento = calcularPaceComPorcentagem(rftpaPace, prova.porcentagemMin);
+                tdPaceProva.textContent = `${paceRapido} - ${paceLento} min/km`;
+                tdPaceProva.style.fontWeight = '600';
+                tdPaceProva.style.color = '#FF8012';
+                row.appendChild(tdPaceProva);
+                
+                tbodyProvas.appendChild(row);
+            });
+            
+            tableProvas.appendChild(tbodyProvas);
+            container.appendChild(tableProvas);
+        }
+        
+        // Função principal para carregar dados e preencher relatório
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obter dados da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const encodedData = urlParams.get('data');
+            
+            if (!encodedData) {
+                console.error('Nenhum dado encontrado na URL');
+                return;
+            }
+            
+            try {
+                // Decodificar dados
+                const jsonData = decodeURIComponent(encodedData);
+                const data = JSON.parse(jsonData);
+                
+                // Preencher informações do atleta
+                document.getElementById('aluno-nome').textContent = data.alunoNome || '-';
+                document.getElementById('data-teste').textContent = formatarData(data.dataTeste) || '-';
+                
+                // Preencher resultados do teste
+                document.getElementById('pace-3min').textContent = data.pace3min + ' min/km';
+                document.getElementById('pace-9min').textContent = data.pace9min + ' min/km';
+                document.getElementById('pace-media').textContent = data.paceMedia + ' min/km';
+                document.getElementById('rftpa-value').textContent = data.rftpa + ' min/km';
+                
+                // Preencher nível do atleta
+                const athleteLevelElement = document.getElementById('athlete-level');
+                athleteLevelElement.textContent = `Nível do Atleta: ${data.nivel} (rFTPa: ${data.rftpa} min/km)`;
+                athleteLevelElement.style.color = data.nivel === 'N1' ? '#38B6FF' : '#FF8012';
+                
+                // Gerar tabela de zonas de treino
+                gerarTabelaZonasTreino(data.nivel, data.rftpa);
+                
+            } catch (error) {
+                console.error('Erro ao processar dados:', error);
+            }
+        });
+    </script>
+</body>
+</html>

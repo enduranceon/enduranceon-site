@@ -1,0 +1,111 @@
+.strava-club-section {
+    background-color: #FC4C02;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.strava-club-section .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.strava-logo {
+    width: 180px;
+    margin-bottom: 20px;
+}
+
+.strava-club-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.strava-club-section p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.strava-club-section .section-cta-button {
+    display: inline-block;
+    background-color: #f2f2f2; /* Alterado para cinza claro */
+    color: #FC4C02;
+    font-weight: 700;
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid #f2f2f2; /* Alterado para cinza claro */
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.strava-club-section .section-cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    background-color: transparent;
+    color: #f2f2f2; /* Alterado para cinza claro */
+    border-color: #f2f2f2; /* Alterado para cinza claro */
+}
+
+.strava-club-section .section-cta-button:active {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.strava-club-section .section-cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.strava-club-section .section-cta-button:hover::before {
+    left: 100%;
+}
+
+@media (max-width: 768px) {
+    .strava-club-section h2 {
+        font-size: 2rem;
+    }
+    
+    .strava-club-section p {
+        font-size: 1rem;
+    }
+    
+    .strava-logo {
+        width: 150px;
+    }
+    
+    .strava-club-section .section-cta-button {
+        padding: 14px 30px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .strava-club-section h2 {
+        font-size: 1.7rem;
+    }
+    
+    .strava-club-section {
+        padding: 40px 15px;
+    }
+    
+    .strava-club-section .section-cta-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regata Aero Race - Endurance On</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f7f7f7;
+            color: #1a1a1a;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: #000;
+            padding: 18px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+
+        .header-logo img {
+            height: 38px;
+            display: block;
+        }
+
+        .header-back {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+
+        .header-back:hover {
+            color: #FF8012;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(160deg, #111 0%, #1c1c1c 60%, #222 100%);
+            color: white;
+            padding: 70px 40px 60px;
+            text-align: center;
+        }
+
+        .hero-eyebrow {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #FF8012;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: #FF8012;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #bbb;
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ── ACCENT LINE ── */
+        .accent-line {
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #FF8012, #38B6FF);
+            border-radius: 2px;
+            margin: 0 auto 50px;
+        }
+
+        /* ── SECTION ── */
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 30px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #777;
+            margin-bottom: 50px;
+        }
+
+        /* ── CAROUSEL ── */
+        .shirt-carousel {
+            position: relative;
+            overflow: hidden;
+            min-height: 340px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 44px 36px;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide img {
+            max-width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 14px rgba(0,0,0,0.15));
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 2;
+        }
+
+        .carousel-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #ccc;
+            transition: background 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: #FF8012;
+        }
+
+        .carousel-label {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            z-index: 2;
+        }
+
+        .label-dark { background: #111; color: #fff; }
+        .label-white { background: #e8e8e8; color: #333; }
+
+        /* ── EXCLUSIVE BANNER ── */
+        .exclusive-banner {
+            background: #111;
+            color: #fff;
+            border-radius: 10px;
+            padding: 18px 24px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .exclusive-banner .exclusive-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .exclusive-banner strong {
+            color: #FF8012;
+        }
+
+        /* ── PRICE TAG ── */
+        .price-wrap {
+            margin-bottom: 20px;
+        }
+
+        .price-main {
+            font-size: 26px;
+            font-weight: 800;
+            color: #FF8012;
+            line-height: 1;
+        }
+
+        .price-sub {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+
+        /* ── CARDS GRID ── */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .shirt-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shirt-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .shirt-image-wrap {
+            background: transparent;
+            padding: 44px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 340px;
+        }
+
+        .shirt-image-wrap img {
+            max-width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 14px rgba(0,0,0,0.15));
+            transition: transform 0.4s ease;
+        }
+
+        .shirt-card:hover .shirt-image-wrap img {
+            transform: scale(1.04);
+        }
+
+        .shirt-body {
+            padding: 28px 28px 32px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shirt-tag {
+            display: inline-block;
+            background: #fff3e8;
+            color: #FF8012;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        .shirt-name {
+            font-size: 22px;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .shirt-desc {
+            display: none;
+        }
+
+        .btn-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #FF8012;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+            box-shadow: 0 4px 14px rgba(255,128,18,0.35);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-whatsapp:hover {
+            background: #e06e00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(255,128,18,0.45);
+        }
+
+        .btn-whatsapp svg {
+            flex-shrink: 0;
+        }
+
+        /* ── PROCESS SECTION ── */
+        .process-section {
+            background: #111;
+            color: white;
+            padding: 70px 30px;
+        }
+
+        .process-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .process-inner .section-title {
+            color: #fff;
+        }
+
+        .process-inner .section-subtitle {
+            color: #888;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 52px;
+            height: 52px;
+            background: #FF8012;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+            margin: 0 auto 14px;
+        }
+
+        .step h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        /* ── TIMELINE SECTION ── */
+        .timeline-section {
+            background: #f7f7f7;
+            padding: 70px 30px;
+        }
+
+        .timeline-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .timeline-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .timeline-steps::before {
+            content: '';
+            position: absolute;
+            left: 25px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #FF8012, #38B6FF);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            padding: 0 0 36px 0;
+            text-align: left;
+            position: relative;
+        }
+
+        .timeline-dot {
+            width: 52px;
+            height: 52px;
+            min-width: 52px;
+            background: #fff;
+            border: 3px solid #FF8012;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 800;
+            color: #FF8012;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-item--highlight .timeline-dot {
+            background: #FF8012;
+            color: #fff;
+        }
+
+        .timeline-content {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px 24px;
+            flex: 1;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #FF8012;
+            margin-bottom: 6px;
+        }
+
+        .timeline-content h3 {
+            font-size: 17px;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 6px;
+        }
+
+        .timeline-content p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .timeline-item--highlight .timeline-content {
+            border-left: 3px solid #FF8012;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #000;
+            color: #777;
+            padding: 36px 30px;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        footer a {
+            color: #FF8012;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #38B6FF;
+        }
+
+        footer strong {
+            color: #ccc;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            header {
+                padding: 14px 20px;
+            }
+
+            .hero {
+                padding: 50px 20px 44px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 50px 20px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-logo">
+            <a href="https://www.enduranceon.com.br">
+                <img src="https://www.enduranceon.com.br/images/logo-branca.png" alt="Endurance On" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <span style="display:none; color:white; font-size:20px; font-weight:800; letter-spacing:1px;">ENDURANCE<span style="color:#FF8012;">ON</span></span>
+            </a>
+        </div>
+        <a href="https://www.enduranceon.com.br" class="header-back">← Voltar ao site</a>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <p class="hero-eyebrow">Uniformes Endurance On</p>
+        <h1>Coleção <span>Regata Aero Race</span></h1>
+        <p>Escolha o modelo que mais combina com você, entre no grupo do WhatsApp e aguarde o formulário de pedido.</p>
+    </section>
+
+    <!-- SHIRTS -->
+    <div class="section">
+        <div class="accent-line"></div>
+        <h2 class="section-title">Escolha seu Modelo</h2>
+        <p class="section-subtitle">Clique no botão abaixo do modelo desejado para entrar no grupo e acompanhar o processo de pedido.</p>
+
+        <div class="exclusive-banner">
+            <span class="exclusive-icon">&#9733;</span>
+            <span><strong>Peças exclusivas &mdash; sem estoque!</strong> Os pedidos serão produzidos sob encomenda. Após encerrado o prazo, não haverá novas rodadas de pedido.</span>
+        </div>
+
+        <div class="cards-grid">
+
+            <!-- Regata Aero Race com Furos -->
+            <div class="shirt-card">
+                <div class="shirt-carousel" id="carousel-furos">
+                    <div class="carousel-slide active">
+                        <span class="carousel-label label-dark">Preta</span>
+                        <img src="./aeroswift_com_furos.png" alt="Regata Aero Race com Furos - Preta">
+                    </div>
+                    <div class="carousel-slide">
+                        <span class="carousel-label label-white">Branca</span>
+                        <img src="./furos_branca.png" alt="Regata Aero Race com Furos - Branca">
+                    </div>
+                    <div class="carousel-dots">
+                        <div class="carousel-dot active"></div>
+                        <div class="carousel-dot"></div>
+                    </div>
+                </div>
+                <div class="shirt-body">
+                    <span class="shirt-tag">Modelo 01</span>
+                    <h3 class="shirt-name">Regata Aero Race com Furos</h3>
+                    <div class="price-wrap">
+                        <div class="price-main">R$ 250,00</div>
+                        <div class="price-sub">Pix à vista &nbsp;|&nbsp; Cartão em até 2x</div>
+                    </div>
+                    <a href="#" class="btn-whatsapp" id="btn-furos">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                        </svg>
+                        Entrar no Grupo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Regata Aero Race Lisa -->
+            <div class="shirt-card">
+                <div class="shirt-carousel" id="carousel-lisa">
+                    <div class="carousel-slide active">
+                        <span class="carousel-label label-dark">Preta</span>
+                        <img src="./aeroswift_lisa.png" alt="Regata Aero Race Lisa - Preta">
+                    </div>
+                    <div class="carousel-slide">
+                        <span class="carousel-label label-white">Branca</span>
+                        <img src="./lisa_branca.png" alt="Regata Aero Race Lisa - Branca">
+                    </div>
+                    <div class="carousel-dots">
+                        <div class="carousel-dot active"></div>
+                        <div class="carousel-dot"></div>
+                    </div>
+                </div>
+                <div class="shirt-body">
+                    <span class="shirt-tag">Modelo 02</span>
+                    <h3 class="shirt-name">Regata Aero Race Lisa</h3>
+                    <div class="price-wrap">
+                        <div class="price-main">R$ 250,00</div>
+                        <div class="price-sub">Pix à vista &nbsp;|&nbsp; Cartão em até 2x</div>
+                    </div>
+                    <a href="#" class="btn-whatsapp" id="btn-lisa">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                        </svg>
+                        Entrar no Grupo
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PROCESS -->
+    <section class="process-section">
+        <div class="process-inner">
+            <h2 class="section-title">Como Funciona</h2>
+            <p class="section-subtitle">Processo simples e rápido para você garantir o seu uniforme.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Escolha o Modelo</h3>
+                    <p>Veja os dois modelos disponíveis e decida qual é o seu.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Entre no Grupo</h3>
+                    <p>Clique no botão e acesse o grupo WhatsApp do modelo escolhido.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Aguarde o Formulário</h3>
+                    <p>Na data definida, você receberá o link do formulário de pedido no grupo.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Faça seu Pedido</h3>
+                    <p>Preencha o formulário com seu tamanho e confirme seu pedido.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CRONOGRAMA -->
+    <section class="timeline-section">
+        <div class="timeline-inner">
+            <div class="accent-line"></div>
+            <h2 class="section-title">Cronograma</h2>
+            <p class="section-subtitle">Fique atento às datas para não perder seu pedido.</p>
+
+            <div class="timeline-steps">
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">08/04 &mdash; 30/04</div>
+                        <h3>Prova e Inscrição nos Grupos</h3>
+                        <p>Alunos poderão provar as peças piloto nos treinos coletivos e entrar nos grupos do WhatsApp.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">01/05 &mdash; 10/05</div>
+                        <h3>Formulário e Pagamentos</h3>
+                        <p>Envio do formulário de pedido, finalização da lista e realização dos pagamentos.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item timeline-item--highlight">
+                    <div class="timeline-dot">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">11/05</div>
+                        <h3>Pedido Efetivado!</h3>
+                        <p>Envio oficial do pedido aos fornecedores. Após essa data não será possível incluir novos pedidos.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Endurance On</strong> — Assessoria Esportiva</p>
+        <p>
+            <a href="tel:+5548991178688">(48) 99117-8688</a> &nbsp;|&nbsp;
+            <a href="mailto:contato@enduranceon.com.br">contato@enduranceon.com.br</a> &nbsp;|&nbsp;
+            <a href="https://www.enduranceon.com.br" target="_blank">www.enduranceon.com.br</a>
+        </p>
+        <p style="margin-top:12px; font-size:11px; color:#444;">© 2026 Endurance On. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        /*
+         * INSTRUÇÕES PARA ADICIONAR OS LINKS DO WHATSAPP:
+         * Substitua os valores abaixo pelos links reais dos grupos.
+         * Exemplo: 'https://chat.whatsapp.com/XXXXXXXXXXXXXX'
+         */
+        var LINK_AEROSWIFT_COM_FUROS = 'https://chat.whatsapp.com/JkiVioZqAD7HvRHTCjP9Bt?mode=gi_t';
+        var LINK_AEROSWIFT_LISA      = 'https://chat.whatsapp.com/L4zprKfYVdaB7LlRlVdUAz?mode=gi_t';
+
+        document.getElementById('btn-furos').href = LINK_AEROSWIFT_COM_FUROS;
+        document.getElementById('btn-lisa').href  = LINK_AEROSWIFT_LISA;
+
+        // Carrossel automático
+        function initCarousel(carouselId) {
+            var carousel = document.getElementById(carouselId);
+            var slides = carousel.querySelectorAll('.carousel-slide');
+            var dots   = carousel.querySelectorAll('.carousel-dot');
+            var current = 0;
+
+            setInterval(function() {
+                slides[current].classList.remove('active');
+                dots[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+            }, 3000);
+        }
+
+        initCarousel('carousel-furos');
+        initCarousel('carousel-lisa');
+    </script>
+
+</body>
+</html>

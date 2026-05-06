@@ -1,0 +1,583 @@
+/* Calendário Semanal de Treinos Coletivos */
+#calendario-treinos {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
+}
+
+.calendario-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.calendario-header h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.calendario-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #FF6B35, #FF8A65);
+    border-radius: 2px;
+}
+
+.calendario-header p {
+    font-size: 1.1rem;
+    color: #6c757d;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* Grid do Calendário */
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    margin-bottom: 40px; /* Espaço para o aviso */
+}
+
+/* Dias da Semana */
+.dia-semana {
+    background: white;
+    border-radius: 20px;
+    padding: 30px 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 320px;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.dia-semana:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    border-color: #FF6B35;
+}
+
+.dia-semana.tem-treino {
+    background: linear-gradient(135deg, #ffffff 0%, #fff8f5 100%);
+}
+
+.dia-semana.sem-treino {
+    background: #fafbfc;
+    opacity: 0.6;
+    cursor: default;
+    min-height: 200px;
+}
+
+.dia-semana.sem-treino:hover {
+    transform: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    border-color: transparent;
+}
+
+/* Header do Dia */
+.dia-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.dia-nome {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.dia-numero {
+    font-size: 0.85rem;
+    color: #8e9aaf;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* Treinos do Dia */
+.treinos-dia {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.treino-item {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    border-left: 3px solid #FF6B35;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.treino-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.03) 0%, rgba(255, 138, 101, 0.03) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.treino-item:hover::before {
+    opacity: 1;
+}
+
+.treino-item:hover {
+    transform: translateX(8px);
+    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.15);
+}
+
+.treino-item.corrida {
+    border-left-color: #FF6B35;
+}
+
+.treino-item.ciclismo {
+    border-left-color: #2E86AB;
+}
+
+.treino-item.natacao {
+    border-left-color: #2E86AB;
+}
+
+.treino-item.multisport {
+    border-left-color: #FF6B35;
+}
+
+/* Conteúdo do Treino */
+.treino-modalidade {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.treino-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    font-size: 0.75rem;
+    color: white;
+}
+
+.treino-icon.corrida {
+    background: #FF6B35;
+}
+
+.treino-icon.ciclismo {
+    background: #2E86AB;
+}
+
+.treino-icon.natacao {
+    background: #2E86AB;
+}
+
+.treino-icon.multisport {
+    background: #FF6B35;
+}
+
+.treino-nome {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #2c3e50;
+    line-height: 1.3;
+    letter-spacing: 0.3px;
+}
+
+.treino-horario {
+    font-size: 0.8rem;
+    color: #FF6B35;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.3px;
+}
+
+.treino-horario i {
+    margin-right: 6px;
+    font-size: 0.7rem;
+}
+
+.treino-local {
+    font-size: 0.75rem;
+    color: #8e9aaf;
+    line-height: 1.4;
+    display: flex;
+    align-items: flex-start;
+    font-weight: 300;
+}
+
+.treino-local i {
+    margin-right: 6px;
+    margin-top: 2px;
+    font-size: 0.7rem;
+    color: #007bff;
+}
+
+.treino-nota {
+    font-size: 0.75rem;
+    color: #FF6B35;
+    line-height: 1.4;
+    display: flex;
+    align-items: flex-start;
+    font-weight: 400;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #f1f3f4;
+    font-style: italic;
+}
+
+.treino-nota i {
+    margin-right: 6px;
+    margin-top: 2px;
+    font-size: 0.7rem;
+    color: #FF6B35;
+    flex-shrink: 0;
+}
+
+.clickable-treino {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.clickable-treino:hover {
+    transform: translateX(8px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(255, 107, 53, 0.25);
+}
+
+/* Indicadores Especiais */
+.treino-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ffc107;
+    color: #212529;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 0.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.treino-badge.verao {
+    background: #17a2b8;
+    color: white;
+}
+
+/* Mensagem para dias sem treino - REMOVIDA */
+.sem-treino-msg {
+    display: none;
+}
+
+/* Modal de Detalhes */
+.treino-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 25px;
+    padding: 35px;
+    max-width: 520px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.modal-title {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #2c3e50;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #8e9aaf;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: #f8f9fa;
+    color: #FF6B35;
+}
+
+.modal-body {
+    line-height: 1.7;
+}
+
+.modal-info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.modal-info-item i {
+    margin-right: 15px;
+    margin-top: 3px;
+    color: #FF6B35;
+    font-size: 1rem;
+}
+
+.modal-info-content h4 {
+    margin: 0 0 6px 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.modal-info-content p {
+    margin: 0;
+    color: #495057;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* Grid do Calendário */
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Responsividade */
+@media (max-width: 1400px) {
+    .calendario-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 18px;
+        max-width: 1400px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .calendario-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+        max-width: 1200px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .calendario-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        max-width: 1000px;
+    }
+    
+    .dia-semana {
+        min-height: 280px;
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .calendario-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        max-width: 100%;
+    }
+    
+    .dia-semana {
+        min-height: 220px;
+        padding: 20px 15px;
+    }
+    
+    .treino-item {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .calendario-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendario-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .dia-semana {
+        min-height: auto;
+        padding: 20px 15px;
+    }
+    
+    .treinos-dia {
+        gap: 15px;
+    }
+    
+    .treino-item {
+        padding: 15px;
+    }
+}
+
+/* Animações */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dia-semana {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.dia-semana:nth-child(1) { animation-delay: 0.1s; }
+.dia-semana:nth-child(2) { animation-delay: 0.15s; }
+.dia-semana:nth-child(3) { animation-delay: 0.2s; }
+.dia-semana:nth-child(4) { animation-delay: 0.25s; }
+.dia-semana:nth-child(5) { animation-delay: 0.3s; }
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.treino-modal.show .modal-content {
+    animation: modalFadeIn 0.4s ease forwards;
+}
+
+.modal-info-item.itinerante-info {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.08) 0%, rgba(255, 138, 101, 0.08) 100%);
+    border-left: 3px solid #FF6B35;
+}
+
+
+
+/* Aviso do Calendário */
+.calendario-aviso {
+    background: #f8f9fa;
+    padding: 20px 0;
+    border-top: 1px solid #e9ecef;
+    width: 100%;
+    margin: 20px 0 0 0;
+    clear: both;
+}
+
+.calendario-aviso .container {
+    width: 100%;
+    max-width: none;
+    padding: 0 20px;
+}
+
+.aviso-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.aviso-content i {
+    color: #FF6B35;
+    font-size: 1.1rem;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.aviso-content p {
+    margin: 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+@media (max-width: 768px) {
+    .calendario-aviso {
+        padding: 15px 0;
+    }
+    
+    .aviso-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .aviso-content i {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+    
+    .aviso-content p {
+        font-size: 0.85rem;
+    }
+}
+

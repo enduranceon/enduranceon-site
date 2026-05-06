@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datas EON - Calendário de Eventos | Endurance On</title>
+    <meta name="description" content="Confira o calendário completo de treinos e eventos da Endurance On">
+    <link rel="stylesheet" href="style.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <img src="../images/logo-enduranceon.png" alt="Endurance On">
+                </a>
+                <h1 class="page-title">Datas EON</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h2>Calendário de Eventos</h2>
+            <p>Fique por dentro de todos os treinos e eventos da Endurance On</p>
+        </div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="filter-tipo">Tipo:</label>
+                    <select id="filter-tipo">
+                        <option value="">Todos</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filter-modalidade">Modalidade:</label>
+                    <select id="filter-modalidade">
+                        <option value="">Todas</option>
+                    </select>
+                </div>
+                <button id="clear-filters" class="btn-clear">Limpar Filtros</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendário Semanal -->
+    <section class="calendar-section">
+        <div class="container">
+            <!-- Navegação da Semana -->
+            <div class="week-navigation">
+                <button id="prev-week" class="btn-nav">←</button>
+                <h3 id="week-title">Carregando...</h3>
+                <button id="next-week" class="btn-nav">→</button>
+                <button id="today-btn" class="btn-today">Hoje</button>
+            </div>
+
+            <!-- Loading -->
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Carregando eventos...</p>
+            </div>
+
+            <!-- Grid do Calendário -->
+            <div id="calendar-grid" class="calendar-grid">
+                <!-- Cabeçalho dos Dias -->
+                <div class="calendar-header">
+                    <div class="day-header">SEG</div>
+                    <div class="day-header">TER</div>
+                    <div class="day-header">QUA</div>
+                    <div class="day-header">QUI</div>
+                    <div class="day-header">SEX</div>
+                    <div class="day-header">SÁB</div>
+                    <div class="day-header">DOM</div>
+                </div>
+
+                <!-- Células dos Dias -->
+                <div class="calendar-body">
+                    <div class="day-cell" data-day="0"></div>
+                    <div class="day-cell" data-day="1"></div>
+                    <div class="day-cell" data-day="2"></div>
+                    <div class="day-cell" data-day="3"></div>
+                    <div class="day-cell" data-day="4"></div>
+                    <div class="day-cell" data-day="5"></div>
+                    <div class="day-cell" data-day="6"></div>
+                </div>
+            </div>
+
+            <div id="no-events" class="no-events" style="display: none;">
+                <p>Nenhum evento encontrado para esta semana.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Detalhes do Evento -->
+    <div id="event-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div id="modal-body">
+                <!-- Conteúdo será inserido via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Endurance On. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.min.js"></script>
+</body>
+</html>

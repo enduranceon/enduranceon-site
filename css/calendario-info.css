@@ -1,0 +1,151 @@
+/* Estilos para a seção informativa do Calendário Oficial */
+.calendario-info-section {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-left: 5px solid #fd7e14; /* Borda laranja à esquerda para destaque */
+}
+
+.calendario-info-container {
+    max-width: 100%;
+}
+
+.calendario-info-title {
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.calendario-info-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #fd7e14; /* Sublinhado laranja */
+}
+
+.calendario-info-text {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.calendario-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.calendario-feature-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1 1 calc(33.333% - 15px); /* 3 itens por linha em desktop */
+    min-width: 250px;
+}
+
+.calendario-feature-icon {
+    color: #fd7e14;
+    font-size: 1.5rem;
+}
+
+.calendario-feature-text {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.race-experience-section {
+    background-color: #38b6ff;
+    color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.race-experience-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.race-experience-title i {
+    font-size: 1.4rem;
+}
+
+.race-experience-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.race-experience-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 10px 15px;
+    border-radius: 6px;
+    flex: 1 1 calc(50% - 15px); /* 2 itens por linha */
+    min-width: 200px;
+}
+
+.race-experience-feature i {
+    color: #fff;
+}
+
+/* Botão para saber mais */
+.calendario-info-cta {
+    display: inline-block;
+    background-color: #fd7e14;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.calendario-info-cta:hover {
+    background-color: #e96c00;
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .calendario-feature-item {
+        flex: 1 1 calc(50% - 15px); /* 2 itens por linha em tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .calendario-info-section {
+        padding: 20px;
+    }
+    
+    .calendario-feature-item,
+    .race-experience-feature {
+        flex: 1 1 100%; /* 1 item por linha em mobile */
+    }
+    
+    .calendario-info-title {
+        font-size: 1.3rem;
+    }
+}

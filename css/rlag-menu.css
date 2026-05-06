@@ -1,0 +1,17 @@
+/* Estilo especial para o link Run Like a Girl no menu */
+.rlag-menu-link {
+    color: #FF4D9F !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease;
+}
+
+.rlag-menu-link:hover {
+    color: #E6006B !important;
+    transform: scale(1.05);
+}
+
+/* Mobile menu */
+.mobile-nav .rlag-menu-link {
+    color: #FF4D9F !important;
+    font-weight: 600 !important;
+}

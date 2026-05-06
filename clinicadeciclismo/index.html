@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inscrição — Clínica de Manutenção Preventiva em Bicicleta</title>
+  <meta name="description" content="Inscreva-se na clínica de ciclismo de manutenção básica da bike." />
+  <style>
+    :root{
+      --white:#ffffff;
+      --black:#0e0e0e;
+      --blue:#38b6ff;
+      --orange:#ff8012;
+      --gray-100:#f6f7fb;
+      --gray-300:#e6e8ec;
+      --gray-600:#6b7280;
+      --radius:14px;
+      --shadow-md:0 8px 24px rgba(0,0,0,.08);
+      --focus:0 0 0 3px rgba(56,182,255,.35);
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    html,body{height:100%;background:var(--white);color:var(--black);font-family:var(--font)}
+    .page{min-height:100%;display:grid;grid-template-rows:auto 1fr auto}
+    header{padding:32px 16px 12px}
+    .brand{max-width:980px;margin:0 auto;display:grid;gap:8px}
+    .brand h1{margin:0;font-weight:900;letter-spacing:-.02em;line-height:1.05;
+      font-size:clamp(24px,3.4vw,40px)}
+    .brand p{margin:0;color:var(--gray-600)}
+    .accent{height:6px;margin-top:14px;border-radius:999px;
+      background:linear-gradient(90deg,var(--black),var(--blue),var(--orange),var(--black))}
+    main{padding:24px 16px 48px}
+    .container{max-width:980px;margin:0 auto}
+    .grid{display:grid;gap:18px;grid-template-columns: 1.1fr .9fr}
+    @media (max-width: 880px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--white);border:1px solid var(--gray-300);border-radius:var(--radius);
+      box-shadow:var(--shadow-md);padding:clamp(18px,3vw,28px)}
+    .card h2{margin:0 0 12px;font-size:clamp(18px,2.4vw,22px)}
+    .bullets{margin:0;padding-left:18px;color:var(--gray-600)}
+    form{display:grid;gap:16px;margin-top:8px}
+    .field{display:grid;gap:8px}
+    .field--narrow{max-width:560px}
+    label{font-size:14px;font-weight:600}
+    .input, select{appearance:none;width:100%;font:inherit;background:var(--white);
+      border:1px solid var(--gray-300);padding:12px 14px;border-radius:12px;outline:none;
+      transition: box-shadow .2s, border-color .2s}
+    .input:focus, select:focus{border-color:var(--blue);box-shadow:var(--focus)}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:4px}
+    .btn{appearance:none;border:none;background:var(--black);color:var(--white);
+      padding:12px 18px;border-radius:12px;font-weight:800;cursor:pointer;
+      transition:transform .02s, filter .2s, box-shadow .2s;background-image:
+      linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.04))}
+    .btn:hover{filter:brightness(1.05)} .btn:active{transform:translateY(1px)}
+    .btn-alt{background:var(--white);color:var(--black);border:1.5px solid var(--black)}
+    .note{font-size:13px;color:var(--gray-600)}
+    footer{padding:28px 16px;border-top:1px solid var(--gray-300);background:var(--gray-100);margin-top:32px}
+    .foot{max-width:980px;margin:0 auto;color:var(--gray-600);font-size:13px;display:grid;gap:6px}
+    /* small visual tags */
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .tag{font-size:12px;border:1px dashed var(--black);padding:6px 10px;border-radius:999px}
+    .tag-blue{border-color:var(--blue)} .tag-orange{border-color:var(--orange)}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <h1>Clínica de Manutenção Preventiva em Bicicleta</h1>
+        <p>Aprenda os fundamentos para cuidar da sua bike e pedalar com segurança.</p>
+        <div class="accent" aria-hidden="true"></div>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="grid">
+          <section class="card">
+            <h2>Inscrição</h2>
+            <!--
+              IMPORTANTE:
+              Substitua o valor de ACTION abaixo pelo endpoint do Formspree do seu formulário (ex.: https://formspree.io/f/xxxxxx)
+              O link enviado é um Google Sheets; para receber no Sheets, use uma automação (Zapier/Make) conectando Formspree -> Google Sheets,
+              ou publique um Web App no Apps Script e aponte ACTION para ele.
+            -->
+            <form action="https://formspree.io/f/meorgdko" method="POST" name="clinica-ciclismo">
+              <input type="hidden" name="_subject" value="Inscrição — Clínica de Ciclismo (Manutenção Básica)" />
+              <input type="hidden" name="_language" value="pt-BR" />
+<p class="hidden" style="display:none;"><label>Não preencha: <input name="_gotcha" /></label></p>
+
+              <div class="field field--narrow">
+                <label for="nome">Nome completo</label>
+                <input class="input" id="nome" name="nome" type="text" placeholder="Ex.: Ana Beatriz da Silva" required
+                       autocomplete="name"
+                       pattern="^\s*\S+(?:\s+\S+)+\s*$" title="Informe seu nome e sobrenome(s)" />
+              </div>
+
+              <div class="field field--narrow">
+                <label for="telefone">Telefone (com DDD)</label>
+                <input class="input" id="telefone" name="telefone" type="tel" inputmode="tel"
+                       placeholder="Ex.: (48) 99999-0000" autocomplete="tel" required
+                       pattern="^\s*\(?\d{2}\)?\s?\d{4,5}-?\d{4}\s*$"
+                       title="Use DDD e número no formato brasileiro, ex.: (48) 99999-0000" />
+              </div>
+
+              <div class="field field--narrow">
+                <label for="treinador">Treinador</label>
+                <!-- TREINADORES DESATIVADOS: Ian Ribeiro, William Dutra, Luis Fernando, Gabriel Hermann -->
+                <select id="treinador" name="treinador" required>
+                  <option value="" selected disabled>Selecione um treinador</option>
+                  <option>Bruno Jeremias</option>
+                  <option>Elinai Freitas</option>
+                  <option>Thais Prando</option>
+                </select>
+              </div>
+
+              <div class="actions">
+                <button class="btn" type="submit">Enviar inscrição</button>
+                <span class="note">Ao enviar, você concorda em receber informações sobre a clínica.</span>
+              </div>
+            </form>
+          </section>
+
+          <aside class="card">
+            
+            <h2>O que você vai aprender</h2>
+            <ul class="bullets">
+              <li>1️⃣ Troca de pneus e câmeras de estrada/TT</li>
+              <li>2️⃣ Corrente e transmissão: limpeza, lubrificação e troca rápida</li>
+              <li>3️⃣ Ajustes básicos de freios e segurança</li>
+              <li>4️⃣ Checklist pré-treino e soluções de emergência</li>
+              <li>5️⃣ Ferramentas essenciais para não ficar na mão</li>
+              <li>6️⃣ Sessão prática livre para fixar o aprendizado</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="foot">
+        <div><strong>Clínica de Ciclismo — Manutenção Básica</strong></div>
+        <div>© <span id="year"></span> Organização • Todos os direitos reservados</div>
+      </div>
+    </footer>
+  </div>
+  
+  
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  (function() {
+    const form = document.querySelector('form[name="clinica-ciclismo"]');
+    if (!form) return;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        const original = submitBtn.textContent;
+        submitBtn.textContent = 'Enviando...';
+      }
+      try {
+        const endpoint = form.getAttribute('action');
+        const data = new FormData(form);
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        // Independente da resposta, tentamos redirecionar em caso de 200/OK:
+        if (res.ok) {
+          window.location.href = 'https://www.asaas.com/c/gnl7v7ihai62v8br';
+          return;
+        } else {
+          // Se não for ok, ainda assim tentamos redirecionar para não travar a conversão
+          window.location.href = 'https://www.asaas.com/c/gnl7v7ihai62v8br';
+        }
+      } catch (err) {
+        // Em caso de erro de rede, ainda redireciona para o pagamento
+        window.location.href = 'https://www.asaas.com/c/gnl7v7ihai62v8br';
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

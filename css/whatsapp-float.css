@@ -1,0 +1,40 @@
+/* Estilos para o Botão Flutuante WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25D366; /* Cor oficial do WhatsApp */
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.25);
+    z-index: 1000; /* Para garantir que fique acima de outros elementos */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.whatsapp-float i {
+    margin-top: 15px; /* Ajuste para centralizar o ícone verticalmente */
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #128C7E; /* Cor mais escura no hover */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+    }
+    .whatsapp-float i {
+        margin-top: 13px;
+    }
+}
+

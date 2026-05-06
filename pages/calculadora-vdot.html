@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endurance On | Calculadora VDOT</title>
+    <meta name="description" content="Calculadora VDOT baseada no método Jack Daniels para determinar ritmos de treino e zonas de intensidade para corredores.">
+    <link rel="stylesheet" href="../css/styles.min.css">
+    <link rel="stylesheet" href="../css/animations.min.css">
+    <link rel="stylesheet" href="../css/responsive.min.css">
+    <link rel="stylesheet" href="../css/whatsapp-float.min.css">
+    <link rel="stylesheet" href="../css/calculadora-vdot.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google tag (gtag.min.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQX6YBZD9P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PQX6YBZD9P');
+    </script>
+    
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img class="logo-original" src="../images/logo/logo_simbolo_preto.png" alt="Endurance On Logo">
+                </a>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="../index.html#sobre">Sobre</a></li>
+                    <li><a href="../index.html#modalidades">Modalidades</a></li>
+                    <li><a href="../index.html#como-funciona">Como Funciona</a></li>
+                    <li><a href="calendario.html">Calendário</a></li>
+                    <li><a href="parceiros.html">Parceiros</a></li>
+                    <li><a href="../index.html#depoimentos">Depoimentos</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="../index.html#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="mobile-nav">
+                <div class="close-menu">
+                    <i class="fas fa-times"></i>
+                </div>
+                <ul>
+                    <li><a href="../index.html#sobre">Sobre</a></li>
+                    <li><a href="../index.html#modalidades">Modalidades</a></li>
+                    <li><a href="../index.html#como-funciona">Como Funciona</a></li>
+                    <li><a href="calendario.html">Calendário</a></li>
+                    <li><a href="parceiros.html">Parceiros</a></li>
+                    <li><a href="../index.html#depoimentos">Depoimentos</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="../index.html#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <section class="calculadora-vdot-container">
+            <div class="calculadora-vdot-header">
+                <h1>Calculadora VDOT</h1>
+                <p>Descubra seus ritmos ideais de treino baseados no método Jack Daniels</p>
+            </div>
+
+            <div class="calculadora-vdot-card">
+                <div class="calculadora-vdot-form">
+                    <div class="form-group">
+                        <label for="distancia">Distância da Corrida</label>
+                        <div class="input-group">
+                            <i class="fas fa-route"></i>
+                            <input type="text" id="distancia" name="distancia" placeholder="5">
+                        </div>
+                        <div class="distancia-buttons">
+                            <button type="button" class="distancia-btn active" data-value="5">5km</button>
+                            <button type="button" class="distancia-btn" data-value="10">10km</button>
+                            <button type="button" class="distancia-btn" data-value="21.1">21.1km</button>
+                            <button type="button" class="distancia-btn" data-value="42.2">42.2km</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tempo">Seu Tempo (hh:mm:ss)</label>
+                        <div class="input-group">
+                            <i class="fas fa-stopwatch"></i>
+                            <input type="text" id="tempo" name="tempo" placeholder="00:20:00">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ritmo">Seu Ritmo (min/km)</label>
+                        <div class="input-group">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <input type="text" id="ritmo" name="ritmo" placeholder="4:00">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="vdot-result">
+                    <div class="vdot-value-container">
+                        <div class="vdot-value" id="vdot-value">50</div>
+                        <div class="vdot-label">ml/kg/min</div>
+                    </div>
+                    <div class="vdot-classification good" id="vdot-classification">Bom</div>
+                    <p class="vdot-description" id="vdot-description">Bom (45-54 ml/kg/min): Boa condição física, típica de corredores regulares e praticantes de esportes.</p>
+                </div>
+                
+                <h2 class="training-paces-title">Seus Ritmos de Treinamento Calculados</h2>
+                <div class="training-paces-grid">
+                    <div class="pace-card">
+                        <div class="pace-name">Ritmo de Recuperação</div>
+                        <div class="pace-value" id="pace-recovery">5:28-6:06/km</div>
+                    </div>
+                    <div class="pace-card">
+                        <div class="pace-name">Ritmo Fácil</div>
+                        <div class="pace-value" id="pace-easy">4:56-5:34/km</div>
+                    </div>
+                    <div class="pace-card">
+                        <div class="pace-name">Ritmo de Maratona</div>
+                        <div class="pace-value" id="pace-marathon">4:31/km</div>
+                    </div>
+                    <div class="pace-card">
+                        <div class="pace-name">Ritmo de Limiar</div>
+                        <div class="pace-value" id="pace-threshold">4:15/km</div>
+                    </div>
+                    <div class="pace-card">
+                        <div class="pace-name">Ritmo de Intervalo</div>
+                        <div class="pace-value" id="pace-interval">3:55/km</div>
+                    </div>
+                    <div class="pace-card">
+                        <div class="pace-name">Ritmo de Repetição</div>
+                        <div class="pace-value" id="pace-repetition">3:40/km</div>
+                    </div>
+                </div>
+                
+                <h2 class="predicted-times-title">Tempos Previstos em Provas</h2>
+                <div class="predicted-times-grid">
+                    <div class="time-card">
+                        <div class="distance-label">5km</div>
+                        <div class="predicted-time" id="time-5k">00:19:57</div>
+                    </div>
+                    <div class="time-card">
+                        <div class="distance-label">10km</div>
+                        <div class="predicted-time" id="time-10k">00:41:21</div>
+                    </div>
+                    <div class="time-card">
+                        <div class="distance-label">21.1km</div>
+                        <div class="predicted-time" id="time-half">01:31:35</div>
+                    </div>
+                    <div class="time-card">
+                        <div class="distance-label">42.2km</div>
+                        <div class="predicted-time" id="time-full">03:10:49</div>
+                    </div>
+                </div>
+                
+                <h2 class="equivalence-title">Calculadora de Equivalências Fisiológicas</h2>
+                <p class="equivalence-description">Conheça a correspondência entre diferentes métricas de intensidade para monitorar seu treino de múltiplas formas</p>
+                
+                <div class="equivalence-table-container">
+                    <table class="equivalence-table">
+                        <thead>
+                            <tr>
+                                <th>Zona</th>
+                                <th>% Limiar</th>
+                                <th>% VO2max</th>
+                                <th>% FC máx</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Recuperação</td>
+                                <td>65%</td>
+                                <td>60%</td>
+                                <td>70%</td>
+                            </tr>
+                            <tr>
+                                <td>Fácil</td>
+                                <td>76%</td>
+                                <td>75%</td>
+                                <td>77%</td>
+                            </tr>
+                            <tr>
+                                <td>Maratona</td>
+                                <td>85%</td>
+                                <td>80%</td>
+                                <td>83%</td>
+                            </tr>
+                            <tr>
+                                <td>Limiar</td>
+                                <td>100%</td>
+                                <td>88%</td>
+                                <td>89%</td>
+                            </tr>
+                            <tr>
+                                <td>Intervalo</td>
+                                <td>112%</td>
+                                <td>98%</td>
+                                <td>95%</td>
+                            </tr>
+                            <tr>
+                                <td>Repetição</td>
+                                <td>130%</td>
+                                <td>100%</td>
+                                <td>100%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="vdot-info">
+                    <h3>O que é VDOT?</h3>
+                    <p>VDOT é um valor numérico desenvolvido pelo Dr. Jack Daniels que representa sua capacidade aeróbica atual. Ele é calculado com base no seu desempenho em corridas recentes e serve como referência para determinar ritmos ideais de treino.</p>
+                    
+                    <h3>Como usar os ritmos de treino?</h3>
+                    <p><strong>Ritmo de Recuperação:</strong> Use para corridas leves após treinos intensos ou competições.</p>
+                    <p><strong>Ritmo Fácil:</strong> Ideal para corridas longas e treinos de base que desenvolvem resistência aeróbica.</p>
+                    <p><strong>Ritmo de Maratona:</strong> Específico para treinos que simulam o ritmo de prova de maratona.</p>
+                    <p><strong>Ritmo de Limiar:</strong> Para treinos no limiar anaeróbico, como tiros de 20-40 minutos ou intervalos de 5-10 minutos.</p>
+                    <p><strong>Ritmo de Intervalo:</strong> Para intervalos de 3-5 minutos que visam melhorar o VO2max.</p>
+                    <p><strong>Ritmo de Repetição:</strong> Para tiros curtos de 30-90 segundos que trabalham velocidade e economia de corrida.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/logo/logo_simbolo_branco.png" alt="Endurance On Logo">
+                </div>
+                <div class="footer-info">
+                    <div class="footer-contato">
+                        <div class="contato-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+55 (48) 99153-0162</span>
+                        </div>
+                        <div class="contato-item">
+                            <i class="far fa-envelope"></i>
+                            <span>contato@enduranceon.com.br</span>
+                        </div>
+                        <div class="contato-item">
+                            <i class="fab fa-instagram"></i>
+                            <span>@endurance_on</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Endurance On - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Flutuante -->
+    <a href="https://wa.me/5548991530162" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="../js/menu.min.js"></script>
+    <script src="../js/calculadora-vdot.min.js"></script>
+</body>
+</html>

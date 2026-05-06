@@ -1,0 +1,165 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const formulario = document.querySelector("form");
+    if (!formulario) return;
+
+    const modalidade = window.location.pathname.includes("triathlon.html") ? "triathlon" : "corrida";
+
+    const planoSelect = document.querySelector("select[name='plano']");
+    const periodicidadeSelect = document.querySelector("select[name='periodicidade']");
+    const treinadorSelect = document.querySelector("select[name='treinador']");
+
+    if (!planoSelect || !periodicidadeSelect || !treinadorSelect) {
+        // console.error("Um ou mais selects do formulário não foram encontrados.");
+        return; 
+    }
+
+    const paymentLinks = {
+        corrida: {
+            essencial: {
+                mensal: "https://app.tecnofit.com.br/ng/online-sale/MjA5NjA/checkout/OTk5MDkz",
+                trimestral: "https://app.tecnofit.com.br/ng/online-sale/MjA5NjA/checkout/OTk5MDk3",
+                semestral: "https://app.tecnofit.com.br/ng/online-sale/MjA5NjA/checkout/OTk5MTA0"
+            },
+            premium: {
+                mensal: "https://app.tecnofit.com.br/ng/online-sale/MjA5NjA/checkout/OTk5MDk1",
+                trimestral: "https://app.tecnofit.com.br/ng/online-sale/MjA5NjA/checkout/OTk5MTAw",
+                semestral: "https://app.tecnofit.com.br/ng/online-sale/MjA5NjA/checkout/OTk5MTEw"
+            }
+        },
+        triathlon: {
+            essencial: {
+                mensal: "https://app.tecnofit.com.br/ng/online-sale/MjA5NjA/checkout/OTk5MTEy",
+                trimestral: "https://app.tecnofit.com.br/ng/online-sale/MjA5NjA/checkout/OTk5MTE2",
+                semestral: "https://app.tecnofit.com.br/ng/online-sale/MjA5NjA/checkout/OTk5MTE3"
+            },
+            premium: {
+                mensal: "https://app.tecnofit.com.br/ng/online-sale/MjA5NjA/checkout/OTk5MTIx",
+                trimestral: "https://app.tecnofit.com.br/ng/online-sale/MjA5NjA/checkout/OTk5MTIy",
+                semestral: "https://app.tecnofit.com.br/ng/online-sale/MjA5NjA/checkout/OTk5MTI1"
+            }
+        }
+    };
+
+    const treinadoresCorridaEssencial = [
+        { value: "bruno-jeremias", text: "Bruno Jeremias" },
+        { value: "jessica-rodrigues", text: "Jéssica Rodrigues" },
+        { value: "thais-prando", text: "Thais Prando" }
+    ];
+
+    const treinadoresTriathlonEssencial = [
+        { value: "jessica-rodrigues", text: "Jéssica Rodrigues" },
+        { value: "thais-prando", text: "Thais Prando" }
+    ];
+
+    const treinadoresPremium = [
+        { value: "elinai-freitas", text: "Elinai Freitas" },
+        { value: "guto-fernandes", text: "Guto Fernandes" }
+    ];
+
+    function popularTreinadores() {
+        if (!planoSelect || !treinadorSelect) return;
+        const plano = String(planoSelect.value).toLowerCase(); 
+
+        while (treinadorSelect.options.length > 1) {
+            treinadorSelect.remove(1);
+        }
+
+        const optionEscolhaPorMim = document.createElement("option");
+        optionEscolhaPorMim.value = "escolha-por-mim";
+        optionEscolhaPorMim.textContent = "Escolha o treinador por mim";
+        treinadorSelect.appendChild(optionEscolhaPorMim);
+
+        let treinadoresBase = [];
+        if (modalidade === "corrida") {
+            treinadoresBase = treinadoresCorridaEssencial;
+        } else { 
+            treinadoresBase = treinadoresTriathlonEssencial;
+        }
+
+        treinadoresBase.forEach(treinador => {
+            const option = document.createElement("option");
+            option.value = treinador.value;
+            option.textContent = treinador.text;
+            treinadorSelect.appendChild(option);
+        });
+
+        if (plano === "premium") {
+            treinadoresPremium.forEach(treinador => {
+                const option = document.createElement("option");
+                option.value = treinador.value;
+                option.textContent = treinador.text;
+                treinadorSelect.appendChild(option);
+            });
+        }
+        
+        let valorAtualTreinador = treinadorSelect.value;
+        let opcaoValidaEncontrada = false;
+        for (let i = 0; i < treinadorSelect.options.length; i++) {
+            if (treinadorSelect.options[i].value === valorAtualTreinador) {
+                opcaoValidaEncontrada = true;
+                break;
+            }
+        }
+        if (!opcaoValidaEncontrada) {
+             treinadorSelect.value = ""; 
+        }
+    }
+
+    if (planoSelect) {
+        planoSelect.addEventListener("change", popularTreinadores);
+        popularTreinadores(); 
+    }
+
+    if (formulario) {
+        formulario.addEventListener("submit", function(e) {
+            e.preventDefault(); 
+
+            const treinador = treinadorSelect.value;
+            if (treinador === "" || treinador === "escolha-por-mim") { 
+                if (treinador === ""){
+                    alert("Por favor, selecione um treinador válido.");
+                    return;
+                }
+            }
+
+            const plano = String(planoSelect.value).toLowerCase(); 
+            const periodicidade = String(periodicidadeSelect.value).toLowerCase(); 
+            let paymentLink = "";
+
+            if (paymentLinks[modalidade] && 
+                paymentLinks[modalidade][plano] && 
+                paymentLinks[modalidade][plano][periodicidade]) {
+                paymentLink = paymentLinks[modalidade][plano][periodicidade];
+            } else {
+                alert("Erro ao encontrar o link de pagamento. Por favor, contate o suporte.");
+                return;
+            }
+
+            const formData = new FormData(formulario);
+            const action = formulario.getAttribute("action");
+
+            fetch(action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    window.location.href = paymentLink;
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert("Ocorreu um erro ao enviar o formulário.");
+                        }
+                    })
+                }
+            }).catch(error => {
+                // console.error("Erro no fetch:", error);
+                alert("Ocorreu um erro ao enviar o formulário. Verifique sua conexão.");
+            });
+        });
+    }
+});

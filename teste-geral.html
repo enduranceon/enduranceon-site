@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Lactato - Geral</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <img src="img/logo-horizontal-preta.png" alt="Endurance On" height="50">
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Início</a>
+                <a href="#" class="nav-link active" data-target="registro-teste"><i class="fas fa-vial"></i> Registro de Teste</a>
+            </nav>
+        </header>
+        
+        <main class="main">
+            <section id="registro-teste" class="section active">
+                <div class="section-header">
+                    <h2 class="section-title">Teste de Lactato - Geral</h2>
+                    <p class="section-description">Preencha os dados do atleta e os estágios do teste para gerar o relatório com zonas de treino baseadas em pesquisas científicas.</p>
+                </div>
+                
+                <form id="form-teste" class="form">
+                    <div class="form-section">
+                        <h3 class="form-section-title">Dados do Atleta</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="aluno-nome">Nome*</label>
+                                <input type="text" id="aluno-nome" name="alunoNome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="data-teste">Data do Teste*</label>
+                                <input type="date" id="data-teste" name="dataTeste" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3 class="form-section-title">Estágios do Teste</h3>
+                        <p class="form-section-description">Adicione os estágios do teste de lactato. Os limiares LT1 (2.0 mmol/L) e LT2 (4.0 mmol/L) serão detectados automaticamente.</p>
+                        
+                        <div id="estagios-container">
+                            <div class="estagio-item" data-index="0">
+                                <div class="estagio-header">
+                                    <h4>Estágio 1</h4>
+                                    <button type="button" class="btn-icon remover-estagio"><i class="fas fa-trash"></i></button>
+                                </div>
+                                <div class="estagio-body">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="velocidade-0">Velocidade (km/h)*</label>
+                                            <input type="number" id="velocidade-0" name="estagios[0][velocidade]" step="0.1" min="0" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lactato-0">Lactato (mmol/L)*</label>
+                                            <input type="number" id="lactato-0" name="estagios[0][lactato]" step="0.1" min="0" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="fc-media-0">FC Média</label>
+                                            <input type="number" id="fc-media-0" name="estagios[0][fcMedia]" min="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fc-final-0">FC Final</label>
+                                            <input type="number" id="fc-final-0" name="estagios[0][fcFinal]" min="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pse-0">PSE (0-10)</label>
+                                            <input type="number" id="pse-0" name="estagios[0][pse]" min="0" max="10" step="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" id="adicionar-estagio" class="btn btn-secondary">
+                                <i class="fas fa-plus"></i> Adicionar Estágio
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3 class="form-section-title">Limiares Detectados</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>LT1 (2.0 mmol/L):</label>
+                                <div class="limiar-value">
+                                    <span id="lt1-velocidade">-</span> km/h
+                                    (<span id="lt1-pace">-</span>)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>FC em LT1:</label>
+                                <div class="limiar-value" id="lt1-fc">-</div>
+                            </div>
+                            <div class="form-group">
+                                <label>LT2 (4.0 mmol/L):</label>
+                                <div class="limiar-value">
+                                    <span id="lt2-velocidade">-</span> km/h
+                                    (<span id="lt2-pace">-</span>)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>FC em LT2:</label>
+                                <div class="limiar-value" id="lt2-fc">-</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-file-alt"></i> Gerar Relatório
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <div class="footer-logo">
+                <img src="img/logo-simbolo-preta.png" alt="Endurance On" height="40">
+            </div>
+            <div class="footer-info">
+                <p>© 2025 Endurance On Assessoria Esportiva</p>
+                <p>Todos os direitos reservados</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="js/geral-app.min.js"></script>
+</body>
+</html>

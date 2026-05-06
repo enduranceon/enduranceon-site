@@ -1,0 +1,26 @@
+.result-plan-cta {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.result-plan-cta .contratar-button {
+    display: inline-block;
+    background-color: #FF6600;
+    color: white;
+    padding: 0.9rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border: 2px solid #FF6600;
+    text-transform: uppercase;
+}
+
+.result-plan-cta .contratar-button:hover {
+    background-color: transparent;
+    color: #FF6600;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,172 @@
+/* 
+* Endurance On - Assessoria Esportiva
+* Estilos responsivos
+*/
+
+/* Tablets e dispositivos médios */
+@media (max-width: 992px) {
+    /* Ajustes gerais */
+    .container {
+        padding: 0 20px;
+    }
+    
+    /* Banner */
+    #banner {
+        height: 80vh;
+    }
+    
+    .banner-content h1 {
+        font-size: 3rem;
+    }
+    
+    /* Sobre */
+    .sobre-content {
+        flex-direction: column;
+    }
+    
+    .sobre-image {
+        margin-top: 30px;
+    }
+    
+    /* Modalidades */
+    .modalidades-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    /* Header */
+    .desktop-nav {
+        display: none;
+    }
+    
+    .mobile-menu-icon {
+        display: block;
+    }
+    
+    .mobile-nav {
+        display: block;
+    }
+    
+    /* Contato */
+    .contato-content {
+        flex-direction: column;
+    }
+    
+    .contato-cta {
+        margin-top: 30px;
+    }
+    
+    /* Banner modalidade */
+    #banner-modalidade {
+        height: 50vh;
+    }
+}
+
+/* Dispositivos móveis */
+@media (max-width: 768px) {
+    /* Ajustes gerais */
+    .section {
+        padding: 40px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    /* Banner */
+    #banner {
+        height: 70vh;
+    }
+    
+    .banner-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .banner-content p {
+        font-size: 1rem;
+    }
+    
+    /* Modalidades */
+    .modalidades-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    /* Depoimentos */
+    .depoimento-content p {
+        font-size: 1rem;
+    }
+    
+    /* Contato */
+    .contato-info {
+        flex-direction: column;
+    }
+    
+    .contato-item {
+        margin-bottom: 20px;
+    }
+    
+    /* Banner modalidade */
+    #banner-modalidade {
+        height: 40vh;
+    }
+    
+    #banner-modalidade h1 {
+        font-size: 2.2rem;
+    }
+    
+    #banner-modalidade p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Dispositivos muito pequenos */
+@media (max-width: 576px) {
+    /* Ajustes gerais */
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    /* Banner */
+    #banner {
+        height: 60vh;
+    }
+    
+    .banner-content h1 {
+        font-size: 2rem;
+    }
+    
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-logo, .footer-links, .footer-social {
+        margin-bottom: 30px;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+    
+    /* Banner modalidade */
+    #banner-modalidade {
+        height: 35vh;
+    }
+    
+    #banner-modalidade h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Ajustes para telas muito grandes */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+    
+    html {
+        font-size: 18px;
+    }
+}

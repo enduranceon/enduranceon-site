@@ -1,0 +1,233 @@
+/* Estilos para a Página da Calculadora de Esteira */
+
+.calculadora-section {
+    padding: 100px 0 80px 0;
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: #f15922;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    margin: 0 10px;
+    color: #999;
+}
+
+/* Cabeçalho da Calculadora */
+.calc-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.calc-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #f15922, #38b6ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+}
+
+.calc-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.calc-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.calc-description {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Container da Calculadora */
+.calculadora-container {
+    background: white;
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Display Containers */
+.display-container {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.display-box {
+    background: #333;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 300px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.display-box input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Slider */
+.slider-container {
+    margin: 50px 0;
+    padding: 0 20px;
+}
+
+.slider-track {
+    height: 8px;
+    background: #ddd;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+
+.slider-handle {
+    position: absolute;
+    top: -12px;
+    width: 32px;
+    height: 32px;
+    background: #38b6ff;
+    border-radius: 50%;
+    cursor: grab;
+    box-shadow: 0 4px 12px rgba(46, 134, 171, 0.4);
+    transition: transform 0.2s ease;
+}
+
+.slider-handle:hover {
+    transform: scale(1.1);
+}
+
+.slider-handle:active {
+    cursor: grabbing;
+    transform: scale(1.2);
+}
+
+/* Campos Editáveis */
+.input-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid #eee;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.input-group input {
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #f15922;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .calculadora-section {
+        padding: 80px 0 60px 0;
+    }
+    
+    .calc-header h1 {
+        font-size: 2rem;
+    }
+    
+    .calculadora-container {
+        padding: 30px 20px;
+        margin: 0 20px;
+    }
+    
+    .input-fields {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .display-box {
+        max-width: 250px;
+    }
+    
+    .display-box input {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calc-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .calc-description {
+        font-size: 1rem;
+    }
+    
+    .calculadora-container {
+        padding: 25px 15px;
+    }
+    
+    .display-box {
+        max-width: 200px;
+        padding: 15px;
+    }
+    
+    .display-box input {
+        font-size: 1.3rem;
+    }
+    
+    .slider-container {
+        margin: 30px 0;
+        padding: 0 10px;
+    }
+}
+

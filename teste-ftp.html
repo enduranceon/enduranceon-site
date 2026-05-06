@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de FTP - Ciclismo - Endurance On</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <img src="img/logo-horizontal-preta.png" alt="Endurance On" height="50">
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Início</a>
+                <a href="selecionar-modalidade-teste.html" class="nav-link"><i class="fas fa-arrow-left"></i> Voltar</a>
+                <a href="#" class="nav-link active" data-target="registro-teste"><i class="fas fa-bicycle"></i> Teste de FTP</a>
+            </nav>
+        </header>
+        
+        <main class="main">
+            <section id="registro-teste" class="section active">
+                <div class="section-header">
+                    <h2 class="section-title">Teste de FTP - Ciclismo</h2>
+                    <p class="section-description">Calcule seu FTP (Functional Threshold Power) e zonas de treinamento para ciclismo</p>
+                </div>
+                
+                <form id="form-teste" class="form">
+                    <div class="form-section">
+                        <h3 class="form-section-title">Dados do Atleta</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="aluno-nome">Nome*</label>
+                                <input type="text" id="aluno-nome" name="alunoNome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="data-teste">Data do Teste*</label>
+                                <input type="date" id="data-teste" name="dataTeste" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="peso-atleta">Peso (kg)*</label>
+                                <input type="number" id="peso-atleta" name="pesoAtleta" step="0.1" min="30" max="150" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3 class="form-section-title">Resultados do Teste</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="potencia-20min">Potência Média de 20 minutos (watts)*</label>
+                                <input type="number" id="potencia-20min" name="potencia20min" min="50" max="500" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fc-media-20min">Frequência Cardíaca Média de 20 minutos (bpm)</label>
+                                <input type="number" id="fc-media-20min" name="fcMedia20min" min="60" max="220">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3 class="form-section-title">Resultado do FTP</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>FTP (95% da potência de 20 min):</label>
+                                <div class="result-value" id="ftp-value">-</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Relação Watts/kg:</label>
+                                <div class="result-value" id="watts-kg-value">-</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="calcular-ftp" class="btn btn-secondary">
+                            <i class="fas fa-calculator"></i> Calcular FTP
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-file-alt"></i> Gerar Relatório
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <div class="footer-logo">
+                <img src="img/logo-simbolo-preta.png" alt="Endurance On" height="40">
+            </div>
+            <div class="footer-info">
+                <p>© 2025 Endurance On Assessoria Esportiva</p>
+                <p>Todos os direitos reservados</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="js/ftp-app.min.js"></script>
+</body>
+</html>

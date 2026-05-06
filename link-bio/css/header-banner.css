@@ -1,0 +1,75 @@
+/* 
+* Endurance On - Link na Bio
+* Estilos para o header com banner de fundo
+*/
+
+.header-banner {
+    position: relative;
+    padding: 40px 0;
+    text-align: center;
+    background-image: url('../images/banner_principal_novo.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+    overflow: hidden;
+    color: var(--branco);
+    height: 200px; /* Altura fixa para tornar mais retangular */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.header-banner .logo {
+    position: relative;
+    z-index: 2;
+    max-width: 80px;
+    margin: 0 auto var(--spacing-sm);
+    filter: brightness(0) invert(1);
+}
+
+.header-banner .profile {
+    position: relative;
+    z-index: 2;
+}
+
+.header-banner .profile-image {
+    filter: brightness(0) invert(1);
+    display: none; /* Ocultar a imagem horizontal do logo */
+}
+
+.header-banner .profile-name {
+    display: none; /* Ocultar o título ENDURANCE ON */
+}
+
+.header-banner .profile-bio {
+    color: var(--branco);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header-banner {
+        padding: 30px 0;
+        height: 180px;
+    }
+    
+    .header-banner .profile-bio {
+        font-size: 1rem;
+        padding: 0 var(--spacing-sm);
+    }
+}

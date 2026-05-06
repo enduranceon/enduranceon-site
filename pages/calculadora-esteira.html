@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Esteira | Endurance On</title>
+    <meta name="description" content="Converta facilmente entre velocidade (km/h) e pace (min/km) para seus treinos na esteira.">
+    
+    <!-- Estilos Globais -->
+    <link rel="stylesheet" href="../css/styles.min.css">
+    <link rel="stylesheet" href="../css/footer-novo.min.css">
+    <link rel="stylesheet" href="../css/animations.min.css">
+    <link rel="stylesheet" href="../css/responsive.min.css">
+    <link rel="stylesheet" href="../css/whatsapp-float.min.css">
+    
+    <!-- Estilo Específico das Calculadoras -->
+    <link rel="stylesheet" href="../css/calculadora-esteira-page.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google tag (gtag.min.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQX6YBZD9P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PQX6YBZD9P');
+    </script>
+    
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img class="logo-original" src="../images/logo/logo_simbolo_preto.png" alt="Endurance On Logo">
+                </a>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="../index.html#sobre">Sobre</a></li>
+                    <li><a href="../index.html#modalidades">Modalidades</a></li>
+                    <li><a href="../index.html#como-funciona">Como Funciona</a></li>
+                    <li><a href="../pages/treinos-coletivos.html">Treinos Coletivos</a></li>
+                    <li><a href="../pages/calendario.html">Calendário</a></li>
+                    <li><a href="../index.html#depoimentos">Depoimentos</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="../index.html#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="mobile-nav">
+                <div class="close-menu">
+                    <i class="fas fa-times"></i>
+                </div>
+                <ul>
+                    <li><a href="../index.html#sobre">Sobre</a></li>
+                    <li><a href="../index.html#modalidades">Modalidades</a></li>
+                    <li><a href="../index.html#como-funciona">Como Funciona</a></li>
+                    <li><a href="../pages/treinos-coletivos.html">Treinos Coletivos</a></li>
+                    <li><a href="../pages/calendario.html">Calendário</a></li>
+                    <li><a href="../index.html#depoimentos">Depoimentos</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="../index.html#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <section class="calculadora-section">
+            <div class="container">
+                
+                <!-- Breadcrumb -->
+                <div class="breadcrumb">
+                    <a href="../pages/calculadoras.html">Calculadoras</a>
+                    <span>/</span>
+                    <span>Calculadora de Esteira</span>
+                </div>
+                
+                <!-- Cabeçalho da Calculadora -->
+                <div class="calc-header">
+                    <div class="calc-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h1>Calculadora de Esteira</h1>
+                    <p class="calc-description">
+                        Converta facilmente entre velocidade (km/h) e pace (min/km) para seus treinos na esteira. 
+                        Saiba exatamente que velocidade configurar para atingir seu pace desejado.
+                    </p>
+                </div>
+                
+                <!-- Calculadora -->
+                <div class="calculadora-container">
+                    
+                    <!-- Display do Pace -->
+                    <div class="display-container">
+                        <div class="display-box pace-display">
+                            <input type="text" id="pace-input" value="5:00/km" readonly>
+                        </div>
+                    </div>
+                    
+                    <!-- Slider -->
+                    <div class="slider-container">
+                        <div class="slider-track">
+                            <div class="slider-handle" id="slider-handle"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Display da Velocidade -->
+                    <div class="display-container">
+                        <div class="display-box speed-display">
+                            <input type="text" id="speed-input" value="12 km/h" readonly>
+                        </div>
+                    </div>
+                    
+                    <!-- Campos Editáveis -->
+                    <div class="input-fields">
+                        <div class="input-group">
+                            <label for="pace-edit">Pace (min:seg/km):</label>
+                            <input type="text" id="pace-edit" placeholder="5:00">
+                        </div>
+                        <div class="input-group">
+                            <label for="speed-edit">Velocidade (km/h):</label>
+                            <input type="number" id="speed-edit" placeholder="12" step="0.1" min="6" max="21.4">
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </section>
+    </main>
+
+     <!-- Footer -->
+    <footer class="bg-dark">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-logo-column">
+                    <img src="../images/logo/logo-new-white.png" alt="Endurance On Logo" class="footer-logo">
+                </div>
+                <div class="footer-nav-column">
+                    <h3>Navegação</h3>
+                    <ul class="footer-nav-links">
+                        <li><a href="../index.html#sobre">Sobre</a></li>
+                        <li><a href="../index.html#modalidades">Modalidades</a></li>
+                        <li><a href="../index.html#como-funciona">Como Funciona</a></li>
+                        <li><a href="calendario.html">Calendário</a></li>
+                        <li><a href="../index.html#parceiros">Parceiros</a></li>
+                        <li><a href="../index.html#depoimentos">Depoimentos</a></li>
+                        <li><a href="../index.html#faq">FAQ</a></li>
+                        <li><a href="../index.html#contato">Contato</a></li>
+                        <li><a href="termos.html">Termos de Contrato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-column">
+                    <h3>Contato</h3>
+                    <div class="footer-contact-info">
+                        <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/5548991178688">(48) 99117-8688</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:contato@enduranceon.com.br">contato@enduranceon.com.br</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Endurance On. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>           <div class="footer-divider"></div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Endurance On. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5548991178688?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Endurance%20On." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="../js/script.min.js"></script>
+    <script src="../js/calculadora-esteira-page.min.js"></script>
+</body>
+</html>
+

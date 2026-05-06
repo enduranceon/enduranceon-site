@@ -1,0 +1,657 @@
+/* 
+* Endurance On - Assessoria Esportiva
+* Estilos para a página "Treine com a Gente"
+*/
+
+.treine-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.treine-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.treine-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--preto);
+}
+
+.treine-header p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--cinza-escuro);
+}
+
+/* Filtros em cascata */
+.filtros-container {
+    background-color: var(--cinza-claro);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.filtro-grupo {
+    margin-bottom: 2rem;
+}
+
+.filtro-grupo:last-child {
+    margin-bottom: 0;
+}
+
+.filtro-titulo {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--preto);
+}
+
+.filtro-opcoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.filtro-opcao {
+    flex: 1;
+    min-width: 200px;
+    background-color: var(--branco);
+    border: 2px solid var(--cinza);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.filtro-opcao:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.filtro-opcao.selecionado {
+    border-color: var(--laranja);
+    background-color: rgba(255, 128, 18, 0.05);
+}
+
+.filtro-opcao.selecionado::after {
+    content: "✓";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--laranja);
+    color: var(--branco);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.filtro-opcao h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--preto);
+}
+
+.filtro-opcao p {
+    font-size: 0.9rem;
+    color: var(--cinza-escuro);
+}
+
+.filtro-opcao img {
+    max-width: 80px;
+    margin-bottom: 1rem;
+}
+
+.plano-preco {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--laranja);
+    margin: 0.5rem 0 1rem;
+}
+
+/* Comparativo de planos */
+.comparativo-container {
+    margin-bottom: 3rem;
+    display: none;
+}
+
+.comparativo-container.ativo {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.comparativo-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.comparativo-header h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--preto);
+}
+
+.comparativo-header p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--cinza-escuro);
+}
+
+.comparativo-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.comparativo-tabela th,
+.comparativo-tabela td {
+    padding: 1.2rem;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.comparativo-tabela th {
+    background-color: var(--preto);
+    color: var(--branco);
+    font-weight: 600;
+}
+
+.comparativo-tabela th:first-child {
+    text-align: left;
+    width: 40%;
+}
+
+.comparativo-tabela td:first-child {
+    text-align: left;
+    font-weight: 500;
+}
+
+.comparativo-tabela tr:nth-child(even) {
+    background-color: var(--cinza-claro);
+}
+
+.comparativo-tabela .destaque {
+    background-color: rgba(255, 128, 18, 0.1);
+}
+
+.comparativo-tabela .check {
+    color: var(--laranja);
+    font-size: 1.2rem;
+}
+
+.comparativo-tabela .cross {
+    color: var(--cinza);
+    font-size: 1.2rem;
+}
+
+/* Treinadores */
+.treinadores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.treinador-card {
+    background-color: var(--branco);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.treinador-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.treinador-card.selecionado {
+    border-color: var(--laranja);
+    position: relative;
+}
+
+.treinador-card.selecionado::after {
+    content: "✓";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--laranja);
+    color: var(--branco);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    z-index: 2;
+}
+
+.treinador-foto {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.treinador-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.treinador-card:hover .treinador-foto img {
+    transform: scale(1.05);
+}
+
+.treinador-info {
+    padding: 1.2rem;
+    text-align: center;
+}
+
+.treinador-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--preto);
+}
+
+.treinador-info p {
+    font-size: 0.9rem;
+    color: var(--cinza-escuro);
+}
+
+/* Periodicidade */
+.periodicidade-container {
+    margin-bottom: 3rem;
+    display: none;
+}
+
+.periodicidade-container.ativo {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.periodicidade-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.periodicidade-header h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--preto);
+}
+
+.periodicidade-header p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--cinza-escuro);
+}
+
+.periodicidade-opcoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.periodicidade-card {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+    background-color: var(--branco);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.periodicidade-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.periodicidade-card.selecionado {
+    border-color: var(--laranja);
+}
+
+.periodicidade-card.destaque {
+    border: 2px solid var(--laranja);
+}
+
+.periodicidade-card.destaque::before {
+    content: "Mais popular";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--laranja);
+    color: var(--branco);
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-bottom-left-radius: var(--border-radius);
+}
+
+.periodicidade-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--preto);
+}
+
+.periodicidade-card .preco {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--preto);
+}
+
+.periodicidade-card .preco-original {
+    text-decoration: line-through;
+    color: var(--cinza);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.periodicidade-card .economia {
+    display: inline-block;
+    background-color: rgba(56, 182, 255, 0.1);
+    color: var(--azul);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.periodicidade-card .descricao {
+    margin-bottom: 1.5rem;
+    color: var(--cinza-escuro);
+}
+
+.periodicidade-card .btn-contratar {
+    display: inline-block;
+    background-color: var(--laranja);
+    color: var(--branco);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.periodicidade-card .btn-contratar:hover {
+    background-color: #e67000;
+    transform: scale(1.05);
+}
+
+.periodicidade-card .btn-contratar.pulsando {
+    animation: pulse 1.5s infinite;
+}
+
+/* Botões de navegação */
+.navegacao-botoes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.btn-voltar,
+.btn-avancar {
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-voltar {
+    background-color: var(--cinza-claro);
+    color: var(--cinza-escuro);
+    border: 1px solid var(--cinza);
+}
+
+.btn-voltar:hover {
+    background-color: var(--cinza);
+    color: var(--branco);
+}
+
+.btn-avancar {
+    background-color: var(--laranja);
+    color: var(--branco);
+    border: none;
+}
+
+.btn-avancar:hover {
+    background-color: #e67000;
+}
+
+.btn-avancar:disabled {
+    background-color: var(--cinza);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 128, 18, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(255, 128, 18, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 128, 18, 0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .treine-header h1 {
+        font-size: 2rem;
+    }
+    
+    .treine-header p {
+        font-size: 1rem;
+    }
+    
+    .filtro-opcoes {
+        flex-direction: column;
+    }
+    
+    .filtro-opcao {
+        min-width: 100%;
+    }
+    
+    .comparativo-tabela {
+        font-size: 0.9rem;
+    }
+    
+    .comparativo-tabela th,
+    .comparativo-tabela td {
+        padding: 0.8rem;
+    }
+    
+    .periodicidade-card {
+        min-width: 100%;
+    }
+    
+    .treinadores-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .treinador-foto {
+        height: 150px;
+    }
+    
+    .progresso-passos {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .progresso-passo:not(:last-child)::after {
+        width: 2rem;
+    }
+    
+    .progresso-passo:not(:last-child) {
+        margin-right: 2.5rem;
+    }
+}
+
+/* Estilos específicos para cada modalidade */
+.corrida-bg {
+    background-color: rgba(255, 128, 18, 0.05);
+}
+
+.triathlon-bg {
+    background-color: rgba(56, 182, 255, 0.05);
+}
+
+/* Estilos para os treinadores */
+.treinadores-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.treinador-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--branco);
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.treinador-item img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.treinador-item span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Indicador de progresso */
+.progresso-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.progresso-passos {
+    display: flex;
+    align-items: center;
+}
+
+.progresso-passo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.progresso-passo:not(:last-child) {
+    margin-right: 5rem;
+}
+
+.progresso-passo:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 40px;
+    width: 5rem;
+    height: 2px;
+    background-color: var(--cinza);
+    z-index: -1;
+}
+
+.progresso-passo.ativo:not(:last-child)::after {
+    background-color: var(--laranja);
+}
+
+.progresso-circulo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--cinza);
+    color: var(--branco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.progresso-passo.ativo .progresso-circulo {
+    background-color: var(--laranja);
+}
+
+.progresso-passo.concluido .progresso-circulo {
+    background-color: var(--laranja);
+}
+
+.progresso-passo.concluido .progresso-circulo::after {
+    content: "✓";
+}
+
+.progresso-texto {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--cinza-escuro);
+    transition: all 0.3s ease;
+}
+
+.progresso-passo.ativo .progresso-texto {
+    color: var(--preto);
+    font-weight: 600;
+}

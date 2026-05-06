@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Teste de Lactato - Endurance On</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.min.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 20px;
+        }
+        
+        .report-logo {
+            height: 60px;
+        }
+        
+        .report-title {
+            text-align: center;
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        
+        .report-title h1 {
+            margin: 0;
+            color: #FF8012;
+            font-size: 1.8rem;
+        }
+        
+        .report-title h2 {
+            margin: 5px 0 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #38B6FF;
+        }
+        
+        .report-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .report-info-item {
+            flex: 1;
+            margin-right: 20px;
+        }
+        
+        .report-info-item:last-child {
+            margin-right: 0;
+            text-align: right;
+        }
+        
+        .report-info-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        
+        .report-info-value {
+            font-size: 1.1rem;
+        }
+        
+        .report-section {
+            margin-bottom: 40px;
+        }
+        
+        .report-section-title {
+            color: #FF8012;
+            border-bottom: 2px solid #38B6FF;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .limiares-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .limiar-card {
+            flex: 1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+            text-align: center;
+        }
+        
+        .limiar-card:last-child {
+            margin-right: 0;
+        }
+        
+        .limiar-card.lt1 {
+            background-color: #e6f7ff;
+            border: 1px solid #38B6FF;
+        }
+        
+        .limiar-card.lt2 {
+            background-color: #fff2e6;
+            border: 1px solid #FF8012;
+        }
+        
+        .limiar-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .limiar-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .limiar-pace {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .limiar-fc {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .chart-container {
+            width: 100%;
+            height: 400px;
+            margin-bottom: 30px;
+        }
+        
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        .report-table th, .report-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .report-table th {
+            background-color: #f4f4f4;
+            font-weight: 600;
+        }
+        
+        .report-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .prediction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        .prediction-table th, .prediction-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .prediction-table th {
+            background-color: #f4f4f4;
+            font-weight: 600;
+        }
+        
+        .prediction-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* Estilos para a tabela de zonas de treino */
+        .training-zones-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .training-zones-table th, .training-zones-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .training-zones-table th {
+            background-color: #f4f4f4;
+            font-weight: 600;
+        }
+        
+        /* Cores para as zonas de treino */
+        .zone-z0 {
+            background-color: #E6E6FA;
+        }
+        
+        .zone-z1 {
+            background-color: #C3E6BA;
+        }
+        
+        .zone-z2 {
+            background-color: #FFE699;
+        }
+        
+        .zone-z3 {
+            background-color: #F8CBAD;
+        }
+        
+        .zone-z4 {
+            background-color: #FF9999;
+        }
+        
+        .zone-z5 {
+            background-color: #FF5555;
+        }
+        
+        .zone-z6 {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+        
+        .print-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #FF8012;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 20px;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .print-button:hover {
+            background-color: #e67300;
+        }
+
+        .report-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
+            position: relative;
+        }
+        
+        .report-footer-logo {
+            height: 40px;
+        }
+        
+        @media print {
+            .no-print {
+                display: none;
+            }
+            
+            /* Ajuste geral para impressão */
+            body {
+                background-color: #fff;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+            
+            /* Configuração de página */
+            @page {
+                margin: 1.5cm;
+                size: portrait;
+            }
+            
+            /* Ajustes para layout mais compacto */
+            .report-section {
+                margin-bottom: 15px;
+            }
+            
+            /* Primeira página: informações do atleta, limiares e gráfico de lactato */
+            .report-header, .report-info, .limiares-container {
+                page-break-inside: avoid;
+            }
+            
+            /* Ajustes para os gráficos */
+            .chart-container {
+                height: 300px;
+                page-break-inside: avoid;
+            }
+            
+            /* Evitar quebras dentro das tabelas */
+            .report-table, .prediction-table, .training-zones-table {
+                page-break-inside: avoid;
+            }
+            
+            /* Garantir que títulos não sejam separados do conteúdo */
+            .report-section-title {
+                page-break-after: avoid;
+                margin-top: 20px;
+            }
+            
+            /* Rodapé */
+            .report-footer {
+                position: relative;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="print-button no-print" onclick="window.print()">
+            <i class="fas fa-print"></i> Imprimir Relatório / Salvar PDF
+        </button>
+        
+        <div class="report-header">
+            <img src="img/logo-horizontal-preta.png" alt="Endurance On" class="report-logo">
+            <div class="report-title">
+                <h1>Relatório de Teste de Lactato</h1>
+                <h2>Endurance On Assessoria Esportiva</h2>
+            </div>
+        </div>
+        
+        <div class="report-info">
+            <div class="report-info-item">
+                <div class="report-info-label">Atleta:</div>
+                <div class="report-info-value" id="aluno-nome"></div>
+            </div>
+            <div class="report-info-item">
+                <div class="report-info-label">Data de Nascimento:</div>
+                <div class="report-info-value" id="data-nascimento"></div>
+            </div>
+            <div class="report-info-item">
+                <div class="report-info-label">Data do Teste:</div>
+                <div class="report-info-value" id="data-teste"></div>
+            </div>
+            <div class="report-info-item">
+                <div class="report-info-label">Relatório:</div>
+                <div class="report-info-value" id="report-date"></div>
+            </div>
+        </div>
+        
+        <div class="report-section">
+            <h2 class="report-section-title">Limiares de Lactato</h2>
+            <div class="limiares-container">
+                <div class="limiar-card lt1">
+                    <div class="limiar-title">Limiar Aeróbio (LT1)</div>
+                    <div class="limiar-value"><span id="lt1-pace-value">-</span></div>
+                    <div class="limiar-pace"><span id="lt1-velocidade">-</span> km/h</div>
+                    <div class="limiar-fc">FC: <span id="lt1-fc">-</span></div>
+                </div>
+                <div class="limiar-card lt2">
+                    <div class="limiar-title">Limiar Anaeróbio (LT2)</div>
+                    <div class="limiar-value"><span id="lt2-pace-value">-</span></div>
+                    <div class="limiar-pace"><span id="lt2-velocidade">-</span> km/h</div>
+                    <div class="limiar-fc">FC: <span id="lt2-fc">-</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="report-section">
+            <h2 class="report-section-title">Gráfico de Lactato</h2>
+            <div class="chart-container" id="lactato-chart"></div>
+        </div>
+        
+        <div class="report-section">
+            <h2 class="report-section-title">Gráfico de Frequência Cardíaca</h2>
+            <div class="chart-container" id="fc-chart"></div>
+        </div>
+        
+        <div class="report-section">
+            <h2 class="report-section-title">Nível do Atleta e Zonas de Treino</h2>
+            <div class="athlete-level" id="athlete-level"></div>
+            <div id="training-zones-container">
+                <!-- Tabela de zonas de treino será inserida aqui via JavaScript -->
+            </div>
+        </div>
+        
+        <div class="report-section">
+            <h2 class="report-section-title">Predição de Ritmos para Provas</h2>
+            <table class="prediction-table">
+                <thead>
+                    <tr>
+                        <th>Distância</th>
+                        <th>Ritmo Estimado</th>
+                        <th>Tempo Previsto</th>
+                        <th>Baseado em</th>
+                    </tr>
+                </thead>
+                <tbody id="prediction-table-body">
+                    <!-- Preenchido via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="report-section">
+            <h2 class="report-section-title">Dados dos Estágios</h2>
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>Estágio</th>
+                        <th>Velocidade (km/h)</th>
+                        <th>Pace (min/km)</th>
+                        <th>Lactato (mmol/L)</th>
+                        <th>FC Média</th>
+                        <th>FC Final</th>
+                        <th>PSE (0-10)</th>
+                    </tr>
+                </thead>
+                <tbody id="estagios-table-body">
+                    <!-- Preenchido via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="report-footer">
+            <img src="img/logo-simbolo-preta.png" alt="Endurance On" class="report-footer-logo">
+            <div>
+                <p>© 2025 Endurance On Assessoria Esportiva</p>
+                <p>Todos os direitos reservados</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Função para formatar data
+        function formatarData(dataString) {
+            if (!dataString) return '-';
+            
+            const data = new Date(dataString);
+            return data.toLocaleDateString('pt-BR');
+        }
+        
+        // Função para formatar data e hora
+        function formatarDataHora(data) {
+            return data.toLocaleDateString('pt-BR') + ' ' + 
+                   data.toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'});
+        }
+        
+        // Converter velocidade (km/h) para pace (min/km)
+        function velocidadeParaPace(velocidade) {
+            if (!velocidade || velocidade <= 0) {
+                return '-';
+            }
+            
+            // Calcular minutos por km
+            const minutesPerkm = 60 / velocidade;
+            
+            // Converter para formato min:sec
+            const minutes = Math.floor(minutesPerkm);
+            const seconds = Math.round((minutesPerkm - minutes) * 60);
+            
+            // Garantir que os segundos não excedam 59
+            let adjustedMinutes = minutes;
+            let adjustedSeconds = seconds;
+            
+            if (adjustedSeconds >= 60) {
+                adjustedMinutes += 1;
+                adjustedSeconds -= 60;
+            }
+            
+            return `${adjustedMinutes}:${adjustedSeconds.toString().padStart(2, '0')} min/km`;
+        }
+        
+        // Função para determinar o nível do atleta e mostrar zonas de treino
+        function determinarNivelAtleta(lt2Velocidade, lt2FC) {
+            // Converter velocidade para pace
+            const lt2Pace = velocidadeParaPace(lt2Velocidade);
+            
+            // Extrair minutos e segundos do pace
+            const paceMatch = lt2Pace.match(/(\d+):(\d+)/);
+            if (!paceMatch) return;
+            
+            const paceMinutos = parseInt(paceMatch[1]);
+            const paceSegundos = parseInt(paceMatch[2]);
+            
+            // Calcular pace total em segundos
+            const paceTotalSegundos = paceMinutos * 60 + paceSegundos;
+            
+            // Determinar nível do atleta
+            // N1: pace >= 4:31 min/km (271 segundos)
+            // N2: pace < 4:30 min/km (270 segundos)
+            const nivel = paceTotalSegundos >= 271 ? 'N1' : 'N2';
+            
+            // Exibir nível do atleta
+            const athleteLevelElement = document.getElementById('athlete-level');
+            athleteLevelElement.textContent = `Nível do Atleta: ${nivel} (Pace LT2: ${lt2Pace})`;
+            
+            // Gerar tabela de zonas de treino baseada no nível
+            gerarTabelaZonasTreino(nivel, lt2Velocidade, lt2FC);
+        }
+        
+        // Função para gerar tabela de zonas de treino
+        function gerarTabelaZonasTreino(nivel, lt2Velocidade, lt2FC) {
+            const container = document.getElementById('training-zones-container');
+            
+            // Limpar conteúdo anterior
+            container.innerHTML = '';
+            
+            // Criar tabela
+            const table = document.createElement('table');
+            table.className = 'training-zones-table';
+            
+            // Cabeçalho da tabela
+            const thead = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            
+            // Colunas do cabeçalho
+            const headers = ['Zona', 'Descrição', 'Intensidade', 'Velocidade (km/h)', 'Pace', 'FC'];
+            headers.forEach(text => {
+                const th = document.createElement('th');
+                th.textContent = text;
+                headerRow.appendChild(th);
+            });
+            
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+            
+            // Corpo da tabela
+            const tbody = document.createElement('tbody');
+            
+            // Definir zonas de treino baseadas no nível do atleta
+            let zonas = [];
+            
+            if (nivel === 'N1') {
+                // Zonas para atletas N1 (pace LT2 >= 4:31 min/km)
+                zonas = [
+                    {
+                        zona: 'Z1',
+                        descricao: 'Recuperação Ativa',
+                        intensidade: '75-85% LT2',
+                        percentMin: 0.75,
+                        percentMax: 0.85,
+                        fcAjuste: [0.75, 0.85],
+                        classe: 'zone-z1'
+                    },
+                    {
+                        zona: 'Z2',
+                        descricao: 'Endurance Aeróbica',
+                        intensidade: '85,01-90% LT2',
+                        percentMin: 0.8501,
+                        percentMax: 0.90,
+                        fcAjuste: [0.8501, 0.90],
+                        classe: 'zone-z2'
+                    },
+                    {
+                        zona: 'Z3',
+                        descricao: 'Limiar Aeróbico',
+                        intensidade: '90,01-95% LT2',
+                        percentMin: 0.9001,
+                        percentMax: 0.95,
+                        fcAjuste: [0.9001, 0.95],
+                        classe: 'zone-z3'
+                    },
+                    {
+                        zona: 'Z4',
+                        descricao: 'Limiar Anaeróbico',
+                        intensidade: '95,01-100% LT2',
+                        percentMin: 0.9501,
+                        percentMax: 1.00,
+                        fcAjuste: [0.9501, 1.00],
+                        classe: 'zone-z4'
+                    },
+                    {
+                        zona: 'Z5',
+                        descricao: 'VO2max',
+                        intensidade: '100,01-115% LT2',
+                        percentMin: 1.0001,
+                        percentMax: 1.15,
+                        fcAjuste: [1.0001, 1.15],
+                        classe: 'zone-z5'
+                    }
+                ];
+            } else {
+                // Zonas para atletas N2 (pace LT2 < 4:30 min/km)
+                zonas = [
+                    {
+                        zona: 'Z0',
+                        descricao: 'Recuperação Passiva',
+                        intensidade: '60-70% LT2',
+                        percentMin: 0.60,
+                        percentMax: 0.70,
+                        fcAjuste: [0.60, 0.70],
+                        classe: 'zone-z0'
+                    },
+                    {
+                        zona: 'Z1',
+                        descricao: 'Recuperação Ativa',
+                        intensidade: '70,01-78% LT2',
+                        percentMin: 0.7001,
+                        percentMax: 0.78,
+                        fcAjuste: [0.7001, 0.78],
+                        classe: 'zone-z1'
+                    },
+                    {
+                        zona: 'Z2',
+                        descricao: 'Endurance Aeróbica',
+                        intensidade: '78,01-88% LT2',
+                        percentMin: 0.7801,
+                        percentMax: 0.88,
+                        fcAjuste: [0.7801, 0.88],
+                        classe: 'zone-z2'
+                    },
+                    {
+                        zona: 'Z3',
+                        descricao: 'Limiar Aeróbico',
+                        intensidade: '88,01-95% LT2',
+                        percentMin: 0.8801,
+                        percentMax: 0.95,
+                        fcAjuste: [0.8801, 0.95],
+                        classe: 'zone-z3'
+                    },
+                    {
+                        zona: 'Z4',
+                        descricao: 'Limiar Anaeróbico',
+                        intensidade: '95-101% LT2',
+                        percentMin: 0.95,
+                        percentMax: 1.01,
+                        fcAjuste: [0.95, 1.01],
+                        classe: 'zone-z4'
+                    },
+                    {
+                        zona: 'Z5',
+                        descricao: 'VO2max',
+                        intensidade: '101,01-108% LT2',
+                        percentMin: 1.0101,
+                        percentMax: 1.08,
+                        fcAjuste: [1.0101, 1.08],
+                        classe: 'zone-z5'
+                    },
+                    {
+                        zona: 'Z6',
+                        descricao: 'Anaeróbico',
+                        intensidade: '108,01-120% LT2',
+                        percentMin: 1.0801,
+                        percentMax: 1.20,
+                        fcAjuste: [1.0801, 1.20],
+                        classe: 'zone-z6'
+                    }
+                ];
+            }
+            
+            // Adicionar linhas para cada zona
+            zonas.forEach(zona => {
+                const row = document.createElement('tr');
+                row.className = zona.classe;
+                
+                // Coluna Zona
+                const tdZona = document.createElement('td');
+                tdZona.textContent = zona.zona;
+                row.appendChild(tdZona);
+                
+                // Coluna Descrição
+                const tdDescricao = document.createElement('td');
+                tdDescricao.textContent = zona.descricao;
+                row.appendChild(tdDescricao);
+                
+                // Coluna Intensidade
+                const tdIntensidade = document.createElement('td');
+                tdIntensidade.textContent = zona.intensidade;
+                row.appendChild(tdIntensidade);
+                
+                // Calcular velocidades para cada zona
+                const velMin = lt2Velocidade * zona.percentMin;
+                const velMax = lt2Velocidade * zona.percentMax;
+                
+                // Coluna Velocidade (km/h)
+                const tdVelocidade = document.createElement('td');
+                tdVelocidade.textContent = `${velMin.toFixed(1)} - ${velMax.toFixed(1)}`;
+                row.appendChild(tdVelocidade);
+                
+                // Coluna Pace
+                const tdPace = document.createElement('td');
+                
+                // Converter velocidades para paces (nota: velocidade maior = pace menor)
+                // Velocidade máxima da zona corresponde ao pace mais rápido (menor valor numérico)
+                const paceRapido = velocidadeParaPace(velMax);
+                // Velocidade mínima da zona corresponde ao pace mais lento (maior valor numérico)
+                const paceLento = velocidadeParaPace(velMin);
+                
+                // Exibir o pace mais rápido primeiro, seguido pelo mais lento
+                tdPace.textContent = `${paceRapido} - ${paceLento}`;
+                row.appendChild(tdPace);
+                
+                // Coluna FC
+                const tdFC = document.createElement('td');
+                if (lt2FC) {
+                    const fcMin = Math.round(lt2FC * zona.fcAjuste[0]);
+                    const fcMax = Math.round(lt2FC * zona.fcAjuste[1]);
+                    tdFC.textContent = `${fcMin} - ${fcMax} bpm`;
+                } else {
+                    tdFC.textContent = '-';
+                }
+                row.appendChild(tdFC);
+                
+                tbody.appendChild(row);
+            });
+            
+            table.appendChild(tbody);
+            container.appendChild(table);
+        }
+        
+        // Função para gerar gráfico de FC usando Plotly.min.js
+        function gerarGraficoFCPlotly(data) {
+            // Verificar se há estágios
+            if (!data.estagios || data.estagios.length === 0) {
+                console.error("Nenhum estágio encontrado para o gráfico de FC");
+                return;
+            }
+            
+            // Filtrar estágios com FC média
+            const estagiosComFC = data.estagios.filter(estagio => estagio.fcMedia);
+            
+            if (estagiosComFC.length === 0) {
+                console.error("Nenhum estágio com FC média encontrado");
+                return;
+            }
+            
+            // Ordenar estágios por velocidade
+            estagiosComFC.sort((a, b) => a.velocidade - b.velocidade);
+            
+            // Preparar dados para o gráfico
+            const velocidades = estagiosComFC.map(estagio => estagio.velocidade);
+            const fcs = estagiosComFC.map(estagio => estagio.fcMedia);
+            
+            // Adicionar pontos para LT1 e LT2 se disponíveis
+            const lt1Point = data.lt1 && data.lt1.velocidade && data.lt1.fcMedia ? {
+                x: [data.lt1.velocidade],
+                y: [data.lt1.fcMedia],
+                mode: 'markers',
+                marker: {
+                    size: 12,
+                    color: '#38B6FF',
+                    symbol: 'diamond'
+                },
+                name: 'LT1 (2.0 mmol/L)'
+            } : null;
+            
+            const lt2Point = data.lt2 && data.lt2.velocidade && data.lt2.fcMedia ? {
+                x: [data.lt2.velocidade],
+                y: [data.lt2.fcMedia],
+                mode: 'markers',
+                marker: {
+                    size: 12,
+                    color: '#FF8012',
+                    symbol: 'diamond'
+                },
+                name: 'LT2 (4.0 mmol/L)'
+            } : null;
+            
+            // Criar trace para FC
+            const traceFC = {
+                x: velocidades,
+                y: fcs,
+                mode: 'lines+markers',
+                type: 'scatter',
+                name: 'FC Média',
+                line: {
+                    color: '#FF5555',
+                    width: 2
+                },
+                marker: {
+                    size: 8,
+                    color: '#FF5555'
+                }
+            };
+            
+            // Configurar layout
+            const layout = {
+                title: 'Frequência Cardíaca vs. Velocidade',
+                xaxis: {
+                    title: 'Velocidade (km/h)',
+                    tickformat: '.1f'
+                },
+                yaxis: {
+                    title: 'FC (bpm)'
+                },
+                hovermode: 'closest',
+                showlegend: true,
+                legend: {
+                    x: 0,
+                    y: 1
+                },
+                margin: {
+                    l: 60,
+                    r: 30,
+                    t: 50,
+                    b: 50
+                }
+            };
+            
+            // Criar array de traces
+            const traces = [traceFC];
+            if (lt1Point) traces.push(lt1Point);
+            if (lt2Point) traces.push(lt2Point);
+            
+            // Criar o gráfico
+            Plotly.newPlot('fc-chart', traces, layout, {responsive: true});
+        }
+        
+        // Função para gerar gráfico de lactato usando Plotly.min.js
+        function gerarGraficoLactatoPlotly(data) {
+            // Verificar se há estágios
+            if (!data.estagios || data.estagios.length === 0) {
+                console.error("Nenhum estágio encontrado para o gráfico de lactato");
+                return;
+            }
+            
+            // Ordenar estágios por velocidade
+            const estagiosOrdenados = [...data.estagios].sort((a, b) => a.velocidade - b.velocidade);
+            
+            // Preparar dados para o gráfico
+            const velocidades = estagiosOrdenados.map(estagio => estagio.velocidade);
+            const lactatos = estagiosOrdenados.map(estagio => estagio.lactato);
+            
+            // Adicionar pontos para LT1 e LT2
+            const lt1Point = data.lt1 && data.lt1.velocidade ? {
+                x: [data.lt1.velocidade],
+                y: [2.0], // LT1 é definido como 2.0 mmol/L
+                mode: 'markers',
+                marker: {
+                    size: 12,
+                    color: '#9C27B0', // Cor roxa para diferenciar da linha azul
+                    symbol: 'diamond'
+                },
+                name: 'LT1 (2.0 mmol/L)'
+            } : null;
+            
+            const lt2Point = data.lt2 && data.lt2.velocidade ? {
+                x: [data.lt2.velocidade],
+                y: [4.0], // LT2 é definido como 4.0 mmol/L
+                mode: 'markers',
+                marker: {
+                    size: 12,
+                    color: '#FF8012',
+                    symbol: 'diamond'
+                },
+                name: 'LT2 (4.0 mmol/L)'
+            } : null;
+            
+            // Criar trace para lactato
+            const traceLactato = {
+                x: velocidades,
+                y: lactatos,
+                mode: 'lines+markers',
+                type: 'scatter',
+                name: 'Lactato',
+                line: {
+                    color: '#38B6FF',
+                    width: 2
+                },
+                marker: {
+                    size: 8,
+                    color: '#38B6FF'
+                }
+            };
+            
+            // Adicionar linhas tracejadas verticais para os limiares
+            const shapes = [];
+            
+            if (data.lt1 && data.lt1.velocidade) {
+                shapes.push({
+                    type: 'line',
+                    x0: data.lt1.velocidade,
+                    y0: 0,
+                    x1: data.lt1.velocidade,
+                    y1: 2.0,
+                    line: {
+                        color: '#9C27B0', // Cor roxa para combinar com o ponto
+                        width: 2,
+                        dash: 'dash'
+                    }
+                });
+            }
+            
+            if (data.lt2 && data.lt2.velocidade) {
+                shapes.push({
+                    type: 'line',
+                    x0: data.lt2.velocidade,
+                    y0: 0,
+                    x1: data.lt2.velocidade,
+                    y1: 4.0,
+                    line: {
+                        color: '#FF8012',
+                        width: 2,
+                        dash: 'dash'
+                    }
+                });
+            }
+            
+            // Configurar layout
+            const layout = {
+                title: 'Curva de Lactato',
+                xaxis: {
+                    title: 'Velocidade (km/h)',
+                    tickformat: '.1f'
+                },
+                yaxis: {
+                    title: 'Lactato (mmol/L)'
+                },
+                hovermode: 'closest',
+                showlegend: true,
+                legend: {
+                    x: 0,
+                    y: 1
+                },
+                margin: {
+                    l: 60,
+                    r: 30,
+                    t: 50,
+                    b: 50
+                },
+                shapes: shapes
+            };
+            
+            // Criar array de traces
+            const traces = [traceLactato];
+            if (lt1Point) traces.push(lt1Point);
+            if (lt2Point) traces.push(lt2Point);
+            
+            // Criar o gráfico
+            Plotly.newPlot('lactato-chart', traces, layout, {responsive: true});
+        }
+        
+        // Função para preencher tabela de estágios
+        function preencherTabelaEstagios(estagios) {
+            const tbody = document.getElementById('estagios-table-body');
+            tbody.innerHTML = '';
+            
+            // Ordenar estágios por velocidade
+            const estagiosOrdenados = [...estagios].sort((a, b) => a.velocidade - b.velocidade);
+            
+            // Adicionar linhas para cada estágio
+            estagiosOrdenados.forEach((estagio, index) => {
+                const row = document.createElement('tr');
+                
+                // Estágio
+                const tdEstagio = document.createElement('td');
+                tdEstagio.textContent = index + 1;
+                row.appendChild(tdEstagio);
+                
+                // Velocidade
+                const tdVelocidade = document.createElement('td');
+                tdVelocidade.textContent = estagio.velocidade.toFixed(1);
+                row.appendChild(tdVelocidade);
+                
+                // Pace
+                const tdPace = document.createElement('td');
+                tdPace.textContent = velocidadeParaPace(estagio.velocidade);
+                row.appendChild(tdPace);
+                
+                // Lactato
+                const tdLactato = document.createElement('td');
+                tdLactato.textContent = estagio.lactato.toFixed(1);
+                row.appendChild(tdLactato);
+                
+                // FC Média
+                const tdFcMedia = document.createElement('td');
+                tdFcMedia.textContent = estagio.fcMedia || '-';
+                row.appendChild(tdFcMedia);
+                
+                // FC Final
+                const tdFcFinal = document.createElement('td');
+                tdFcFinal.textContent = estagio.fcFinal || '-';
+                row.appendChild(tdFcFinal);
+                
+                // PSE
+                const tdPse = document.createElement('td');
+                tdPse.textContent = estagio.pse || '-';
+                row.appendChild(tdPse);
+                
+                tbody.appendChild(row);
+            });
+        }
+        
+        // Função para preencher tabela de predições
+        function preencherTabelaPredicoes(lt2Velocidade) {
+            if (!lt2Velocidade) return;
+            
+            const tbody = document.getElementById('prediction-table-body');
+            tbody.innerHTML = '';
+            
+            // Definir distâncias e fatores de ajuste
+            const predicoes = [
+                { distancia: '5K', fator: 0.95, texto: '5 km' },
+                { distancia: '10K', fator: 0.97, texto: '10 km' },
+                { distancia: '21K', fator: 1.05, texto: 'Meia Maratona' },
+                { distancia: '42K', fator: 1.12, texto: 'Maratona' }
+            ];
+            
+            // Adicionar linhas para cada predição
+            predicoes.forEach(predicao => {
+                const row = document.createElement('tr');
+                
+                // Distância
+                const tdDistancia = document.createElement('td');
+                tdDistancia.textContent = predicao.texto;
+                row.appendChild(tdDistancia);
+                
+                // Ritmo Estimado
+                const ritmoEstimado = lt2Velocidade / predicao.fator;
+                const tdRitmo = document.createElement('td');
+                tdRitmo.textContent = velocidadeParaPace(ritmoEstimado);
+                row.appendChild(tdRitmo);
+                
+                // Tempo Previsto
+                const tempoMinutos = (predicao.distancia === '21K' ? 21.1 : 
+                                     (predicao.distancia === '42K' ? 42.2 : 
+                                     parseInt(predicao.distancia))) / ritmoEstimado * 60;
+                
+                const horas = Math.floor(tempoMinutos / 60);
+                const minutos = Math.floor(tempoMinutos % 60);
+                const segundos = Math.round((tempoMinutos - Math.floor(tempoMinutos)) * 60);
+                
+                const tdTempo = document.createElement('td');
+                if (horas > 0) {
+                    tdTempo.textContent = `${horas}h ${minutos.toString().padStart(2, '0')}m ${segundos.toString().padStart(2, '0')}s`;
+                } else {
+                    tdTempo.textContent = `${minutos}m ${segundos.toString().padStart(2, '0')}s`;
+                }
+                row.appendChild(tdTempo);
+                
+                // Baseado em
+                const tdBaseado = document.createElement('td');
+                tdBaseado.textContent = 'LT2 (4.0 mmol/L)';
+                row.appendChild(tdBaseado);
+                
+                tbody.appendChild(row);
+            });
+        }
+        
+        // Função principal para carregar dados e preencher relatório
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obter dados da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const encodedData = urlParams.get('data');
+            
+            if (!encodedData) {
+                console.error('Nenhum dado encontrado na URL');
+                return;
+            }
+            
+            try {
+                // Decodificar dados
+                const jsonData = decodeURIComponent(encodedData);
+                const data = JSON.parse(jsonData);
+                
+                // Preencher informações do atleta
+                document.getElementById('aluno-nome').textContent = data.alunoNome || '-';
+                document.getElementById('data-nascimento').textContent = formatarData(data.dataNascimento) || '-';
+                document.getElementById('data-teste').textContent = formatarData(data.dataTeste) || '-';
+                
+                // Preencher data do relatório
+                document.getElementById('report-date').textContent = 'Gerado em: ' + formatarDataHora(new Date());
+                
+                // Preencher limiares
+                if (data.lt1 && data.lt1.velocidade) {
+                    document.getElementById('lt1-pace-value').textContent = velocidadeParaPace(data.lt1.velocidade);
+                    document.getElementById('lt1-velocidade').textContent = data.lt1.velocidade.toFixed(1);
+                    document.getElementById('lt1-fc').textContent = data.lt1.fcMedia ? data.lt1.fcMedia + ' bpm' : '-';
+                } else {
+                    document.getElementById('lt1-pace-value').textContent = '-';
+                    document.getElementById('lt1-velocidade').textContent = '-';
+                    document.getElementById('lt1-fc').textContent = '-';
+                }
+                
+                if (data.lt2 && data.lt2.velocidade) {
+                    document.getElementById('lt2-pace-value').textContent = velocidadeParaPace(data.lt2.velocidade);
+                    document.getElementById('lt2-velocidade').textContent = data.lt2.velocidade.toFixed(1);
+                    document.getElementById('lt2-fc').textContent = data.lt2.fcMedia ? data.lt2.fcMedia + ' bpm' : '-';
+                    
+                    // Determinar nível do atleta e mostrar zonas de treino
+                    determinarNivelAtleta(data.lt2.velocidade, data.lt2.fcMedia);
+                } else {
+                    document.getElementById('lt2-pace-value').textContent = '-';
+                    document.getElementById('lt2-velocidade').textContent = '-';
+                    document.getElementById('lt2-fc').textContent = '-';
+                }
+                
+                // Preencher tabela de estágios
+                if (data.estagios && data.estagios.length > 0) {
+                    preencherTabelaEstagios(data.estagios);
+                }
+                
+                // Gerar gráficos
+                gerarGraficoLactatoPlotly(data);
+                gerarGraficoFCPlotly(data);
+                
+                // Preencher tabela de predições
+                if (data.lt2 && data.lt2.velocidade) {
+                    preencherTabelaPredicoes(data.lt2.velocidade);
+                }
+                
+            } catch (error) {
+                console.error('Erro ao processar dados:', error);
+            }
+        });
+    </script>
+</body>
+</html>

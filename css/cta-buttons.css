@@ -1,0 +1,89 @@
+/* 
+* Endurance On - Botões CTA
+* Estilos para os botões de chamada para ação
+*/
+
+.section-cta-container {
+    text-align: center;
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-sm);
+}
+
+.section-cta-button {
+    display: inline-block;
+    background-color: var(--laranja);
+    color: var(--branco);
+    padding: 12px 30px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--laranja);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-cta-button:hover {
+    background-color: transparent;
+    color: var(--laranja);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Variação para seções escuras */
+.bg-dark .section-cta-button {
+    background-color: var(--laranja);
+    color: var(--branco);
+    border: 2px solid var(--laranja);
+}
+
+.bg-dark .section-cta-button:hover {
+    background-color: transparent;
+    color: var(--laranja);
+}
+
+/* Animação de pulso para destaque */
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Espaçamentos específicos para cada seção */
+#sobre .section-cta-container {
+    margin-top: var(--spacing-lg);
+}
+
+#missao-visao-valores .section-cta-container {
+    margin-top: var(--spacing-lg);
+}
+
+#como-funciona .section-cta-container {
+    margin-top: var(--spacing-lg);
+}
+
+#treinadores .section-cta-container {
+    margin-top: var(--spacing-lg);
+}
+
+.strava-club-section .section-cta-container {
+    margin-top: var(--spacing-lg);
+}
+
+#depoimentos .section-cta-container {
+    margin-top: var(--spacing-md);
+}
+
+#faq .section-cta-container {
+    margin-top: var(--spacing-lg);
+}

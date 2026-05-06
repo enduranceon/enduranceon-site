@@ -1,0 +1,129 @@
+/* Estilos ultraminimalistas para a seção de contato */
+.contato-ultraminimal {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.contato-info-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px; /* Espaçamento grande entre os itens */
+    margin-bottom: 60px;
+}
+
+.contato-item-minimal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+}
+
+.contato-icon-minimal {
+    color: #FF8012; /* Laranja da marca */
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.contato-item-minimal h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.contato-item-minimal p,
+.contato-item-minimal a {
+    font-size: 18px;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contato-item-minimal a:hover {
+    color: #FF8012;
+}
+
+.contato-formulario-minimal {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.contato-formulario-minimal .form-group {
+    margin-bottom: 25px;
+}
+
+.contato-formulario-minimal label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+    font-size: 16px;
+}
+
+.contato-formulario-minimal input,
+.contato-formulario-minimal textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.contato-formulario-minimal input:focus,
+.contato-formulario-minimal textarea:focus {
+    border-color: #FF8012;
+    box-shadow: 0 0 0 2px rgba(255, 128, 18, 0.1);
+    outline: none;
+}
+
+.contato-formulario-minimal textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.contato-formulario-minimal button {
+    background-color: #FF8012;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.contato-formulario-minimal button:hover {
+    background-color: #e67100;
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    .contato-info-vertical {
+        margin-bottom: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contato-info-vertical {
+        gap: 40px;
+    }
+    
+    .contato-item-minimal h3 {
+        font-size: 20px;
+    }
+    
+    .contato-item-minimal p,
+    .contato-item-minimal a {
+        font-size: 16px;
+    }
+}

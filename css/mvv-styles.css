@@ -1,0 +1,106 @@
+/* Estilos para a Seção Missão, Visão e Valores */
+#missao-visao-valores .section-title {
+    margin-bottom: 40px; /* Adiciona mais espaço abaixo do título da seção */
+}
+
+.mvv-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Espaço entre os cards */
+    border: 2px solid #FF7A00; /* Borda laranja no contêiner dos cards */
+    border-radius: 10px; /* Cantos arredondados para o contêiner */
+    padding: 20px; /* Espaçamento interno para o contêiner */
+    background-color: #f8f9fa; /* Um fundo leve para o contêiner, opcional */
+}
+
+.mvv-card {
+    background-color: #FFFFFF; /* Fundo branco padrão para os cards */
+    padding: 30px 20px;
+    border-radius: 8px;
+    text-align: center;
+    flex-basis: calc(33.333% - 20px); /* Distribuição em 3 colunas com gap */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.mvv-card:hover {
+    transform: translateY(-5px);
+}
+
+.mvv-icon {
+    font-size: 2.5rem; /* Tamanho do ícone */
+    margin-bottom: 15px;
+    color: #FF7A00; /* Cor laranja padrão para ícones */
+}
+
+.mvv-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.mvv-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Destaque para o card Visão */
+.mvv-card-destaque {
+    background-color: #007bff; /* Azul para o card Visão, similar ao da imagem */
+    color: #FFFFFF; /* Texto branco para o card Visão */
+    border: none; /* Remove borda individual se houver */
+}
+
+.mvv-card-destaque .mvv-icon {
+    color: #FFFFFF; /* Ícone branco para o card Visão */
+}
+
+.mvv-card-destaque h3 {
+    color: #FFFFFF; /* Título branco para o card Visão */
+}
+
+.mvv-card-destaque p {
+    color: #f0f0f0; /* Texto levemente mais claro que branco puro para melhor leitura */
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .mvv-grid {
+        flex-direction: column;
+        align-items: center;
+        border: none; /* Remover borda do container no mobile para os cards fluirem */
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .mvv-card {
+        flex-basis: 100%; /* Ocupa toda a largura */
+        max-width: 450px; /* Limita a largura máxima no mobile */
+        margin-bottom: 20px;
+    }
+
+    .mvv-card:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Mantém a borda laranja ao redor de cada card no mobile, se desejado */
+    /* Se a ideia é que a borda laranja do container desapareça e os cards fiquem soltos:
+    .mvv-card {
+        border: 2px solid #FF7A00; 
+    }
+    .mvv-card-destaque {
+        border: none; 
+    }
+    */
+}
+
+@media (max-width: 768px) {
+    .mvv-card h3 {
+        font-size: 1.3rem;
+    }
+    .mvv-icon {
+        font-size: 2.2rem;
+    }
+}
+

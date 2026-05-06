@@ -1,0 +1,58 @@
+/* 
+* Endurance On - Link na Bio
+* Estilos para ícones sociais rápidos
+*/
+
+.quick-social-section {
+    padding: var(--spacing-md) 0;
+    margin-bottom: var(--spacing-md);
+}
+
+.quick-social-icons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.quick-social-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background-color: var(--branco);
+    color: var(--preto);
+}
+
+.quick-social-icon:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.quick-social-icon.instagram:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    color: var(--branco);
+}
+
+.quick-social-icon.whatsapp:hover {
+    background-color: #25D366;
+    color: var(--branco);
+}
+
+.quick-social-icon.strava:hover {
+    background-color: #FC4C02;
+    color: var(--branco);
+}
+
+/* Estilo para o botão do Strava */
+.link-card.strava {
+    background-color: #FC4C02;
+}
+
+.link-card.strava a {
+    color: var(--branco);
+}

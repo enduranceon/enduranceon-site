@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecionar Modalidade - Endurance On</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <style>
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo img {
+            height: 60px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #38B6FF;
+        }
+        
+        .main-title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .main-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+        
+        .options-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .option-card {
+            width: 300px;
+            height: 350px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .option-header {
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.5rem;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .option-running .option-header {
+            background-color: #38B6FF;
+        }
+        
+        .option-cycling .option-header {
+            background-color: #FF8012;
+        }
+        
+        .option-swimming .option-header {
+            background-color: #38B6FF;
+        }
+        
+        .option-body {
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .option-description {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+        }
+        
+        .option-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f4f4f4;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        .option-running .option-button:hover {
+            background-color: #38B6FF;
+            color: white;
+        }
+        
+        .option-cycling .option-button:hover {
+            background-color: #FF8012;
+            color: white;
+        }
+        
+        .option-swimming .option-button:hover {
+            background-color: #38B6FF;
+            color: white;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <header class="header">
+            <div class="logo">
+                <img src="img/logo-horizontal-preta.png" alt="Endurance On">
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Início</a>
+            </div>
+        </header>
+        
+        <h1 class="main-title">Selecione a Modalidade</h1>
+        <h2 class="main-subtitle">Escolha a modalidade para registrar o teste</h2>
+        
+        <div class="options-container">
+            <div class="option-card option-running" onclick="window.location.href='selecionar-tipo-teste-corrida.html'">
+                <div class="option-header">
+                    <i class="fas fa-running fa-2x"></i>
+                    <span style="margin-left: 15px;">Corrida</span>
+                </div>
+                <div class="option-body">
+                    <div class="option-description">
+                        <p>Registre testes de corrida como lactato, rFTPa e outros.</p>
+                        <p>Determine zonas de treino específicas para corrida.</p>
+                    </div>
+                    <a href="selecionar-tipo-teste-corrida.html" class="option-button">Selecionar</a>
+                </div>
+            </div>
+            
+            <div class="option-card option-cycling" onclick="window.location.href='teste-ftp.html'">
+                <div class="option-header">
+                    <i class="fas fa-bicycle fa-2x"></i>
+                    <span style="margin-left: 15px;">Ciclismo</span>
+                </div>
+                <div class="option-body">
+                    <div class="option-description">
+                        <p>Registre testes de ciclismo como FTP, lactato e outros.</p>
+                        <p>Determine zonas de potência e frequência cardíaca.</p>
+                    </div>
+                    <a href="teste-ftp.html" class="option-button">Selecionar</a>
+                </div>
+            </div>
+            
+            <div class="option-card option-swimming" onclick="alert('Funcionalidade em desenvolvimento. Será implementada em breve!')">
+                <div class="option-header">
+                    <i class="fas fa-swimmer fa-2x"></i>
+                    <span style="margin-left: 15px;">Natação</span>
+                </div>
+                <div class="option-body">
+                    <div class="option-description">
+                        <p>Registre testes de natação como CSS, lactato e outros.</p>
+                        <p>Determine zonas de treino específicas para natação.</p>
+                    </div>
+                    <a href="#" class="option-button" onclick="alert('Funcionalidade em desenvolvimento. Será implementada em breve!'); return false;">Em breve</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Endurance On Assessoria Esportiva</p>
+            <p>Todos os direitos reservados</p>
+        </div>
+    </div>
+</body>
+</html>

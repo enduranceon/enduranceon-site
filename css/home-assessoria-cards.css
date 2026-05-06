@@ -1,0 +1,199 @@
+.home-assessoria-section {
+  background: var(--cinza-claro);
+}
+
+.home-assessoria-section .section-subtitle {
+  max-width: 860px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.home-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.home-pill-group,
+.home-tab-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-pill,
+.home-tab {
+  border: 0;
+  border-radius: 12px;
+  background: #e4e6eb;
+  color: #1e2127;
+  font-weight: 700;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.home-tab {
+  background: transparent;
+  border-bottom: 3px solid #d0d3d8;
+  border-radius: 0;
+}
+
+.home-pill.active,
+.home-tab.active {
+  background: var(--laranja);
+  color: var(--branco);
+}
+
+.home-tab.active {
+  border-bottom-color: var(--laranja);
+  background: transparent;
+  color: var(--preto);
+}
+
+.home-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 22px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.home-period-card {
+  background: #fff;
+  border: 1px solid #d9dde3;
+  border-radius: 16px;
+  padding: 28px 24px 22px;
+  display: flex;
+  flex-direction: column;
+  min-height: 480px;
+}
+
+.home-period-card.highlight {
+  border-color: var(--laranja);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.home-badge-top {
+  position: absolute;
+  top: -14px;
+  left: 16px;
+  right: 16px;
+  background: var(--laranja);
+  color: var(--branco);
+  text-align: center;
+  border-radius: 999px;
+  font-weight: 800;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+.home-period-chip {
+  display: inline-block;
+  background: #65686f;
+  color: #fff;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.home-price {
+  font-size: 42px;
+  line-height: 1;
+  margin-bottom: 4px;
+  font-weight: 800;
+  color: #101319;
+}
+
+.home-price small {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.home-price-foot {
+  font-size: 14px;
+  color: #6a717d;
+  margin-bottom: 14px;
+}
+
+.home-feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.home-feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: #3f4651;
+  line-height: 1.35;
+}
+
+.home-feature-list i {
+  margin-top: 2px;
+}
+
+.home-feature-list .ok i {
+  color: var(--laranja);
+}
+
+.home-feature-list .no i {
+  color: #e64949;
+}
+
+.home-feature-list .partial i {
+  color: #f5a623;
+}
+
+.home-feature-list .partial span {
+  color: #6a717d;
+  font-style: italic;
+}
+
+.home-cta {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 800;
+  background: var(--laranja);
+  color: var(--branco);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-top: 16px;
+}
+
+.home-cta:hover {
+  background: var(--preto);
+  color: var(--branco);
+}
+
+@media (max-width: 900px) {
+  .home-cards-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .home-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-period-card {
+    min-height: auto;
+  }
+
+  .home-price {
+    font-size: 36px;
+  }
+}

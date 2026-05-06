@@ -1,0 +1,151 @@
+/* Estilos para a seção de comparativo de planos na home */
+.planos-comparativo-home {
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.planos-comparativo-home .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.planos-comparativo-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.plano-card-home {
+    flex: 1;
+    min-width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.plano-card-home:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.plano-header-home {
+    padding: 1rem;
+    text-align: center;
+    color: var(--branco);
+}
+
+.plano-header-home h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+}
+
+.plano-header-home p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.plano-essencial-home .plano-header-home {
+    background-color: #f2f2f2;
+    color: var(--preto);
+}
+
+.plano-premium-home .plano-header-home {
+    background-color: var(--laranja);
+}
+
+.plano-beneficios-home {
+    padding: 1.2rem;
+    background-color: var(--branco);
+}
+
+.plano-beneficios-lista-home {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.plano-beneficios-item-home {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.2;
+}
+
+.plano-beneficios-item-home i.check {
+    color: #4CAF50;
+    margin-right: 0.8rem;
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+.plano-beneficios-item-home i.times {
+    color: #F44336;
+    margin-right: 0.8rem;
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+.plano-footer-home {
+    padding: 1rem;
+    text-align: center;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+}
+
+.plano-footer-home a {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    background-color: var(--laranja);
+    color: var(--branco);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-size: 0.9rem;
+}
+
+.calculadora-btn-container {
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.calculadora-btn-container p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.calculadora-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--laranja);
+    color: var(--branco);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.plano-footer-home a:hover {
+    background-color: #e65c00;
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .planos-comparativo-container {
+        flex-direction: column;
+    }
+    
+    .plano-card-home {
+        width: 100%;
+    }
+}

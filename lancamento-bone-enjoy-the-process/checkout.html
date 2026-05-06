@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Pedido | Boné Enjoy The Process</title>
+    <link rel="stylesheet" href="style.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Checkout Section -->
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-header">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Voltar
+                </a>
+                <h1 class="checkout-title">Finalize Seu Pedido</h1>
+                <p class="checkout-subtitle">Preencha os dados abaixo para garantir seu boné</p>
+            </div>
+
+            <div class="checkout-content">
+                <!-- Product Summary -->
+                <div class="product-summary">
+                    <h2 class="summary-title">Resumo do Pedido</h2>
+                    <div class="summary-product">
+                        <img src="images/bone-branco-1.jpg" alt="Boné Enjoy The Process">
+                        <div class="summary-info">
+                            <h3>Boné Enjoy The Process</h3>
+                            <p>Edição Limitada 2025/2026</p>
+                        </div>
+                    </div>
+                    <div class="summary-price">
+                        <span>Preço unitário:</span>
+                        <strong>R$ 90,00</strong>
+                    </div>
+                    <div class="summary-total" id="summaryTotal">
+                        <span>Total:</span>
+                        <strong id="totalValue">R$ 0,00</strong>
+                    </div>
+                </div>
+
+                <!-- Checkout Form -->
+                <div class="checkout-form-container">
+                    <form id="checkoutForm" action="https://formspree.io/f/mpwedadj" method="POST">
+                        <div class="form-section">
+                            <h3 class="form-section-title">
+                                <i class="fas fa-user"></i>
+                                Dados Pessoais
+                            </h3>
+                            
+                            <div class="form-group">
+                                <label for="nome">Nome Completo *</label>
+                                <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">E-mail *</label>
+                                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefone">WhatsApp *</label>
+                                    <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3 class="form-section-title">
+                                <i class="fas fa-shopping-bag"></i>
+                                Selecione os Bonés
+                            </h3>
+                            
+                            <div class="quantity-selector">
+                                <div class="quantity-item">
+                                    <div class="quantity-header">
+                                        <img src="images/bone-branco-1.jpg" alt="Boné Branco">
+                                        <div class="quantity-info">
+                                            <h4>Boné Branco</h4>
+                                            <p>R$ 90,00 cada</p>
+                                        </div>
+                                    </div>
+                                    <div class="quantity-controls">
+                                        <button type="button" class="qty-btn" onclick="decreaseQty('branco')">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <input type="number" id="quantidade_branco" name="quantidade_branco" value="0" min="0" max="5" readonly>
+                                        <button type="button" class="qty-btn" onclick="increaseQty('branco')">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="quantity-item">
+                                    <div class="quantity-header">
+                                        <img src="images/bone-preto-1.png" alt="Boné Preto">
+                                        <div class="quantity-info">
+                                            <h4>Boné Preto</h4>
+                                            <p>R$ 90,00 cada</p>
+                                        </div>
+                                    </div>
+                                    <div class="quantity-controls">
+                                        <button type="button" class="qty-btn" onclick="decreaseQty('preto')">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <input type="number" id="quantidade_preto" name="quantidade_preto" value="0" min="0" max="5" readonly>
+                                        <button type="button" class="qty-btn" onclick="increaseQty('preto')">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quantity-alert" id="quantityAlert" style="display: none;">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Limite máximo de 5 bonés por pedido</span>
+                            </div>
+
+                            <div class="quantity-summary">
+                                <div class="summary-row">
+                                    <span>Total de bonés:</span>
+                                    <strong id="totalBones">0</strong>
+                                </div>
+                                <div class="summary-row total">
+                                    <span>Valor total:</span>
+                                    <strong id="totalPrice">R$ 0,00</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hidden fields -->
+                        <input type="hidden" id="total_bones" name="total_bones" value="0">
+                        <input type="hidden" id="valor_total" name="valor_total" value="R$ 0,00">
+
+                        <button type="submit" class="submit-button" id="submitButton" disabled>
+                            <i class="fas fa-lock"></i>
+                            Ir para Pagamento
+                        </button>
+
+                        <p class="form-info">
+                            <i class="fas fa-shield-alt"></i>
+                            Seus dados estão seguros. Após confirmar, você será redirecionado para o pagamento.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="../images/logo/logo_simbolo_preto.png" alt="Endurance On" class="footer-logo">
+            <p class="footer-text">© 2025 Endurance On - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        const PRICE_PER_ITEM = 90;
+        const MAX_ITEMS = 5;
+
+        function updateQuantities() {
+            const qtyBranco = parseInt(document.getElementById('quantidade_branco').value) || 0;
+            const qtyPreto = parseInt(document.getElementById('quantidade_preto').value) || 0;
+            const total = qtyBranco + qtyPreto;
+            const totalValue = total * PRICE_PER_ITEM;
+
+            // Update display
+            document.getElementById('totalBones').textContent = total;
+            document.getElementById('totalPrice').textContent = `R$ ${totalValue.toFixed(2).replace('.', ',')}`;
+            document.getElementById('totalValue').textContent = `R$ ${totalValue.toFixed(2).replace('.', ',')}`;
+
+            // Update hidden fields
+            document.getElementById('total_bones').value = total;
+            document.getElementById('valor_total').value = `R$ ${totalValue.toFixed(2).replace('.', ',')}`;
+
+            // Enable/disable submit button
+            const submitButton = document.getElementById('submitButton');
+            if (total > 0 && total <= MAX_ITEMS) {
+                submitButton.disabled = false;
+                submitButton.classList.add('active');
+            } else {
+                submitButton.disabled = true;
+                submitButton.classList.remove('active');
+            }
+
+            // Show/hide alert
+            const alert = document.getElementById('quantityAlert');
+            if (total > MAX_ITEMS) {
+                alert.style.display = 'flex';
+            } else {
+                alert.style.display = 'none';
+            }
+        }
+
+        function increaseQty(color) {
+            const input = document.getElementById(`quantidade_${color}`);
+            const currentValue = parseInt(input.value) || 0;
+            const qtyBranco = parseInt(document.getElementById('quantidade_branco').value) || 0;
+            const qtyPreto = parseInt(document.getElementById('quantidade_preto').value) || 0;
+            const currentTotal = qtyBranco + qtyPreto;
+
+            if (currentTotal < MAX_ITEMS) {
+                input.value = currentValue + 1;
+                updateQuantities();
+            }
+        }
+
+        function decreaseQty(color) {
+            const input = document.getElementById(`quantidade_${color}`);
+            const currentValue = parseInt(input.value) || 0;
+            if (currentValue > 0) {
+                input.value = currentValue - 1;
+                updateQuantities();
+            }
+        }
+
+        // Form submission handler
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const total = parseInt(document.getElementById('total_bones').value);
+            
+            if (total < 1 || total > MAX_ITEMS) {
+                alert('Por favor, selecione entre 1 e 5 bonés.');
+                return;
+            }
+
+            // Submit to Formspree
+            const formData = new FormData(this);
+            
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Redirect to payment page based on quantity
+                    window.location.href = `pagamento-${total}.html`;
+                } else {
+                    alert('Erro ao enviar formulário. Tente novamente.');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                alert('Erro ao enviar formulário. Tente novamente.');
+            });
+        });
+
+        // Initialize
+        updateQuantities();
+    </script>
+</body>
+</html>

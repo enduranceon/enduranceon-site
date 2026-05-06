@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Ícone de Distância</title>
+    <g id="Distance-Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M21,16 L21,4 L9,4 L9,6 L19,6 L19,16 L21,16 Z M17,20 L17,8 L5,8 L5,20 L17,20 Z M17,6 L7,6 L7,18 L15,18 L15,8 L17,8 L17,6 Z" id="Shape" fill="#007BFF" fill-rule="nonzero"></path>
+    </g>
+</svg>

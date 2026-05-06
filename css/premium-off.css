@@ -1,0 +1,11 @@
+/* Temporary global switch: keep only Essencial visible */
+.comparativo-card.premium,
+#periodicidade-premium,
+.plano-premium-home,
+.bio-plano.premium,
+#premium-column,
+.premium-exclusive,
+[class*="premium-link"],
+.plano-card[data-plano="premium"] {
+  display: none !important;
+}

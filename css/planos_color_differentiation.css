@@ -1,0 +1,50 @@
+/* Estilos para Plano Essencial com cor Azul */
+#periodicidade-essencial .plano-card.destaque {
+    border-color: var(--azul);
+}
+
+#periodicidade-essencial .melhor-opcao {
+    background-color: var(--azul);
+}
+
+#periodicidade-essencial .valor {
+    color: var(--azul);
+}
+
+#periodicidade-essencial .contratar-button {
+    background-color: var(--azul);
+}
+
+#periodicidade-essencial .contratar-button:hover {
+    background-color: var(--preto); /* Mantém o hover escuro ou pode ser um azul mais escuro */
+}
+
+#periodicidade-essencial .beneficios li::before {
+    color: var(--azul);
+}
+
+/* Estilos para Plano Premium com cor Laranja (mantém o padrão original) */
+#periodicidade-premium .plano-card.destaque {
+    border-color: var(--laranja);
+}
+
+#periodicidade-premium .melhor-opcao {
+    background-color: var(--laranja);
+}
+
+#periodicidade-premium .valor {
+    color: var(--laranja);
+}
+
+#periodicidade-premium .contratar-button {
+    background-color: var(--laranja);
+}
+
+#periodicidade-premium .contratar-button:hover {
+    background-color: var(--preto);
+}
+
+#periodicidade-premium .beneficios li::before {
+    color: var(--laranja);
+}
+

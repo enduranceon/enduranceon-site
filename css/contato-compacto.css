@@ -1,0 +1,151 @@
+/* Estilos para o layout compacto e horizontal da seção de contato */
+.contato-compacto {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.contato-grid-horizontal {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.contato-item-compacto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+.contato-item-compacto:hover {
+    background-color: rgba(255, 128, 18, 0.05);
+    transform: translateY(-3px);
+}
+
+.contato-icon-compacto {
+    color: #FF8012;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.contato-item-compacto h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.contato-item-compacto p,
+.contato-item-compacto a {
+    font-size: 16px;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contato-item-compacto a:hover {
+    color: #FF8012;
+}
+
+.contato-form-compacto {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-grid .form-group:nth-child(3),
+.form-grid .form-group:nth-child(4) {
+    grid-column: span 2;
+}
+
+.contato-form-compacto .form-group {
+    margin-bottom: 0;
+}
+
+.contato-form-compacto label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+.contato-form-compacto input,
+.contato-form-compacto textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.contato-form-compacto input:focus,
+.contato-form-compacto textarea:focus {
+    border-color: #FF8012;
+    box-shadow: 0 0 0 2px rgba(255, 128, 18, 0.1);
+    outline: none;
+}
+
+.contato-form-compacto textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.contato-form-compacto button {
+    background-color: #FF8012;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+    grid-column: span 2;
+}
+
+.contato-form-compacto button:hover {
+    background-color: #e67100;
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .contato-grid-horizontal {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-grid .form-group:nth-child(3),
+    .form-grid .form-group:nth-child(4) {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .contato-grid-horizontal {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .contato-item-compacto {
+        padding: 10px;
+    }
+}

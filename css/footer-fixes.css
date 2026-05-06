@@ -1,0 +1,21 @@
+/* Correções para o rodapé - Instagram alinhado */
+.footer-contato p a {
+    color: var(--cinza);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-contato p a:hover {
+    color: var(--laranja);
+}
+
+.footer-contato p a i {
+    margin-right: 8px;
+    color: var(--laranja);
+}
+
+/* Removendo estilos antigos do social-icons que não são mais necessários */
+.social-icons {
+    display: none;
+}

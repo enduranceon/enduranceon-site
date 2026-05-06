@@ -1,0 +1,148 @@
+.plano-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para o plano Essencial */
+.plano-card.essencial {
+    border-top: 5px solid #2196F3;
+}
+
+.plano-card.essencial h4 {
+    color: #2196F3;
+}
+
+/* Estilo para o plano Premium */
+.plano-card.premium {
+    border-top: 5px solid #FF6B00;
+}
+
+.plano-card.premium h4 {
+    color: #FF6B00;
+}
+
+.plano-card h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.plano-card .preco {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.plano-card .moeda {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.plano-card .valor {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 5px 0;
+}
+
+.plano-card.essencial .valor {
+    color: #2196F3;
+}
+
+.plano-card.premium .valor {
+    color: #FF6B00;
+}
+
+.plano-card .periodo {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.plano-card .economia-mensal {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.plano-card .plano-parcelamento {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.plano-card .contratar-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.plano-card.essencial .contratar-button {
+    background-color: #2196F3;
+}
+
+.plano-card.premium .contratar-button {
+    background-color: #FF6B00;
+}
+
+.plano-card .contratar-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.plano-descricao {
+    margin: 15px 0;
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Estilos para os benefícios dos planos */
+.plano-beneficios {
+    text-align: left;
+    margin: 15px 0 25px;
+}
+
+.plano-beneficios h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.plano-beneficios ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.plano-beneficios li {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #555;
+    display: flex;
+    align-items: flex-start;
+}
+
+.plano-beneficios .check-icon {
+    color: #FF6B00;
+    margin-right: 8px;
+    font-weight: bold;
+}

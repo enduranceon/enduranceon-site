@@ -1,0 +1,350 @@
+/* 
+* Endurance On - Assessoria Esportiva
+* Estilos para a calculadora de pace compacta
+*/
+
+:root {
+    --laranja: #FF8012;
+    --azul: #38B6FF;
+    --preto: #000000;
+    --branco: #FFFFFF;
+    --cinza-claro: #f5f5f5;
+    --cinza: #ddd;
+    --cinza-escuro: #666;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.calculadoras-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.calculadoras-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.calculadoras-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--preto);
+}
+
+.calculadoras-header p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--cinza-escuro);
+}
+
+/* Navegação entre calculadoras */
+.calculadoras-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.calc-nav-btn {
+    padding: 0.8rem 1.5rem;
+    background-color: var(--cinza-claro);
+    border: 2px solid var(--cinza);
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--cinza-escuro);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calc-nav-btn:hover {
+    background-color: var(--cinza);
+    color: var(--preto);
+}
+
+.calc-nav-btn.active {
+    background-color: var(--laranja);
+    border-color: var(--laranja);
+    color: var(--branco);
+}
+
+/* Layout compacto da calculadora */
+.calculadora-card {
+    background-color: var(--branco);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    display: none;
+}
+
+.calculadora-card.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.calculadora-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.calculadora-header h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--preto);
+}
+
+.calculadora-header p {
+    font-size: 1.1rem;
+    color: var(--cinza-escuro);
+}
+
+/* Layout compacto */
+.calculadora-compacta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.calculadora-inputs {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--cinza-claro);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+}
+
+.calculadora-resultados {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Formulário da calculadora */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--preto);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--cinza);
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    min-width: 0; /* Impede que o input cresça além do container */
+}
+
+.input-group select {
+    width: 80px;
+    padding: 0.8rem;
+    border: 2px solid var(--cinza);
+    border-left: none;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    background-color: var(--branco);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.tempo-inputs, .pace-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tempo-inputs input, .pace-inputs input {
+    width: 70px; /* Aumentado para acomodar números maiores */
+    padding: 0.8rem;
+    border: 2px solid var(--cinza);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.tempo-inputs span, .pace-inputs span {
+    font-weight: 600;
+    color: var(--cinza-escuro);
+}
+
+.pace-unidade {
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--cinza-escuro);
+    white-space: nowrap; /* Impede quebra de linha na unidade */
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--laranja);
+}
+
+/* Resultados */
+.resultado-card {
+    background-color: var(--cinza-claro);
+    border-radius: var(--border-radius);
+    padding: 1.2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.resultado-card h3 {
+    font-size: 1rem;
+    color: var(--cinza-escuro);
+    margin: 0;
+}
+
+.resultado-valor {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--laranja);
+}
+
+/* Informações adicionais */
+.calculadora-info {
+    background-color: rgba(56, 182, 255, 0.1);
+    border-left: 4px solid var(--azul);
+    padding: 1.2rem;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    margin-top: 1.5rem;
+}
+
+.calculadora-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--preto);
+}
+
+.calculadora-info p {
+    font-size: 0.95rem;
+    color: var(--cinza-escuro);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajustes para o rodapé */
+footer {
+    background-color: var(--preto);
+    color: var(--branco);
+    padding: 3rem 0 1rem;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.footer-logo img {
+    height: 60px;
+    margin-bottom: 1rem;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-contato {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.contato-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contato-item i {
+    color: var(--laranja);
+    font-size: 1.2rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .calculadoras-header h1 {
+        font-size: 2rem;
+    }
+    
+    .calculadoras-header p {
+        font-size: 1rem;
+    }
+    
+    .calculadora-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .calculadora-header p {
+        font-size: 1rem;
+    }
+    
+    .calculadora-inputs {
+        padding: 1rem;
+    }
+    
+    .tempo-inputs input, .pace-inputs input {
+        width: 60px;
+        padding: 0.8rem 0.5rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-contato {
+        align-items: center;
+    }
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="80" viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <path d="M10 10H50V15H10V10Z" fill="#000000"/>
+    <path d="M10 20H50V25H10V20Z" fill="#000000"/>
+    <path d="M10 30H50V35H10V30Z" fill="#000000"/>
+    <path d="M60 10H290V15H60V10Z" fill="#000000"/>
+    <path d="M60 20H290V25H60V20Z" fill="#000000"/>
+    <path d="M60 30H290V35H60V30Z" fill="#000000"/>
+    <path d="M60 40H290V45H60V40Z" fill="#000000"/>
+    <path d="M60 50H290V55H60V50Z" fill="#000000"/>
+    <path d="M60 60H290V65H60V60Z" fill="#000000"/>
+    <path d="M60 70H290V75H60V70Z" fill="#000000"/>
+    <path d="M10 40H50V45H10V40Z" fill="#FF8012"/>
+    <path d="M10 50H50V55H10V50Z" fill="#FF8012"/>
+    <path d="M10 60H50V65H10V60Z" fill="#FF8012"/>
+    <path d="M10 70H50V75H10V70Z" fill="#FF8012"/>
+    <circle cx="40" cy="60" r="15" fill="#38B6FF"/>
+    <path d="M40 50L45 60L40 70L35 60L40 50Z" fill="#FFFFFF"/>
+  </g>
+</svg>

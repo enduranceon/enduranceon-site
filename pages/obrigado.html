@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endurance On | Obrigado!</title>
+    <meta name="description" content="Obrigado por se cadastrar na Endurance On! Finalize seu pagamento para começar a treinar.">
+    <link rel="stylesheet" href="../css/styles.min.css">
+    <link rel="stylesheet" href="../css/footer-novo.min.css">
+    <link rel="stylesheet" href="../css/animations.min.css">
+    <link rel="stylesheet" href="../css/responsive.min.css">
+    <link rel="stylesheet" href="../css/planos.min.css">
+    <link rel="stylesheet" href="../css/comparativo.min.css">
+    <link rel="stylesheet" href="../css/form-fixes.min.css">
+    <link rel="stylesheet" href="../css/planos_color_differentiation.min.css">
+    <link rel="stylesheet" href="../css/whatsapp-float.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="shortcut icon" href="../favicon.ico">
+    
+    <!-- Google tag (gtag.min.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQX6YBZD9P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PQX6YBZD9P');
+    </script>
+
+    <!-- Tracking de Conversão -->
+    <script>
+      // Dispara conversão automaticamente quando a página carrega
+      window.addEventListener('load', function() {
+        // Aguarda 1 segundo para garantir que o gtag carregou
+        setTimeout(function() {
+          if (typeof gtag !== 'undefined') {
+            // Dispara evento de conversão
+            gtag('event', 'submit_lead_form', {
+              'event_category': 'Lead',
+              'event_label': 'Cadastro Concluído',
+              'value': 1
+            });
+            console.log('Conversão registrada: submit_lead_form');
+          }
+        }, 1000);
+      });
+    </script>
+
+    <style>
+
+        /* Estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Background com gradiente animado */
+        .thank-you-background {
+            background: linear-gradient(-45deg, #ff6b35, #f7931e, #ff8c42, #ff6b35);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Overlay para melhor legibilidade */
+        .thank-you-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        /* Header customizado para página de agradecimento */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Container principal */
+        .thank-you-container {
+            position: relative;
+            z-index: 2;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        /* Card principal */
+        .thank-you-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 60px 40px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Ícone de sucesso */
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
+        }
+
+        .success-icon i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Títulos */
+        .thank-you-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .thank-you-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 50px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* Timeline dos próximos passos */
+        .steps-timeline {
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .steps-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #ff6b35, #f7931e);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .timeline-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .step-content {
+            flex: 1;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            margin: 0 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .step-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .step-description {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Botão de pagamento */
+        .payment-section {
+            margin: 50px 0 30px;
+        }
+
+        .payment-button {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .payment-button:hover::before {
+            left: 100%;
+        }
+
+        .payment-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        .payment-button i {
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Informações de segurança */
+        .security-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            color: #28a745;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .security-info i {
+            font-size: 1.1rem;
+        }
+
+        /* Seção de contato */
+        .contact-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-title {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .whatsapp-contact-button {
+            background: #25d366;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .whatsapp-contact-button:hover {
+            background: #128c7e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        /* CTA adicional no topo */
+        .cta-top {
+            margin: 30px 0 40px;
+        }
+
+        .payment-button-top {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-button-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .payment-button-top:hover::before {
+            left: 100%;
+        }
+
+        .payment-button-top:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(40, 167, 69, 0.4);
+        }
+
+        .payment-button-top i {
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        /* Resumo dos dados */
+        .data-summary {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.1);
+        }
+
+        .summary-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .summary-title i {
+            color: #28a745;
+            font-size: 1.3rem;
+        }
+
+        .summary-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-label {
+            font-weight: 600;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .summary-value {
+            font-weight: 500;
+            color: #333;
+            font-size: 0.95rem;
+            text-align: right;
+        }
+
+        /* Botão voltar */
+        .back-button-section {
+            margin-top: 25px;
+        }
+
+        .back-button {
+            background: transparent;
+            color: #666;
+            border: 2px solid #ddd;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-button:hover {
+            background: #f8f9fa;
+            border-color: #ff6b35;
+            color: #ff6b35;
+            transform: translateY(-2px);
+        }
+
+        .back-button i {
+            font-size: 0.9rem;
+        }
+
+        /* Botão de edição no card */
+        .edit-data-card {
+            margin-top: 20px;
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .edit-data-button {
+            background: transparent;
+            color: #666;
+            border: 1px solid #ddd;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .edit-data-button:hover {
+            background: #f8f9fa;
+            border-color: #ff6b35;
+            color: #ff6b35;
+            transform: translateY(-1px);
+        }
+
+        .edit-data-button i {
+            font-size: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .thank-you-card {
+                padding: 40px 25px;
+                margin: 20px;
+                border-radius: 20px;
+            }
+
+            .thank-you-title {
+                font-size: 2.2rem;
+            }
+
+            .thank-you-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .steps-timeline::before {
+                display: none;
+            }
+
+            .timeline-step {
+                flex-direction: column !important;
+                text-align: center;
+            }
+
+            .timeline-step:nth-child(even) {
+                flex-direction: column !important;
+            }
+
+            .step-content {
+                margin: 15px 0;
+                width: 100%;
+            }
+
+            .step-number {
+                margin-bottom: 15px;
+            }
+
+            .payment-button {
+                padding: 18px 40px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .thank-you-title {
+                font-size: 1.8rem;
+            }
+
+            .success-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            .success-icon i {
+                font-size: 2.5rem;
+            }
+
+            .payment-button {
+                padding: 16px 35px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Animações de entrada */
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-in:nth-child(1) { animation-delay: 0.1s; }
+        .animate-in:nth-child(2) { animation-delay: 0.2s; }
+        .animate-in:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background com gradiente -->
+    <div class="thank-you-background">
+
+
+        <!-- Container principal -->
+        <div class="thank-you-container">
+            <div class="thank-you-card">
+                <!-- Ícone de sucesso -->
+                <div class="success-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+
+                <!-- Título principal -->
+                <h1 class="thank-you-title">Parabéns!</h1>
+                <p class="thank-you-subtitle">
+                    Seu cadastro foi enviado com sucesso! Pra finalizar sua inscrição na Endurance On, prossiga para o pagamento.
+                </p>
+
+                <!-- CTA Adicional no topo -->
+                <div class="cta-top">
+                    <button id="finalizarPagamentoTop" class="payment-button-top">
+                        <i class="fas fa-credit-card"></i>
+                        Finalizar Pagamento Agora
+                    </button>
+                </div>
+
+                <!-- Resumo dos dados preenchidos -->
+                <div class="data-summary">
+                    <h3 class="summary-title">
+                        <i class="fas fa-check-circle"></i>
+                        Confirme seus dados:
+                    </h3>
+                    <div class="summary-content" id="summaryContent">
+                        <div class="summary-item">
+                            <span class="summary-label">Nome:</span>
+                            <span class="summary-value" id="summaryNome">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">WhatsApp:</span>
+                            <span class="summary-value" id="summaryWhatsapp">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Modalidade:</span>
+                            <span class="summary-value" id="summaryModalidade">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Plano:</span>
+                            <span class="summary-value" id="summaryPlano">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Periodicidade:</span>
+                            <span class="summary-value" id="summaryPeriodicidade">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Treinador:</span>
+                            <span class="summary-value" id="summaryTreinador">-</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Botão de edição no card -->
+                    <div class="edit-data-card">
+                        <button id="editarDadosCard" class="edit-data-button">
+                            <i class="fas fa-edit"></i>
+                            Editar dados
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Timeline dos próximos passos -->
+                <div class="steps-timeline">
+                    <div class="timeline-step animate-in">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Finalize seu Pagamento</h3>
+                            <p class="step-description">
+                                Clique no botão abaixo para ser direcionado à nossa plataforma de pagamento seguro e finalizar sua inscrição.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step animate-in">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Receba seu Acesso</h3>
+                            <p class="step-description">
+                                Após a confirmação do pagamento, você receberá todas as instruções e acessos diretamente no seu WhatsApp.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step animate-in">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Comece a Treinar</h3>
+                            <p class="step-description">
+                                Seu treinador especializado entrará em contato para dar início à sua jornada de alta performance!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botão de pagamento -->
+                <div class="payment-section">
+                    <button id="finalizarPagamento" class="payment-button">
+                        <i class="fas fa-credit-card"></i>
+                        Finalizar Pagamento
+                    </button>
+                    
+                    <div class="security-info">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Pagamento 100% seguro via Tecnofit</span>
+                    </div>
+
+                    <!-- Botão Voltar -->
+                    <div class="back-button-section">
+                        <button id="voltarFormulario" class="back-button">
+                            <i class="fas fa-arrow-left"></i>
+                            Voltar e Editar Dados
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Seção de contato -->
+                <div class="contact-section">
+                    <h3>Dúvidas? Estamos aqui para ajudar!</h3>
+                    <a href="https://wa.me/5548991178688?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Endurance%20On." class="whatsapp-contact-button" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Entre em contato
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-logo-column">
+                    <img src="../images/logo/logo-new-white.png" alt="Endurance On Logo" class="footer-logo">
+                </div>
+                <div class="footer-nav-column">
+                    <h3>Navegação</h3>
+                    <ul class="footer-nav-links">
+                        <li><a href="../index.html#sobre">Sobre</a></li>
+                        <li><a href="../index.html#modalidades">Modalidades</a></li>
+                        <li><a href="../index.html#como-funciona">Como Funciona</a></li>
+                        <li><a href="calendario.html">Calendário</a></li>
+                        <li><a href="../index.html#parceiros">Parceiros</a></li>
+                        <li><a href="../index.html#depoimentos">Depoimentos</a></li>
+                        <li><a href="../index.html#faq">FAQ</a></li>
+                        <li><a href="../index.html#contato">Contato</a></li>
+                        <li><a href="termos.html">Termos de Contrato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-column">
+                    <h3>Contato</h3>
+                    <div class="footer-contact-info">
+                        <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/5548991178688">(48) 99117-8688</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:contato@enduranceon.com.br">contato@enduranceon.com.br</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Endurance On. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5548991178688?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Endurance%20On." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // Função para carregar dados do localStorage
+        function loadFormData() {
+            const formData = JSON.parse(localStorage.getItem('formData') || '{}');
+            const dadosFormulario = JSON.parse(localStorage.getItem('dadosCadastro') || '{}');
+            
+            // Combinar dados de ambas as fontes
+            const dados = { ...dadosFormulario, ...formData };
+            
+            // Preencher resumo dos dados
+            document.getElementById('summaryNome').textContent = dados.nome || dados.nomeCompleto || '-';
+            document.getElementById('summaryWhatsapp').textContent = dados.whatsapp || dados.telefone || '-';
+            document.getElementById('summaryModalidade').textContent = dados.modalidade || '-';
+            document.getElementById('summaryPlano').textContent = dados.plano || '-';
+            document.getElementById('summaryPeriodicidade').textContent = dados.periodicidade || '-';
+            document.getElementById('summaryTreinador').textContent = dados.treinador || '-';
+        }
+
+        // Função para abrir Tecnofit em nova janela
+        function openTecnofit() {
+            const dadosFormulario = JSON.parse(localStorage.getItem('dadosCadastro') || '{}');
+            const tecnofitUrl = dadosFormulario.urlTecnofit || localStorage.getItem('tecnofitUrl');
+            
+            if (tecnofitUrl) {
+                window.open(tecnofitUrl, '_blank');
+            } else {
+                alert('Erro: URL de pagamento não encontrada. Redirecionando para o formulário...');
+                window.location.href = 'cadastro-unificado.html';
+            }
+        }
+
+        // Função para voltar ao formulário
+        function goBack() {
+            window.history.back();
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carregar dados do formulário
+            loadFormData();
+
+            // Registrar conversão automaticamente
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'conversion_event_submit_lead_form', {
+                    'event_category': 'Lead',
+                    'event_label': 'Formulário Cadastro'
+                });
+            }
+
+            // Botões de finalizar pagamento
+            document.getElementById('finalizarPagamento').addEventListener('click', openTecnofit);
+            document.getElementById('finalizarPagamentoTop').addEventListener('click', openTecnofit);
+
+            // Botões voltar
+            document.getElementById('voltarFormulario').addEventListener('click', goBack);
+            document.getElementById('editarDadosCard').addEventListener('click', goBack);
+
+            // Animações de entrada
+            const animateElements = document.querySelectorAll('.animate-in');
+            animateElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>
+

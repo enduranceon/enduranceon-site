@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório do Ciclo de Provas - Endurance On</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <style>
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo img {
+            height: 60px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        
+        .nav-link:hover {
+            color: #38B6FF;
+            background-color: #f8f9fa;
+        }
+        
+        .report-header {
+            background: #f2f2f2;
+            color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #38B6FF;
+        }
+        
+        .report-header-content {
+            flex: 1;
+        }
+        
+        .report-logo {
+            width: 120px;
+            margin-right: 20px;
+        }
+        
+        .report-title {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+            color: #38B6FF;
+        }
+        
+        .report-subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .info-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border-left: 3px solid #38B6FF;
+            flex: 1;
+            min-width: 180px;
+        }
+        
+        .info-card h3 {
+            color: #38B6FF;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .info-card p {
+            color: #333;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        
+        .cycle-table-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .table-header {
+            background: linear-gradient(135deg, #38B6FF, #FF8012);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .table-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .cycle-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .cycle-table th {
+            background: #f8f9fa;
+            padding: 15px 10px;
+            text-align: center;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #dee2e6;
+        }
+        
+        .cycle-table td {
+            padding: 12px 10px;
+            text-align: center;
+            border-bottom: 1px solid #dee2e6;
+            vertical-align: middle;
+        }
+        
+        .cycle-table tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .week-number {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .date-range {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .period-cell {
+            font-weight: 600;
+            color: white;
+            border-radius: 5px;
+            padding: 8px 12px;
+            margin: 2px;
+        }
+        
+        /* Cores dos períodos usando apenas cinza claro conforme solicitado */
+        .period-base { background: #f2f2f2; color: #333; }
+        .period-prep-geral { background: #f2f2f2; color: #333; }
+        .period-recuperativa { background: #f2f2f2; color: #333; }
+        .period-teste { background: #f2f2f2; color: #333; }
+        .period-prep-especifico { background: #f2f2f2; color: #333; }
+        .period-competitivo { background: #f2f2f2; color: #333; }
+        .period-polimento { background: #f2f2f2; color: #333; }
+        
+        .block-row {
+            background-color: #f8f9fa;
+            border-left: 4px solid #ccc;
+        }
+        
+        /* Todos os períodos com a mesma cor de borda */
+        .block-row.period-base,
+        .block-row.period-prep-geral,
+        .block-row.period-recuperativa,
+        .block-row.period-teste,
+        .block-row.period-prep-especifico,
+        .block-row.period-competitivo,
+        .block-row.period-polimento { 
+            border-left-color: #ccc; 
+        }
+        
+        .block-header {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1rem;
+        }
+        
+        .block-weeks {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .observations-input {
+            width: 100%;
+            height: 150px !important;
+            min-height: 150px !important;
+            max-height: 150px !important;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: none;
+            font-family: inherit;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: pre-wrap;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+        
+        .observations-input:focus {
+            outline: none;
+            border-color: #38B6FF;
+            box-shadow: 0 0 0 2px rgba(56, 182, 255, 0.1);
+        }
+        
+        .char-counter {
+            font-size: 11px;
+            color: #666;
+            text-align: right;
+            margin-top: 3px;
+            font-family: monospace;
+        }
+        
+        .char-counter.warning {
+            color: #FF8012;
+            font-weight: 600;
+        }
+        
+        .char-counter.limit {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .week-row {
+            background-color: white;
+        }
+        
+        .week-indent {
+            padding-left: 30px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .action-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        
+        .btn-print {
+            background: linear-gradient(135deg, #38B6FF, #FF8012);
+            color: white;
+        }
+        
+        .btn-print:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(56, 182, 255, 0.3);
+        }
+        
+        .btn-back {
+            background: #6B7280;
+            color: white;
+        }
+        
+        .btn-back:hover {
+            background: #4B5563;
+            transform: translateY(-2px);
+        }
+        
+        .legend {
+            display: none; /* Removendo a legenda conforme solicitado */
+        }
+        
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+        }
+        
+        /* Estilos para impressão - Corrigido para garantir layout perfeito */
+        @media print {
+            body {
+                font-size: 10pt;
+                line-height: 1.2;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .main-container {
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+                display: block;
+            }
+            
+            .header, .nav-links, .action-buttons, .footer {
+                display: none !important;
+            }
+            
+            /* Wrapper simplificado para evitar problemas de layout */
+            .print-wrapper {
+                display: block !important;
+                width: 100% !important;
+                page-break-inside: avoid !important;
+            }
+            
+            .report-header {
+                background: #f2f2f2 !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+                padding: 10px !important;
+                margin-bottom: 10px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+            }
+            
+            .report-logo {
+                width: 80px !important;
+                height: auto !important;
+            }
+            
+            .report-title {
+                font-size: 16pt !important;
+                margin: 0 !important;
+            }
+            
+            .report-subtitle {
+                font-size: 10pt !important;
+                margin: 0 !important;
+            }
+            
+            .info-cards {
+                margin: 10px 0 !important;
+                padding: 0 !important;
+                display: flex !important;
+                flex-wrap: wrap !important;
+                justify-content: space-between !important;
+            }
+            
+            .info-card {
+                padding: 5px 10px !important;
+                margin: 0 5px 10px 0 !important;
+                font-size: 9pt !important;
+                border: 1px solid #ddd !important;
+                border-radius: 4px !important;
+                flex: 1 !important;
+                min-width: 120px !important;
+            }
+            
+            .info-card h3 {
+                margin: 0 0 2px 0 !important;
+                font-size: 9pt !important;
+            }
+            
+            .info-card p {
+                margin: 0 !important;
+            }
+            
+            .cycle-table-container {
+                box-shadow: none !important;
+                border: none !important;
+                margin: 0 !important;
+                width: 100% !important;
+            }
+            
+            .table-header {
+                padding: 5px !important;
+                background: #f2f2f2 !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+                border: 1px solid #ddd !important;
+                border-bottom: none !important;
+            }
+            
+            .table-header h2 {
+                font-size: 12pt !important;
+                margin: 0 !important;
+                text-align: center !important;
+            }
+            
+            .cycle-table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                font-size: 9pt !important;
+                table-layout: fixed !important;
+            }
+            
+            .cycle-table th {
+                padding: 5px !important;
+                border: 1px solid #ddd !important;
+                background-color: #f2f2f2 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                font-weight: bold !important;
+                text-align: center !important;
+            }
+            
+            .cycle-table td {
+                padding: 5px !important;
+                border: 1px solid #ddd !important;
+                vertical-align: top !important;
+                word-wrap: break-word !important;
+            }
+            
+            /* Larguras específicas para cada coluna */
+            .cycle-table th:nth-child(1), .cycle-table td:nth-child(1) {
+                width: 20% !important;
+            }
+            
+            .cycle-table th:nth-child(2), .cycle-table td:nth-child(2),
+            .cycle-table th:nth-child(3), .cycle-table td:nth-child(3) {
+                width: 15% !important;
+            }
+            
+            .cycle-table th:nth-child(4), .cycle-table td:nth-child(4) {
+                width: 50% !important;
+            }
+            
+            .block-row {
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+                background: #f2f2f2 !important;
+            }
+            
+            .observations-display {
+                min-height: auto !important;
+                max-height: none !important;
+                height: auto !important;
+                padding: 3px !important;
+                font-size: 8pt !important;
+                overflow: visible !important;
+                white-space: normal !important;
+                word-wrap: break-word !important;
+                text-align: justify !important;
+            }
+            
+            .week-row {
+                display: table-row !important; /* Mostrar linhas de semanas individuais */
+                font-size: 9pt !important;
+                background-color: #f9f9f9 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            /* Ajuste específico para a primeira coluna nas linhas de semana */
+            .week-row td:first-child {
+                padding-left: 15px !important;
+                width: 20% !important;
+                white-space: nowrap !important;
+                overflow: visible !important;
+            }
+            
+            .week-indent {
+                display: inline-block !important;
+                margin-right: 5px !important;
+                font-size: 8pt !important;
+            }
+            
+            /* Remover apenas elementos não essenciais */
+            .char-counter, .legend {
+                display: none !important;
+            }
+            
+            /* Ajustar tamanho do texto nos blocos */
+            .block-header {
+                font-size: 10pt !important;
+                margin: 0 !important;
+            }
+            
+            .block-weeks {
+                font-size: 8pt !important;
+                margin: 0 !important;
+            }
+            
+            /* Forçar quebra de página apenas após o relatório completo */
+            @page {
+                margin: 0.5cm;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cycle-table {
+                font-size: 0.8rem;
+            }
+            
+            .cycle-table th,
+            .cycle-table td {
+                padding: 8px 5px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-button {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <header class="header">
+            <div class="logo">
+                <img src="img/logo-horizontal-preta.png" alt="Endurance On">
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Início</a>
+                <a href="ciclo-provas.html" class="nav-link"><i class="fas fa-arrow-left"></i> Voltar</a>
+                <a href="#" class="nav-link active"><i class="fas fa-calendar-check"></i> Relatório</a>
+            </nav>
+        </header>
+        
+        <!-- Wrapper para impressão - mantém tudo junto -->
+        <div class="print-wrapper">
+            <div class="report-header">
+                <img src="img/logo-horizontal-preta.png" alt="Endurance On" class="report-logo">
+                <div class="report-header-content">
+                    <h1 class="report-title">Ciclo de Treinamento</h1>
+                    <p class="report-subtitle">Planejamento personalizado para sua prova</p>
+                </div>
+            </div>
+            
+            <div id="info-section" class="info-cards">
+                <!-- Será preenchido via JavaScript -->
+            </div>
+            
+            <!-- Legenda removida conforme solicitado pelo usuário -->
+            
+            <div class="cycle-table-container">
+                <div class="table-header">
+                    <h2><i class="fas fa-calendar-alt"></i> Cronograma Detalhado</h2>
+                </div>
+                <table class="cycle-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">Período/Semana</th>
+                            <th style="width: 20%;">Data de Início</th>
+                            <th style="width: 20%;">Data de Fim</th>
+                            <th style="width: 45%;">Observações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cycle-table-body">
+                        <!-- Será preenchido via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <button onclick="printReport()" class="action-button btn-print">
+                <i class="fas fa-print"></i> Imprimir / Salvar PDF
+            </button>
+            <a href="ciclo-provas.html" class="action-button btn-back">
+                <i class="fas fa-arrow-left"></i> Voltar ao Formulário
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Endurance On Assessoria Esportiva</p>
+            <p>Todos os direitos reservados</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Recuperar dados do localStorage com tratamento de erro
+            let cicloData;
+            try {
+                const rawData = localStorage.getItem('cicloData');
+                console.log("Dados brutos do localStorage:", rawData);
+                cicloData = JSON.parse(rawData);
+                
+                if (!cicloData) {
+                    throw new Error("Dados não encontrados");
+                }
+            } catch (error) {
+                console.error("Erro ao carregar dados:", error);
+                alert('Dados do ciclo não encontrados ou inválidos. Redirecionando para o formulário.');
+                window.location.href = 'ciclo-provas.html';
+                return;
+            }
+            
+            // Debug - verificar se as observações estão presentes
+            console.log("Dados do ciclo carregados:", cicloData);
+            if (cicloData.periods) {
+                cicloData.periods.forEach((period, index) => {
+                    console.log(`Período ${index+1} (${period.name}): Observação = "${period.observation || 'vazia'}"`);
+                });
+            } else {
+                console.error("Períodos não encontrados nos dados!");
+            }
+            
+            // Preencher informações gerais
+            fillInfoSection(cicloData);
+            
+            // Legenda removida conforme solicitado pelo usuário
+            // generateLegend(cicloData.periods);
+            
+            // Gerar tabela do ciclo
+            generateCycleTable(cicloData);
+        });
+        
+        function fillInfoSection(data) {
+            const infoSection = document.getElementById('info-section');
+            
+            // Formatação manual da data para evitar problemas de fuso horário
+            const dateParts = data.dataProva.split('-');
+            const dataProvaFormatted = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+            const nomeProvaText = data.nomeProva ? data.nomeProva : 'Não informado';
+            
+            infoSection.innerHTML = `
+                <div class="info-card">
+                    <h3><i class="fas fa-user"></i> Atleta</h3>
+                    <p>${data.nomeAluno}</p>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-calendar"></i> Data da Prova</h3>
+                    <p>${dataProvaFormatted}</p>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-trophy"></i> Prova</h3>
+                    <p>${nomeProvaText}</p>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-clock"></i> Duração Total</h3>
+                    <p>${data.totalSemanas} semanas</p>
+                </div>
+            `;
+        }
+        
+        // Função de legenda removida conforme solicitado pelo usuário
+        function generateLegend(periods) {
+            // Função mantida vazia para evitar erros, mas não faz nada
+            console.log("Legenda removida conforme solicitado");
+        }
+        
+        function generateCycleTable(data) {
+            const tableBody = document.getElementById('cycle-table-body');
+            
+            // Verificar se temos períodos para exibir
+            if (!data.periods || data.periods.length === 0) {
+                console.error("Nenhum período encontrado para gerar a tabela!");
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 30px;">
+                            <div style="color: #666;">
+                                <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-bottom: 15px; color: #FF8012;"></i>
+                                <p>Nenhum período foi adicionado ao ciclo.</p>
+                                <p>Por favor, volte e adicione períodos ao seu ciclo de treinamento.</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            console.log("Gerando tabela com", data.periods.length, "períodos");
+            
+            // Calcular data de início (sempre segunda-feira)
+            const startDate = calculateStartDate(data.dataProva, data.totalSemanas);
+            
+            // Mapear períodos para classes CSS
+            const periodClasses = {
+                'base': 'period-base',
+                'prep-geral': 'period-prep-geral',
+                'recuperativa': 'period-recuperativa',
+                'teste': 'period-teste',
+                'prep-especifico': 'period-prep-especifico',
+                'competitivo': 'period-competitivo',
+                'polimento': 'period-polimento'
+            };
+            
+            // Gerar linhas da tabela por blocos
+            let tableHTML = '';
+            let currentWeek = 0;
+            
+            data.periods.forEach((period, blockIndex) => {
+                const blockStartWeek = currentWeek + 1;
+                const blockEndWeek = currentWeek + period.weeks;
+                
+                const blockStartDate = new Date(startDate);
+                blockStartDate.setDate(startDate.getDate() + (currentWeek * 7));
+                
+                const blockEndDate = new Date(startDate);
+                blockEndDate.setDate(startDate.getDate() + ((currentWeek + period.weeks) * 7) - 1);
+                
+                // Linha do bloco/período
+                const observation = period.observation || '';
+                tableHTML += `
+                    <tr class="block-row ${periodClasses[period.type]}">
+                        <td>
+                            <div class="block-header">${period.name}</div>
+                            <div class="block-weeks">${period.weeks} semana${period.weeks > 1 ? 's' : ''} (${blockStartWeek}${period.weeks > 1 ? ` - ${blockEndWeek}` : ''})</div>
+                        </td>
+                        <td class="date-range">${formatDate(blockStartDate)}</td>
+                        <td class="date-range">${formatDate(blockEndDate)}</td>
+                        <td>
+                            <div class="observations-display" style="white-space: pre-wrap; min-height: 80px; padding: 12px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+                                ${observation ? observation : '<span style="color: #999; font-style: italic;">Sem observações para este período</span>'}
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                
+                // Linhas das semanas individuais (apenas informativas)
+                for (let i = 0; i < period.weeks; i++) {
+                    const weekNumber = currentWeek + i + 1;
+                    const weekStartDate = new Date(startDate);
+                    weekStartDate.setDate(startDate.getDate() + ((currentWeek + i) * 7));
+                    
+                    const weekEndDate = new Date(weekStartDate);
+                    weekEndDate.setDate(weekStartDate.getDate() + 6);
+                    
+                    tableHTML += `
+                        <tr class="week-row">
+                            <td class="week-indent">↳ Semana ${weekNumber}</td>
+                            <td>${formatDate(weekStartDate)}</td>
+                            <td>${formatDate(weekEndDate)}</td>
+                            <td class="week-observations"></td>
+                        </tr>
+                    `;
+                }
+                
+                currentWeek += period.weeks;
+            });
+            
+            tableBody.innerHTML = tableHTML;
+        }
+        
+        function calculateStartDate(endDate, totalWeeks) {
+            // Corrigir problema de fuso horário na data da prova
+            const dateParts = endDate.split('-');
+            const provaDate = new Date(parseInt(dateParts[0]), parseInt(dateParts[1]) - 1, parseInt(dateParts[2]));
+            
+            // A última semana deve terminar no domingo da semana da prova
+            // Primeiro, encontrar o domingo da semana da prova
+            const dayOfWeek = provaDate.getDay(); // 0 = domingo, 1 = segunda, etc.
+            const lastSunday = new Date(provaDate);
+            
+            // Se a prova é no domingo, usar essa data
+            // Senão, encontrar o próximo domingo
+            if (dayOfWeek !== 0) {
+                lastSunday.setDate(provaDate.getDate() + (7 - dayOfWeek));
+            }
+            
+            // Agora calcular a data de início: última semana termina no lastSunday
+            // Então a primeira semana começa (totalWeeks * 7) dias antes do lastSunday + 1
+            const startDate = new Date(lastSunday);
+            startDate.setDate(lastSunday.getDate() - (totalWeeks * 7) + 1);
+            
+            return startDate;
+        }
+        
+        function formatDate(date) {
+            return date.toLocaleDateString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+        }
+        
+        // Não precisamos mais das funções de contador de caracteres
+        // já que as observações agora são somente leitura
+        
+        // Função de impressão simples
+        function printReport() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
+

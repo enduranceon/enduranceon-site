@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endurance On | Treine com a Gente</title>
+    <meta name="description" content="Escolha seu assessoria de treinamento na Endurance On. Corrida ou Triathlon, assessoria.">
+    <link rel="stylesheet" href="../css/styles.min.css">
+    <link rel="stylesheet" href="../css/animations.min.css">
+    <link rel="stylesheet" href="../css/responsive.min.css">
+    <link rel="stylesheet" href="../css/whatsapp-float.min.css">
+    <link rel="stylesheet" href="../css/treine-com-a-gente.min.css">
+    <link rel="stylesheet" href="../css/planos-comparativo.min.css">
+    <link rel="stylesheet" href="../css/calculadora-match.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google tag (gtag.min.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQX6YBZD9P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PQX6YBZD9P');
+    </script>
+    
+    <link rel="stylesheet" href="../css/premium-off.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img class="logo-original" src="../images/logo/logo_simbolo_preto.png" alt="Endurance On Logo">
+                </a>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="../index.html#sobre">Sobre</a></li>
+                    <li><a href="../index.html#modalidades">Modalidades</a></li>
+                    <li><a href="../index.html#como-funciona">Como Funciona</a></li>
+                    <li><a href="calendario.html">Calendário</a></li>
+                    <li><a href="parceiros.html">Parceiros</a></li>
+                    <li><a href="../index.html#depoimentos">Depoimentos</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="../index.html#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="mobile-nav">
+                <div class="close-menu">
+                    <i class="fas fa-times"></i>
+                </div>
+                <ul>
+                    <li><a href="../index.html#sobre">Sobre</a></li>
+                    <li><a href="../index.html#modalidades">Modalidades</a></li>
+                    <li><a href="../index.html#como-funciona">Como Funciona</a></li>
+                    <li><a href="calendario.html">Calendário</a></li>
+                    <li><a href="parceiros.html">Parceiros</a></li>
+                    <li><a href="../index.html#depoimentos">Depoimentos</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="../index.html#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <section class="treine-container">
+            <div class="treine-header">
+                <h1>Treine com a Gente</h1>
+                <p>Escolha a modalidade, assessoria e periodicidade que melhor se encaixam nos seus objetivos. Na Endurance On, você encontra o suporte ideal para alcançar seu melhor desempenho.</p>
+            </div>
+
+            <!-- Calculadora Card -->
+            <div class="calculadora-card">
+                <h3>Indeciso sobre qual treinador escolher?</h3>
+                <p>Nossa calculadora de match pode ajudar você a encontrar o treinador que melhor se adapta ao seu perfil e objetivos.</p>
+                <a href="calculadora-match.html" class="calculadora-match-button">
+                    <i class="fas fa-calculator"></i> Encontrar meu treinador ideal
+                </a>
+            </div>
+
+            <!-- Indicador de Progresso -->
+            <div class="progresso-container">
+                <div class="progresso-passos">
+                    <div class="progresso-passo ativo" data-passo="1">
+                        <div class="progresso-circulo">1</div>
+                        <div class="progresso-texto">Modalidade</div>
+                    </div>
+                    <div class="progresso-passo" data-passo="2">
+                        <div class="progresso-circulo">2</div>
+                        <div class="progresso-texto">Assessoria</div>
+                    </div>
+                    <div class="progresso-passo" data-passo="3">
+                        <div class="progresso-circulo">3</div>
+                        <div class="progresso-texto">Treinador</div>
+                    </div>
+                    <div class="progresso-passo" data-passo="4">
+                        <div class="progresso-circulo">4</div>
+                        <div class="progresso-texto">Periodicidade</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtro de Modalidade -->
+            <div class="filtros-container" id="filtro-modalidade">
+                <div class="filtro-grupo">
+                    <h2 class="filtro-titulo">Escolha sua modalidade</h2>
+                    <div class="filtro-opcoes">
+                        <div class="filtro-opcao" data-modalidade="corrida">
+                            <img src="../images/icons/running_icon.svg" alt="Corrida">
+                            <h3>Corrida</h3>
+                            <p>Treinamento especializado para provas de rua, pista e maratonas.</p>
+                        </div>
+                        <div class="filtro-opcao" data-modalidade="triathlon">
+                            <img src="../images/icons/triathlon_composite_icon.svg" alt="Triathlon">
+                            <h3>Triathlon</h3>
+                            <p>Preparação completa para as três modalidades: natação, ciclismo e corrida.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="navegacao-botoes">
+                    <div></div> <!-- Espaço vazio para alinhamento -->
+                    <button class="btn-avancar" id="avancar-para-plano" disabled>
+                        Avançar <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filtro de Plano -->
+            <div class="filtros-container" id="filtro-plano" style="display: none;">
+                <div class="filtro-grupo">
+                    <h2 class="filtro-titulo">Escolha seu assessoria</h2>
+                    <div class="filtro-opcoes" id="opcoes-plano">
+                        <!-- Conteúdo dinâmico baseado na modalidade selecionada -->
+                    </div>
+                </div>
+                <div class="navegacao-botoes">
+                    <button class="btn-voltar" id="voltar-para-modalidade">
+                        <i class="fas fa-arrow-left"></i> Voltar
+                    </button>
+                    <button class="btn-avancar" id="avancar-para-comparativo" disabled>
+                        Avançar <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Detalhes da Assessoria -->
+            <div class="comparativo-container" id="comparativo-planos">
+                <div class="comparativo-header">
+                    <h2>Detalhes da Assessoria</h2>
+                    <p>Confira os detalhes da assessoria disponível para a modalidade selecionada.</p>
+                </div>
+                <div id="tabela-comparativa">
+                    <!-- Conteúdo dinâmico baseado na modalidade selecionada -->
+                </div>
+                <div class="navegacao-botoes">
+                    <button class="btn-voltar" id="voltar-para-plano">
+                        <i class="fas fa-arrow-left"></i> Voltar
+                    </button>
+                    <button class="btn-avancar" id="avancar-para-periodicidade">
+                        Avançar <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filtro de Treinador -->
+            <div class="filtros-container" id="filtro-treinador" style="display: none;">
+                <div class="filtro-grupo">
+                    <h2 class="filtro-titulo">Escolha seu treinador</h2>
+                    <div class="treinadores-grid" id="opcoes-treinador">
+                        <!-- Conteúdo dinâmico baseado na modalidade selecionada -->
+                    </div>
+                </div>
+                <div class="navegacao-botoes">
+                    <button class="btn-voltar" id="voltar-para-plano">
+                        <i class="fas fa-arrow-left"></i> Voltar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filtro de Periodicidade -->
+            <div class="periodicidade-container" id="filtro-periodicidade">
+                <div class="periodicidade-header">
+                    <h2>Escolha a periodicidade</h2>
+                    <p>Selecione o período de pagamento que melhor se adapta às suas necessidades.</p>
+                </div>
+                <div class="periodicidade-opcoes" id="opcoes-periodicidade">
+                    <!-- Conteúdo dinâmico baseado na modalidade selecionada -->
+                </div>
+                <div class="navegacao-botoes">
+                    <button class="btn-voltar" id="voltar-para-treinador">
+                        <i class="fas fa-arrow-left"></i> Voltar
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/logo/logo_simbolo_branco.png" alt="Endurance On Logo">
+                </div>
+                <div class="footer-info">
+                    <div class="footer-contato">
+                        <div class="contato-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+55 (48) 99153-0162</span>
+                        </div>
+                        <div class="contato-item">
+                            <i class="far fa-envelope"></i>
+                            <span>contato@enduranceon.com.br</span>
+                        </div>
+                        <div class="contato-item">
+                            <i class="fab fa-instagram"></i>
+                            <span>@endurance_on</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Endurance On - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Flutuante -->
+    <a href="https://wa.me/5548991530162" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="../js/menu.min.js"></script>
+    <script src="../js/treinadores-links.min.js"></script>
+    <script src="../js/treine-com-a-gente.js"></script>
+    <link rel="stylesheet" href="../css/treinadores-links.min.css">
+</body>
+</html>

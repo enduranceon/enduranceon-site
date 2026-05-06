@@ -1,0 +1,82 @@
+/* 
+* Endurance On - Link na Bio
+* Estilos para galeria de treinadores em grid
+*/
+
+.treinadores-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 treinadores por linha */
+    gap: 10px;
+    margin-bottom: var(--spacing-md);
+}
+
+.treinador-card {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    aspect-ratio: 1/1;
+}
+
+.treinador-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.treinador-card a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.treinador-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.treinador-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: var(--spacing-xs);
+    color: var(--branco);
+    text-align: center;
+}
+
+.treinador-name {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.treinador-cref {
+    font-size: 0.7rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .treinadores-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 treinadores por linha em tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    .treinadores-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 treinadores por linha em celulares */
+    }
+    
+    .treinador-name {
+        font-size: 0.8rem;
+    }
+    
+    .treinador-cref {
+        font-size: 0.65rem;
+    }
+}

@@ -1,0 +1,521 @@
+/* 
+* Endurance On - Link na Bio
+* Estilos principais
+*/
+
+/* ===== VARIÁVEIS ===== */
+:root {
+    /* Cores da identidade visual */
+    --preto: #000000;
+    --branco: #FFFFFF;
+    --laranja: #FF8012;
+    --azul: #38B6FF;
+    --cinza: #BFBFBF;
+    
+    /* Cores adicionais */
+    --cinza-escuro: #333333;
+    --cinza-claro: #F5F5F5;
+    --overlay: rgba(0, 0, 0, 0.7);
+    
+    /* Espaçamentos */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+    
+    /* Bordas */
+    --border-radius: 12px;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== RESET E ESTILOS GERAIS ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--preto);
+    background-color: var(--branco);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url('../images/bg-pattern.png');
+    background-size: 200px;
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* ===== HEADER ===== */
+.header {
+    padding: var(--spacing-md) 0;
+    text-align: center;
+    position: relative;
+}
+
+.logo {
+    max-width: 120px;
+    margin: 0 auto var(--spacing-md);
+}
+
+.profile {
+    position: relative;
+    margin-bottom: var(--spacing-md);
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--laranja);
+    margin: 0 auto;
+    display: block;
+}
+
+.profile-name {
+    margin-top: var(--spacing-sm);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.profile-bio {
+    max-width: 400px;
+    margin: 0 auto var(--spacing-md);
+    color: var(--cinza-escuro);
+}
+
+/* ===== LINKS SECTION ===== */
+.links-section {
+    padding: var(--spacing-md) 0;
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.link-card {
+    background-color: var(--branco);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.link-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.link-card a {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    color: var(--preto);
+    position: relative;
+    z-index: 1;
+}
+
+.link-card.primary {
+    background-color: var(--laranja);
+}
+
+.link-card.primary a {
+    color: var(--branco);
+}
+
+.link-card.secondary {
+    background-color: var(--azul);
+}
+
+.link-card.secondary a {
+    color: var(--branco);
+}
+
+.link-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: var(--spacing-md);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.link-content {
+    flex: 1;
+}
+
+.link-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.link-description {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ===== FEATURED SECTION ===== */
+.featured-section {
+    padding: var(--spacing-md) 0;
+}
+
+.featured-title {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+
+.featured-item {
+    background-color: var(--branco);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    aspect-ratio: 1/1;
+    position: relative;
+}
+
+.featured-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.featured-item a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.featured-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.featured-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: var(--spacing-sm);
+    color: var(--branco);
+}
+
+.featured-item-title {
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+/* ===== SOCIAL MEDIA ===== */
+.social-section {
+    padding: var(--spacing-md) 0;
+    text-align: center;
+}
+
+.social-title {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--branco);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: var(--preto);
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.social-icon.instagram:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    color: var(--branco);
+}
+
+.social-icon.facebook:hover {
+    background-color: #1877F2;
+    color: var(--branco);
+}
+
+.social-icon.strava:hover {
+    background-color: #FC4C02;
+    color: var(--branco);
+}
+
+.social-icon.whatsapp:hover {
+    background-color: #25D366;
+    color: var(--branco);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    padding: var(--spacing-md) 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-logo {
+    max-width: 80px;
+    margin: 0 auto var(--spacing-sm);
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: var(--cinza-escuro);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header, .links-container, .featured-section, .social-section, .footer {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.links-container .link-card:nth-child(1) { animation-delay: 0.1s; }
+.links-container .link-card:nth-child(2) { animation-delay: 0.2s; }
+.links-container .link-card:nth-child(3) { animation-delay: 0.3s; }
+.links-container .link-card:nth-child(4) { animation-delay: 0.4s; }
+.links-container .link-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* ===== HERO SECTION ===== */
+.hero {
+    height: 200px;
+    background-image: url('../images/banner_principal_novo.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--branco);
+    padding: var(--spacing-md);
+}
+
+.hero-title {
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-xs);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .featured-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--cinza-claro);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--laranja);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--azul);
+}
+
+/* ===== PULSE EFFECT ===== */
+.pulse {
+    position: relative;
+}
+
+.pulse::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: inherit;
+    border-radius: inherit;
+    z-index: -1;
+    animation: pulse 2s infinite;
+    opacity: 0.7;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+}
+
+/* ===== HOVER EFFECTS ===== */
+.link-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.link-card:hover::before {
+    transform: translateX(100%);
+}
+
+/* ===== LINK CARD DARK (ENDURANCE CAMP) ===== */
+.link-card.dark {
+    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+    color: var(--branco);
+    border: 1px solid #333;
+}
+
+.link-card.dark:hover {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.link-card.dark .link-title {
+    color: var(--branco);
+    font-weight: 700;
+}
+
+.link-card.dark .link-description {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.link-card.dark .link-icon {
+    color: var(--branco);
+}
+

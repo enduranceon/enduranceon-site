@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datas Ironman - Calendário de Treinos | Endurance On</title>
+    <meta name="description" content="Confira o calendário completo de treinos do Time Ironman Endurance On">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <img src="../images/logo/logo-new-white.png" alt="Endurance On">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h2>Calendário de Treinos - Time Ironman</h2>
+            <p>Fique por dentro de todos os treinos do Time Ironman Endurance On</p>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters">
+        <div class="container">
+            <div class="filter-group">
+                <label for="filter-periodo">Período:</label>
+                <select id="filter-periodo">
+                    <option value="">Todos</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="filter-coletivo">Treino:</label>
+                <select id="filter-coletivo">
+                    <option value="">Todos</option>
+                    <option value="coletivo">Apenas Coletivos</option>
+                    <option value="individual">Apenas Individuais</option>
+                </select>
+            </div>
+
+            <button id="clear-filters">Limpar Filtros</button>
+        </div>
+    </section>
+
+    <!-- Events List -->
+    <section class="events-list-section">
+        <div class="container">
+            <div id="events-list">
+                <!-- Events will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="event-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-header">
+                <span class="modal-badge" id="modal-badge"></span>
+            </div>
+            <h2 id="modal-title"></h2>
+            <div class="modal-body">
+                <div class="modal-info">
+                    <strong>Data:</strong>
+                    <span id="modal-date"></span>
+                </div>
+                <div class="modal-info">
+                    <strong>Horário:</strong>
+                    <span id="modal-time"></span>
+                </div>
+                <div class="modal-info">
+                    <strong>Período:</strong>
+                    <span id="modal-periodo"></span>
+                </div>
+                <div class="modal-info" id="modal-local-container">
+                    <strong>Local:</strong>
+                    <span id="modal-local"></span>
+                </div>
+                <div class="modal-info" id="modal-treino-container">
+                    <strong>Descrição:</strong>
+                    <p id="modal-treino"></p>
+                </div>
+            </div>
+            <div class="modal-footer" id="modal-footer">
+                <!-- Maps button will be added here if available -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Endurance On. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

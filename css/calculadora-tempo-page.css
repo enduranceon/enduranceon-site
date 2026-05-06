@@ -1,0 +1,341 @@
+/* Estilos para a Calculadora de Tempo/Pace/Distância - Interface Visual */
+
+/* Estilos Gerais da Página */
+.page-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-title h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.page-title p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.calculadora-icon {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #f15922, #38b6ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+}
+
+.calculadora-icon i {
+    font-size: 3rem;
+    color: white;
+}
+
+/* Container Principal */
+.calculadora-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+    padding: 0 15px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Cards da Calculadora */
+.calc-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    height: fit-content;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+}
+
+.calc-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border-color: #f15922;
+}
+
+/* Header do Card */
+.calc-card-header {
+    background: linear-gradient(135deg, #f15922, #38b6ff);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.calc-card-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    backdrop-filter: blur(10px);
+}
+
+.calc-card-icon i {
+    font-size: 1.8rem;
+    color: white;
+}
+
+.calc-card-header h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    line-height: 1.2;
+}
+
+.calc-card-header p {
+    font-size: 0.9rem;
+    margin: 0;
+    opacity: 0.9;
+    line-height: 1.3;
+}
+
+/* Body do Card */
+.calc-card-body {
+    padding: 22px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Linha de Inputs */
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.input-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-col label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+
+/* Inputs Individuais */
+.input-col input[type="number"],
+.input-col input[type="text"] {
+    padding: 14px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    background: #fafafa;
+    min-height: 50px;
+}
+
+.input-col input[type="number"]:focus,
+.input-col input[type="text"]:focus {
+    outline: none;
+    border-color: #f15922;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+/* Display de Resultado */
+.result-display {
+    background: linear-gradient(135deg, #f15922, #38b6ff);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    margin-top: auto;
+    min-height: 60px;
+}
+
+.result-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.result-icon i {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.result-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.result-label {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.result-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+}
+
+/* Animações para Resultados */
+.result-display.updated {
+    animation: resultPulse 0.6s ease;
+}
+
+@keyframes resultPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Estados dos Cards */
+.calc-card.active {
+    border-color: #f15922;
+    box-shadow: 0 15px 40px rgba(255, 107, 53, 0.2);
+}
+
+.calc-card.calculating .result-display {
+    background: linear-gradient(135deg, #28a745, #20c997);
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .calculadora-container {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+        margin: 40px auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .calculadora-container {
+        gap: 20px;
+        padding: 0 10px;
+        max-width: 100%;
+    }
+    
+    .calc-card-header {
+        padding: 18px;
+    }
+    
+    .calc-card-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .calc-card-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .calc-card-body {
+        padding: 18px 16px;
+    }
+    
+    .result-display {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+        padding: 14px;
+    }
+    
+    .result-text {
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .calc-card {
+        min-height: 400px;
+    }
+    
+    .calc-card-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .calc-card-header p {
+        font-size: 0.85rem;
+    }
+    
+    .input-col input[type="number"],
+    .input-col input[type="text"] {
+        padding: 12px 14px;
+        font-size: 1rem;
+        min-height: 45px;
+    }
+    
+    .result-value {
+        font-size: 1.1rem;
+    }
+    
+    .calc-card-body {
+        padding: 16px 14px;
+    }
+}
+
+/* Efeitos Visuais Especiais */
+.calc-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #f15922, #38b6ff);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.calc-card:hover::before,
+.calc-card.active::before {
+    opacity: 1;
+}
+
+/* Indicador de Cálculo Ativo */
+.calc-card.calculating::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 12px;
+    height: 12px;
+    background: #28a745;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+

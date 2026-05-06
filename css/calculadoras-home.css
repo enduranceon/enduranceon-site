@@ -1,0 +1,219 @@
+/* Seção Calculadoras na Página Inicial */
+.calculadoras-home-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 80px 0;
+}
+
+.calculadoras-home-section .section-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.calculadoras-home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.calc-home-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.calc-home-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: #f15922;
+}
+
+.calc-home-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.calc-home-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #f15922, #38b6ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transition: all 0.3s ease;
+}
+
+.calc-home-card:hover .calc-home-icon {
+    transform: scale(1.1);
+}
+
+.calc-home-icon i {
+    font-size: 1.8rem;
+    color: white;
+}
+
+.calc-home-header h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.calc-home-header p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.calc-home-features {
+    margin-bottom: 25px;
+}
+
+.calc-home-features p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.calc-feature {
+    font-size: 0.9rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.calc-feature::before {
+    content: "✓";
+    color: #28a745;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.calc-home-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #f15922, #38b6ff);
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.calc-home-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(241, 89, 34, 0.3);
+    text-decoration: none;
+    color: white;
+}
+
+.calc-home-button i {
+    transition: transform 0.3s ease;
+}
+
+.calc-home-button:hover i {
+    transform: translateX(5px);
+}
+
+.calculadoras-home-cta {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.calculadoras-home-cta .section-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #f15922, #38b6ff);
+    color: white;
+    text-decoration: none;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.calculadoras-home-cta .section-cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(241, 89, 34, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+.calculadoras-home-cta .section-cta-button i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.calculadoras-home-cta .section-cta-button:hover i {
+    transform: scale(1.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .calculadoras-home-section {
+        padding: 60px 0;
+    }
+    
+    .calculadoras-home-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+    
+    .calc-home-card {
+        padding: 25px;
+    }
+    
+    .calc-home-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .calc-home-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .calc-home-header h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculadoras-home-section {
+        padding: 50px 0;
+    }
+    
+    .calc-home-card {
+        padding: 20px;
+    }
+    
+    .calc-home-button {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .calculadoras-home-cta .section-cta-button {
+        padding: 15px 25px;
+        font-size: 1rem;
+    }
+}
+
