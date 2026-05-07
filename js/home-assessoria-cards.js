@@ -67,8 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const precoHTML = isMensal
       ? `<div class="home-price">${brl(data.valorMes)}<small>/mês</small></div>
          <div class="home-price-foot">Cobrança mensal recorrente</div>`
-      : `<div class="home-price">${brl(data.total)}</div>
-         <div class="home-price-foot">Em até ${nParcelas}x de ${brl(data.valorMes)} · cobrança única</div>`;
+      : `<div class="home-price">${brl(data.valorMes)}<small>/mês</small></div>
+         <div class="home-price-foot">Total ${brl(data.total)} · parcelado em até ${nParcelas}x · cobrança única</div>`;
 
     return `
       <article class="home-period-card ${data.destaque ? 'highlight' : ''}">
