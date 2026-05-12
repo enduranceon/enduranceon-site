@@ -104,19 +104,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const checkoutUrl = tecnoFitLinks[modalidadeSelect.value]?.[periodicidadeSelect.value];
     if (!checkoutUrl) return alert("Link de checkout não encontrado para a combinação selecionada.");
 
-    const formData = new FormData();
-    formData.append("nome_completo", nomeInput.value);
-    formData.append("whatsapp", whatsappInput.value);
-    formData.append("modalidade", modalidadeSelect.options[modalidadeSelect.selectedIndex].text);
-    formData.append("periodicidade", periodicidadeSelect.options[periodicidadeSelect.selectedIndex].text);
-    formData.append("regiao", regiaoSelect.options[regiaoSelect.selectedIndex].text);
-    formData.append("treinador", treinadorSelect.options[treinadorSelect.selectedIndex].text);
-    formData.append("termos", "aceito");
+    let nextInput = form.querySelector('input[name="_next"]');
+    if (!nextInput) {
+      nextInput = document.createElement("input");
+      nextInput.type = "hidden";
+      nextInput.name = "_next";
+      form.appendChild(nextInput);
+    }
+    nextInput.value = checkoutUrl;
 
-    fetch(form.action, { method: "POST", body: formData, headers: { Accept: "application/json" } })
-      .then(() => { window.location.href = checkoutUrl; })
-      .catch(() => {
-        alert("Nao foi possivel enviar seu cadastro agora. Tente novamente em alguns instantes.");
-      });
+    form.submit();
   });
 });
