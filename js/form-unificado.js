@@ -113,7 +113,10 @@ document.addEventListener("DOMContentLoaded", function () {
     formData.append("treinador", treinadorSelect.options[treinadorSelect.selectedIndex].text);
     formData.append("termos", "aceito");
 
-    fetch("https://formspree.io/f/xlgzljke", { method: "POST", body: formData, headers: { Accept: "application/json" } })
-      .finally(() => { window.location.href = checkoutUrl; });
+    fetch(form.action, { method: "POST", body: formData, headers: { Accept: "application/json" } })
+      .then(() => { window.location.href = checkoutUrl; })
+      .catch(() => {
+        alert("Nao foi possivel enviar seu cadastro agora. Tente novamente em alguns instantes.");
+      });
   });
 });
