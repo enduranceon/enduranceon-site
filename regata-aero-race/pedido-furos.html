@@ -107,6 +107,50 @@
             border-radius: 8px;
             padding: 10px;
         }
+
+        .closed-box {
+            background: #fff3e8;
+            border: 1px solid rgba(255, 128, 18, 0.35);
+            border-left: 5px solid #FF8012;
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 16px;
+        }
+        .closed-box strong {
+            display: block;
+            color: #111;
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+        .closed-box p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+        .closed-box p:last-child { margin-bottom: 0; }
+        .btn-disabled {
+            border: none;
+            background: #999;
+            color: #fff;
+            width: 100%;
+            border-radius: 8px;
+            padding: 14px;
+            font-weight: 800;
+            font-size: 15px;
+            margin-top: 18px;
+            cursor: not-allowed;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            color: #FF8012;
+            font-size: 13px;
+            font-weight: 800;
+            text-decoration: none;
+            margin-top: 16px;
+        }
+        .back-link:hover { color: #e06e00; }
         @media (max-width: 900px) {
             .container { grid-template-columns: 1fr; }
             .hero h1 { font-size: 28px; }
@@ -121,7 +165,7 @@
 
     <section class="hero">
         <h1>Pedido <span>Regata Aero Race com Furos</span></h1>
-        <p>Preencha os dados abaixo para registrar seu pedido. Nossa equipe confirma tudo com você depois.</p>
+        <p>A pré-venda desta coleção foi encerrada. Esta página não aceita mais novos pedidos.</p>
     </section>
 
     <main class="container">
@@ -136,86 +180,16 @@
         </section>
 
         <section class="card">
-            <h2>Formulario de Pedido</h2>
-            <p class="hint">Todos os campos sao obrigatorios.</p>
-            <form class="form-grid" style="margin-top:16px;" action="https://formspree.io/f/xaqvapke" method="POST">
-                <input type="hidden" name="produto" value="Regata Aero Race com Furos">
-                <input type="hidden" name="_next" value="https://www.enduranceon.com.br/regata-aero-race/obrigado.html?voltar=pedido-furos.html">
-
-                <div>
-                    <label for="nome">Nome completo</label>
-                    <input id="nome" name="nome_completo" type="text" autocomplete="name" required>
-                </div>
-
-                <div>
-                    <label for="whatsapp">Whatsapp</label>
-                    <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(48) 99999-9999" pattern="^\(\d{2}\)\s\d{4,5}-\d{4}$" required>
-                    <p class="hint">Formato valido: (DDD) 99999-9999</p>
-                </div>
-
-                <div>
-                    <label for="modelagem">Modelagem da Regata</label>
-                    <select id="modelagem" name="modelagem" required>
-                        <option value="">Selecione</option>
-                        <option>Masculino</option>
-                        <option>Feminino</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="tamanho">Tamanho</label>
-                    <select id="tamanho" name="tamanho" required>
-                        <option value="">Selecione</option>
-                        <option>PP</option>
-                        <option>P</option>
-                        <option>M</option>
-                        <option>G</option>
-                        <option>GG</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="cor">Cor</label>
-                    <select id="cor" name="cor" required>
-                        <option value="">Selecione</option>
-                        <option>Branca</option>
-                        <option>Preta</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="pagamento">Forma de Pagamento</label>
-                    <select id="pagamento" name="forma_pagamento" required>
-                        <option value="">Selecione</option>
-                        <option>Pix</option>
-                        <option>Cartao de credito</option>
-                    </select>
-                </div>
-
-                <button class="btn" type="submit">Enviar Pedido</button>
-                <p class="warning">Pedido enviado com sucesso apos o preenchimento completo do formulario.</p>
-            </form>
+            <h2>Pré-venda Encerrada</h2>
+            <p class="hint">Esta página não aceita mais novos pedidos.</p>
+            <div class="closed-box" role="status" aria-live="polite">
+                <strong>Os pedidos desta coleção foram finalizados.</strong>
+                <p>A pré-venda da Regata Aero Race com Furos foi encerrada em 19/05 e a lista já foi fechada para envio aos fornecedores.</p>
+                <p>Para evitar novos registros fora do prazo, o formulário de pedido foi removido desta página.</p>
+            </div>
+            <button class="btn-disabled" type="button" disabled>Pré-venda Encerrada</button>
+            <a class="back-link" href="./index.html">Voltar para a coleção</a>
         </section>
     </main>
-
-    <script>
-        var whatsappInput = document.getElementById('whatsapp');
-        whatsappInput.addEventListener('input', function (event) {
-            var digits = event.target.value.replace(/\D/g, '').slice(0, 11);
-            if (digits.length <= 2) {
-                event.target.value = digits ? '(' + digits : '';
-                return;
-            }
-            if (digits.length <= 6) {
-                event.target.value = '(' + digits.slice(0, 2) + ') ' + digits.slice(2);
-                return;
-            }
-            if (digits.length <= 10) {
-                event.target.value = '(' + digits.slice(0, 2) + ') ' + digits.slice(2, 6) + '-' + digits.slice(6);
-                return;
-            }
-            event.target.value = '(' + digits.slice(0, 2) + ') ' + digits.slice(2, 7) + '-' + digits.slice(7);
-        });
-    </script>
 </body>
 </html>
