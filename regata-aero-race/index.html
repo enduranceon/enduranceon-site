@@ -19,7 +19,24 @@
             color: #1a1a1a;
         }
 
-        /* ── HEADER ── */
+        /* BANNER PRE-VENDA ENCERRADA */
+        .banner-encerrado {
+            background: #c0392b;
+            color: #fff;
+            text-align: center;
+            padding: 14px 20px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .banner-encerrado span {
+            display: inline-block;
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        /* HEADER */
         header {
             background: #000;
             padding: 18px 40px;
@@ -50,7 +67,7 @@
             color: #FF8012;
         }
 
-        /* ── HERO ── */
+        /* HERO */
         .hero {
             background: linear-gradient(160deg, #111 0%, #1c1c1c 60%, #222 100%);
             color: white;
@@ -87,7 +104,7 @@
             line-height: 1.8;
         }
 
-        /* ── ACCENT LINE ── */
+        /* ACCENT LINE */
         .accent-line {
             width: 50px;
             height: 3px;
@@ -96,7 +113,7 @@
             margin: 0 auto 50px;
         }
 
-        /* ── SECTION ── */
+        /* SECTION */
         .section {
             max-width: 1100px;
             margin: 0 auto;
@@ -118,7 +135,7 @@
             margin-bottom: 50px;
         }
 
-        /* ── CAROUSEL ── */
+        /* CAROUSEL */
         .shirt-carousel {
             position: relative;
             overflow: hidden;
@@ -148,6 +165,7 @@
             max-height: 300px;
             object-fit: contain;
             filter: drop-shadow(0 6px 14px rgba(0,0,0,0.15));
+            opacity: 0.5;
         }
 
         .carousel-dots {
@@ -188,9 +206,9 @@
         .label-dark { background: #111; color: #fff; }
         .label-white { background: #e8e8e8; color: #333; }
 
-        /* ── EXCLUSIVE BANNER ── */
+        /* EXCLUSIVE BANNER */
         .exclusive-banner {
-            background: #111;
+            background: #2c2c2c;
             color: #fff;
             border-radius: 10px;
             padding: 18px 24px;
@@ -208,10 +226,10 @@
         }
 
         .exclusive-banner strong {
-            color: #FF8012;
+            color: #e74c3c;
         }
 
-        /* ── PRICE TAG ── */
+        /* PRICE TAG */
         .price-wrap {
             margin-bottom: 20px;
         }
@@ -219,8 +237,9 @@
         .price-main {
             font-size: 26px;
             font-weight: 800;
-            color: #FF8012;
+            color: #aaa;
             line-height: 1;
+            text-decoration: line-through;
         }
 
         .price-sub {
@@ -230,7 +249,7 @@
             line-height: 1.5;
         }
 
-        /* ── CARDS GRID ── */
+        /* CARDS GRID */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -242,14 +261,9 @@
             border-radius: 14px;
             overflow: hidden;
             box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-        }
-
-        .shirt-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            opacity: 0.75;
         }
 
         .shirt-image-wrap {
@@ -265,12 +279,8 @@
             max-width: 100%;
             max-height: 300px;
             object-fit: contain;
-            filter: drop-shadow(0 6px 14px rgba(0,0,0,0.15));
+            filter: drop-shadow(0 6px 14px rgba(0,0,0,0.15)) grayscale(60%);
             transition: transform 0.4s ease;
-        }
-
-        .shirt-card:hover .shirt-image-wrap img {
-            transform: scale(1.04);
         }
 
         .shirt-body {
@@ -282,8 +292,8 @@
 
         .shirt-tag {
             display: inline-block;
-            background: #fff3e8;
-            color: #FF8012;
+            background: #f0f0f0;
+            color: #999;
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 1.5px;
@@ -301,41 +311,24 @@
             line-height: 1.2;
         }
 
-        .shirt-desc {
-            display: none;
-        }
-
-        .btn-whatsapp {
+        .btn-encerrado {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background: #FF8012;
+            background: #999;
             color: #fff;
-            text-decoration: none;
             padding: 15px 24px;
             border-radius: 8px;
             font-size: 15px;
             font-weight: 700;
             letter-spacing: 0.3px;
-            transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
-            box-shadow: 0 4px 14px rgba(255,128,18,0.35);
             border: none;
-            cursor: pointer;
+            cursor: not-allowed;
             width: 100%;
         }
 
-        .btn-whatsapp:hover {
-            background: #e06e00;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(255,128,18,0.45);
-        }
-
-        .btn-whatsapp svg {
-            flex-shrink: 0;
-        }
-
-        /* ── PROCESS SECTION ── */
+        /* PROCESS SECTION */
         .process-section {
             background: #111;
             color: white;
@@ -394,7 +387,7 @@
             line-height: 1.6;
         }
 
-        /* ── TIMELINE SECTION ── */
+        /* TIMELINE SECTION */
         .timeline-section {
             background: #f7f7f7;
             padding: 70px 30px;
@@ -451,8 +444,9 @@
         }
 
         .timeline-item--highlight .timeline-dot {
-            background: #FF8012;
+            background: #c0392b;
             color: #fff;
+            border-color: #c0392b;
         }
 
         .timeline-content {
@@ -486,10 +480,14 @@
         }
 
         .timeline-item--highlight .timeline-content {
-            border-left: 3px solid #FF8012;
+            border-left: 3px solid #c0392b;
         }
 
-        /* ── FOOTER ── */
+        .timeline-item--highlight .timeline-date {
+            color: #c0392b;
+        }
+
+        /* FOOTER */
         footer {
             background: #000;
             color: #777;
@@ -512,7 +510,7 @@
             color: #ccc;
         }
 
-        /* ── RESPONSIVE ── */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             header {
                 padding: 14px 20px;
@@ -552,6 +550,11 @@
 </head>
 <body>
 
+    <!-- BANNER PRE-VENDA ENCERRADA -->
+    <div class="banner-encerrado">
+        <span>🔒</span> PRE-VENDA ENCERRADA — Os pedidos desta coleção foram finalizados.
+    </div>
+
     <!-- HEADER -->
     <header>
         <div class="header-logo">
@@ -567,18 +570,18 @@
     <section class="hero">
         <p class="hero-eyebrow">Uniformes Endurance On</p>
         <h1>Coleção <span>Regata Aero Race</span></h1>
-        <p>Escolha o modelo que mais combina com você, entre no grupo do WhatsApp e aguarde o formulário de pedido.</p>
+        <p>As inscrições desta pré-venda foram encerradas. Fique de olho nas próximas coleções!</p>
     </section>
 
     <!-- SHIRTS -->
     <div class="section">
         <div class="accent-line"></div>
-        <h2 class="section-title">Escolha seu Modelo</h2>
-        <p class="section-subtitle">Clique no botão abaixo do modelo desejado para entrar no grupo e acompanhar o processo de pedido.</p>
+        <h2 class="section-title">Modelos da Coleção</h2>
+        <p class="section-subtitle">O prazo para pedidos foi encerrado em 19/05. Não é mais possível realizar novos pedidos.</p>
 
         <div class="exclusive-banner">
-            <span class="exclusive-icon">&#9733;</span>
-            <span><strong>Peças exclusivas &mdash; sem estoque!</strong> Os pedidos serão produzidos sob encomenda. Após encerrado o prazo, não haverá novas rodadas de pedido.</span>
+            <span class="exclusive-icon">🔒</span>
+            <span><strong>Pré-venda encerrada.</strong> O prazo para pedidos desta coleção foi finalizado. Obrigado a todos que participaram!</span>
         </div>
 
         <div class="cards-grid">
@@ -588,7 +591,7 @@
                 <div class="shirt-carousel" id="carousel-furos">
                     <div class="carousel-slide active">
                         <span class="carousel-label label-dark">Preta</span>
-                        <img src="./aeroswift_com_furos.png" alt="Regata Aero Race com Furos - Preta">
+                        <img src="./aeroswipt_com_furos.png" alt="Regata Aero Race com Furos - Preta">
                     </div>
                     <div class="carousel-slide">
                         <span class="carousel-label label-white">Branca</span>
@@ -604,14 +607,11 @@
                     <h3 class="shirt-name">Regata Aero Race com Furos</h3>
                     <div class="price-wrap">
                         <div class="price-main">R$ 250,00</div>
-                        <div class="price-sub">Pix à vista &nbsp;|&nbsp; Cartão em até 2x</div>
+                        <div class="price-sub">Pré-venda encerrada</div>
                     </div>
-                    <a href="./pedido-furos.html" class="btn-whatsapp">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-                        </svg>
-                        Fazer Pedido
-                    </a>
+                    <button class="btn-encerrado" disabled>
+                        🔒 Pré-venda Encerrada
+                    </button>
                 </div>
             </div>
 
@@ -620,7 +620,7 @@
                 <div class="shirt-carousel" id="carousel-lisa">
                     <div class="carousel-slide active">
                         <span class="carousel-label label-dark">Preta</span>
-                        <img src="./aeroswift_lisa.png" alt="Regata Aero Race Lisa - Preta">
+                        <img src="./aeroswipt_lisa.png" alt="Regata Aero Race Lisa - Preta">
                     </div>
                     <div class="carousel-slide">
                         <span class="carousel-label label-white">Branca</span>
@@ -636,14 +636,11 @@
                     <h3 class="shirt-name">Regata Aero Race Lisa</h3>
                     <div class="price-wrap">
                         <div class="price-main">R$ 250,00</div>
-                        <div class="price-sub">Pix à vista &nbsp;|&nbsp; Cartão em até 2x</div>
+                        <div class="price-sub">Pré-venda encerrada</div>
                     </div>
-                    <a href="./pedido-lisa.html" class="btn-whatsapp">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-                        </svg>
-                        Fazer Pedido
-                    </a>
+                    <button class="btn-encerrado" disabled>
+                        🔒 Pré-venda Encerrada
+                    </button>
                 </div>
             </div>
 
@@ -653,8 +650,8 @@
     <!-- PROCESS -->
     <section class="process-section">
         <div class="process-inner">
-            <h2 class="section-title">Como Funciona</h2>
-            <p class="section-subtitle">Processo simples e rápido para você garantir o seu uniforme.</p>
+            <h2 class="section-title">Como Funcionou</h2>
+            <p class="section-subtitle">Processo utilizado nesta edição da coleção.</p>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
@@ -685,34 +682,34 @@
         <div class="timeline-inner">
             <div class="accent-line"></div>
             <h2 class="section-title">Cronograma</h2>
-            <p class="section-subtitle">Fique atento às datas para não perder seu pedido.</p>
+            <p class="section-subtitle">Confira as datas desta edição.</p>
 
             <div class="timeline-steps">
 
                 <div class="timeline-item">
                     <div class="timeline-dot">1</div>
                     <div class="timeline-content">
-                        <div class="timeline-date">08/04 &mdash; 10/05</div>
+                        <div class="timeline-date">08/04 – 10/05</div>
                         <h3>Prova e Inscrição nos Grupos</h3>
-                        <p>Alunos poderão provar as peças piloto nos treinos coletivos e entrar nos grupos do WhatsApp.</p>
+                        <p>Alunos puderam provar as peças piloto nos treinamentos coletivos e entrar nos grupos do WhatsApp.</p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-dot">2</div>
                     <div class="timeline-content">
-                        <div class="timeline-date">11/05 &mdash; 18/05</div>
+                        <div class="timeline-date">11/05 – 18/05</div>
                         <h3>Formulário e Pagamentos</h3>
                         <p>Envio do formulário de pedido, finalização da lista e realização dos pagamentos.</p>
                     </div>
                 </div>
 
                 <div class="timeline-item timeline-item--highlight">
-                    <div class="timeline-dot">3</div>
+                    <div class="timeline-dot">✓</div>
                     <div class="timeline-content">
-                        <div class="timeline-date">19/05</div>
-                        <h3>Pedido Efetivado!</h3>
-                        <p>Envio oficial do pedido aos fornecedores. Após essa data não será possível incluir novos pedidos.</p>
+                        <div class="timeline-date">19/05 — ENCERRADO</div>
+                        <h3>Pré-venda Encerrada</h3>
+                        <p>Pedido enviado aos fornecedores. Não é mais possível incluir novos pedidos nesta coleção.</p>
                     </div>
                 </div>
 
@@ -722,7 +719,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <p><strong>Endurance On</strong> — Assessoria Esportiva</p>
+        <p><strong>Endurance On</strong> – Assessoria Esportiva</p>
         <p>
             <a href="tel:+5548991178688">(48) 99117-8688</a> &nbsp;|&nbsp;
             <a href="mailto:contato@enduranceon.com.br">contato@enduranceon.com.br</a> &nbsp;|&nbsp;
@@ -732,7 +729,6 @@
     </footer>
 
     <script>
-        // Carrossel automático
         function initCarousel(carouselId) {
             var carousel = document.getElementById(carouselId);
             var slides = carousel.querySelectorAll('.carousel-slide');
