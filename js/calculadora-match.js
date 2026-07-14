@@ -130,19 +130,6 @@ const treinadores = [
         url: '../pages/treinadores/ian-ribeiro.html'
     },
     FIM TREINADOR DESATIVADO */
-    {
-        id: 'denis-santana',
-        nome: 'Denis Santana',
-        foto: '../images/treinadores/denis-santana.jpg',
-        genero: 'masculino',
-        faixaEtaria: '30-menos',
-        modalidade: 'triathlon',
-        nivel: 'avancado',
-        acompanhamento: 'intermediario',
-        perfil: 'performance',
-        regioes: ['sao-paulo'],
-        url: '../pages/treinadores/denis-santana.html'
-    }
 ];
 
 // Pesos para cada critério - Região tem maior peso

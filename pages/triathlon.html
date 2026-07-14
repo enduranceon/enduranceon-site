@@ -263,12 +263,6 @@
                     { nome: 'Thais Prando', link: 'treinadores/thais-prando.html' }
                 ]
             },
-            'sao-paulo': {
-                essencial: [
-                    { nome: 'Denis Santana', link: 'treinadores/denis-santana.html' },
-                    { nome: 'Jéssica Rodrigues', link: 'treinadores/jessica-rodrigues.html' }
-                ]
-            },
             'online': {
                 essencial: [
                     { nome: 'Bruno Jeremias', link: 'treinadores/bruno-jeremias.html' },
@@ -293,12 +287,6 @@
 
         const urlParams = new URLSearchParams(window.location.search);
         const regiao = urlParams.get('regiao');
-
-        const sobreImage = document.querySelector('.sobre-image img');
-        if (sobreImage && regiao === 'sao-paulo') {
-            sobreImage.src = '../images/corrida_sao_paulo.png';
-            sobreImage.alt = 'Triathlon São Paulo - Endurance On';
-        }
 
         if (regiao && treinadoresPorRegiao[regiao]) {
             atualizarTreinadores(regiao);

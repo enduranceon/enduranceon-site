@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const treinadoresPorRegiao = {
     florianopolis: { corrida: ["Bruno Jeremias", "Thais Prando"], triathlon: ["Thais Prando"] },
-    "sao-paulo": { corrida: ["Denis Santana", "Jéssica Rodrigues"], triathlon: ["Denis Santana", "Jéssica Rodrigues"] },
-    online: { corrida: ["Bruno Jeremias", "Denis Santana", "Jéssica Rodrigues", "Thais Prando"], triathlon: ["Denis Santana", "Jéssica Rodrigues", "Thais Prando"] },
+    online: { corrida: ["Bruno Jeremias", "Jéssica Rodrigues", "Thais Prando"], triathlon: ["Jéssica Rodrigues", "Thais Prando"] },
   };
 
   const tecnoFitLinks = {
@@ -54,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const paramPeriodicidade = getParam("periodicidade") || getParam("periodo");
   const paramRegiao = getParam("regiao");
 
-  const regiaoMap = { florianopolis: "florianopolis", "sao-paulo": "sao-paulo", online: "online" };
+  const regiaoMap = { florianopolis: "florianopolis", online: "online" };
   if (paramModalidade) modalidadeSelect.value = paramModalidade;
   if (paramPeriodicidade) periodicidadeSelect.value = paramPeriodicidade;
   if (paramRegiao && regiaoMap[paramRegiao]) regiaoSelect.value = regiaoMap[paramRegiao];
@@ -64,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Banner de resumo do plano
   const labelModalidade = { corrida: "Corrida", triathlon: "Triathlon" };
   const labelPeriodicidade = { mensal: "Mensal", trimestral: "Trimestral", semestral: "Semestral" };
-  const labelRegiao = { florianopolis: "Florianópolis", "sao-paulo": "São Paulo", online: "Outra cidade" };
+  const labelRegiao = { florianopolis: "Florianópolis", online: "Outra cidade" };
 
   function atualizarResumo() {
     const resumoEl = document.getElementById("plano-resumo");

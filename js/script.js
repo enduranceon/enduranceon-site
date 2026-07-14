@@ -311,8 +311,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== FILTRO REGIONAL TREINOS COLETIVOS =====
     const filtroButtons = document.querySelectorAll('.filtro-btn');
     const calendarioFlorianopolis = document.getElementById('calendario-florianopolis');
-    const calendarioSaoPaulo = document.getElementById('calendario-sao-paulo');
-    
+
     if (filtroButtons.length > 0) {
         filtroButtons.forEach(button => {
             button.addEventListener('click', function() {
@@ -326,20 +325,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Mostrar/ocultar calendários com animação
                 if (regiao === 'florianopolis') {
-                    if (calendarioSaoPaulo) {
-                        calendarioSaoPaulo.style.display = 'none';
-                    }
                     if (calendarioFlorianopolis) {
                         calendarioFlorianopolis.style.display = 'grid';
                         calendarioFlorianopolis.classList.add('fade-in');
-                    }
-                } else if (regiao === 'sao-paulo') {
-                    if (calendarioFlorianopolis) {
-                        calendarioFlorianopolis.style.display = 'none';
-                    }
-                    if (calendarioSaoPaulo) {
-                        calendarioSaoPaulo.style.display = 'grid';
-                        calendarioSaoPaulo.classList.add('fade-in');
                     }
                 }
                 

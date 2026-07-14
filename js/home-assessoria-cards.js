@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const config = {
     florianopolis: planos,
-    'sao-paulo': planos,
     outras: planos,
   };
 
@@ -72,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     return `
       <article class="home-period-card ${data.destaque ? 'highlight' : ''}">
-        ${data.destaque ? '<div class="home-badge-top">Mais escolhido!</div>' : ''}
+        
         <span class="home-period-chip">${data.label}</span>
         ${precoHTML}
         <ul class="home-feature-list">
