@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Banner de resumo do plano
   const labelModalidade = { corrida: "Corrida", triathlon: "Triathlon" };
   const labelPeriodicidade = { mensal: "Mensal", trimestral: "Trimestral", semestral: "Semestral" };
-  const labelRegiao = { florianopolis: "Florianópolis", online: "Outra cidade" };
+  const labelRegiao = { florianopolis: "Florianópolis", online: "Online" };
 
   function atualizarResumo() {
     const resumoEl = document.getElementById("plano-resumo");
