@@ -6,8 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const statusBox = document.getElementById("eon-store-test-status");
   const submitButton = form.querySelector('button[type="submit"]');
   const cepInput = document.getElementById("cep");
+  const cepStatus = document.getElementById("cep-status");
   const cpfInput = document.getElementById("cpf");
   const whatsappInput = document.getElementById("whatsapp");
+  let lastLookedUpCep = "";
+  let cepLookupController = null;
 
   function onlyDigits(value) {
     return String(value || "").replace(/\D/g, "");
@@ -43,6 +46,12 @@ document.addEventListener("DOMContentLoaded", function () {
     return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
   }
 
+  function setCepStatus(type, message) {
+    if (!cepStatus) return;
+    cepStatus.className = `cep-status ${type ? `is-${type}` : ""}`;
+    cepStatus.textContent = message || "";
+  }
+
   function validateCpf(value) {
     const d = onlyDigits(value);
     if (d.length !== 11 || /^(\d)\1+$/.test(d)) return false;
@@ -58,18 +67,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function fillAddressByCep() {
     const cep = onlyDigits(cepInput.value);
-    if (cep.length !== 8) return;
+    if (cep.length !== 8 || cep === lastLookedUpCep) return;
+
+    if (cepLookupController) cepLookupController.abort();
+    const controller = new AbortController();
+    cepLookupController = controller;
+    cepInput.setAttribute("aria-busy", "true");
+    cepInput.setCustomValidity("");
+    setCepStatus("", "Buscando endereço...");
+
     try {
-      const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-      if (!res.ok) return;
+      const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`, {
+        signal: controller.signal,
+      });
+      if (!res.ok) throw new Error("CEP lookup failed");
       const data = await res.json();
-      if (data.erro) return;
+      if (data.erro) {
+        cepInput.setCustomValidity("CEP não encontrado.");
+        setCepStatus("error", "CEP não encontrado. Confira os números.");
+        return;
+      }
+
       document.getElementById("address_street").value = data.logradouro || "";
       document.getElementById("address_neighborhood").value = data.bairro || "";
       document.getElementById("address_city").value = data.localidade || "";
       document.getElementById("address_state").value = data.uf || "";
+      lastLookedUpCep = cep;
+      setCepStatus("success", "Endereço preenchido automaticamente.");
     } catch (error) {
+      if (error.name === "AbortError") return;
+      setCepStatus("error", "Não foi possível consultar o CEP. Preencha o endereço manualmente.");
       console.warn("[cadastro-eon-store-teste] CEP lookup failed", error);
+    } finally {
+      if (cepLookupController === controller) {
+        cepInput.removeAttribute("aria-busy");
+        cepLookupController = null;
+      }
     }
   }
 
@@ -88,8 +121,17 @@ document.addEventListener("DOMContentLoaded", function () {
   if (cepInput) {
     cepInput.addEventListener("input", () => {
       cepInput.value = maskCep(cepInput.value);
+      cepInput.setCustomValidity("");
+      const cep = onlyDigits(cepInput.value);
+      if (cep.length === 8) {
+        void fillAddressByCep();
+        return;
+      }
+      lastLookedUpCep = "";
+      if (cepLookupController) cepLookupController.abort();
+      setCepStatus("", "");
     });
-    cepInput.addEventListener("blur", fillAddressByCep);
+    cepInput.addEventListener("blur", () => void fillAddressByCep());
   }
 
   form.addEventListener("submit", async function (event) {
@@ -97,6 +139,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!validateCpf(cpfInput.value)) {
       setStatus("error", "CPF invalido. Confira antes de enviar.");
+      return;
+    }
+
+    await fillAddressByCep();
+    if (!cepInput.checkValidity()) {
+      cepInput.reportValidity();
       return;
     }
 
