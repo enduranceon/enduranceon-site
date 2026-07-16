@@ -268,7 +268,7 @@
                     <h3>${escapeHtml(event.name)}${event.year ? ` ${escapeHtml(String(event.year))}` : ""}</h3>
                     <div class="prova-info">
                         <div><i class="fas fa-location-dot" aria-hidden="true"></i><span>${escapeHtml(location)}</span></div>
-                        <div><i class="fas fa-calendar-day" aria-hidden="true"></i><span>${escapeHtml(formatDateBR(event.nextDate))}</span></div>
+                        <div><i class="fas fa-calendar-day" aria-hidden="true"></i><span>${escapeHtml(getEventDateLabel(event))}</span></div>
                     </div>
                     <div class="prova-courses">${courseLabels}${extraCourses}</div>
                     <button class="prova-action" type="button" data-event-id="${escapeAttr(event.editionId)}">
@@ -571,6 +571,58 @@
     function getTodayLocalDate() {
         const now = new Date();
         return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    }
+
+    function getEventDateLabel(event) {
+        const dates = getUniqueCourseDates(event);
+        if (dates.length === 0) return "Data a definir";
+        if (dates.length === 1) return formatDateBR(dates[0]);
+        if (dates.length === 2) return formatTwoDates(dates[0], dates[1]);
+        return formatDateRange(dates[0], dates[dates.length - 1]);
+    }
+
+    function getUniqueCourseDates(event) {
+        const seen = new Set();
+        return (event.courses || [])
+            .map((course) => course.race_date)
+            .filter((value) => {
+                if (!value || seen.has(value) || !parseDateLocal(value)) return false;
+                seen.add(value);
+                return true;
+            })
+            .sort();
+    }
+
+    function formatTwoDates(startValue, endValue) {
+        const start = parseDateLocal(startValue);
+        const end = parseDateLocal(endValue);
+        if (!start || !end) return formatDateBR(startValue);
+        if (start.getFullYear() === end.getFullYear()) {
+            return `${formatDayMonth(startValue)} e ${formatDayMonth(endValue)}/${end.getFullYear()}`;
+        }
+        return `${formatDateBR(startValue)} e ${formatDateBR(endValue)}`;
+    }
+
+    function formatDateRange(startValue, endValue) {
+        const start = parseDateLocal(startValue);
+        const end = parseDateLocal(endValue);
+        if (!start || !end) return formatDateBR(startValue);
+
+        if (start.getFullYear() === end.getFullYear() && start.getMonth() === end.getMonth()) {
+            return `${String(start.getDate()).padStart(2, "0")} a ${formatDayMonth(endValue)}/${end.getFullYear()}`;
+        }
+        if (start.getFullYear() === end.getFullYear()) {
+            return `${formatDayMonth(startValue)} a ${formatDayMonth(endValue)}/${end.getFullYear()}`;
+        }
+        return `${formatDateBR(startValue)} a ${formatDateBR(endValue)}`;
+    }
+
+    function formatDayMonth(value) {
+        const date = parseDateLocal(value);
+        if (!date) return "Data a definir";
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        return `${day}/${month}`;
     }
 
     function parseDateLocal(value) {
