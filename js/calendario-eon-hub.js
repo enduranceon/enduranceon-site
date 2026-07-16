@@ -547,11 +547,7 @@
     }
 
     function getCourseLabel(course) {
-        const label = course.short_label || course.name || "Percurso";
-        const distance = Number(course.distance_km || course.total_distance_km || 0);
-        if (!Number.isFinite(distance) || distance <= 0) return label;
-        const distanceText = Number.isInteger(distance) ? `${distance}km` : `${distance.toString().replace(".", ",")}km`;
-        return String(label).toLowerCase().includes(distanceText.toLowerCase()) ? label : `${label} - ${distanceText}`;
+        return course.short_label || course.name || "Percurso";
     }
 
     function getModalityLabel(value) {
@@ -562,7 +558,6 @@
         if (!value) return "";
         try {
             const url = new URL(value, window.location.href);
-            if (url.hostname.includes("base44.app")) return "";
             return url.href;
         } catch {
             return "";
