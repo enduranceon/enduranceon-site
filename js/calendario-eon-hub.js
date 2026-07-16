@@ -187,13 +187,27 @@
     }
 
     function filterCoaches(rows) {
+        const visibleCoachRoles = new Set(["coach", "head_coach"]);
         return rows
             .filter((coach) => {
                 if (!coach || coach.active !== true || coach.show_on_site !== true) return false;
-                if (coach.role === "coach") return true;
-                return Array.isArray(coach.roles) && coach.roles.includes("coach");
+                if (visibleCoachRoles.has(String(coach.role || ""))) return true;
+                return normalizeRoles(coach.roles).some((role) => visibleCoachRoles.has(role));
             })
             .sort((a, b) => String(a.name || "").localeCompare(String(b.name || ""), "pt-BR"));
+    }
+
+    function normalizeRoles(value) {
+        if (Array.isArray(value)) return value.map((role) => String(role || ""));
+        if (typeof value === "string" && value.trim()) {
+            try {
+                const parsed = JSON.parse(value);
+                return Array.isArray(parsed) ? parsed.map((role) => String(role || "")) : [];
+            } catch {
+                return [value];
+            }
+        }
+        return [];
     }
 
     function compareCourses(a, b) {
