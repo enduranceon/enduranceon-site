@@ -1,0 +1,538 @@
+.calendario-page {
+    background: #f5f7fa;
+    padding-top: 110px;
+}
+
+.calendario-container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.calendario-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.calendario-header h2 {
+    font-size: 2.45rem;
+    font-weight: 800;
+    color: #101010;
+    margin-bottom: 10px;
+    letter-spacing: 0;
+}
+
+.calendario-header p {
+    font-size: 1.05rem;
+    color: #5d6673;
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.55;
+}
+
+.calendario-toolbar {
+    background: #ffffff;
+    border: 1px solid #dfe5ec;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 16px;
+}
+
+.calendario-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background: #f7f9fb;
+    border: 1px solid #dfe5ec;
+    border-radius: 8px;
+    padding: 0 14px;
+}
+
+.calendario-search i {
+    color: #7a8594;
+    font-size: 0.95rem;
+}
+
+.calendario-search input {
+    width: 100%;
+    min-height: 48px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #171717;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+}
+
+.calendario-filter-group {
+    margin-top: 16px;
+}
+
+.calendario-filter-group > span {
+    display: block;
+    color: #5d6673;
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.calendario-filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.calendario-filter-buttons button {
+    border: 1px solid #d5dce5;
+    background: #ffffff;
+    color: #394150;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    min-height: 38px;
+    padding: 8px 14px;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.calendario-filter-buttons button:hover,
+.calendario-filter-buttons button.active {
+    background: #111111;
+    border-color: #111111;
+    color: #ffffff;
+}
+
+.calendario-outside {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: #eef8ff;
+    border: 1px solid #b9ddf7;
+    border-radius: 8px;
+    margin-bottom: 22px;
+    padding: 16px 18px;
+}
+
+.calendario-outside strong {
+    color: #102b42;
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.calendario-outside p {
+    color: #4d6578;
+    margin: 0;
+    line-height: 1.45;
+}
+
+.calendario-outside button,
+.calendario-submit,
+.calendario-course-button,
+.prova-action {
+    border: 0;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+}
+
+.calendario-outside button {
+    background: #1270a8;
+    border-radius: 6px;
+    color: #ffffff;
+    flex: 0 0 auto;
+    min-height: 44px;
+    padding: 10px 18px;
+}
+
+.calendario-status {
+    color: #5d6673;
+    font-weight: 600;
+    margin: 18px 0;
+    text-align: center;
+}
+
+.calendario-status.is-error {
+    background: #fff1f1;
+    border: 1px solid #f2b7b7;
+    border-radius: 8px;
+    color: #9a1b1b;
+    padding: 14px;
+}
+
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.prova-card {
+    background: #ffffff;
+    border: 1px solid #e0e5eb;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    min-height: 430px;
+    overflow: hidden;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+}
+
+.prova-media {
+    align-items: center;
+    background: #f0f4f8;
+    border-bottom: 1px solid #e0e5eb;
+    display: flex;
+    height: 138px;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.prova-media img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.prova-media-placeholder {
+    align-items: center;
+    color: #1b2430;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.prova-media-placeholder i {
+    color: #ff8012;
+    font-size: 1.7rem;
+}
+
+.prova-media-placeholder span {
+    color: #2f3846;
+    font-size: 0.8rem;
+    font-weight: 800;
+    line-height: 1.35;
+    max-width: 220px;
+    text-transform: uppercase;
+}
+
+.prova-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 16px;
+}
+
+.prova-tag {
+    align-self: flex-start;
+    background: #ff8012;
+    border-radius: 999px;
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    padding: 5px 9px;
+    text-transform: uppercase;
+}
+
+.prova-card h3 {
+    color: #151515;
+    font-size: 1.08rem;
+    font-weight: 800;
+    line-height: 1.35;
+    margin: 0 0 12px;
+    min-height: 58px;
+}
+
+.prova-info {
+    color: #596273;
+    display: grid;
+    gap: 8px;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    margin-bottom: 14px;
+}
+
+.prova-info div {
+    align-items: flex-start;
+    display: flex;
+    gap: 8px;
+}
+
+.prova-info i {
+    color: #38b6ff;
+    flex: 0 0 16px;
+    margin-top: 3px;
+    text-align: center;
+}
+
+.prova-courses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.prova-courses span {
+    background: #eef1f4;
+    border-radius: 999px;
+    color: #394150;
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 5px 8px;
+}
+
+.prova-action {
+    align-items: center;
+    background: #ff8012;
+    border-radius: 6px;
+    color: #ffffff;
+    display: inline-flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: auto;
+    min-height: 44px;
+    padding: 11px 14px;
+    text-transform: uppercase;
+}
+
+.prova-action:hover,
+.calendario-submit:hover,
+.calendario-outside button:hover {
+    filter: brightness(0.94);
+}
+
+.calendario-empty {
+    background: #ffffff;
+    border: 1px solid #dfe5ec;
+    border-radius: 8px;
+    color: #5d6673;
+    grid-column: 1 / -1;
+    padding: 34px 18px;
+    text-align: center;
+}
+
+.calendario-empty i {
+    color: #b9c2cf;
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.calendario-modal-overlay {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.62);
+    display: none;
+    inset: 0;
+    justify-content: center;
+    padding: 20px;
+    position: fixed;
+    z-index: 9999;
+}
+
+.calendario-modal-overlay.is-open {
+    display: flex;
+}
+
+.calendario-modal {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
+    max-height: 92vh;
+    max-width: 520px;
+    overflow-y: auto;
+    padding: 24px;
+    position: relative;
+    width: 100%;
+}
+
+.calendario-modal-close {
+    align-items: center;
+    background: #f0f2f5;
+    border: 0;
+    border-radius: 50%;
+    color: #333333;
+    cursor: pointer;
+    display: flex;
+    font-size: 1rem;
+    height: 34px;
+    justify-content: center;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 34px;
+}
+
+.calendario-modal h3 {
+    color: #111111;
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 44px 16px 0;
+}
+
+.calendario-modal-lead {
+    background: #f7f9fb;
+    border: 1px solid #e0e5eb;
+    border-radius: 8px;
+    color: #4d5663;
+    line-height: 1.45;
+    margin-bottom: 16px;
+    padding: 12px;
+}
+
+.calendario-course-list {
+    display: grid;
+    gap: 10px;
+}
+
+.calendario-course-button {
+    background: #ffffff;
+    border: 1px solid #dfe5ec;
+    border-radius: 8px;
+    color: #151515;
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 14px;
+    text-align: left;
+    width: 100%;
+}
+
+.calendario-course-button:hover {
+    border-color: #111111;
+}
+
+.calendario-course-button small {
+    color: #6a7480;
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.calendario-form {
+    display: grid;
+    gap: 14px;
+}
+
+.calendario-form label {
+    color: #4d5663;
+    display: grid;
+    font-size: 0.78rem;
+    font-weight: 800;
+    gap: 7px;
+    text-transform: uppercase;
+}
+
+.calendario-form input,
+.calendario-form select {
+    border: 1px solid #d5dce5;
+    border-radius: 6px;
+    color: #171717;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.96rem;
+    min-height: 44px;
+    padding: 10px 12px;
+    text-transform: none;
+    width: 100%;
+}
+
+.calendario-form input:focus,
+.calendario-form select:focus {
+    border-color: #38b6ff;
+    box-shadow: 0 0 0 3px rgba(56, 182, 255, 0.18);
+    outline: 0;
+}
+
+.calendario-submit {
+    background: #111111;
+    border-radius: 6px;
+    color: #ffffff;
+    margin-top: 4px;
+    min-height: 46px;
+    padding: 12px 16px;
+    text-transform: uppercase;
+}
+
+.calendario-submit:disabled {
+    cursor: wait;
+    opacity: 0.55;
+}
+
+.calendario-form-message {
+    border-radius: 8px;
+    display: none;
+    font-weight: 700;
+    line-height: 1.45;
+    padding: 12px;
+}
+
+.calendario-form-message.is-visible {
+    display: block;
+}
+
+.calendario-form-message.is-error {
+    background: #fff1f1;
+    color: #9a1b1b;
+}
+
+.calendario-form-message.is-success {
+    background: #edf9f1;
+    color: #166534;
+}
+
+@media (max-width: 980px) {
+    .calendario-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+    .calendario-page {
+        padding-top: 92px;
+    }
+
+    .calendario-container {
+        padding: 14px;
+    }
+
+    .calendario-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .calendario-header p {
+        font-size: 0.98rem;
+    }
+
+    .calendario-outside {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .calendario-outside button {
+        width: 100%;
+    }
+
+    .calendario-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .prova-card {
+        min-height: 0;
+    }
+
+    .prova-card h3 {
+        min-height: 0;
+    }
+}

@@ -29,83 +29,11 @@
     <link rel="stylesheet" href="../css/form-fixes.min.css">
     <link rel="stylesheet" href="../css/mvv-styles.min.css">
     <link rel="stylesheet" href="../css/whatsapp-float.min.css">
+    <link rel="stylesheet" href="../css/calendario-eon-hub.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Estilo específico para o iframe do EON Hub */
-        .calendario-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .calendario-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .calendario-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #000;
-            margin-bottom: 10px;
-        }
-        
-        .calendario-header p {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 20px;
-        }
-        
-        .iframe-wrapper {
-            position: relative;
-            width: 100%;
-            height: 1100px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            background: #fff;
-        }
-        
-        .iframe-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .calendario-header h2 {
-                font-size: 2rem;
-            }
-            
-            .calendario-header p {
-                font-size: 1rem;
-            }
-            
-            .iframe-wrapper {
-                height: 900px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .calendario-container {
-                padding: 10px;
-            }
-            
-            .calendario-header h2 {
-                font-size: 1.5rem;
-            }
-            
-            .iframe-wrapper {
-                height: 780px;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Cabeçalho -->
@@ -155,20 +83,35 @@
 
     <!-- Conteúdo Principal do Calendário -->
     <main>
-        <section id="calendario" class="section">
+        <section id="calendario" class="section calendario-page">
             <div class="calendario-container">
                 <div class="calendario-header">
                     <h2>CALENDÁRIO DE PROVAS</h2>
                     <p>Confira as provas que nosso corpo técnico estará presente e sinalize as provas que você irá participar.</p>
                 </div>
                 
-                <div class="iframe-wrapper">
-                    <iframe src="https://eon-hub.netlify.app/RaceCalendar?embed=1" 
-                            title="Calendário de Provas Endurance On"
-                            loading="lazy"
-                            allowfullscreen>
-                    </iframe>
+                <div class="calendario-toolbar" aria-label="Filtros do calendário">
+                    <label class="calendario-search" for="calendario-busca">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <input id="calendario-busca" type="search" placeholder="Buscar por prova ou cidade">
+                    </label>
+
+                    <div class="calendario-filter-group">
+                        <span>Modalidade</span>
+                        <div id="calendario-modalidades" class="calendario-filter-buttons" aria-label="Filtrar por modalidade"></div>
+                    </div>
                 </div>
+
+                <div class="calendario-outside">
+                    <div>
+                        <strong>Vai participar de uma prova fora do calendário?</strong>
+                        <p>Avise seu treinador pelo mesmo fluxo do EON Hub.</p>
+                    </div>
+                    <button id="calendario-prova-fora" type="button">Avisar treinador</button>
+                </div>
+
+                <div id="calendario-status" class="calendario-status" role="status">Carregando provas do EON Hub...</div>
+                <div id="cards-container" class="calendario-grid" aria-live="polite"></div>
             </div>
         </section>
     </main>
@@ -217,5 +160,6 @@
 
     <!-- Scripts Globais -->
     <script src="../js/script.min.js"></script>
+    <script src="../js/calendario-eon-hub.js"></script>
 </body>
 </html>
