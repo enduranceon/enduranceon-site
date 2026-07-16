@@ -494,17 +494,33 @@
                 throw new Error(result.error || "Nao foi possivel registrar seu interesse.");
             }
 
-            showFormMessage(message, result.deduplicated
-                ? "Esse interesse ja estava registrado. Seu treinador ja consegue visualizar."
-                : "Interesse registrado. Seu treinador ja consegue visualizar no EON Hub.",
-                "success");
-            form.reset();
+            showSuccessModal(result.deduplicated);
         } catch (error) {
             showFormMessage(message, error.message || "Erro ao enviar. Tente novamente.", "error");
         } finally {
             button.disabled = false;
             button.textContent = payload.type === "outside" ? "Enviar para meu treinador" : "Confirmar interesse";
         }
+    }
+
+    function showSuccessModal(wasDeduplicated) {
+        const title = wasDeduplicated ? "Interesse já registrado" : "Interesse registrado";
+        const message = wasDeduplicated
+            ? "Seu treinador já consegue visualizar esse interesse no EON Hub."
+            : "Obrigado. Seu treinador já consegue visualizar sua participação no EON Hub.";
+
+        openModal(title, `
+            <div class="calendario-success">
+                <div class="calendario-success-icon">
+                    <i class="fas fa-check" aria-hidden="true"></i>
+                </div>
+                <p>${escapeHtml(message)}</p>
+                <button class="calendario-submit calendario-success-back" type="button">Voltar ao calendário</button>
+            </div>
+        `);
+
+        const backButton = state.modalBody.querySelector(".calendario-success-back");
+        backButton?.addEventListener("click", closeModal);
     }
 
     function showFormMessage(element, text, type) {
