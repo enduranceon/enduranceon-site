@@ -239,7 +239,9 @@
             image.addEventListener("error", function () {
                 const media = image.closest(".prova-media");
                 if (media) {
+                    const tag = media.querySelector(".prova-tag");
                     media.innerHTML = renderImagePlaceholder(image.alt || "Prova");
+                    if (tag) media.appendChild(tag);
                 }
             }, { once: true });
         });
@@ -258,9 +260,11 @@
 
         return `
             <article class="prova-card">
-                <div class="prova-media">${image}</div>
-                <div class="prova-content">
+                <div class="prova-media">
+                    ${image}
                     <span class="prova-tag">${escapeHtml(getModalityLabel(event.modality))}</span>
+                </div>
+                <div class="prova-content">
                     <h3>${escapeHtml(event.name)}${event.year ? ` ${escapeHtml(String(event.year))}` : ""}</h3>
                     <div class="prova-info">
                         <div><i class="fas fa-location-dot" aria-hidden="true"></i><span>${escapeHtml(location)}</span></div>
