@@ -3,35 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
   <meta name="robots" content="noindex,nofollow">
-  <title>Endurance On | Cadastro recebido</title>
-  <link rel="stylesheet" href="../css/styles.min.css">
-  <link rel="stylesheet" href="../css/responsive.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    body { background: #f6f7f8; }
-    .success-wrap { min-height: 100vh; display: grid; place-items: center; padding: 28px 18px; }
-    .success-card { max-width: 620px; background: #fff; border-radius: 18px; padding: 42px 32px; text-align: center; box-shadow: 0 18px 50px rgba(0,0,0,.1); }
-    .success-icon { width: 72px; height: 72px; margin: 0 auto 20px; display: grid; place-items: center; border-radius: 50%; background: #e9f8ef; color: #178447; font-size: 32px; }
-    .success-card h1 { margin-bottom: 12px; color: #17212b; }
-    .success-card p { color: #52606d; line-height: 1.65; }
-    .success-actions { margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .success-actions a { padding: 12px 20px; border-radius: 9px; text-decoration: none; font-weight: 700; }
-    .home-link { background: #ff8012; color: #fff; }
-    .whatsapp-link { border: 1px solid #1f9d55; color: #178447; }
-  </style>
+  <title>Pré-matrícula recebida | Endurance On</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/onboarding-cadastro.css?v=20260729">
 </head>
-<body>
-  <main class="success-wrap">
+<body class="success-page">
+  <header class="onboarding-topbar">
+    <a class="onboarding-brand" href="../index.html" aria-label="Endurance On — voltar ao site">
+      <img src="../images/logo/logo-new.svg" alt="">
+      <strong>ENDURANCE ON</strong>
+      <span>Início da jornada</span>
+    </a>
+    <div class="security-label" role="status" aria-label="Ambiente protegido">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4.5 5v6.2c0 4.8 3.1 9.1 7.5 10.8 4.4-1.7 7.5-6 7.5-10.8V5L12 2Zm3.4 8.1-4.1 4.2-2.5-2.5 1.2-1.2 1.3 1.3 2.9-3 1.2 1.2Z"/></svg>
+      Envio concluído com segurança
+    </div>
+    <a class="exit-link" href="../index.html">Voltar ao site</a>
+  </header>
+
+  <nav class="progress-nav progress-nav--complete" aria-label="Pré-matrícula concluída">
+    <ol>
+      <li class="is-complete"><span>1</span><strong>Plano</strong></li>
+      <li class="is-complete"><span>2</span><strong>Treinador</strong></li>
+      <li class="is-complete"><span>3</span><strong>Seus dados</strong></li>
+      <li class="is-complete"><span>4</span><strong>Concluído</strong></li>
+    </ol>
+  </nav>
+
+  <main class="success-main">
     <section class="success-card">
-      <div class="success-icon"><i class="fas fa-check"></i></div>
-      <h1>Cadastro recebido!</h1>
-      <p>Sua pré-matrícula já chegou para a equipe da Endurance On. Vamos conferir os dados e entrar em contato pelo WhatsApp para confirmar o início e orientar os próximos passos.</p>
-      <div class="success-actions">
-        <a class="home-link" href="../index.html">Voltar ao site</a>
-        <a class="whatsapp-link" href="https://wa.me/5548991178688" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+      <div class="success-icon" aria-hidden="true">✓</div>
+      <div class="step-kicker">PRÉ-MATRÍCULA RECEBIDA</div>
+      <h1>Pronto! Agora é com a gente.</h1>
+      <p>Seus dados já chegaram com segurança ao sistema da Endurance On. Nossa equipe vai conferir sua escolha e entrar em contato pelo WhatsApp para confirmar o início e orientar os próximos passos.</p>
+      <div class="success-next">
+        <strong>O que acontece agora?</strong>
+        <ol>
+          <li><span>1</span>Conferimos seu plano e treinador.</li>
+          <li><span>2</span>Entramos em contato pelo WhatsApp.</li>
+          <li><span>3</span>Orientamos a ativação da sua assessoria.</li>
+        </ol>
       </div>
+      <div class="success-actions">
+        <a class="primary-action" href="../index.html">Voltar ao site <span aria-hidden="true">→</span></a>
+        <a class="secondary-action" href="https://wa.me/5548991178688" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+      </div>
+      <small class="success-reassurance">Nenhuma cobrança foi realizada nesta etapa.</small>
     </section>
   </main>
+
+  <footer class="onboarding-footer">
+    <span>© <span id="current-year"></span> Endurance On</span>
+    <span>Ambiente protegido · Privacidade e segurança</span>
+  </footer>
+  <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

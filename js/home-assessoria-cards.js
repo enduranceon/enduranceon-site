@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function card(periodKey, data) {
     const regiaoParam = regiaoAtual === 'outras' ? 'online' : regiaoAtual;
-    const href = `pages/cadastro-unificado.html?modalidade=${modalidadeAtual}&periodicidade=${periodKey}&regiao=${regiaoParam}`;
+    const href = `pages/cadastro-unificado.html?modalidade=${modalidadeAtual}&periodicidade=${periodKey}&regiao=${regiaoParam}&valor_mensal=${data.valorMes}`;
     const features = getFeatures()[periodKey];
     const parcelas = { mensal: 1, trimestral: 3, semestral: 6 };
     const nParcelas = parcelas[periodKey];
