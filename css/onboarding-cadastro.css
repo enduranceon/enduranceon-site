@@ -172,6 +172,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .success-icon { width: 74px; height: 74px; margin: 0 auto 22px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--green); box-shadow: 0 10px 28px rgba(22,131,75,.22); font-size: 1.8rem; font-weight: 800; }
 .success-card h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.08; letter-spacing: -.045em; }
 .success-card > p { max-width: 570px; margin: 17px auto 0; color: var(--muted); font-size: .88rem; line-height: 1.75; }
+.success-summary { margin: 26px 0 0; padding: 18px 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; border: 1px solid #e5e8eb; border-radius: 16px; background: #fffaf5; text-align: left; }
+.success-summary[hidden] { display: none; }
+.success-summary div { min-width: 0; }
+.success-summary dt { margin-bottom: 5px; color: #9298a1; font-size: .6rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.success-summary dd { margin: 0; font-size: .75rem; font-weight: 800; line-height: 1.4; overflow-wrap: anywhere; }
 .success-next { margin-top: 30px; padding: 22px; border-radius: 16px; background: #f5f7f8; text-align: left; }
 .success-next > strong { display: block; margin-bottom: 14px; font-size: .76rem; text-transform: uppercase; letter-spacing: .08em; }
 .success-next ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
@@ -179,6 +184,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .success-next li span { width: 25px; height: 25px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 50%; background: #fff; color: var(--orange-dark); border: 1px solid #e1e4e8; font-size: .65rem; font-weight: 800; }
 .success-actions { margin-top: 27px; display: flex; justify-content: center; gap: 11px; flex-wrap: wrap; }
 .success-actions a { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+.success-actions .whatsapp-action { background: #16834b; box-shadow: 0 8px 22px rgba(22,131,75,.2); }
+.success-actions .whatsapp-action:hover { background: #116c3d; box-shadow: 0 10px 24px rgba(22,131,75,.25); }
 .success-reassurance { display: block; margin-top: 17px; color: #8a9199; font-size: .65rem; }
 
 @media (max-width: 930px) {
@@ -212,6 +219,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .onboarding-footer { flex-direction: column; gap: 7px; text-align: center; }
   .success-main { padding: 32px 16px 50px; }
   .success-card { padding: 30px 20px; }
+  .success-summary { grid-template-columns: 1fr; gap: 12px; }
   .success-actions { flex-direction: column; }
   .success-actions a { width: 100%; }
 }

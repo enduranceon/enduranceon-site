@@ -37,18 +37,23 @@
       <div class="success-icon" aria-hidden="true">✓</div>
       <div class="step-kicker">PRÉ-MATRÍCULA RECEBIDA</div>
       <h1>Pronto! Agora é com a gente.</h1>
-      <p>Seus dados já chegaram com segurança ao sistema da Endurance On. Nossa equipe vai conferir sua escolha e entrar em contato pelo WhatsApp para confirmar o início e orientar os próximos passos.</p>
+      <p>Seus dados já chegaram com segurança ao sistema da Endurance On. Para agilizar o atendimento, envie agora a mensagem pronta pelo WhatsApp.</p>
+      <dl class="success-summary" id="success-summary" hidden>
+        <div><dt>Modalidade</dt><dd id="success-modality"></dd></div>
+        <div><dt>Plano</dt><dd id="success-plan"></dd></div>
+        <div><dt>Treinador</dt><dd id="success-coach"></dd></div>
+      </dl>
       <div class="success-next">
         <strong>O que acontece agora?</strong>
         <ol>
           <li><span>1</span>Conferimos seu plano e treinador.</li>
-          <li><span>2</span>Entramos em contato pelo WhatsApp.</li>
+          <li><span>2</span>Você envia a mensagem pronta pelo WhatsApp.</li>
           <li><span>3</span>Orientamos a ativação da sua assessoria.</li>
         </ol>
       </div>
       <div class="success-actions">
-        <a class="primary-action" href="../index.html">Voltar ao site <span aria-hidden="true">→</span></a>
-        <a class="secondary-action" href="https://wa.me/5548991178688" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+        <a class="primary-action whatsapp-action" id="whatsapp-action" href="https://wa.me/5548991178688" target="_blank" rel="noopener noreferrer">Enviar mensagem no WhatsApp <span aria-hidden="true">→</span></a>
+        <a class="secondary-action" href="../index.html">Voltar ao site</a>
       </div>
       <small class="success-reassurance">Nenhuma cobrança foi realizada nesta etapa.</small>
     </section>
@@ -58,6 +63,6 @@
     <span>© <span id="current-year"></span> Endurance On</span>
     <span>Ambiente protegido · Privacidade e segurança</span>
   </footer>
-  <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+  <script src="../js/cadastro-recebido.js?v=20260729-1" defer></script>
 </body>
 </html>
