@@ -119,8 +119,21 @@ document.addEventListener("DOMContentLoaded", function () {
     return String(name || "EO").split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toUpperCase();
   }
 
-  function modalityIcon(name) {
-    return slug(name) === "triathlon" ? "△" : "↗";
+  function coachPhoto(name) {
+    const coachSlug = slug(name);
+    const photos = {
+      "bruno-jeremias": "bruno-jeremias.jpg",
+      "elinai-freitas": "elinai-freitas.jpg",
+      "guto-fernandes": "guto-fernandes.jpg",
+      "jessica-vieira": "jessica-rodrigues.jpg",
+      "jessica-rodrigues": "jessica-rodrigues.jpg",
+      "thais-prando": "thais-prando.jpg",
+    };
+    const exact = photos[coachSlug];
+    if (exact) return `../images/treinadores/${exact}`;
+    const firstName = coachSlug.split("-")[0];
+    const fallbackKey = Object.keys(photos).find((key) => key.split("-")[0] === firstName);
+    return fallbackKey ? `../images/treinadores/${photos[fallbackKey]}` : "";
   }
 
   function renderModalities() {
@@ -130,12 +143,11 @@ document.addEventListener("DOMContentLoaded", function () {
     catalog.modalities.forEach((modality) => {
       const button = document.createElement("button");
       button.type = "button";
-      button.className = `choice-tile${fields.modality.value === modality.id ? " is-selected" : ""}`;
+      button.className = `choice-tile choice-tile--modality${fields.modality.value === modality.id ? " is-selected" : ""}`;
       button.dataset.modalityId = modality.id;
-      button.innerHTML = `
-        <span class="choice-icon">${modalityIcon(modality.name)}</span>
-        <span><strong>${modalityLabel(modality)}</strong><small>${slug(modality.name) === "triathlon" ? "Natação, ciclismo e corrida" : "Rua, pista ou trail"}</small></span>
-      `;
+      const label = document.createElement("strong");
+      label.textContent = modalityLabel(modality).toUpperCase();
+      button.appendChild(label);
       button.addEventListener("click", () => selectModality(modality.id));
       container.appendChild(button);
     });
@@ -240,7 +252,28 @@ document.addEventListener("DOMContentLoaded", function () {
       button.type = "button";
       button.className = `coach-card${fields.coach.value === coach.id ? " is-selected" : ""}`;
       button.dataset.coachId = coach.id;
-      button.innerHTML = `<span class="coach-avatar">${initials(coach.name)}</span><strong>${coach.name}</strong><small>Treinador disponível</small>`;
+      const photo = coachPhoto(coach.name);
+      if (photo) {
+        const imageWrap = document.createElement("span");
+        imageWrap.className = "coach-photo";
+        const image = document.createElement("img");
+        image.src = photo;
+        image.alt = `Foto de ${coach.name}`;
+        image.loading = "lazy";
+        imageWrap.appendChild(image);
+        button.appendChild(imageWrap);
+      } else {
+        const avatar = document.createElement("span");
+        avatar.className = "coach-avatar";
+        avatar.textContent = initials(coach.name);
+        button.appendChild(avatar);
+      }
+      const coachBody = document.createElement("span");
+      coachBody.className = "coach-card__body";
+      const coachName = document.createElement("strong");
+      coachName.textContent = coach.name;
+      coachBody.appendChild(coachName);
+      button.appendChild(coachBody);
       button.addEventListener("click", () => {
         fields.coach.value = coach.id;
         renderCoaches();
