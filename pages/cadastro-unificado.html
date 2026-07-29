@@ -86,9 +86,17 @@
             border-radius: 999px;
         }
         .form-container {
-            max-width: 560px;
+            max-width: 720px;
             margin: 0 auto;
         }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+        .form-container input[type="email"] { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; }
+        .hp-field { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+        .field-status { display: block; min-height: 1.2em; margin-top: 5px; font-size: .8rem; color: #64748b; }
+        .form-status { display: none; padding: 12px 14px; border-radius: 8px; font-weight: 600; }
+        .form-status.is-error { display: block; background: #fff1f1; color: #9f1d1d; }
+        .form-status.is-loading { display: block; background: #f1f5f9; color: #334155; }
+        @media (max-width: 700px) { .form-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -104,7 +112,6 @@
                     <li><a href="../index.html#sobre">Sobre</a></li>
                     <li><a href="../index.html#modalidades">Modalidades</a></li>
                     <li><a href="../index.html#como-funciona">Como Funciona</a></li>
-                    <li><a href="calendario.html">Calendário</a></li>
                     <li><a href="parceiros.html">Parceiros</a></li>
                     <li><a href="../index.html#depoimentos">Depoimentos</a></li>
                     <li><a href="../index.html#faq">FAQ</a></li>
@@ -122,7 +129,6 @@
                     <li><a href="../index.html#sobre">Sobre</a></li>
                     <li><a href="../index.html#modalidades">Modalidades</a></li>
                     <li><a href="../index.html#como-funciona">Como Funciona</a></li>
-                    <li><a href="calendario.html">Calendário</a></li>
                     <li><a href="parceiros.html">Parceiros</a></li>
                     <li><a href="../index.html#depoimentos">Depoimentos</a></li>
                     <li><a href="../index.html#faq">FAQ</a></li>
@@ -149,14 +155,33 @@
             </div>
 
             <div class="form-container">
-                <form id="unified-form" action="https://formspree.io/f/xqennlpb" method="POST">
-                    <div class="form-group">
-                        <label for="nome-completo">Nome Completo:</label>
-                        <input type="text" id="nome-completo" name="nome_completo" required>
+                <form id="unified-form" novalidate>
+                    <div class="hp-field" aria-hidden="true">
+                        <label for="website">Website</label>
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <label for="whatsapp">WhatsApp (com DDD):</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(XX) XXXXX-XXXX" required>
+                        <label for="nome-completo">Nome Completo:</label>
+                        <input type="text" id="nome-completo" name="nome_completo" autocomplete="name" required>
+                    </div>
+                    <div class="form-grid">
+                      <div class="form-group">
+                          <label for="whatsapp">WhatsApp (com DDD):</label>
+                          <input type="tel" id="whatsapp" name="whatsapp" placeholder="(XX) XXXXX-XXXX" autocomplete="tel" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="email">E-mail:</label>
+                          <input type="email" id="email" name="email" autocomplete="email" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="cpf">CPF:</label>
+                          <input type="text" id="cpf" name="cpf" inputmode="numeric" placeholder="000.000.000-00" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="cep">CEP:</label>
+                          <input type="text" id="cep" name="cep" inputmode="numeric" placeholder="00000-000" autocomplete="postal-code" required>
+                          <small id="cep-status" class="field-status" aria-live="polite"></small>
+                      </div>
                     </div>
                     <div class="form-group">
                         <label for="modalidade">Modalidade:</label>
@@ -167,12 +192,9 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="periodicidade">Periodicidade:</label>
-                        <select id="periodicidade" name="periodicidade" required>
-                            <option value="">Selecione a Periodicidade</option>
-                            <option value="mensal">Mensal</option>
-                            <option value="trimestral">Trimestral</option>
-                            <option value="semestral">Semestral</option>
+                        <label for="plano">Plano:</label>
+                        <select id="plano" name="plano" required disabled>
+                            <option value="">Selecione primeiro a modalidade</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -185,18 +207,47 @@
                     </div>
                     <div class="form-group">
                         <label for="treinador">Treinador(a):</label>
-                        <select id="treinador" name="treinador" required>
-                            <option value="">Selecione o Treinador</option>
-                            <!-- Options will be populated by JavaScript -->
+                        <select id="treinador" name="treinador" required disabled>
+                            <option value="">Carregando treinadores...</option>
                         </select>
+                    </div>
+                    <div class="form-grid">
+                      <div class="form-group">
+                          <label for="address_street">Rua:</label>
+                          <input type="text" id="address_street" name="address_street" autocomplete="address-line1" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="address_number">Número:</label>
+                          <input type="text" id="address_number" name="address_number" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="address_complement">Complemento:</label>
+                          <input type="text" id="address_complement" name="address_complement" autocomplete="address-line2">
+                      </div>
+                      <div class="form-group">
+                          <label for="address_neighborhood">Bairro:</label>
+                          <input type="text" id="address_neighborhood" name="address_neighborhood" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="address_city">Cidade:</label>
+                          <input type="text" id="address_city" name="address_city" autocomplete="address-level2" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="address_state">UF:</label>
+                          <input type="text" id="address_state" name="address_state" maxlength="2" autocomplete="address-level1" required>
+                      </div>
                     </div>
                     <div class="form-group checkbox-group">
                         <input type="checkbox" id="termos" name="termos" required>
                         <label for="termos">Li e aceito os <a href="termos.html">Termos de Contrato</a>.</label>
                     </div>
                     <div class="form-group">
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAEA611YLkFJnndKx" data-action="prospect_submit" data-theme="light"></div>
+                    </div>
+                    <div class="form-group">
                         <button type="submit" class="submit-button">Enviar Cadastro</button>
                     </div>
+                    <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
                 </form>
             </div>
         </div>
@@ -214,7 +265,6 @@
                         <li><a href="../index.html#sobre">Sobre</a></li>
                         <li><a href="../index.html#modalidades">Modalidades</a></li>
                         <li><a href="../index.html#como-funciona">Como Funciona</a></li>
-                        <li><a href="calendario.html">Calendário</a></li>
                         <li><a href="parceiros.html">Parceiros</a></li>
                         <li><a href="../index.html#depoimentos">Depoimentos</a></li>
                         <li><a href="../index.html#faq">FAQ</a></li>
@@ -252,6 +302,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="../js/form-unificado.js" defer></script>
     <script src="../js/script.min.js"></script>
 </body>
