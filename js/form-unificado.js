@@ -156,8 +156,10 @@ document.addEventListener("DOMContentLoaded", function () {
   function selectModality(modalityId, preservePlan) {
     if (fields.modality.value !== modalityId && !preservePlan) fields.plan.value = "";
     fields.modality.value = modalityId;
+    if (!coachesForSelectedModality().some((coach) => coach.id === fields.coach.value)) fields.coach.value = "";
     renderModalities();
     renderPlans();
+    renderCoaches();
     updateSummary();
   }
 
@@ -200,7 +202,9 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
       button.addEventListener("click", () => {
         fields.plan.value = plan.id;
+        if (!coachesForSelectedModality().some((coach) => coach.id === fields.coach.value)) fields.coach.value = "";
         renderPlans();
+        renderCoaches();
         updateSummary();
       });
       container.appendChild(button);
@@ -243,11 +247,26 @@ document.addEventListener("DOMContentLoaded", function () {
     return coachSlug.split("-")[0] === wantedSlug.split("-")[0];
   }
 
+  function coachesForSelectedModality() {
+    const modalityId = selectedPlan()?.modality_id || fields.modality.value;
+    if (!modalityId) return [];
+    return catalog.coaches.filter((coach) =>
+      Array.isArray(coach.modality_ids) && coach.modality_ids.includes(modalityId)
+    );
+  }
+
   function renderCoaches() {
     const container = el("coach-options");
     container.classList.remove("loading-box");
     container.innerHTML = "";
-    catalog.coaches.forEach((coach) => {
+    const coaches = coachesForSelectedModality();
+    if (!coaches.some((coach) => coach.id === fields.coach.value)) fields.coach.value = "";
+    if (!coaches.length) {
+      container.classList.add("loading-box");
+      container.textContent = "Não há treinadores disponíveis para esta modalidade no momento.";
+      return;
+    }
+    coaches.forEach((coach) => {
       const button = document.createElement("button");
       button.type = "button";
       button.className = `coach-card${fields.coach.value === coach.id ? " is-selected" : ""}`;
@@ -336,9 +355,13 @@ document.addEventListener("DOMContentLoaded", function () {
         return false;
       }
     }
-    if (stepNumber === 2 && !fields.coach.value) {
-      if (error) error.textContent = "Escolha um treinador para continuar.";
-      return false;
+    if (stepNumber === 2) {
+      if (!fields.coach.value || !coachesForSelectedModality().some((coach) => coach.id === fields.coach.value)) {
+        fields.coach.value = "";
+        renderCoaches();
+        if (error) error.textContent = "Escolha um treinador disponível para esta modalidade.";
+        return false;
+      }
     }
     if (stepNumber === 3) {
       for (const input of [fields.name, fields.whatsapp, fields.email, fields.cpf]) {
@@ -381,7 +404,7 @@ document.addEventListener("DOMContentLoaded", function () {
       fields.region.value = query.get("regiao") === "online" || query.get("regiao") === "outras" ? "online" : "florianopolis";
       selectInitialPlan();
       const wantedCoach = query.get("treinador");
-      const coach = catalog.coaches.find((item) => coachMatchesQuery(item, wantedCoach));
+      const coach = coachesForSelectedModality().find((item) => coachMatchesQuery(item, wantedCoach));
       if (coach) fields.coach.value = coach.id;
       renderModalities();
       renderRegions();
