@@ -482,6 +482,18 @@ document.addEventListener("DOMContentLoaded", function () {
       const data = await response.json().catch(() => ({}));
       if (!response.ok || !data.ok) throw new Error(data.error || "Não foi possível enviar a pré-matrícula");
       if (typeof window.gtag === "function") window.gtag("event", "submit_lead_form", { form_name: "onboarding_assessoria" });
+      try {
+        const modality = selectedModality();
+        const plan = selectedPlan();
+        const coach = selectedCoach();
+        window.sessionStorage.setItem("eonEnrollmentConfirmation", JSON.stringify({
+          modality: modality ? modalityLabel(modality) : "",
+          plan: plan ? planTitle(plan) : "",
+          coach: coach?.name || "",
+        }));
+      } catch (storageError) {
+        console.warn("Não foi possível guardar o resumo da pré-matrícula.", storageError);
+      }
       window.location.href = "cadastro-recebido.html";
     } catch (error) {
       setStatus("error", error.message || "Não foi possível enviar. Tente novamente.");
