@@ -442,6 +442,10 @@
     text-transform: uppercase;
 }
 
+.calendario-form [hidden] {
+    display: none;
+}
+
 .calendario-form input,
 .calendario-form select {
     border: 1px solid #d5dce5;
@@ -460,6 +464,15 @@
     border-color: #38b6ff;
     box-shadow: 0 0 0 3px rgba(56, 182, 255, 0.18);
     outline: 0;
+}
+
+.calendario-location-note {
+    background: #f4f7fa;
+    border-radius: 6px;
+    color: #5d6672;
+    font-size: 0.82rem;
+    margin: 0;
+    padding: 10px 12px;
 }
 
 .calendario-submit {

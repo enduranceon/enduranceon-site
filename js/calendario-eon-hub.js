@@ -17,6 +17,27 @@
         aquathlon: "Aquathlon"
     };
 
+    const COUNTRIES = [
+        "Brasil", "Estados Unidos", "Portugal", "Argentina", "Chile",
+        "Uruguai", "Paraguai", "Colômbia", "Peru", "México", "Alemanha",
+        "França", "Espanha", "Itália", "Reino Unido", "Austrália", "Japão",
+        "África do Sul", "Nova Zelândia", "Áustria", "Suíça", "Canadá",
+        "Holanda", "Bélgica", "Suécia", "Noruega", "Dinamarca", "Finlândia",
+        "China", "Coreia do Sul", "Israel", "Emirados Árabes", "Outro"
+    ];
+
+    const BRAZIL_STATES = [
+        ["AC", "Acre"], ["AL", "Alagoas"], ["AP", "Amapá"], ["AM", "Amazonas"],
+        ["BA", "Bahia"], ["CE", "Ceará"], ["DF", "Distrito Federal"], ["ES", "Espírito Santo"],
+        ["GO", "Goiás"], ["MA", "Maranhão"], ["MT", "Mato Grosso"], ["MS", "Mato Grosso do Sul"],
+        ["MG", "Minas Gerais"], ["PA", "Pará"], ["PB", "Paraíba"], ["PR", "Paraná"],
+        ["PE", "Pernambuco"], ["PI", "Piauí"], ["RJ", "Rio de Janeiro"], ["RN", "Rio Grande do Norte"],
+        ["RS", "Rio Grande do Sul"], ["RO", "Rondônia"], ["RR", "Roraima"], ["SC", "Santa Catarina"],
+        ["SP", "São Paulo"], ["SE", "Sergipe"], ["TO", "Tocantins"]
+    ];
+
+    const citiesByUfCache = new Map();
+
     const selectors = {
         search: document.getElementById("calendario-busca"),
         filters: document.getElementById("calendario-modalidades"),
@@ -400,13 +421,27 @@
                     <input name="raceDate" type="date" required>
                 </label>
                 <label>
-                    Cidade
-                    <input name="city" type="text" maxlength="80">
+                    País *
+                    <select name="country" required>
+                        ${COUNTRIES.map((country) => `<option value="${escapeAttr(country)}">${escapeHtml(country)}</option>`).join("")}
+                    </select>
                 </label>
-                <label>
-                    Estado
-                    <input name="state" type="text" maxlength="40">
+                <label data-brazil-location>
+                    Estado *
+                    <select name="state" required>
+                        <option value="">Selecione o estado</option>
+                        ${BRAZIL_STATES.map(([uf, name]) => `<option value="${escapeAttr(uf)}">${escapeHtml(uf)} - ${escapeHtml(name)}</option>`).join("")}
+                    </select>
                 </label>
+                <label data-brazil-location>
+                    Cidade *
+                    <select name="city" required disabled>
+                        <option value="">Selecione o estado primeiro</option>
+                    </select>
+                </label>
+                <p class="calendario-location-note" data-foreign-location-note hidden>
+                    Para provas fora do Brasil, cidade e estado não são obrigatórios.
+                </p>
                 ${renderDebutFields()}
                 <div class="calendario-form-message" data-form-message></div>
                 <button class="calendario-submit" type="submit">Enviar para meu treinador</button>
@@ -414,9 +449,11 @@
         `);
 
         const form = document.getElementById("calendario-form-fora");
+        bindOutsideLocationFields(form);
         form.addEventListener("submit", async function (submitEvent) {
             submitEvent.preventDefault();
             const data = new FormData(form);
+            const isBrazil = data.get("country") === "Brasil";
             await submitForm(form, {
                 type: "outside",
                 coachId: data.get("coachId"),
@@ -425,13 +462,77 @@
                 modality: data.get("modality"),
                 distanceText: data.get("distanceText"),
                 raceDate: data.get("raceDate"),
-                city: data.get("city"),
-                state: data.get("state"),
-                country: "Brasil",
+                city: isBrazil ? data.get("city") : "",
+                state: isBrazil ? data.get("state") : "",
+                country: data.get("country"),
                 isModalityDebut: data.get("isModalityDebut") === "yes",
                 isDistanceDebut: data.get("isDistanceDebut") === "yes"
             });
         });
+    }
+
+    function bindOutsideLocationFields(form) {
+        const countrySelect = form.querySelector('[name="country"]');
+        const stateSelect = form.querySelector('[name="state"]');
+        const citySelect = form.querySelector('[name="city"]');
+        const brazilFields = Array.from(form.querySelectorAll("[data-brazil-location]"));
+        const foreignNote = form.querySelector("[data-foreign-location-note]");
+        let latestCityRequest = 0;
+
+        const updateCountryFields = function () {
+            const isBrazil = countrySelect.value === "Brasil";
+            brazilFields.forEach((field) => { field.hidden = !isBrazil; });
+            foreignNote.hidden = isBrazil;
+            stateSelect.required = isBrazil;
+            citySelect.required = isBrazil;
+
+            if (!isBrazil) {
+                latestCityRequest += 1;
+                stateSelect.value = "";
+                resetCitySelect(citySelect, "Selecione o estado primeiro", true);
+            }
+        };
+
+        countrySelect.addEventListener("change", updateCountryFields);
+        stateSelect.addEventListener("change", async function () {
+            const uf = stateSelect.value;
+            const requestId = ++latestCityRequest;
+
+            if (!uf) {
+                resetCitySelect(citySelect, "Selecione o estado primeiro", true);
+                return;
+            }
+
+            resetCitySelect(citySelect, "Carregando cidades...", true);
+
+            try {
+                let cities = citiesByUfCache.get(uf);
+                if (!cities) {
+                    const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${encodeURIComponent(uf)}/municipios?orderBy=nome`);
+                    if (!response.ok) throw new Error(`IBGE: ${response.status}`);
+                    const rows = await response.json();
+                    cities = Array.isArray(rows) ? rows.map((item) => item.nome).filter(Boolean) : [];
+                    citiesByUfCache.set(uf, cities);
+                }
+
+                if (requestId !== latestCityRequest || countrySelect.value !== "Brasil") return;
+                citySelect.innerHTML = `<option value="">Selecione a cidade</option>${cities.map((city) => `<option value="${escapeAttr(city)}">${escapeHtml(city)}</option>`).join("")}`;
+                citySelect.disabled = false;
+            } catch (error) {
+                console.error("[calendario] Erro ao carregar cidades do IBGE", error);
+                if (requestId === latestCityRequest) {
+                    resetCitySelect(citySelect, "Não foi possível carregar as cidades", true);
+                }
+            }
+        });
+
+        updateCountryFields();
+    }
+
+    function resetCitySelect(select, message, disabled) {
+        select.innerHTML = `<option value="">${escapeHtml(message)}</option>`;
+        select.disabled = disabled;
+        select.value = "";
     }
 
     function renderCommonFields() {
