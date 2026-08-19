@@ -261,10 +261,10 @@
                 <div class="dia-semana tem-treino" data-dia="segunda">
                     <div class="dia-header">
                         <div class="dia-nome">Segunda</div>
-                        <div class="dia-numero">Tarde</div>
+                        <div class="dia-numero">Manhã</div>
                     </div>
                     <div class="treinos-dia">
-                        <div class="treino-item corrida" data-treino="corrida-tarde-segunda">
+                        <div class="treino-item corrida" data-treino="corrida-manha-segunda">
                             <div class="treino-modalidade">
                                 <div class="treino-icon corrida">
                                     <i class="fas fa-running"></i>
@@ -273,11 +273,11 @@
                             </div>
                             <div class="treino-horario">
                                 <i class="fas fa-clock"></i>
-                                18h30 às 20h00
+                                06h00 às 07h30
                             </div>
                             <div class="treino-local">
                                 <i class="fas fa-map-marker-alt"></i>
-                                Coqueiros - Escritório da Endurance On (Em Frente ao Parque)
+                                Beira Mar Norte - Bolsão da Casan
                             </div>
                         </div>
                     </div>
@@ -368,23 +368,7 @@
                         <div class="dia-numero">Manhã</div>
                     </div>
                     <div class="treinos-dia">
-                        <div class="treino-item corrida" data-treino="corrida-beira-mar">
-                            <div class="treino-modalidade">
-                                <div class="treino-icon corrida">
-                                    <i class="fas fa-running"></i>
-                                </div>
-                                <div class="treino-nome">Corrida</div>
-                            </div>
-                            <div class="treino-horario">
-                                <i class="fas fa-clock"></i>
-                                06h30
-                            </div>
-                            <div class="treino-local">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Beira Mar Norte - Bolsão da Casan
-                            </div>
-                        </div>
-                        <div class="treino-item multisport" data-treino="multisport-triathlon">
+                        <div class="treino-item multisport clickable-treino" data-treino="multisport-itinerante" onclick="abrirModalItinerante()">
                             <div class="treino-modalidade">
                                 <div class="treino-icon multisport">
                                     <i class="fas fa-medal"></i>
@@ -397,7 +381,7 @@
                             </div>
                             <div class="treino-local">
                                 <i class="fas fa-map-marker-alt"></i>
-                                Praia de Jurerê
+                                Praia de Jurerê ou Beira Mar Norte
                             </div>
                         </div>
                     </div>
@@ -426,6 +410,39 @@
             </div>
             <div class="modal-body" id="modal-body">
                 <!-- Conteúdo será preenchido dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Treino Itinerante Sabado -->
+    <div id="modal-itinerante" class="treino-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Multisport - Sabado</h2>
+                <button class="modal-close" onclick="fecharModalItinerante()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-info-item">
+                    <i class="fas fa-clock"></i>
+                    <div class="modal-info-content">
+                        <h4>Horario</h4>
+                        <p>06h00</p>
+                    </div>
+                </div>
+                <div class="modal-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="modal-info-content">
+                        <h4>Locais Principais</h4>
+                        <p><strong>Praia de Jurere</strong> ou <strong>Beira Mar Norte</strong></p>
+                    </div>
+                </div>
+                <div class="modal-info-item itinerante-info">
+                    <i class="fas fa-info-circle"></i>
+                    <div class="modal-info-content">
+                        <h4>Treino Itinerante</h4>
+                        <p>Esse treino e de forma itinerante na qual mudamos conforme o calendario da assessoria. Os locais principais sao Praia de Jurere e Beira Mar Norte, mas o local exato sera confirmado nos nossos canais de comunicacao.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -803,5 +820,30 @@
     <script src="js/depoimentos-slider.min.js"></script>
     <script src="js/calendario-treinos.min.js"></script>
     <script src="js/home-assessoria-cards.js"></script>
+
+    <script>
+        function abrirModalItinerante() {
+            const modal = document.getElementById('modal-itinerante');
+            if (modal) {
+                modal.classList.add('show');
+                modal.style.display = 'block';
+            }
+        }
+
+        function fecharModalItinerante() {
+            const modal = document.getElementById('modal-itinerante');
+            if (modal) {
+                modal.classList.remove('show');
+                modal.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('modal-itinerante');
+            if (event.target === modal) {
+                fecharModalItinerante();
+            }
+        });
+    </script>
 </body>
 </html>
