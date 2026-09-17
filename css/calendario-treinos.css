@@ -42,8 +42,9 @@
 
 /* Grid do Calendário */
 .calendario-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 25px;
     max-width: 1400px;
     margin: 0 auto;
@@ -62,6 +63,8 @@
     min-height: 320px;
     border: 2px solid transparent;
     cursor: pointer;
+    flex: 1 1 240px;
+    max-width: 280px;
 }
 
 .dia-semana:hover {
@@ -397,8 +400,9 @@
 
 /* Grid do Calendário */
 .calendario-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
     max-width: 1600px;
     margin: 0 auto;
@@ -407,7 +411,6 @@
 /* Responsividade */
 @media (max-width: 1400px) {
     .calendario-grid {
-        grid-template-columns: repeat(6, 1fr);
         gap: 18px;
         max-width: 1400px;
     }
@@ -415,7 +418,6 @@
 
 @media (max-width: 1200px) {
     .calendario-grid {
-        grid-template-columns: repeat(5, 1fr);
         gap: 16px;
         max-width: 1200px;
     }
@@ -423,11 +425,10 @@
 
 @media (max-width: 1024px) {
     .calendario-grid {
-        grid-template-columns: repeat(4, 1fr);
         gap: 15px;
         max-width: 1000px;
     }
-    
+
     .dia-semana {
         min-height: 280px;
         padding: 25px 20px;
@@ -436,16 +437,16 @@
 
 @media (max-width: 768px) {
     .calendario-grid {
-        grid-template-columns: repeat(3, 1fr);
         gap: 12px;
         max-width: 100%;
     }
-    
+
     .dia-semana {
+        flex-basis: 200px;
         min-height: 220px;
         padding: 20px 15px;
     }
-    
+
     .treino-item {
         padding: 18px;
     }
@@ -453,26 +454,30 @@
 
 @media (max-width: 600px) {
     .calendario-grid {
-        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
+    }
+
+    .dia-semana {
+        flex-basis: 45%;
     }
 }
 
 @media (max-width: 480px) {
     .calendario-grid {
-        grid-template-columns: 1fr;
         gap: 15px;
     }
-    
+
     .dia-semana {
+        flex-basis: 100%;
+        max-width: 100%;
         min-height: auto;
         padding: 20px 15px;
     }
-    
+
     .treinos-dia {
         gap: 15px;
     }
-    
+
     .treino-item {
         padding: 15px;
     }
