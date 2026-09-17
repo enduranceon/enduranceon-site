@@ -2,7 +2,7 @@
     "use strict";
 
     const SUPABASE_URL = "https://qsaowltbnefzpbphhwmr.supabase.co";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFzYW93bHRibmVmenBicGhod21yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwOTM4MzEsImV4cCI6MjA5MTY2OTgzMX0.9VQz9QSZMXjkYDG10FcAFKgDfHVJmurulfWXm7DyExY";
+    const SUPABASE_ANON_KEY = "sb_publishable_UGtJz0CKuAQqJgqAdB7TNw_ao_Qxx94";
     const FUNCTION_URL = `${SUPABASE_URL}/functions/v1/public-race-interest`;
 
     const MODALITY_LABELS = {
