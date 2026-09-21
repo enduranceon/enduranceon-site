@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Ocultar todos os cards de periodicidade
             document.querySelectorAll('.periodo-card').forEach(card => {
                 card.style.display = 'none';
+                card.classList.remove('ativo');
             });
             
             // Mostrar apenas os cards correspondentes ao período selecionado
@@ -65,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ocultar todos os cards de periodicidade
     document.querySelectorAll('.periodo-card').forEach(card => {
         card.style.display = 'none';
+        card.classList.remove('ativo');
     });
     
     // Mostrar apenas os cards correspondentes ao período ativo
