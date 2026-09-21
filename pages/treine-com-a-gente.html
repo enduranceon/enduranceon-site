@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Endurance On | Treine com a Gente</title>
-    <meta name="description" content="Escolha seu assessoria de treinamento na Endurance On. Corrida ou Triathlon, assessoria.">
+    <meta name="description" content="Escolha sua assessoria de Corrida, Triathlon ou 2 Modalidades na Endurance On.">
     <link rel="stylesheet" href="../css/styles.min.css">
     <link rel="stylesheet" href="../css/animations.min.css">
     <link rel="stylesheet" href="../css/responsive.min.css">
@@ -76,7 +76,7 @@
         <section class="treine-container">
             <div class="treine-header">
                 <h1>Treine com a Gente</h1>
-                <p>Escolha a modalidade, assessoria e periodicidade que melhor se encaixam nos seus objetivos. Na Endurance On, você encontra o suporte ideal para alcançar seu melhor desempenho.</p>
+                <p>Escolha a modalidade, o treinador e a periodicidade que melhor se encaixam nos seus objetivos. Confira os planos disponíveis para Corrida, Triathlon e 2 Modalidades.</p>
             </div>
 
             <!-- Calculadora Card -->
@@ -125,7 +125,13 @@
                             <h3>Triathlon</h3>
                             <p>Preparação completa para as três modalidades: natação, ciclismo e corrida.</p>
                         </div>
+                        <div class="filtro-opcao" data-modalidade="2-modalidades">
+                            <i class="fas fa-layer-group" style="display: block; margin-bottom: 1rem; color: #FF8012; font-size: 4rem;" aria-hidden="true"></i>
+                            <h3>2 Modalidades</h3>
+                            <p>Treinamento integrado para duas modalidades esportivas.</p>
+                        </div>
                     </div>
+                    <p id="catalog-status" role="status" aria-live="polite">Carregando planos e treinadores disponíveis...</p>
                 </div>
                 <div class="navegacao-botoes">
                     <div></div> <!-- Espaço vazio para alinhamento -->
@@ -138,7 +144,7 @@
             <!-- Filtro de Plano -->
             <div class="filtros-container" id="filtro-plano" style="display: none;">
                 <div class="filtro-grupo">
-                    <h2 class="filtro-titulo">Escolha seu assessoria</h2>
+                    <h2 class="filtro-titulo">Conheça sua assessoria</h2>
                     <div class="filtro-opcoes" id="opcoes-plano">
                         <!-- Conteúdo dinâmico baseado na modalidade selecionada -->
                     </div>
@@ -161,14 +167,6 @@
                 </div>
                 <div id="tabela-comparativa">
                     <!-- Conteúdo dinâmico baseado na modalidade selecionada -->
-                </div>
-                <div class="navegacao-botoes">
-                    <button class="btn-voltar" id="voltar-para-plano">
-                        <i class="fas fa-arrow-left"></i> Voltar
-                    </button>
-                    <button class="btn-avancar" id="avancar-para-periodicidade">
-                        Avançar <i class="fas fa-arrow-right"></i>
-                    </button>
                 </div>
             </div>
 
@@ -243,7 +241,7 @@
     <!-- Scripts -->
     <script src="../js/menu.min.js"></script>
     <script src="../js/treinadores-links.min.js"></script>
-    <script src="../js/treine-com-a-gente.js"></script>
+    <script src="../js/treine-com-a-gente.js?v=20260921-1"></script>
     <link rel="stylesheet" href="../css/treinadores-links.min.css">
 </body>
 </html>

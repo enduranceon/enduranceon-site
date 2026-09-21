@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Endurance On | Assessoria Esportiva</title>
-    <meta name="description" content="Assessoria esportiva especializada em Corrida e Triathlon. Treine com a gente!">
+    <meta name="description" content="Assessoria esportiva para Corrida, Triathlon e 2 Modalidades. Treine com a gente!">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20260729">
@@ -100,7 +100,7 @@
         <div class="container">
             <div class="banner-content">
                 <h1>TREINE COM A GENTE!</h1>
-                <p>Sua jornada esportiva começa aqui. Assessoria especializada em Corrida e Triathlon.</p>
+                <p>Sua jornada esportiva começa aqui. Assessoria especializada em Corrida, Triathlon e 2 Modalidades.</p>
                 <a href="#modalidades" class="cta-button">Quero treinar com vocês!</a>
             </div>
         </div>
@@ -181,6 +181,14 @@
                     <p>Preparação completa para triatletas e praticantes de múltiplos esportes, com integração de modalidades e periodização.</p>
                     <a href="#home-assessoria-cards" class="modalidade-button" data-goto-modalidade="triathlon">Conhecer planos</a>
                 </div>
+                <div class="modalidade-card">
+                    <div class="modalidade-icon">
+                        <i class="fas fa-layer-group" aria-hidden="true"></i>
+                    </div>
+                    <h3>2 MODALIDADES</h3>
+                    <p>Combine duas modalidades com treinos personalizados e planejamento integrado.</p>
+                    <a href="#home-assessoria-cards" class="modalidade-button" data-goto-modalidade="2-modalidades">Conhecer planos</a>
+                </div>
             </div>
         </div>
     </section>
@@ -200,9 +208,11 @@
                 <div class="home-tab-group">
                     <button class="home-tab active" type="button" data-modalidade="corrida">Corrida</button>
                     <button class="home-tab" type="button" data-modalidade="triathlon">Triathlon</button>
+                    <button class="home-tab" type="button" data-modalidade="2-modalidades">2 Modalidades</button>
                 </div>
             </div>
 
+            <p id="home-cards-status" role="status" style="text-align: center">Carregando planos disponíveis...</p>
             <div id="home-cards-grid" class="home-cards-grid"></div>
         </div>
     </section>
@@ -216,7 +226,7 @@
                     <div class="step-number">01</div>
                     <div class="step-content">
                         <h3>Escolha sua modalidade</h3>
-                        <p>Primeiro você deve escolher qual modalidade você gostaria de praticar: Corrida ou Triathlon.</p>
+                        <p>Primeiro escolha entre Corrida, Triathlon ou 2 Modalidades.</p>
                     </div>
                 </div>
                 <div class="step">
@@ -793,7 +803,7 @@
     <script src="js/script.min.js"></script>
     <script src="js/depoimentos-slider.min.js"></script>
     <script src="js/calendario-treinos.min.js"></script>
-    <script src="js/home-assessoria-cards.js"></script>
+    <script src="js/home-assessoria-cards.js?v=20260921-1"></script>
 
     <script>
         function abrirModalItinerante() {
