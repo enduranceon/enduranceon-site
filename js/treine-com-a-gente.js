@@ -230,6 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     const order = { mensal: 1, trimestral: 2, semestral: 3 };
+    const periodLabels = { mensal: "Mensal", trimestral: "Trimestral", semestral: "Semestral" };
     const plans = plansForModality().sort((a, b) =>
       (order[slug(a.period)] || 99) - (order[slug(b.period)] || 99)
     );
@@ -243,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const months = Number(plan.period_months) || 1;
       const card = document.createElement("div");
       card.className = "periodicidade-card" + (months === 6 ? " destaque" : "");
-      const title = periodCounts.get(period) > 1 ? plan.name : (plan.period || plan.name);
+      const title = periodCounts.get(period) > 1 ? plan.name : (periodLabels[period] || plan.name);
       addText(card, "h3", "", title);
       addText(card, "div", "preco", money.format(Number(plan.price_total)));
       addText(card, "p", "descricao", months === 1
