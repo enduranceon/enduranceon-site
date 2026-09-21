@@ -398,7 +398,8 @@ document.addEventListener("DOMContentLoaded", function () {
         modalities: Array.isArray(data.modalities) ? data.modalities : [],
         coaches: Array.isArray(data.coaches) ? data.coaches : [],
       };
-      const wantedModality = slug(query.get("modalidade"));
+      const requestedModality = slug(query.get("modalidade"));
+      const wantedModality = requestedModality === "multisport" ? "2-modalidades" : requestedModality;
       const initialModality = catalog.modalities.find((item) => slug(item.name) === wantedModality) || catalog.modalities[0];
       fields.modality.value = initialModality?.id || "";
       fields.region.value = query.get("regiao") === "online" || query.get("regiao") === "outras" ? "online" : "florianopolis";

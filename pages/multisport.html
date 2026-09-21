@@ -123,7 +123,7 @@
                     <div class="comparativo-content">
                         <div class="comparativo-preco">
                             <span class="a-partir">A partir de</span>
-                            <span class="valor">R$ 185</span>
+                            <span class="valor" data-min-monthly-price>R$ 250</span>
                             <span class="periodo">por mês</span>
                         </div>
                         
@@ -141,10 +141,7 @@
                         <!-- TREINADORES DESATIVADOS: Ian Ribeiro, William Dutra, Luis Fernando, Gabriel Hermann -->
                         <div class="comparativo-treinadores">
                             <h4>Treinadores disponíveis:</h4>
-                            <div class="treinadores-list">
-                                <span class="treinador-tag">Jéssica Rodrigues</span>
-                                <span class="treinador-tag">Thais Prando</span>
-                            </div>
+                            <div class="treinadores-list" data-public-coaches>Consulte os treinadores disponíveis na contratação.</div>
                         </div>
                         
                         <div class="comparativo-cta">
@@ -174,10 +171,10 @@
                         <h4>Mensal</h4>
                         <div class="preco">
                             <span class="moeda">R$</span>
-                            <span class="valor">210</span>
+                            <span class="valor" data-plan-total="mensal">280</span>
                             <span class="periodo">Todo mês</span>
                         </div>
-                        <a href="../pages/cadastro-unificado.html?modalidade=multisport&periodicidade=mensal" class="contratar-button">Contratar</a>
+                        <a href="../pages/cadastro-unificado.html?modalidade=2-modalidades&periodicidade=mensal" class="contratar-button">Contratar</a>
                     </div>
                     
                     <div class="plano-card destaque">
@@ -185,24 +182,24 @@
                         <h4>Semestral</h4>
                         <div class="preco">
                             <span class="moeda">R$</span>
-                            <span class="valor">1110</span>
+                            <span class="valor" data-plan-total="semestral">1500</span>
                             <span class="periodo">A cada 6 meses</span>
                         </div>
-                        <small class="economia-mensal">Equivale a R$ 185/mês</small>
+                        <small class="economia-mensal" data-plan-monthly="semestral">Equivale a R$ 250/mês</small>
                         <small class="parcelamento-info">Em até 6x</small>
-                        <a href="../pages/cadastro-unificado.html?modalidade=multisport&periodicidade=semestral" class="contratar-button">Contratar</a>
+                        <a href="../pages/cadastro-unificado.html?modalidade=2-modalidades&periodicidade=semestral" class="contratar-button">Contratar</a>
                     </div>
 
                     <div class="plano-card">
                         <h4>Trimestral</h4>
                         <div class="preco">
                             <span class="moeda">R$</span>
-                            <span class="valor">585</span>
+                            <span class="valor" data-plan-total="trimestral">795</span>
                             <span class="periodo">A cada 3 meses</span>
                         </div>
-                        <small class="economia-mensal">Equivale a R$ 195/mês</small>
+                        <small class="economia-mensal" data-plan-monthly="trimestral">Equivale a R$ 265/mês</small>
                         <small class="parcelamento-info">Em até 3x</small>
-                        <a href="../pages/cadastro-unificado.html?modalidade=multisport&periodicidade=trimestral" class="contratar-button">Contratar</a>
+                        <a href="../pages/cadastro-unificado.html?modalidade=2-modalidades&periodicidade=trimestral" class="contratar-button">Contratar</a>
                     </div>
                 </div>
                 
@@ -255,6 +252,6 @@
     </a>
 
     <script src="../js/script.min.js"></script>
-    <script src="../js/planos.min.js"></script>
+    <script src="../js/multisport-catalog.js?v=20260921-1" defer></script>
 </body>
 </html>
