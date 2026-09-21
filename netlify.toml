@@ -1,0 +1,11 @@
+[[redirects]]
+from = "/pages/treinadores/guto-fernandes-bio.html"
+to = "/pages/treinadores/guto-fernandes.html"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/treinadores/guto-fernandes-bio"
+to = "/pages/treinadores/guto-fernandes.html"
+status = 301
+force = true

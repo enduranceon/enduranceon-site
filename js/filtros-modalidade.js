@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const coachAliases = { 'jessica-rodrigues': 'jessica-vieira' };
     const wantedCoachSlug = coachAliases[profileSlug] || profileSlug;
     const money = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    const feeMoney = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     const slug = (value) => String(value || '').normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '').toLowerCase()
         .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -70,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!plan) return;
         const fee = Number(plan.enrollment_fee) || 0;
         enrollment.textContent = fee > 0
-            ? `Taxa de Matrícula: R$ ${money.format(fee)} (valor único, adicionado à primeira cobrança).`
+            ? `Taxa de Matrícula: R$ ${feeMoney.format(fee)} (valor único, adicionado à primeira cobrança).`
             : 'Sem taxa de matrícula.';
     }
 

@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
   const money = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 2 });
+  const feeMoney = new Intl.NumberFormat("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const status = document.querySelector("[data-plans-status]");
   const coachList = document.querySelector("[data-public-coaches]");
   const priceBox = document.querySelector("[data-public-price]");
@@ -96,7 +97,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const fees = [...new Set(plans.map((plan) => Number(plan.enrollment_fee)))];
     if (fees.length === 1 && fees[0] > 0) {
       enrollmentFee.textContent =
-        `Taxa de Matrícula: R$ ${money.format(fees[0])} (valor único, adicionado à primeira cobrança).`;
+        `Taxa de Matrícula: R$ ${feeMoney.format(fees[0])} (valor único, adicionado à primeira cobrança).`;
       enrollmentFee.hidden = false;
     }
     cards.style.display = "";
