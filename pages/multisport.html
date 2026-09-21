@@ -121,7 +121,7 @@
                         <p>Para quem está começando sua jornada</p>
                     </div>
                     <div class="comparativo-content">
-                        <div class="comparativo-preco">
+                        <div class="comparativo-preco" data-public-price style="display: none">
                             <span class="a-partir">A partir de</span>
                             <span class="valor" data-min-monthly-price>R$ 250</span>
                             <span class="periodo">por mês</span>
@@ -141,7 +141,7 @@
                         <!-- TREINADORES DESATIVADOS: Ian Ribeiro, William Dutra, Luis Fernando, Gabriel Hermann -->
                         <div class="comparativo-treinadores">
                             <h4>Treinadores disponíveis:</h4>
-                            <div class="treinadores-list" data-public-coaches>Consulte os treinadores disponíveis na contratação.</div>
+                            <div class="treinadores-list" data-public-coaches aria-live="polite">Carregando treinadores...</div>
                         </div>
                         
                         <div class="comparativo-cta">
@@ -166,8 +166,9 @@
                 <h3 class="plano-title">ASSESSORIA MULTISPORT</h3>
                 <p class="plano-description">Desenvolvido para atletas de todos os níveis em busca de evolução e longevidade no esporte, nossa assessoria é a introdução perfeita para quem deseja explorar e se apaixonar pelo multisport.</p>
                 
-                <div class="planos-cards">
-                    <div class="plano-card">
+                <p data-plans-status role="status">Carregando planos disponíveis...</p>
+                <div class="planos-cards" data-public-plans style="display: none">
+                    <div class="plano-card" data-plan-card="mensal" style="display: none">
                         <h4>Mensal</h4>
                         <div class="preco">
                             <span class="moeda">R$</span>
@@ -177,7 +178,7 @@
                         <a href="../pages/cadastro-unificado.html?modalidade=2-modalidades&periodicidade=mensal" class="contratar-button">Contratar</a>
                     </div>
                     
-                    <div class="plano-card destaque">
+                    <div class="plano-card destaque" data-plan-card="semestral" style="display: none">
                         <div class="melhor-opcao">Melhor custo-benefício</div>
                         <h4>Semestral</h4>
                         <div class="preco">
@@ -190,7 +191,7 @@
                         <a href="../pages/cadastro-unificado.html?modalidade=2-modalidades&periodicidade=semestral" class="contratar-button">Contratar</a>
                     </div>
 
-                    <div class="plano-card">
+                    <div class="plano-card" data-plan-card="trimestral" style="display: none">
                         <h4>Trimestral</h4>
                         <div class="preco">
                             <span class="moeda">R$</span>
@@ -252,6 +253,6 @@
     </a>
 
     <script src="../js/script.min.js"></script>
-    <script src="../js/multisport-catalog.js?v=20260921-1" defer></script>
+    <script src="../js/multisport-catalog.js?v=20260921-2" defer></script>
 </body>
 </html>

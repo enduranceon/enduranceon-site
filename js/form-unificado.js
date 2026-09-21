@@ -166,15 +166,20 @@ document.addEventListener("DOMContentLoaded", function () {
   function publicPlansForModality() {
     const plans = catalog.plans.filter((plan) => plan.modality_id === fields.modality.value);
     const requestedFamily = slug(query.get("plano"));
-    if (requestedFamily === "essencial") return plans.filter((plan) => slug(plan.name).includes("essencial"));
-    if (requestedFamily === "premium") return plans.filter((plan) => !slug(plan.name).includes("essencial"));
     const regularPlans = plans.filter((plan) => !slug(plan.name).includes("essencial"));
+    if (requestedFamily === "essencial") {
+      const essentialPlans = plans.filter((plan) => slug(plan.name).includes("essencial"));
+      return essentialPlans.length ? essentialPlans : (regularPlans.length ? regularPlans : plans);
+    }
+    if (requestedFamily === "premium") return plans.filter((plan) => !slug(plan.name).includes("essencial"));
     return regularPlans.length ? regularPlans : plans;
   }
 
   function planTitle(plan) {
     const name = String(plan.name || "").trim();
-    if (slug(query.get("plano")) === "essencial" && name) return titleCase(name.replace(/\s*-?\s*2025\s*$/i, ""));
+    if (slug(query.get("plano")) === "essencial" && slug(name).includes("essencial")) {
+      return titleCase(name.replace(/\s*-?\s*2025\s*$/i, ""));
+    }
     return titleCase(plan.period || `${plan.period_months} meses`);
   }
 
