@@ -4,7 +4,7 @@
 // Configurações de distâncias predefinidas
 const distancePresets = {
     sprint: { swim: 0.75, bike: 20, run: 5 },
-    standard: { swim: 1.5, bike: 40, run: 10 },
+    olympic: { swim: 1.5, bike: 40, run: 10 },
     half: { swim: 1.9, bike: 90, run: 21 },
     full: { swim: 3.8, bike: 180, run: 42 }
 };
@@ -117,6 +117,15 @@ function initializeInputListeners() {
             input.addEventListener('input', function() {
                 calculateFromTime(id);
             });
+            if (id === 'bike-time' || id === 'run-time') {
+                input.addEventListener('blur', function() {
+                    const minutes = parseTimeToMinutes(input.value);
+                    if (minutes > 0) {
+                        input.value = formatTimeHMS(minutes);
+                        calculateFromTime(id);
+                    }
+                });
+            }
         }
     });
     
@@ -185,7 +194,7 @@ function calculateFromPace(inputId) {
             const speed = parseFloat(value);
             if (speed > 0 && currentDistances.bike > 0) {
                 const totalTime = (currentDistances.bike / speed) * 60;
-                document.getElementById('bike-time').value = formatTime(totalTime);
+                document.getElementById('bike-time').value = formatTimeHMS(totalTime);
             }
             break;
             
@@ -193,7 +202,7 @@ function calculateFromPace(inputId) {
             const runPace = parseTimeToMinutes(value);
             if (runPace > 0 && currentDistances.run > 0) {
                 const totalTime = runPace * currentDistances.run;
-                document.getElementById('run-time').value = formatTime(totalTime);
+                document.getElementById('run-time').value = formatTimeHMS(totalTime);
             }
             break;
     }
@@ -259,7 +268,10 @@ function updateBreakdown(swim, t1, bike, t2, run) {
     Object.entries(breakdownElements).forEach(([id, time]) => {
         const element = document.getElementById(id);
         if (element) {
-            element.textContent = time > 0 ? formatTime(time) : '--:--';
+            const useHours = id === 'breakdown-bike' || id === 'breakdown-run';
+            element.textContent = time > 0
+                ? (useHours ? formatTimeHMS(time) : formatTime(time))
+                : (useHours ? '--:--:--' : '--:--');
         }
     });
 }
@@ -269,21 +281,25 @@ function parseTimeToMinutes(timeStr) {
     if (!timeStr) return 0;
     
     const parts = timeStr.split(':');
+    if (parts.length !== 2 && parts.length !== 3) return 0;
+    const values = parts.map(part => /^\d+$/.test(part) ? Number(part) : NaN);
+    if (values.some(value => !Number.isFinite(value)) || values[values.length - 1] >= 60) return 0;
+    if (parts.length === 3 && values[1] >= 60) return 0;
+
     if (parts.length === 2) {
-        return parseInt(parts[0]) + parseInt(parts[1]) / 60;
-    } else if (parts.length === 3) {
-        return parseInt(parts[0]) * 60 + parseInt(parts[1]) + parseInt(parts[2]) / 60;
+        return values[0] + values[1] / 60;
+    } else {
+        return values[0] * 60 + values[1] + values[2] / 60;
     }
-    
-    return 0;
 }
 
 // Formatar minutos para tempo MM:SS
 function formatTime(minutes) {
     if (minutes <= 0) return '';
     
-    const mins = Math.floor(minutes);
-    const secs = Math.round((minutes - mins) * 60);
+    const totalSeconds = Math.round(minutes * 60);
+    const mins = Math.floor(totalSeconds / 60);
+    const secs = totalSeconds % 60;
     
     return `${mins}:${secs.toString().padStart(2, '0')}`;
 }
@@ -292,10 +308,10 @@ function formatTime(minutes) {
 function formatTimeHMS(minutes) {
     if (minutes <= 0) return '--:--:--';
     
-    const hours = Math.floor(minutes / 60);
-    const mins = Math.floor(minutes % 60);
-    const secs = Math.round((minutes % 1) * 60);
+    const totalSeconds = Math.round(minutes * 60);
+    const hours = Math.floor(totalSeconds / 3600);
+    const mins = Math.floor((totalSeconds % 3600) / 60);
+    const secs = totalSeconds % 60;
     
-    return `${hours}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 }
-
