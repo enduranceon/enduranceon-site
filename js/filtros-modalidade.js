@@ -1,187 +1,181 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Seleciona os elementos de filtro de modalidade
-    const filtrosModalidade = document.querySelectorAll('.filtro-modalidade');
-    
-    // Valores para cada modalidade
-    const precos = {
-        corrida: {
-            essencial: {
-                mensal: 240,
-                trimestral: 220,
-                semestral: 200
-            },
-            premium: {
-                mensal: 320,
-                trimestral: 305,
-                semestral: 290
-            }
-        },
-        triathlon: {
-            essencial: {
-                mensal: 380,
-                trimestral: 360,
-                semestral: 340
-            },
-            premium: {
-                mensal: 450,
-                trimestral: 435,
-                semestral: 420
-            }
-        }
+document.addEventListener('DOMContentLoaded', function () {
+    const section = document.getElementById('planos-valores');
+    if (!section) return;
+
+    const endpoint = 'https://bsiljrrodgtmtdilnuxr.supabase.co/functions/v1/public-assessment-prospect';
+    const modalityFilters = Array.from(section.querySelectorAll('.filtro-modalidade'));
+    const periodFilters = Array.from(section.querySelectorAll('.filtro-periodo'));
+    const filters = section.querySelector('.planos-filtros');
+    const plansContainer = section.querySelector('.planos-container');
+    const discount = section.querySelector('.desconto-info');
+    const enrollment = section.querySelector('.taxa-matricula-info');
+    const existingNoVacancies = section.querySelector('.aviso-sem-vagas');
+    const profileSlug = window.location.pathname.split('/').pop().replace(/\.html$/, '');
+    const coachAliases = { 'jessica-rodrigues': 'jessica-vieira' };
+    const wantedCoachSlug = coachAliases[profileSlug] || profileSlug;
+    const money = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    const slug = (value) => String(value || '').normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '').toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const periods = ['mensal', 'trimestral', 'semestral'];
+    const fields = {
+        mensal: ['essencial-mensal-preco', null, 'essencial-link-mensal'],
+        trimestral: ['essencial-trimestral-preco', 'essencial-trimestral-equivalente', 'essencial-link-trimestral'],
+        semestral: ['essencial-semestral-preco', 'essencial-semestral-equivalente', 'essencial-link-semestral']
     };
+    const status = document.createElement('p');
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    status.style.textAlign = 'center';
+    status.style.margin = '20px 0';
+    filters.before(status);
 
-    // Valores totais para cada periodicidade
-    const totais = {
-        corrida: {
-            essencial: {
-                trimestral: 660,
-                semestral: 1200
-            },
-            premium: {
-                trimestral: 915,
-                semestral: 1740
+    let catalog = null;
+    let coach = null;
+
+    function visible(node, shouldShow) {
+        if (node) node.style.display = shouldShow ? '' : 'none';
+    }
+
+    function showState(message) {
+        status.textContent = message;
+        visible(filters, false);
+        visible(plansContainer, false);
+        visible(discount, false);
+        visible(enrollment, false);
+    }
+
+    function planFor(modality, period) {
+        const record = catalog?.modalities.find((item) => slug(item.name) === modality);
+        if (!record || !coach.modality_ids.includes(record.id)) return null;
+        return catalog.plans.find((plan) =>
+            plan.modality_id === record.id && plan.id &&
+            plan.active !== false && plan.available_online !== false &&
+            !slug(plan.name).includes('essencial') && slug(plan.period) === period &&
+            Number(plan.price_monthly) > 0 && Number(plan.price_total) > 0
+        ) || null;
+    }
+
+    function selectedModality() {
+        return section.querySelector('.filtro-modalidade.ativo')?.dataset.modalidade || modalityFilters[0]?.dataset.modalidade;
+    }
+
+    function selectedPeriod() {
+        return section.querySelector('.filtro-periodo.ativo')?.dataset.periodo || 'mensal';
+    }
+
+    function updateEnrollment(period) {
+        if (!enrollment) return;
+        const plan = planFor(selectedModality(), period || selectedPeriod());
+        if (!plan) return;
+        const fee = Number(plan.enrollment_fee) || 0;
+        enrollment.textContent = fee > 0
+            ? `Taxa de Matrícula: R$ ${money.format(fee)} (valor único, adicionado à primeira cobrança).`
+            : 'Sem taxa de matrícula.';
+    }
+
+    function renderModality() {
+        if (!catalog || !coach) return;
+        const modality = selectedModality();
+        const plans = periods.map((period) => planFor(modality, period));
+        if (!plans.some(Boolean)) {
+            showState('Não há planos online disponíveis com este treinador para esta modalidade no momento.');
+            return;
+        }
+
+        status.textContent = '';
+        visible(filters, true);
+        visible(plansContainer, true);
+        visible(discount, true);
+        visible(enrollment, true);
+
+        periods.forEach((period, index) => {
+            const plan = plans[index];
+            const [priceId, equivalentId, linkClass] = fields[period];
+            const card = section.querySelector(`.periodo-card[data-periodo="${period}"]`);
+            const filter = periodFilters.find((item) => item.dataset.periodo === period);
+            if (filter) filter.style.display = plan ? '' : 'none';
+            if (!plan) {
+                if (card) card.style.display = 'none';
+                return;
             }
-        },
-        triathlon: {
-            essencial: {
-                trimestral: 1080,
-                semestral: 2040
-            },
-            premium: {
-                trimestral: 1305,
-                semestral: 2520
+
+            const price = document.getElementById(priceId);
+            if (price) price.textContent = money.format(Number(plan.price_total));
+            const equivalent = equivalentId && document.getElementById(equivalentId);
+            if (equivalent) equivalent.textContent = `Equivale a R$ ${money.format(Number(plan.price_monthly))}/mês`;
+            const installments = card?.querySelector('.periodo-parcelas');
+            if (installments) installments.textContent = `Em até ${Number(plan.max_installments) || Number(plan.period_months) || 1}x`;
+
+            const link = card?.querySelector(`.${linkClass}`);
+            if (link) {
+                const url = new URL('../cadastro-unificado.html', window.location.href);
+                url.searchParams.set('modalidade', modality);
+                url.searchParams.set('periodicidade', period);
+                url.searchParams.set('plan_id', String(plan.id));
+                url.searchParams.set('treinador', slug(coach.name));
+                link.href = url.href;
             }
-        }
-    };
-    
-    // Adiciona evento de clique para cada filtro de modalidade
-    filtrosModalidade.forEach(filtro => {
-        filtro.addEventListener('click', function() {
-            // Remove a classe 'ativo' de todos os filtros
-            filtrosModalidade.forEach(f => f.classList.remove('ativo'));
-            
-            // Adiciona a classe 'ativo' ao filtro clicado
-            this.classList.add('ativo');
-            
-            // Obtém a modalidade selecionada
-            const modalidade = this.getAttribute('data-modalidade');
-            
-            // Atualiza os preços e links para a modalidade selecionada
-            atualizarPrecos(modalidade);
-        });
-    });
-    
-    // Adiciona evento de clique para cada card de período
-    function inicializarCardsPeriodo() {
-        const periodoCards = document.querySelectorAll('.periodo-card');
-        periodoCards.forEach(card => {
-            card.addEventListener('click', function() {
-                // Remove a classe 'ativo' de todos os cards
-                periodoCards.forEach(c => c.classList.remove('ativo'));
-                
-                // Adiciona a classe 'ativo' ao card clicado
-                this.classList.add('ativo');
-                
-                // Obtém o período selecionado
-                const periodo = this.getAttribute('data-periodo');
-                
-                // Atualiza a visibilidade dos botões de contratação
-                atualizarBotoesContratacao(periodo);
-            });
-        });
-    }
-    
-    // Função para atualizar a visibilidade dos botões de contratação
-    function atualizarBotoesContratacao(periodo) {
-        // Esconde todos os botões
-        document.querySelectorAll('.periodo-botao').forEach(botao => {
-            botao.style.display = 'none';
-        });
-        
-        // Mostra apenas os botões do período selecionado
-        document.querySelectorAll(`.periodo-botao[data-periodo="${periodo}"]`).forEach(botao => {
-            botao.style.display = 'inline-block';
-        });
-    }
-    
-    // Função para atualizar os preços e links com base na modalidade
-    function atualizarPrecos(modalidade) {
-        // Atualiza preços do plano Essencial (se existir)
-        if (document.querySelector('#essencial-mensal-preco')) {
-            document.querySelector('#essencial-mensal-preco').textContent = `${precos[modalidade].essencial.mensal}`;
-        }
-        if (document.querySelector('#essencial-trimestral-preco')) {
-            document.querySelector('#essencial-trimestral-preco').textContent = `${totais[modalidade].essencial.trimestral}`;
-        }
-        if (document.querySelector('#essencial-trimestral-equivalente')) {
-            document.querySelector('#essencial-trimestral-equivalente').textContent = `Equivale a R$ ${precos[modalidade].essencial.trimestral}/mês`;
-        }
-        if (document.querySelector('#essencial-semestral-preco')) {
-            document.querySelector('#essencial-semestral-preco').textContent = `${totais[modalidade].essencial.semestral}`;
-        }
-        if (document.querySelector('#essencial-semestral-equivalente')) {
-            document.querySelector('#essencial-semestral-equivalente').textContent = `Equivale a R$ ${precos[modalidade].essencial.semestral}/mês`;
-        }
-        
-        // Atualiza preços do plano Premium (se existir)
-        if (document.querySelector('#premium-mensal-preco')) {
-            document.querySelector('#premium-mensal-preco').textContent = `${precos[modalidade].premium.mensal}`;
-        }
-        if (document.querySelector('#premium-trimestral-preco')) {
-            document.querySelector('#premium-trimestral-preco').textContent = `${totais[modalidade].premium.trimestral}`;
-        }
-        if (document.querySelector('#premium-trimestral-equivalente')) {
-            document.querySelector('#premium-trimestral-equivalente').textContent = `Equivale a R$ ${precos[modalidade].premium.trimestral}/mês`;
-        }
-        if (document.querySelector('#premium-semestral-preco')) {
-            document.querySelector('#premium-semestral-preco').textContent = `${totais[modalidade].premium.semestral}`;
-        }
-        if (document.querySelector('#premium-semestral-equivalente')) {
-            document.querySelector('#premium-semestral-equivalente').textContent = `Equivale a R$ ${precos[modalidade].premium.semestral}/mês`;
-        }
-        
-        // Atualiza os links de contratação
-        const treinador = window.location.pathname.split('/').pop().replace('.html', '');
-        
-        // Links do plano Essencial
-        document.querySelectorAll('.essencial-link-mensal').forEach(link => {
-            link.href = `../cadastro-unificado.html?modalidade=${modalidade}&plano=essencial&treinador=${treinador}&periodo=mensal`;
-        });
-        
-        document.querySelectorAll('.essencial-link-trimestral').forEach(link => {
-            link.href = `../cadastro-unificado.html?modalidade=${modalidade}&plano=essencial&treinador=${treinador}&periodo=trimestral`;
-        });
-        
-        document.querySelectorAll('.essencial-link-semestral').forEach(link => {
-            link.href = `../cadastro-unificado.html?modalidade=${modalidade}&plano=essencial&treinador=${treinador}&periodo=semestral`;
-        });
-        
-        // Links do plano Premium
-        document.querySelectorAll('.premium-link-mensal').forEach(link => {
-            link.href = `../cadastro-unificado.html?modalidade=${modalidade}&plano=premium&treinador=${treinador}&periodo=mensal`;
         });
 
-        document.querySelectorAll('.premium-link-trimestral').forEach(link => {
-            link.href = `../cadastro-unificado.html?modalidade=${modalidade}&plano=premium&treinador=${treinador}&periodo=trimestral`;
-        });
-
-        document.querySelectorAll('.premium-link-semestral').forEach(link => {
-            link.href = `../cadastro-unificado.html?modalidade=${modalidade}&plano=premium&treinador=${treinador}&periodo=semestral`;
-        });
-    }
-    
-    // Inicializa com a modalidade ativa
-    const modalidadeAtiva = document.querySelector('.filtro-modalidade.ativo');
-    if (modalidadeAtiva) {
-        const modalidade = modalidadeAtiva.getAttribute('data-modalidade');
-        atualizarPrecos(modalidade);
-        inicializarCardsPeriodo();
-        
-        // Inicializa com o período mensal ativo
-        const periodoAtivo = document.querySelector('.periodo-card.ativo');
-        if (periodoAtivo) {
-            const periodo = periodoAtivo.getAttribute('data-periodo');
-            atualizarBotoesContratacao(periodo);
+        if (!planFor(modality, selectedPeriod())) {
+            const firstAvailable = periodFilters.find((filter) => filter.style.display !== 'none');
+            if (firstAvailable) firstAvailable.click();
         }
+        updateEnrollment();
     }
+
+    function renderCatalog() {
+        coach = catalog.coaches.find((item) =>
+            item.id && item.active !== false && item.public_visible !== false &&
+            Array.isArray(item.modality_ids) && slug(item.name) === wantedCoachSlug
+        );
+        if (!coach) {
+            showState(existingNoVacancies ? '' : 'Este treinador não está disponível para contratação online no momento.');
+            return;
+        }
+        modalityFilters.forEach((filter) => {
+            const record = catalog.modalities.find((item) => slug(item.name) === filter.dataset.modalidade);
+            filter.style.display = record && coach.modality_ids.includes(record.id) &&
+                periods.some((period) => planFor(filter.dataset.modalidade, period)) ? '' : 'none';
+        });
+        const current = section.querySelector('.filtro-modalidade.ativo');
+        if (current?.style.display === 'none') {
+            current.classList.remove('ativo');
+            const firstAvailable = modalityFilters.find((filter) => filter.style.display !== 'none');
+            if (firstAvailable) firstAvailable.classList.add('ativo');
+        }
+        if (!modalityFilters.some((filter) => filter.style.display !== 'none')) {
+            showState('Não há planos online disponíveis com este treinador no momento.');
+            return;
+        }
+        renderModality();
+    }
+
+    showState('Carregando planos disponíveis...');
+    modalityFilters.forEach((filter) => filter.addEventListener('click', function () {
+        if (this.style.display === 'none' || !catalog || !coach) return;
+        modalityFilters.forEach((item) => item.classList.toggle('ativo', item === this));
+        renderModality();
+    }));
+    periodFilters.forEach((filter) => filter.addEventListener('click', function () {
+        updateEnrollment(this.dataset.periodo);
+    }));
+
+    void (async function loadCatalog() {
+        try {
+            const response = await fetch(endpoint, { headers: { Accept: 'application/json' } });
+            const data = await response.json();
+            if (!response.ok || !data.ok) throw new Error('Catálogo indisponível');
+            catalog = {
+                modalities: Array.isArray(data.modalities) ? data.modalities : [],
+                plans: Array.isArray(data.plans) ? data.plans : [],
+                coaches: Array.isArray(data.coaches) ? data.coaches : []
+            };
+            renderCatalog();
+        } catch (error) {
+            console.error('trainer assessment catalog', error);
+            showState('Não foi possível carregar os planos agora. Atualize a página e tente novamente.');
+        }
+    })();
 });
