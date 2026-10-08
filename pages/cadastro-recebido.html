@@ -9,41 +9,42 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/onboarding-cadastro.css?v=20260729-2">
+  <link rel="stylesheet" href="../css/onboarding-cadastro.css?v=20261008-1">
 </head>
-<body class="success-page">
+<body class="success-page success-page--pending">
   <header class="onboarding-topbar">
     <a class="onboarding-brand" href="../index.html" aria-label="Endurance On — voltar ao site">
       <img src="../images/logo/logo_simbolo_preto.png" alt="Endurance On">
     </a>
-    <div class="security-label" role="status" aria-label="Ambiente protegido">
+    <div class="security-label" id="success-security-label" role="status" aria-label="Verificando o envio">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4.5 5v6.2c0 4.8 3.1 9.1 7.5 10.8 4.4-1.7 7.5-6 7.5-10.8V5L12 2Zm3.4 8.1-4.1 4.2-2.5-2.5 1.2-1.2 1.3 1.3 2.9-3 1.2 1.2Z"/></svg>
-      Envio concluído com segurança
+      <span id="success-security-text">Verificando envio</span>
     </div>
     <a class="exit-link" href="../index.html">Voltar ao site</a>
   </header>
 
-  <nav class="progress-nav progress-nav--complete" aria-label="Pré-matrícula concluída">
+  <nav class="progress-nav" id="success-progress" aria-label="Status da pré-matrícula">
     <ol>
-      <li class="is-complete"><span>1</span><strong>Plano</strong></li>
-      <li class="is-complete"><span>2</span><strong>Treinador</strong></li>
-      <li class="is-complete"><span>3</span><strong>Seus dados</strong></li>
-      <li class="is-complete"><span>4</span><strong>Concluído</strong></li>
+      <li><span>1</span><strong>Plano</strong></li>
+      <li><span>2</span><strong>Treinador</strong></li>
+      <li><span>3</span><strong>Seus dados</strong></li>
+      <li><span>4</span><strong>Confirmação</strong></li>
     </ol>
   </nav>
 
   <main class="success-main">
     <section class="success-card">
-      <div class="success-icon" aria-hidden="true">✓</div>
-      <div class="step-kicker">PRÉ-MATRÍCULA RECEBIDA</div>
-      <h1>Pronto! Agora é com a gente.</h1>
-      <p>Seus dados já chegaram com segurança ao sistema da Endurance On. Para agilizar o atendimento, envie agora a mensagem pronta pelo WhatsApp.</p>
+      <div class="success-icon" id="success-icon" aria-hidden="true">…</div>
+      <div class="step-kicker" id="success-kicker">VERIFICANDO ENVIO</div>
+      <h1 id="success-title">Só um instante…</h1>
+      <p id="success-message">Estamos conferindo o protocolo da sua pré-matrícula.</p>
+      <div class="success-protocol" id="success-protocol-wrap" hidden>Protocolo: <strong id="success-protocol"></strong></div>
       <dl class="success-summary" id="success-summary" hidden>
         <div><dt>Modalidade</dt><dd id="success-modality"></dd></div>
         <div><dt>Plano</dt><dd id="success-plan"></dd></div>
         <div><dt>Treinador</dt><dd id="success-coach"></dd></div>
       </dl>
-      <div class="success-next">
+      <div class="success-next" id="success-next" hidden>
         <strong>O que acontece agora?</strong>
         <ol>
           <li><span>1</span>Conferimos seu plano e treinador.</li>
@@ -52,7 +53,7 @@
         </ol>
       </div>
       <div class="success-actions">
-        <a class="primary-action whatsapp-action" id="whatsapp-action" href="https://wa.me/5548991178688" target="_blank" rel="noopener noreferrer">Enviar mensagem no WhatsApp <span aria-hidden="true">→</span></a>
+        <a class="primary-action" id="success-primary-action" href="cadastro-unificado.html">Voltar ao formulário <span aria-hidden="true">→</span></a>
         <a class="secondary-action" href="../index.html">Voltar ao site</a>
       </div>
       <small class="success-reassurance">Nenhuma cobrança foi realizada nesta etapa.</small>
@@ -63,6 +64,6 @@
     <span>© <span id="current-year"></span> Endurance On</span>
     <span>Ambiente protegido · Privacidade e segurança</span>
   </footer>
-  <script src="../js/cadastro-recebido.js?v=20260729-1" defer></script>
+  <script src="../js/cadastro-recebido.js?v=20261008-1" defer></script>
 </body>
 </html>

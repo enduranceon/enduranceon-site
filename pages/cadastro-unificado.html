@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/onboarding-cadastro.css?v=20260729-2">
+  <link rel="stylesheet" href="../css/onboarding-cadastro.css?v=20261008-1">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQX6YBZD9P"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -54,7 +54,7 @@
 
         <section class="form-step is-active" data-step="1" aria-labelledby="step-plan-title">
           <div class="step-kicker">01 / PLANEJAMENTO</div>
-          <h1 id="step-plan-title">Escolha como você quer treinar</h1>
+          <h1 id="step-plan-title" tabindex="-1">Escolha como você quer treinar</h1>
           <p class="step-subtitle">Confira a modalidade, o formato de atendimento e o período que melhor combina com seus objetivos.</p>
 
           <fieldset class="choice-group">
@@ -89,7 +89,7 @@
 
         <section class="form-step" data-step="2" aria-labelledby="step-coach-title" hidden>
           <div class="step-kicker">02 / TREINADOR</div>
-          <h1 id="step-coach-title">Escolha seu treinador</h1>
+          <h1 id="step-coach-title" tabindex="-1">Escolha seu treinador</h1>
           <p class="step-subtitle">Selecione o profissional que vai acompanhar sua evolução. Aparecem aqui somente treinadores disponíveis no momento.</p>
           <div id="coach-options" class="coach-grid loading-box" aria-live="polite">Carregando treinadores…</div>
           <div class="step-actions">
@@ -101,25 +101,29 @@
 
         <section class="form-step" data-step="3" aria-labelledby="step-person-title" hidden>
           <div class="step-kicker">03 / SEUS DADOS</div>
-          <h1 id="step-person-title">Vamos conhecer você</h1>
+          <h1 id="step-person-title" tabindex="-1">Vamos conhecer você</h1>
           <p class="step-subtitle">Esses dados permitem que a equipe entre em contato e prepare sua pré-matrícula.</p>
           <div class="field-grid">
             <div class="field field--full">
               <label for="nome-completo">Nome completo</label>
-              <input type="text" id="nome-completo" name="nome_completo" autocomplete="name" placeholder="Como você gostaria de ser chamado?" required>
+              <input type="text" id="nome-completo" name="nome_completo" autocomplete="name" placeholder="Como você gostaria de ser chamado?" minlength="3" maxlength="160" aria-describedby="nome-completo-error" required>
+              <small id="nome-completo-error" class="field-error" aria-live="polite"></small>
             </div>
             <div class="field">
               <label for="whatsapp">WhatsApp com DDD</label>
-              <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(48) 99999-9999" required>
+              <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(48) 99999-9999" maxlength="19" aria-describedby="whatsapp-error" required>
+              <small id="whatsapp-error" class="field-error" aria-live="polite"></small>
             </div>
             <div class="field">
               <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" autocomplete="email" placeholder="voce@email.com" required>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="voce@email.com" maxlength="180" aria-describedby="email-error" required>
+              <small id="email-error" class="field-error" aria-live="polite"></small>
             </div>
             <div class="field">
               <label for="cpf">CPF</label>
-              <input type="text" id="cpf" name="cpf" inputmode="numeric" placeholder="000.000.000-00" required>
-              <small>Necessário para identificar sua pré-matrícula.</small>
+              <input type="text" id="cpf" name="cpf" inputmode="numeric" placeholder="000.000.000-00" maxlength="14" aria-describedby="cpf-help cpf-error" required>
+              <small id="cpf-help">Necessário para identificar sua pré-matrícula.</small>
+              <small id="cpf-error" class="field-error" aria-live="polite"></small>
             </div>
           </div>
           <div class="privacy-note">
@@ -135,47 +139,55 @@
 
         <section class="form-step" data-step="4" aria-labelledby="step-address-title" hidden>
           <div class="step-kicker">04 / CONFIRMAÇÃO</div>
-          <h1 id="step-address-title">Só falta confirmar seu endereço</h1>
+          <h1 id="step-address-title" tabindex="-1">Só falta confirmar seu endereço</h1>
           <p class="step-subtitle">Digite o CEP e completaremos automaticamente os dados disponíveis.</p>
           <div class="field-grid">
             <div class="field">
               <label for="cep">CEP</label>
-              <input type="text" id="cep" name="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" required>
+              <input type="text" id="cep" name="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" aria-describedby="cep-status cep-error" required>
               <small id="cep-status" class="field-status" aria-live="polite"></small>
+              <small id="cep-error" class="field-error" aria-live="polite"></small>
             </div>
             <div class="field field--wide">
               <label for="address_street">Rua</label>
-              <input type="text" id="address_street" name="address_street" autocomplete="address-line1" required>
+              <input type="text" id="address_street" name="address_street" autocomplete="address-line1" maxlength="160" aria-describedby="address_street-error" required>
+              <small id="address_street-error" class="field-error" aria-live="polite"></small>
             </div>
             <div class="field">
               <label for="address_number">Número</label>
-              <input type="text" id="address_number" name="address_number" autocomplete="address-line2" required>
+              <input type="text" id="address_number" name="address_number" autocomplete="address-line2" maxlength="40" aria-describedby="address_number-error" required>
+              <small id="address_number-error" class="field-error" aria-live="polite"></small>
             </div>
             <div class="field">
               <label for="address_complement">Complemento <span>(opcional)</span></label>
-              <input type="text" id="address_complement" name="address_complement" autocomplete="address-line2">
+              <input type="text" id="address_complement" name="address_complement" autocomplete="address-line2" maxlength="120">
             </div>
             <div class="field">
               <label for="address_neighborhood">Bairro</label>
-              <input type="text" id="address_neighborhood" name="address_neighborhood" required>
+              <input type="text" id="address_neighborhood" name="address_neighborhood" maxlength="120" aria-describedby="address_neighborhood-error" required>
+              <small id="address_neighborhood-error" class="field-error" aria-live="polite"></small>
             </div>
             <div class="field">
               <label for="address_city">Cidade</label>
-              <input type="text" id="address_city" name="address_city" autocomplete="address-level2" required>
+              <input type="text" id="address_city" name="address_city" autocomplete="address-level2" maxlength="120" aria-describedby="address_city-error" required>
+              <small id="address_city-error" class="field-error" aria-live="polite"></small>
             </div>
             <div class="field field--state">
               <label for="address_state">UF</label>
-              <input type="text" id="address_state" name="address_state" maxlength="2" autocomplete="address-level1" required>
+              <input type="text" id="address_state" name="address_state" maxlength="2" autocomplete="address-level1" aria-describedby="address_state-error" required>
+              <small id="address_state-error" class="field-error" aria-live="polite"></small>
             </div>
           </div>
 
           <label class="terms-check">
-            <input type="checkbox" id="termos" name="termos" required>
+            <input type="checkbox" id="termos" name="termos" aria-describedby="termos-error" required>
             <span>Li e aceito os <a href="termos.html" target="_blank" rel="noopener">Termos de Contrato</a> e autorizo o contato da Endurance On sobre esta pré-matrícula.</span>
           </label>
+          <small id="termos-error" class="field-error field-error--terms" aria-live="polite"></small>
           <div class="turnstile-wrap">
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAAEA611YLkFJnndKx" data-action="prospect_submit" data-theme="light"></div>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAEA611YLkFJnndKx" data-action="prospect_submit" data-theme="light" data-expired-callback="eonTurnstileExpired" data-error-callback="eonTurnstileError"></div>
             <small>Verificação anti-spam protegida pela Cloudflare.</small>
+            <small id="turnstile-error" class="field-error" aria-live="polite"></small>
           </div>
           <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
           <div class="step-actions">
@@ -211,6 +223,6 @@
   </footer>
 
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-  <script src="../js/form-unificado.js?v=20260921-2" defer></script>
+  <script src="../js/form-unificado.js?v=20261008-1" defer></script>
 </body>
 </html>
