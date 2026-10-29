@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#ffffff">
+  <title>Treinos coletivos · Endurance On</title>
+  <meta name="description" content="Treinos coletivos da Endurance On em Florianópolis: dias, horários e locais de ciclismo, corrida, natação e multisport.">
+  <link rel="stylesheet" href="assets/brand.css">
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,650;0,700;0,750;0,800;0,850;1,800;1,850&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#151515;--muted:#656565;--paper:#fff;--off:#f5f4f0;--orange:#ff8012;--blue:#38b6ff;--soft-blue:#e7f3fa;--line:#dfdfda;--focus:#08729b;--max:1200px;--gutter:40px;--head:76px;--ease:cubic-bezier(.2,.65,.2,1)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{margin:0;background:var(--off);color:var(--ink);font:16px/1.65 'Montserrat',Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+    body.modal-open{overflow:hidden}
+    h1,h2,h3,p,ul{margin:0}
+    ul{list-style:none;padding:0}
+    h1,h2,h3{line-height:1.1;letter-spacing:-.045em}
+    svg{display:block}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;color:inherit;cursor:pointer}
+    button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+    [hidden]{display:none!important}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .skip-link{position:fixed;z-index:200;top:-100px;left:20px;background:#fff;color:#000;padding:14px}
+    .skip-link:focus{top:10px}
+    .wrap{width:min(var(--max),calc(100% - var(--gutter)*2));margin-inline:auto}
+    .eyebrow{display:block;font-size:11px;font-weight:650;letter-spacing:.15em;line-height:1.4;text-transform:uppercase}
+    .button{appearance:none;display:inline-flex;justify-content:center;align-items:center;gap:12px;min-height:46px;max-width:100%;padding:11px 18px;border:1px solid transparent;border-radius:10px;background:var(--orange);color:#141414;font-size:13px;font-weight:650;line-height:1.4;transition:transform .2s var(--ease),background .2s,box-shadow .2s}
+    .button .arrow{font-size:18px;font-weight:400;line-height:1}
+    .button:hover{background:#ff9438;transform:translateY(-1px);box-shadow:0 3px 9px #00000012}
+    .button.dark{background:var(--ink);color:#fff}
+    .button.dark:hover{background:#333}
+    .text-button{background:none;border:0;border-bottom:1px solid currentColor;padding:6px 0;min-height:40px;font-size:12px;font-weight:650}
+    .text-button:hover{color:#a64900}
+
+    /* Cabeçalho */
+    .site-header{position:sticky;top:0;z-index:60;height:var(--head);background:rgba(255,255,255,.97);border-bottom:1px solid #e9e8e4;backdrop-filter:blur(12px)}
+    .nav-wrap{height:100%;display:flex;align-items:center;gap:26px}
+    .brand{display:flex;align-items:center;gap:11px;flex:none;min-height:44px}
+    .brand-text{font-size:12px;line-height:1.13;font-weight:800;letter-spacing:-.02em}
+    .brand-text small{display:block;font-size:7px;font-weight:500;letter-spacing:.14em;margin-top:6px}
+    .main-nav{display:flex;align-items:center;gap:28px;margin-left:auto}
+    .main-nav>a{position:relative;font-size:12px;font-weight:550;padding:15px 0}
+    .main-nav>a:hover{text-decoration:underline;text-underline-offset:5px}
+    .main-nav>a[aria-current=page]:after{content:'';position:absolute;left:0;right:0;bottom:8px;height:2px;background:var(--orange)}
+    .nav-button{min-height:40px;padding:9px 15px;font-size:12px;gap:9px}
+    .menu-button{border:0;background:none;width:44px;height:44px;display:none;padding:12px}
+    .menu-button i{display:block;background:currentColor;height:2px;width:21px;margin:5px 0;transition:transform .2s}
+    .menu-button[aria-expanded=true] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+    .menu-button[aria-expanded=true] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+
+    /* Abertura */
+    .page-intro{padding:64px 0 38px;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:48px;align-items:end}
+    .page-intro .eyebrow{color:#6a6a6a}
+    .page-intro h1{font-size:clamp(46px,6vw,82px);line-height:1.02;letter-spacing:-.055em;font-weight:800;margin-top:18px}
+    .page-intro h1 em{font-style:italic;font-weight:850}
+    .page-intro p{font-size:15px;line-height:1.75;color:var(--muted);padding-bottom:6px}
+
+    /* Semana de treinos */
+    .week-section{padding-bottom:30px}
+    .week{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+    .day{display:flex;flex-direction:column;min-width:0;background:var(--paper);border:1px solid #e3e2dd;border-radius:14px;padding:24px 22px 22px;box-shadow:0 10px 24px #1515150a}
+    .day-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-bottom:16px;border-bottom:1px solid #eceae5}
+    .day-name{font-size:13px;font-weight:750;letter-spacing:.14em;text-transform:uppercase}
+    .day-period{font-size:12px;color:#707070}
+    .session{display:flex;flex-direction:column;flex:1;margin-top:22px}
+    .session-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--tone,#eee);color:var(--tone-ink,#151515)}
+    .session-icon svg{width:24px;height:24px}
+    .tone-bike{--tone:#e1f1fb;--tone-ink:#0b6896}
+    .tone-run{--tone:#ffeedd;--tone-ink:#a64900}
+    .tone-swim{--tone:#d0ecfb;--tone-ink:#0b6896}
+    .tone-multi{--tone:#151515;--tone-ink:#fff}
+    .session h3{font-size:26px;font-weight:750;letter-spacing:-.04em;margin-top:16px}
+    .session-times{display:grid;gap:8px;margin-top:16px}
+    .session-times li{display:flex;gap:10px;font-size:14px;line-height:1.45}
+    .session-times strong{flex:none;font-weight:750}
+    .session-times span{color:#555}
+    .session-place{display:flex;gap:10px;align-items:flex-start;margin-top:18px;padding-top:16px;border-top:1px solid #eceae5;font-size:13px;line-height:1.5;color:#3f3f3f}
+    .session-place svg{flex:none;width:16px;height:16px;margin-top:2px;color:#8a8a85}
+    .session .text-button{align-self:flex-start;margin-top:auto;padding-top:6px}
+    .session-place+.text-button{margin-top:16px}
+
+    .notice{margin-top:22px;display:flex;gap:14px;align-items:flex-start;padding:18px 22px;background:var(--soft-blue);border:1px solid #cfe5f2;border-radius:14px;font-size:13px;line-height:1.7;color:#394a53}
+    .notice svg{flex:none;width:20px;height:20px;margin-top:2px;color:#0b6896}
+    .help{margin:22px 0 84px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 30px;background:var(--paper);border:1px solid var(--line);border-radius:16px}
+    .help strong{display:block;font-size:20px;line-height:1.25;letter-spacing:-.03em}
+    .help p{font-size:14px;color:var(--muted);margin-top:4px}
+
+    /* Janela do treino itinerante */
+    dialog{padding:0;border:0;border-radius:15px;background:#fff;color:#181818;max-height:90dvh;max-width:560px;width:calc(100% - 36px);box-shadow:0 30px 80px #0005}
+    dialog::backdrop{background:#080808ba;backdrop-filter:blur(4px)}
+    .dialog-head{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:23px;padding:21px 25px;background:#fff;border-bottom:1px solid #eee}
+    .dialog-head h2{font-size:23px;letter-spacing:-.03em}
+    .dialog-close{border:1px solid #ddd;background:#fff;width:41px;height:41px;border-radius:50%;font-size:24px;line-height:1;flex:none}
+    .dialog-close:hover{background:#f4f3ef}
+    .dialog-content{padding:8px 25px 26px}
+    .info-item{padding:18px 0;border-bottom:1px solid #eee}
+    .info-item:last-child{border-bottom:0}
+    .info-item h3{font-size:12px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;color:#6a6a6a;margin-bottom:6px}
+    .info-item p{font-size:14px;line-height:1.7;color:#2b2b2b}
+
+    /* Rodapé */
+    .site-footer{background:#121212;color:#fff;padding:48px 0 0}
+    .footer-grid{display:grid;grid-template-columns:1.15fr .9fr 1fr;gap:60px}
+    .footer-grid .brand{margin-bottom:19px}
+    .footer-grid p{font-size:11px;color:#999;line-height:1.8}
+    .footer-grid h2{font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:#b9b9b9;margin-bottom:18px}
+    .footer-links{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px}
+    .footer-grid a:not(.brand){font-size:11px;color:#c9c9c9;line-height:1.7}
+    .footer-grid a:not(.brand):hover{text-decoration:underline}
+    .footer-contact>a{display:block;margin-bottom:10px;overflow-wrap:anywhere}
+    .footer-base{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-top:35px;border-top:1px solid #ffffff26;padding:20px 0 25px;font-size:9px;color:#888}
+    .footer-word{font-size:clamp(49px,12vw,182px);font-style:italic;font-weight:900;letter-spacing:-.07em;color:#ffffff0e;text-align:center;line-height:.92;white-space:nowrap;margin-top:8px;padding-bottom:9px;overflow:hidden}
+
+    @media(max-width:1150px){:root{--gutter:30px}.main-nav{gap:19px}.nav-wrap{gap:19px}.main-nav>a{font-size:11px}.week{grid-template-columns:repeat(2,minmax(0,1fr))}.page-intro{grid-template-columns:minmax(0,1fr) 300px;gap:36px}}
+    @media(max-width:850px){:root{--gutter:24px;--head:72px}
+      .main-nav{display:none;position:absolute;top:var(--head);left:0;right:0;background:#161616;color:#fff;margin:0;padding:16px 24px 26px;max-height:calc(100dvh - var(--head));overflow:auto;box-shadow:0 15px 30px #0002}
+      .main-nav.open{display:block}
+      .main-nav>a{display:block;padding:15px 0;border-bottom:1px solid #fff2;font-size:14px}
+      .main-nav>a[aria-current=page]:after{left:auto;right:0;bottom:50%;width:24px;transform:translateY(50%)}
+      .menu-button{display:block}.nav-button{margin-left:auto}
+      .page-intro{grid-template-columns:1fr;gap:20px;padding:46px 0 30px}.page-intro p{max-width:480px}
+      .footer-grid{gap:35px;grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}}
+    @media(max-width:600px){:root{--gutter:21px;--head:70px}
+      .nav-wrap{gap:12px}.brand-text{font-size:10px}.brand-text small{font-size:6px;margin-top:4px;letter-spacing:.1em}
+      .brand .eon-symbol{width:49px}.nav-button{min-height:44px;padding:10px 13px;gap:8px}.menu-button{width:35px;padding:8px}
+      .page-intro{padding:36px 0 24px}.page-intro h1{font-size:46px}.page-intro p{font-size:14px}
+      .week{grid-template-columns:1fr;gap:14px}.day{padding:20px 20px 20px}.session{margin-top:18px}.session h3{font-size:24px}
+      .notice{padding:16px 18px}.help{flex-direction:column;align-items:stretch;gap:18px;padding:22px 20px;margin-bottom:60px}.help .button{width:100%}.help strong{font-size:18px}
+      dialog{width:calc(100% - 24px);max-height:92dvh}.dialog-head{padding:17px 18px}.dialog-head h2{font-size:21px}.dialog-content{padding:6px 18px 22px}
+      .site-footer{padding-top:34px}.footer-grid{grid-template-columns:1fr;gap:29px}.footer-grid>div:first-child{grid-column:auto}.footer-links{max-width:310px;gap:0 20px}.footer-grid h2{font-size:9px}.footer-grid p,.footer-grid a:not(.brand){font-size:10px}.footer-grid a:not(.brand){display:flex;align-items:center;min-height:36px}.footer-contact>a{margin-bottom:0}.footer-base{display:block;margin-top:22px;padding-block:18px 24px;font-size:8px}.footer-word{font-size:12vw;margin-top:9px}}
+    @media(max-width:365px){:root{--gutter:17px}.brand-text{font-size:9px}.brand .eon-symbol{width:44px}.page-intro h1{font-size:40px}}
+    @media(pointer:coarse){.nav-button{min-height:44px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.button:hover{transform:none}}
+  </style>
+  <script>
+    // Google Analytics 4: só nos endereços oficiais (prévias e testes não contam no Analytics real).
+    (function () {
+      if (!/^(www\.)?enduranceon\.com\.br$/.test(location.hostname)) return;
+      var tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtag/js?id=G-PQX6YBZD9P';
+      document.head.appendChild(tag);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', 'G-PQX6YBZD9P');
+    })();
+  </script>
+  <link rel="canonical" href="https://www.enduranceon.com.br/treinos-coletivos">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Endurance On">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Treinos coletivos · Endurance On">
+  <meta property="og:description" content="Treinos coletivos da Endurance On em Florianópolis: dias, horários e locais de ciclismo, corrida, natação e multisport.">
+  <meta property="og:url" content="https://www.enduranceon.com.br/treinos-coletivos">
+  <meta property="og:image" content="https://www.enduranceon.com.br/assets/images/hero/equipe-eon-comunidade-panoramica.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  <a class="skip-link" href="#treinos">Pular para os treinos</a>
+
+  <header class="site-header">
+    <div class="wrap nav-wrap">
+      <a class="brand" href="index.html" aria-label="Endurance On, voltar ao início">
+        <span class="symbol eon-symbol"><svg aria-hidden="true" focusable="false" width="1358" height="677" viewBox="277 272 1358 677"><image href="/images/logo/logo_simbolo_preto.png" width="1920" height="1216"/></svg></span>
+        <span class="brand-text">ENDURANCE ON<small>ASSESSORIA ESPORTIVA</small></span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
+        <a href="index.html#como-funciona">Como funciona</a>
+        <a href="index.html#treinadores">Treinadores</a>
+        <a href="index.html#historias">Histórias</a>
+        <a href="treinos-coletivos.html" aria-current="page">Treinos coletivos</a>
+        <a href="calendario.html">Calendário</a>
+      </nav>
+      <a class="button nav-button" href="index.html#planos">Planos<span class="arrow" aria-hidden="true">↗</span></a>
+      <button class="menu-button" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menu"><i></i><i></i></button>
+    </div>
+  </header>
+
+  <main id="treinos">
+    <section class="wrap page-intro" aria-labelledby="page-title">
+      <div>
+        <span class="eyebrow">Florianópolis</span>
+        <h1 id="page-title">Treinos <em>coletivos</em></h1>
+      </div>
+      <p>Participe dos nossos treinos em grupo e conecte-se com outros atletas da Endurance On.</p>
+    </section>
+
+    <section class="wrap week-section" aria-labelledby="week-title">
+      <h2 class="sr-only" id="week-title">Programação semanal em Florianópolis</h2>
+      <div class="week">
+        <article class="day">
+          <header class="day-head"><span class="day-name">Terça</span><span class="day-period">Manhã</span></header>
+          <div class="session">
+            <span class="session-icon tone-bike" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg></span>
+            <h3>Ciclismo</h3>
+            <ul class="session-times"><li><strong>05h30</strong></li></ul>
+            <p class="session-place"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.6-7-11a7 7 0 1 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Beira Mar Norte - Trapiche</span></p>
+          </div>
+        </article>
+
+        <article class="day">
+          <header class="day-head"><span class="day-name">Quarta</span><span class="day-period">Manhã</span></header>
+          <div class="session">
+            <span class="session-icon tone-run" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="7"/><path d="M12 14v-4M9.5 3h5M12 3v4"/></svg></span>
+            <h3>Pista-feira</h3>
+            <ul class="session-times"><li><strong>05h40</strong><span>Educativos</span></li><li><strong>06h00</strong><span>Início do treino</span></li></ul>
+            <p class="session-place"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.6-7-11a7 7 0 1 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Pista Parque Coqueiros</span></p>
+          </div>
+        </article>
+
+        <article class="day">
+          <header class="day-head"><span class="day-name">Sexta</span><span class="day-period">Manhã</span></header>
+          <div class="session">
+            <span class="session-icon tone-swim" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg></span>
+            <h3>Natação</h3>
+            <ul class="session-times"><li><strong>05h40</strong><span>Apenas no verão</span></li></ul>
+            <p class="session-place"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.6-7-11a7 7 0 1 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Praia da Daniela</span></p>
+          </div>
+        </article>
+
+        <article class="day">
+          <header class="day-head"><span class="day-name">Sábado</span><span class="day-period">Manhã</span></header>
+          <div class="session">
+            <span class="session-icon tone-multi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="5.5"/><path d="M8.5 10.5 6 3h4l2 5 2-5h4l-2.5 7.5"/></svg></span>
+            <h3>Multisport</h3>
+            <ul class="session-times"><li><strong>06h00</strong></li></ul>
+            <p class="session-place"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.6-7-11a7 7 0 1 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Praia de Jurerê ou Beira Mar Norte</span></p>
+            <button class="text-button" type="button" data-open-dialog>Como funciona o treino itinerante</button>
+          </div>
+        </article>
+      </div>
+
+      <p class="notice">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+        <span>Os treinos podem sofrer alterações de data, horário e local, sempre com aviso prévio em nossos canais de comunicação.</span>
+      </p>
+    </section>
+
+    <section class="wrap" aria-label="Contato">
+      <div class="help">
+        <div>
+          <strong>Dúvidas sobre os treinos?</strong>
+          <p>Fale com a equipe pelo WhatsApp.</p>
+        </div>
+        <a class="button dark" href="https://wa.me/5548991178688?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20treinos%20coletivos%20da%20Endurance%20On." rel="noopener noreferrer" target="_blank">Chamar no WhatsApp<span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="index.html" aria-label="Endurance On, início">
+          <span class="symbol eon-symbol"><svg aria-hidden="true" focusable="false" width="1358" height="677" viewBox="277 249 1358 677"><image href="/images/logo/logo-new-white.png" width="1920" height="1216"/></svg></span>
+          <span class="brand-text">ENDURANCE ON<small>ASSESSORIA ESPORTIVA</small></span>
+        </a>
+        <p>Corrida, triathlon e duas modalidades.<br>Florianópolis e acompanhamento online.</p>
+      </div>
+      <div>
+        <h2>Conheça a EON</h2>
+        <div class="footer-links">
+          <a href="index.html#como-funciona">Como funciona</a>
+          <a href="index.html#treinadores">Treinadores</a>
+          <a href="treinos-coletivos.html">Treinos coletivos</a>
+          <a href="calendario.html">Calendário</a>
+          <a href="parceiros.html">Parceiros</a>
+          <a href="contato.html">Contato</a>
+          <a href="https://www.enduranceon.com.br/pages/calculadoras.html" rel="noopener noreferrer" target="_blank">Calculadoras ↗</a>
+          <a href="https://www.enduranceon.com.br/pages/termos.html" rel="noopener noreferrer" target="_blank">Termos ↗</a>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <h2>Vamos conversar</h2>
+        <a href="https://wa.me/5548991178688" rel="noopener noreferrer" target="_blank">WhatsApp (48) 99117-8688 ↗</a>
+        <a href="https://www.instagram.com/endurance_on/" rel="noopener noreferrer" target="_blank">@endurance_on ↗</a>
+        <a href="mailto:contato@enduranceon.com.br">contato@enduranceon.com.br</a>
+      </div>
+    </div>
+    <div class="wrap footer-base"><span>© Endurance On</span></div>
+    <div class="footer-word" aria-hidden="true">ENDURANCE ON</div>
+  </footer>
+
+  <dialog id="itinerante-dialog" aria-labelledby="itinerante-title">
+    <div class="dialog-head">
+      <h2 id="itinerante-title">Multisport · Sábado</h2>
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Fechar">×</button>
+    </div>
+    <div class="dialog-content">
+      <div class="info-item"><h3>Horário</h3><p>06h00</p></div>
+      <div class="info-item"><h3>Locais principais</h3><p><strong>Praia de Jurerê</strong> ou <strong>Beira Mar Norte</strong></p></div>
+      <div class="info-item"><h3>Treino itinerante</h3><p>Esse treino é de forma itinerante, na qual mudamos conforme o calendário da assessoria. Os locais principais são Praia de Jurerê e Beira Mar Norte, mas o local exato será confirmado nos nossos canais de comunicação.</p></div>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      'use strict';
+      const nav = document.getElementById('main-nav');
+      const menuButton = document.querySelector('.menu-button');
+      const dialog = document.getElementById('itinerante-dialog');
+
+      function setMenu(open) {
+        nav.classList.toggle('open', open);
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      }
+      menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+      nav.addEventListener('click', event => { if (event.target.closest('a')) setMenu(false); });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && nav.classList.contains('open')) { setMenu(false); menuButton.focus(); }
+      });
+      matchMedia('(min-width: 851px)').addEventListener('change', event => { if (event.matches) setMenu(false); });
+
+      document.querySelectorAll('[data-open-dialog]').forEach(button => button.addEventListener('click', () => {
+        dialog.showModal();
+        document.body.classList.add('modal-open');
+      }));
+      dialog.addEventListener('click', event => {
+        if (event.target === dialog || event.target.closest('[data-close-dialog]')) dialog.close();
+      });
+      dialog.addEventListener('close', () => document.body.classList.remove('modal-open'));
+    })();
+  </script>
+</body>
+</html>

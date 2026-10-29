@@ -1,11 +1,182 @@
+# Redirecionamentos do site (troca de 29/10/2026).
+# URLs novas e curtas (/calendario, /treinos-coletivos, /parceiros, /contato, /treinador-<nome>);
+# as antigas redirecionam para elas com 301 (force = true: vale mesmo que o arquivo antigo ainda exista).
+# O redirecionamento antigo guto-fernandes-bio agora aponta direto para a página nova, sem cadeia.
+# Âncoras antigas da home (/#contato, /#sobre, /#faq) não passam pelo servidor.
+
+# ---- Regras que já existem no netlify.toml oficial, apontadas direto para a página nova
+# (evita um redirecionamento em cadeia: bio -> guto-fernandes.html -> /treinador-guto-fernandes).
 [[redirects]]
 from = "/pages/treinadores/guto-fernandes-bio.html"
-to = "/pages/treinadores/guto-fernandes.html"
+to = "/treinador-guto-fernandes"
 status = 301
 force = true
 
 [[redirects]]
 from = "/pages/treinadores/guto-fernandes-bio"
-to = "/pages/treinadores/guto-fernandes.html"
+to = "/treinador-guto-fernandes"
 status = 301
 force = true
+
+# ---- Treinos coletivos, calendário e parceiros
+[[redirects]]
+from = "/pages/treinos-coletivos"
+to = "/treinos-coletivos"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/treinos-coletivos.html"
+to = "/treinos-coletivos"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/calendario"
+to = "/calendario"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/calendario.html"
+to = "/calendario"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/parceiros"
+to = "/parceiros"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/parceiros.html"
+to = "/parceiros"
+status = 301
+force = true
+
+# ---- Página de cada treinador
+[[redirects]]
+from = "/pages/treinadores/bruno-jeremias"
+to = "/treinador-bruno-jeremias"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/treinadores/bruno-jeremias.html"
+to = "/treinador-bruno-jeremias"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/treinadores/elinai-freitas"
+to = "/treinador-elinai-freitas"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/treinadores/elinai-freitas.html"
+to = "/treinador-elinai-freitas"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/treinadores/guto-fernandes"
+to = "/treinador-guto-fernandes"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/treinadores/guto-fernandes.html"
+to = "/treinador-guto-fernandes"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/treinadores/jessica-rodrigues"
+to = "/treinador-jessica-rodrigues"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/treinadores/jessica-rodrigues.html"
+to = "/treinador-jessica-rodrigues"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/treinadores/thais-prando"
+to = "/treinador-thais-prando"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/treinadores/thais-prando.html"
+to = "/treinador-thais-prando"
+status = 301
+force = true
+
+# ---- Páginas de plano antigas
+# Deixe comentado até conferir no Google Analytics se alguém ainda entra por elas.
+# Confirmar também que o destino com #planos funciona no Netlify antes de ligar.
+# [[redirects]]
+# from = "/pages/treine-com-a-gente"
+# to = "/#planos"
+# status = 301
+# force = true
+
+# [[redirects]]
+# from = "/pages/treine-com-a-gente.html"
+# to = "/#planos"
+# status = 301
+# force = true
+
+# [[redirects]]
+# from = "/pages/corrida"
+# to = "/#planos"
+# status = 301
+# force = true
+
+# [[redirects]]
+# from = "/pages/corrida.html"
+# to = "/#planos"
+# status = 301
+# force = true
+
+# [[redirects]]
+# from = "/pages/triathlon"
+# to = "/#planos"
+# status = 301
+# force = true
+
+# [[redirects]]
+# from = "/pages/triathlon.html"
+# to = "/#planos"
+# status = 301
+# force = true
+
+# [[redirects]]
+# from = "/pages/multisport"
+# to = "/#planos"
+# status = 301
+# force = true
+
+# [[redirects]]
+# from = "/pages/multisport.html"
+# to = "/#planos"
+# status = 301
+# force = true
+
+# Pré-matrícula no visual novo: só depois de ligada e testada no www (MAPA-URLS.md, seção 9).
+# Conferir se a query string (modalidade, plan_id, treinador, utm_*) chega ao destino.
+# [[redirects]]
+# from = "/pages/cadastro-unificado"
+# to = "/cadastro"
+# status = 301
+# force = true
+
+# [[redirects]]
+# from = "/pages/cadastro-unificado.html"
+# to = "/cadastro"
+# status = 301
+# force = true

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#ffffff">
+  <title>Pré-matrícula · Endurance On</title>
+  <meta name="description" content="Escolha seu plano e treinador e envie sua pré-matrícula com segurança para a Endurance On.">
+  <link rel="stylesheet" href="assets/brand.css">
+  <link rel="stylesheet" href="assets/cadastro.css">
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,650;0,700;0,750;0,800;0,850;1,800;1,850&amp;display=swap" rel="stylesheet">
+  <script>
+    // Google Analytics 4: só nos endereços oficiais (prévias e testes não contam no Analytics real).
+    (function () {
+      if (!/^(www\.)?enduranceon\.com\.br$/.test(location.hostname)) return;
+      var tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtag/js?id=G-PQX6YBZD9P';
+      document.head.appendChild(tag);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', 'G-PQX6YBZD9P');
+    })();
+  </script>
+</head>
+<body>
+  <header class="onboarding-topbar">
+    <a class="brand" href="index.html" aria-label="Endurance On, voltar ao site">
+      <span class="symbol eon-symbol"><svg aria-hidden="true" focusable="false" width="1358" height="677" viewBox="277 272 1358 677"><image href="/images/logo/logo_simbolo_preto.png" width="1920" height="1216"/></svg></span>
+      <span class="brand-text">ENDURANCE ON<small>ASSESSORIA ESPORTIVA</small></span>
+    </a>
+    <div class="security-label" role="status" aria-label="Ambiente protegido">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4.5 5v6.2c0 4.8 3.1 9.1 7.5 10.8 4.4-1.7 7.5-6 7.5-10.8V5L12 2Zm3.4 8.1-4.1 4.2-2.5-2.5 1.2-1.2 1.3 1.3 2.9-3 1.2 1.2Z"/></svg>
+      Ambiente protegido
+    </div>
+    <a class="exit-link" href="index.html"><span aria-hidden="true">←</span> Voltar ao site</a>
+  </header>
+
+  <nav class="progress-nav" aria-label="Progresso da pré-matrícula">
+    <ol>
+      <li class="is-active" data-progress-step="1"><span>1</span><strong>Plano</strong></li>
+      <li data-progress-step="2"><span>2</span><strong>Treinador</strong></li>
+      <li data-progress-step="3"><span>3</span><strong>Seus dados</strong></li>
+      <li data-progress-step="4"><span>4</span><strong>Confirmação</strong></li>
+    </ol>
+  </nav>
+
+  <main class="onboarding-main">
+    <div class="onboarding-layout">
+      <form id="unified-form" class="onboarding-form" novalidate>
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="hidden" id="modalidade" name="modalidade">
+        <input type="hidden" id="plano" name="plano">
+        <input type="hidden" id="regiao" name="regiao">
+        <input type="hidden" id="treinador" name="treinador">
+
+        <section class="form-step is-active" data-step="1" aria-labelledby="step-plan-title">
+          <div class="step-kicker">01 / Planejamento</div>
+          <h1 id="step-plan-title" tabindex="-1">Escolha como você quer <em>treinar</em></h1>
+          <p class="step-subtitle">Confira a modalidade, o formato de atendimento e o período que melhor combina com seus objetivos.</p>
+
+          <fieldset class="choice-group">
+            <legend>Modalidade</legend>
+            <div id="modality-options" class="segment-grid loading-box" aria-live="polite">Carregando modalidades…</div>
+          </fieldset>
+
+          <fieldset class="choice-group">
+            <legend>Onde você vai treinar?</legend>
+            <div id="region-options" class="segment-grid segment-grid--region">
+              <button type="button" class="choice-tile" data-region="florianopolis">
+                <span class="choice-icon">⌖</span>
+                <span><strong>Florianópolis</strong><small>Com acesso à estrutura e pontos de apoio</small></span>
+              </button>
+              <button type="button" class="choice-tile" data-region="online">
+                <span class="choice-icon">◎</span>
+                <span><strong>Outras cidades</strong><small>Acompanhamento online, onde você estiver</small></span>
+              </button>
+            </div>
+          </fieldset>
+
+          <fieldset class="choice-group">
+            <legend>Plano</legend>
+            <div id="plan-options" class="plan-grid loading-box" aria-live="polite">Carregando planos…</div>
+          </fieldset>
+
+          <div class="step-actions step-actions--end">
+            <button type="button" class="primary-action" data-next-step>Continuar <span aria-hidden="true">→</span></button>
+          </div>
+          <p class="step-error" data-step-error role="alert"></p>
+        </section>
+
+        <section class="form-step" data-step="2" aria-labelledby="step-coach-title" hidden>
+          <div class="step-kicker">02 / Treinador</div>
+          <h1 id="step-coach-title" tabindex="-1">Escolha seu <em>treinador</em></h1>
+          <p class="step-subtitle">Selecione o profissional que vai acompanhar sua evolução. Aparecem aqui somente treinadores disponíveis no momento.</p>
+          <div id="coach-options" class="coach-grid loading-box" aria-live="polite">Carregando treinadores…</div>
+          <div class="step-actions">
+            <button type="button" class="secondary-action" data-prev-step><span aria-hidden="true">←</span> Voltar</button>
+            <button type="button" class="primary-action" data-next-step>Continuar <span aria-hidden="true">→</span></button>
+          </div>
+          <p class="step-error" data-step-error role="alert"></p>
+        </section>
+
+        <section class="form-step" data-step="3" aria-labelledby="step-person-title" hidden>
+          <div class="step-kicker">03 / Seus dados</div>
+          <h1 id="step-person-title" tabindex="-1">Vamos <em>conhecer você</em></h1>
+          <p class="step-subtitle">Esses dados permitem que a equipe entre em contato e prepare sua pré-matrícula.</p>
+          <div class="field-grid">
+            <div class="field field--full">
+              <label for="nome-completo">Nome completo</label>
+              <input type="text" id="nome-completo" name="nome_completo" autocomplete="name" placeholder="Como você gostaria de ser chamado?" minlength="3" maxlength="160" aria-describedby="nome-completo-error" required>
+              <small id="nome-completo-error" class="field-error" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="whatsapp">WhatsApp com DDD</label>
+              <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(48) 99999-9999" maxlength="19" aria-describedby="whatsapp-error" required>
+              <small id="whatsapp-error" class="field-error" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="voce@email.com" maxlength="180" aria-describedby="email-error" required>
+              <small id="email-error" class="field-error" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="cpf">CPF</label>
+              <input type="text" id="cpf" name="cpf" inputmode="numeric" placeholder="000.000.000-00" maxlength="14" aria-describedby="cpf-help cpf-error" required>
+              <small id="cpf-help">Necessário para identificar sua pré-matrícula.</small>
+              <small id="cpf-error" class="field-error" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="data-nascimento">Data de nascimento</label>
+              <input type="text" id="data-nascimento" name="data_nascimento" autocomplete="bday" inputmode="numeric" placeholder="dd/mm/aaaa" maxlength="10" aria-describedby="data-nascimento-error" required>
+              <small id="data-nascimento-error" class="field-error" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="genero">Gênero <span>(opcional)</span></label>
+              <select id="genero" name="genero" aria-describedby="genero-error">
+                <option value="" selected>Prefiro não informar</option>
+                <option value="feminino">Feminino</option>
+                <option value="masculino">Masculino</option>
+                <option value="outro">Outro</option>
+              </select>
+              <small id="genero-error" class="field-error" aria-live="polite"></small>
+            </div>
+          </div>
+          <div class="privacy-note">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Zm3 9.7V18h-2v-1.3a2 2 0 1 1 2 0Z"/></svg>
+            <span><strong>Seus dados ficam protegidos.</strong> Eles são enviados diretamente ao sistema da Endurance On e não são publicados.</span>
+          </div>
+          <div class="step-actions">
+            <button type="button" class="secondary-action" data-prev-step><span aria-hidden="true">←</span> Voltar</button>
+            <button type="button" class="primary-action" data-next-step>Continuar <span aria-hidden="true">→</span></button>
+          </div>
+          <p class="step-error" data-step-error role="alert"></p>
+        </section>
+
+        <section class="form-step" data-step="4" aria-labelledby="step-address-title" hidden>
+          <div class="step-kicker">04 / Confirmação</div>
+          <h1 id="step-address-title" tabindex="-1">Só falta confirmar seu <em>endereço</em></h1>
+          <p class="step-subtitle">Digite o CEP e completaremos automaticamente os dados disponíveis.</p>
+          <div class="field-grid">
+            <div class="field">
+              <label for="cep">CEP</label>
+              <input type="text" id="cep" name="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" aria-describedby="cep-status cep-error" required>
+              <small id="cep-status" class="field-status" aria-live="polite"></small>
+              <small id="cep-error" class="field-error" aria-live="polite"></small>
+            </div>
+            <div class="field field--wide">
+              <label for="address_street">Rua</label>
+              <input type="text" id="address_street" name="address_street" autocomplete="address-line1" maxlength="160" aria-describedby="address_street-error" required>
+              <small id="address_street-error" class="field-error" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="address_number">Número</label>
+              <input type="text" id="address_number" name="address_number" autocomplete="address-line2" maxlength="40" aria-describedby="address_number-error" required>
+              <small id="address_number-error" class="field-error" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="address_complement">Complemento <span>(opcional)</span></label>
+              <input type="text" id="address_complement" name="address_complement" autocomplete="address-line2" maxlength="120">
+            </div>
+            <div class="field">
+              <label for="address_neighborhood">Bairro</label>
+              <input type="text" id="address_neighborhood" name="address_neighborhood" maxlength="120" aria-describedby="address_neighborhood-error" required>
+              <small id="address_neighborhood-error" class="field-error" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="address_city">Cidade</label>
+              <input type="text" id="address_city" name="address_city" autocomplete="address-level2" maxlength="120" aria-describedby="address_city-error" required>
+              <small id="address_city-error" class="field-error" aria-live="polite"></small>
+            </div>
+            <div class="field field--state">
+              <label for="address_state">UF</label>
+              <input type="text" id="address_state" name="address_state" maxlength="2" autocomplete="address-level1" aria-describedby="address_state-error" required>
+              <small id="address_state-error" class="field-error" aria-live="polite"></small>
+            </div>
+          </div>
+
+          <label class="terms-check">
+            <input type="checkbox" id="termos" name="termos" aria-describedby="termos-error" required>
+            <span>Li e aceito os <a href="https://www.enduranceon.com.br/pages/termos.html" target="_blank" rel="noopener">Termos de Contrato</a> e autorizo o contato da Endurance On sobre esta pré-matrícula.</span>
+          </label>
+          <small id="termos-error" class="field-error field-error--terms" aria-live="polite"></small>
+          <div class="turnstile-wrap">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAEA611YLkFJnndKx" data-action="prospect_submit" data-theme="light" data-expired-callback="eonTurnstileExpired" data-error-callback="eonTurnstileError"></div>
+            <small>Verificação anti-spam protegida pela Cloudflare.</small>
+            <small id="turnstile-error" class="field-error" aria-live="polite"></small>
+          </div>
+          <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+          <div class="step-actions">
+            <button type="button" class="secondary-action" data-prev-step><span aria-hidden="true">←</span> Voltar</button>
+            <button type="submit" class="primary-action submit-action">Enviar pré-matrícula <span aria-hidden="true">→</span></button>
+          </div>
+          <p class="submit-disclaimer">Nenhuma cobrança será realizada nesta etapa.</p>
+        </section>
+      </form>
+
+      <aside class="selection-summary" aria-labelledby="summary-title">
+        <div class="summary-eyebrow">Sua escolha</div>
+        <h2 id="summary-title">Resumo da jornada</h2>
+        <dl>
+          <div><dt>Modalidade</dt><dd id="summary-modality">A escolher</dd></div>
+          <div><dt>Formato</dt><dd id="summary-region">A escolher</dd></div>
+          <div><dt>Plano</dt><dd id="summary-plan">A escolher</dd></div>
+          <div><dt>Treinador</dt><dd id="summary-coach">A escolher</dd></div>
+        </dl>
+        <div id="summary-price" class="summary-price" hidden></div>
+        <div class="summary-security">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4.5 5v6.2c0 4.8 3.1 9.1 7.5 10.8 4.4-1.7 7.5-6 7.5-10.8V5L12 2Zm3.4 8.1-4.1 4.2-2.5-2.5 1.2-1.2 1.3 1.3 2.9-3 1.2 1.2Z"/></svg>
+          <span>Envio seguro direto para a equipe Endurance On.</span>
+        </div>
+        <p class="summary-help">Ficou com alguma dúvida?<br><a href="https://wa.me/5548991178688" target="_blank" rel="noopener noreferrer">Fale com a gente pelo WhatsApp</a></p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="onboarding-footer">
+    <span>© <span id="current-year"></span> Endurance On</span>
+    <span>Ambiente protegido · Privacidade e segurança</span>
+  </footer>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="cadastro.js" defer></script>
+</body>
+</html>
