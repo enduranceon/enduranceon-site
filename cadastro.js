@@ -94,6 +94,17 @@ const EonEnrollmentUtils = (() => {
     return UUID.test(String(value || ""));
   }
 
+  // Cada treinador vende só o que a loja escolheu para ele ("Planos que vende no site"):
+  // um plano por modalidade e duração. Sem plano escolhido, não é oferecido naquela modalidade.
+  function coachPlansForModality(coach, modalityId) {
+    const rows = Array.isArray(coach?.site_plans) ? coach.site_plans : [];
+    return rows
+      .filter((row) => row && row.modality_id === modalityId && row.plan && row.plan.id &&
+        Number(row.plan.price_total) > 0)
+      .sort((a, b) => Number(a.period_months) - Number(b.period_months))
+      .map((row) => row.plan);
+  }
+
   function isRecentReceipt(receipt, now = Date.now(), maxAgeMs = 2 * 60 * 60 * 1000) {
     if (!receipt || receipt.version !== 1 || !["created", "duplicate"].includes(receipt.status) ||
         !isUuid(receipt.submissionId) || !isUuid(receipt.requestId) || !isUuid(receipt.contractId)) return false;
@@ -108,6 +119,7 @@ const EonEnrollmentUtils = (() => {
     birthDateToIso,
     brazilPhoneDigits,
     clean,
+    coachPlansForModality,
     cpfDigits,
     digits,
     isRecentReceipt,
@@ -169,13 +181,14 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
   const progressItems = Array.from(document.querySelectorAll("[data-progress-step]"));
   const money = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
   let currentStep = 1;
-  let catalog = { plans: [], modalities: [], coaches: [] };
+  let catalog = { modalities: [], coaches: [] };
   let isSubmitting = false;
   let zipLookupController = null;
 
   const {
     birthDateToIso,
     clean,
+    coachPlansForModality,
     cpfDigits,
     digits,
     isUuid,
@@ -191,9 +204,10 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
   const titleCase = (value) => String(value || "")
     .toLowerCase()
     .replace(/(^|\s|-)(\p{L})/gu, (match) => match.toUpperCase());
-  const selectedPlan = () => catalog.plans.find((item) => item.id === fields.plan.value);
   const selectedCoach = () => catalog.coaches.find((item) => item.id === fields.coach.value);
   const selectedModality = () => catalog.modalities.find((item) => item.id === fields.modality.value);
+  const plansForSelectedCoach = () => coachPlansForModality(selectedCoach(), fields.modality.value);
+  const selectedPlan = () => plansForSelectedCoach().find((item) => item.id === fields.plan.value);
 
   function setStatus(type, message) {
     status.className = `form-status ${type ? `is-${type}` : ""}`;
@@ -362,7 +376,13 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     const container = el("modality-options");
     container.classList.remove("loading-box");
     container.innerHTML = "";
-    catalog.modalities.forEach((modality) => {
+    const modalities = offeredModalities();
+    if (!modalities.length) {
+      container.classList.add("loading-box");
+      container.textContent = "Não há planos disponíveis no momento.";
+      return;
+    }
+    modalities.forEach((modality) => {
       const button = document.createElement("button");
       button.type = "button";
       button.className = `choice-tile choice-tile--modality${fields.modality.value === modality.id ? " is-selected" : ""}`;
@@ -376,10 +396,17 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     });
   }
 
-  function selectModality(modalityId, preservePlan) {
-    if (fields.modality.value !== modalityId && !preservePlan) fields.plan.value = "";
+  // Troca de modalidade ou de treinador mantém a duração escolhida quando o novo treinador tem plano nela.
+  function keepPeriod(months) {
+    const match = plansForSelectedCoach().find((plan) => Number(plan.period_months) === Number(months));
+    fields.plan.value = match ? match.id : "";
+  }
+
+  function selectModality(modalityId) {
+    const previousMonths = selectedPlan()?.period_months;
     fields.modality.value = modalityId;
     if (!coachesForSelectedModality().some((coach) => coach.id === fields.coach.value)) fields.coach.value = "";
+    keepPeriod(previousMonths);
     renderModalities();
     renderPlans();
     renderCoaches();
@@ -388,23 +415,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     focusChoice(`[data-modality-id="${modalityId}"]`);
   }
 
-  function publicPlansForModality() {
-    const plans = catalog.plans.filter((plan) => plan.modality_id === fields.modality.value);
-    const requestedFamily = slug(query.get("plano"));
-    const regularPlans = plans.filter((plan) => !slug(plan.name).includes("essencial"));
-    if (requestedFamily === "essencial") {
-      const essentialPlans = plans.filter((plan) => slug(plan.name).includes("essencial"));
-      return essentialPlans.length ? essentialPlans : (regularPlans.length ? regularPlans : plans);
-    }
-    if (requestedFamily === "premium") return plans.filter((plan) => !slug(plan.name).includes("essencial"));
-    return regularPlans.length ? regularPlans : plans;
-  }
-
   function planTitle(plan) {
-    const name = String(plan.name || "").trim();
-    if (slug(query.get("plano")) === "essencial" && slug(name).includes("essencial")) {
-      return titleCase(name.replace(/\s*-?\s*2025\s*$/i, ""));
-    }
     return titleCase(plan.period || `${plan.period_months} meses`);
   }
 
@@ -412,10 +423,12 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     const container = el("plan-options");
     container.classList.remove("loading-box");
     container.innerHTML = "";
-    const plans = publicPlansForModality();
+    const plans = plansForSelectedCoach();
     if (!plans.length) {
       container.classList.add("loading-box");
-      container.textContent = "Não há planos disponíveis para esta modalidade no momento.";
+      container.textContent = selectedCoach()
+        ? "Não há planos disponíveis para este treinador no momento."
+        : "Escolha um treinador para ver os planos dele.";
       return;
     }
     plans.forEach((plan) => {
@@ -433,11 +446,9 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
       `;
       button.addEventListener("click", () => {
         fields.plan.value = plan.id;
-        if (!coachesForSelectedModality().some((coach) => coach.id === fields.coach.value)) fields.coach.value = "";
         renderPlans();
-        renderCoaches();
         updateSummary();
-        clearStepError(1);
+        clearStepError(2);
         focusChoice(`[data-plan-id="${plan.id}"]`);
       });
       container.appendChild(button);
@@ -446,7 +457,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
 
   function selectInitialPlan() {
     const directId = query.get("plan_id");
-    const candidates = publicPlansForModality();
+    const candidates = plansForSelectedCoach();
     if (directId && candidates.some((plan) => plan.id === directId)) {
       fields.plan.value = directId;
       return;
@@ -483,10 +494,15 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
   }
 
   function coachesForSelectedModality() {
-    const modalityId = selectedPlan()?.modality_id || fields.modality.value;
+    const modalityId = fields.modality.value;
     if (!modalityId) return [];
-    return catalog.coaches.filter((coach) =>
-      Array.isArray(coach.modality_ids) && coach.modality_ids.includes(modalityId)
+    return catalog.coaches.filter((coach) => coachPlansForModality(coach, modalityId).length);
+  }
+
+  // Só aparecem modalidades em que algum treinador vende plano no site.
+  function offeredModalities() {
+    return catalog.modalities.filter((modality) =>
+      catalog.coaches.some((coach) => coachPlansForModality(coach, modality.id).length)
     );
   }
 
@@ -530,8 +546,11 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
       coachBody.appendChild(coachName);
       button.appendChild(coachBody);
       button.addEventListener("click", () => {
+        const previousMonths = selectedPlan()?.period_months;
         fields.coach.value = coach.id;
+        keepPeriod(previousMonths);
         renderCoaches();
+        renderPlans();
         updateSummary();
         clearStepError(2);
         focusChoice(`[data-coach-id="${coach.id}"]`);
@@ -606,8 +625,8 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     if (error) error.textContent = "";
     if (stepNumber === 1) {
       const validRegion = fields.region.value === "florianopolis" || fields.region.value === "online";
-      if (!selectedModality() || !validRegion || !selectedPlan()) {
-        showStepError(1, "Escolha a modalidade, o formato e o plano para continuar.", "#plan-options button");
+      if (!selectedModality() || !validRegion) {
+        showStepError(1, "Escolha a modalidade e o formato para continuar.", "#modality-options button");
         return false;
       }
     }
@@ -616,6 +635,10 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
         fields.coach.value = "";
         renderCoaches();
         showStepError(2, "Escolha um treinador disponível para esta modalidade.", "#coach-options button");
+        return false;
+      }
+      if (!selectedPlan()) {
+        showStepError(2, "Escolha o período do plano para continuar.", "#plan-options button");
         return false;
       }
     }
@@ -656,19 +679,19 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
       const data = await response.json();
       if (!response.ok || !data.ok) throw new Error(data.error || "Falha ao carregar catálogo");
       catalog = {
-        plans: Array.isArray(data.plans) ? data.plans : [],
         modalities: Array.isArray(data.modalities) ? data.modalities : [],
         coaches: Array.isArray(data.coaches) ? data.coaches : [],
       };
       const requestedModality = slug(query.get("modalidade"));
       const wantedModality = requestedModality === "multisport" ? "2-modalidades" : requestedModality;
-      const initialModality = catalog.modalities.find((item) => slug(item.name) === wantedModality) || catalog.modalities[0];
+      const offered = offeredModalities();
+      const initialModality = offered.find((item) => slug(item.name) === wantedModality) || offered[0];
       fields.modality.value = initialModality?.id || "";
       fields.region.value = query.get("regiao") === "online" || query.get("regiao") === "outras" ? "online" : "florianopolis";
-      selectInitialPlan();
       const wantedCoach = query.get("treinador");
       const coach = coachesForSelectedModality().find((item) => coachMatchesQuery(item, wantedCoach));
       if (coach) fields.coach.value = coach.id;
+      selectInitialPlan();
       renderModalities();
       renderRegions();
       renderPlans();
@@ -870,7 +893,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
       renderPlans();
       renderCoaches();
       updateSummary();
-      showStepError(1, serverFieldMessages.plan, "#plan-options button");
+      showStepError(2, serverFieldMessages.plan, "#plan-options button");
       void loadCatalog();
     } else if (first === "coach") {
       fields.coach.value = "";
