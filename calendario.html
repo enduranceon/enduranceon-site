@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#ffffff">
+  <title>Calendário de provas · Endurance On</title>
+  <meta name="description" content="Calendário de provas da Endurance On: veja as provas do EON Hub e avise seu treinador em quais você vai participar.">
+  <link rel="stylesheet" href="assets/brand.css">
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://qsaowltbnefzpbphhwmr.supabase.co" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,650;0,700;0,750;0,800;0,850;1,800;1,850&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#151515;--muted:#656565;--paper:#fff;--off:#f5f4f0;--orange:#ff8012;--blue:#38b6ff;--soft-blue:#e7f3fa;--line:#dfdfda;--focus:#08729b;--max:1200px;--gutter:40px;--head:76px;--ease:cubic-bezier(.2,.65,.2,1)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{margin:0;background:var(--off);color:var(--ink);font:16px/1.65 'Montserrat',Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+    body.modal-open{overflow:hidden}
+    h1,h2,h3,p,ul{margin:0}
+    ul{list-style:none;padding:0}
+    h1,h2,h3{line-height:1.1;letter-spacing:-.045em}
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    svg{display:block}
+    a{color:inherit;text-decoration:none}
+    button,input,select{font:inherit;color:inherit}
+    button{cursor:pointer}
+    button,a,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+    a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+    [hidden]{display:none!important}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .skip-link{position:fixed;z-index:200;top:-100px;left:20px;background:#fff;color:#000;padding:14px}
+    .skip-link:focus{top:10px}
+    .wrap{width:min(var(--max),calc(100% - var(--gutter)*2));margin-inline:auto}
+    .eyebrow{display:block;font-size:11px;font-weight:650;letter-spacing:.15em;line-height:1.4;text-transform:uppercase}
+    .button{appearance:none;display:inline-flex;justify-content:center;align-items:center;gap:12px;min-height:46px;max-width:100%;padding:11px 18px;border:1px solid transparent;border-radius:10px;background:var(--orange);color:#141414;font-size:13px;font-weight:650;line-height:1.4;transition:transform .2s var(--ease),background .2s,box-shadow .2s}
+    .button .arrow{font-size:18px;font-weight:400;line-height:1}
+    .button:hover{background:#ff9438;transform:translateY(-1px);box-shadow:0 3px 9px #00000012}
+    .button.dark{background:var(--ink);color:#fff}
+    .button.dark:hover{background:#333}
+    .button:disabled{cursor:wait;opacity:.55;transform:none;box-shadow:none}
+    .text-button{background:none;border:0;border-bottom:1px solid currentColor;padding:6px 0;min-height:40px;font-size:12px;font-weight:650}
+    .text-button:hover{color:#a64900}
+
+    /* Cabeçalho */
+    .site-header{position:sticky;top:0;z-index:60;height:var(--head);background:rgba(255,255,255,.97);border-bottom:1px solid #e9e8e4;backdrop-filter:blur(12px)}
+    .nav-wrap{height:100%;display:flex;align-items:center;gap:26px}
+    .brand{display:flex;align-items:center;gap:11px;flex:none;min-height:44px}
+    .brand-text{font-size:12px;line-height:1.13;font-weight:800;letter-spacing:-.02em}
+    .brand-text small{display:block;font-size:7px;font-weight:500;letter-spacing:.14em;margin-top:6px}
+    .main-nav{display:flex;align-items:center;gap:28px;margin-left:auto}
+    .main-nav>a{position:relative;font-size:12px;font-weight:550;padding:15px 0}
+    .main-nav>a:hover{text-decoration:underline;text-underline-offset:5px}
+    .main-nav>a[aria-current=page]:after{content:'';position:absolute;left:0;right:0;bottom:8px;height:2px;background:var(--orange)}
+    .nav-button{min-height:40px;padding:9px 15px;font-size:12px;gap:9px}
+    .menu-button{border:0;background:none;width:44px;height:44px;display:none;padding:12px}
+    .menu-button i{display:block;background:currentColor;height:2px;width:21px;margin:5px 0;transition:transform .2s}
+    .menu-button[aria-expanded=true] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+    .menu-button[aria-expanded=true] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+
+    /* Abertura */
+    .page-intro{padding:64px 0 38px;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:48px;align-items:end}
+    .page-intro .eyebrow{color:#6a6a6a}
+    .page-intro h1{font-size:clamp(46px,6vw,82px);line-height:1.02;letter-spacing:-.055em;font-weight:800;margin-top:18px}
+    .page-intro h1 em{font-style:italic;font-weight:850}
+    .page-intro p{font-size:15px;line-height:1.75;color:var(--muted);padding-bottom:6px}
+
+    /* Busca e filtros */
+    .toolbar{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 24px;display:grid;gap:18px}
+    .search-field{position:relative}
+    .search-field svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:#777;pointer-events:none}
+    .search-field input{width:100%;min-height:50px;border:1px solid #d6d6cf;border-radius:10px;padding:10px 16px 10px 46px;font-size:14px;background:#fff}
+    .search-field input::placeholder{color:#7b7b7b}
+    .filter-row{display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap}
+    .filter-group{display:flex;align-items:center;gap:12px 14px;flex-wrap:wrap;border:0;padding:0;margin:0;min-width:0}
+    .filter-label{font-size:11px;font-weight:650;letter-spacing:.12em;text-transform:uppercase;color:#6a6a6a;padding:0}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{min-height:40px;padding:8px 17px;border:1px solid #d6d6cf;border-radius:100px;background:#fff;font-size:12px;font-weight:600;transition:background .18s,border-color .18s,color .18s}
+    .chip:hover{border-color:#999}
+    .chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+    .result-count{font-size:12px;color:#666;min-height:20px}
+
+    /* Prova fora do calendário */
+    .outside{margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 24px;background:var(--soft-blue);border:1px solid #cfe5f2;border-radius:14px}
+    .outside strong{display:block;font-size:15px;line-height:1.4;letter-spacing:-.015em}
+    .outside p{font-size:13px;color:#4f5b62;margin-top:3px}
+
+    /* Lista de provas */
+    .results{padding:28px 0 84px}
+    .cal-status{text-align:center;font-size:13px;line-height:1.7;color:#5f5f5f;padding:34px 16px}
+    .cal-status.is-error{color:#9b2a10}
+    .cal-status .text-button{display:block;margin:14px auto 0}
+    .race-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .race-card{display:flex;flex-direction:column;min-width:0;background:var(--paper);border:1px solid #e3e2dd;border-radius:14px;overflow:hidden;box-shadow:0 10px 24px #1515150a;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+    .race-card:hover{transform:translateY(-4px);box-shadow:0 18px 34px #15151514}
+    .race-media{position:relative;aspect-ratio:16/10;background:#161616;overflow:hidden}
+    .race-media img{transition:transform .5s var(--ease)}
+    .race-card:hover .race-media img{transform:scale(1.04)}
+    .race-placeholder{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;text-align:center;color:#d7d7d2;font-size:13px;font-weight:650;line-height:1.35;background:linear-gradient(135deg,#202020,#101010)}
+    .race-placeholder svg{width:30px;height:30px;color:var(--orange)}
+    .race-tag{position:absolute;top:12px;left:12px;background:var(--orange);color:#141414;font-size:10px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;line-height:1;padding:7px 10px;border-radius:6px}
+    .race-body{display:flex;flex-direction:column;flex:1;padding:22px 22px 22px}
+    .race-body h3{font-size:20px;font-weight:750;line-height:1.2;letter-spacing:-.03em}
+    .race-meta{display:grid;gap:9px;margin-top:15px}
+    .race-meta li{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;color:#4b4b4b}
+    .race-meta .icon{flex:none;margin-top:2px;color:#8a8a85}
+    .race-meta svg{width:16px;height:16px}
+    .race-courses{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+    .race-courses li{font-size:11px;font-weight:650;line-height:1;padding:7px 10px;border-radius:100px;background:#f1f0eb;color:#3b3b3b}
+    .race-action{margin-top:auto;width:100%}
+    .race-body .race-courses+.race-action{margin-top:22px}
+    .race-skeleton{min-height:380px;border-radius:14px;background:linear-gradient(100deg,#ecebe6 30%,#f6f5f1 50%,#ecebe6 70%) 0 0/300% 100%;animation:shimmer 1.4s linear infinite}
+    @keyframes shimmer{to{background-position:-300% 0}}
+    .empty{grid-column:1/-1;text-align:center;padding:52px 20px;background:var(--paper);border:1px dashed #cfcfc7;border-radius:14px}
+    .empty .icon{display:inline-block;color:#8a8a85;margin-bottom:10px}
+    .empty svg{width:30px;height:30px}
+    .empty strong{display:block;font-size:15px}
+    .empty p{font-size:13px;margin-top:6px}
+
+    /* Janela de percurso e formulários */
+    dialog{padding:0;border:0;border-radius:15px;background:#fff;color:#181818;max-height:90dvh;max-width:560px;width:calc(100% - 36px);box-shadow:0 30px 80px #0005}
+    dialog::backdrop{background:#080808ba;backdrop-filter:blur(4px)}
+    .dialog-head{position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:23px;padding:21px 25px;background:#fff;border-bottom:1px solid #eee}
+    .dialog-head h2{font-size:23px;letter-spacing:-.03em}
+    .dialog-close{border:1px solid #ddd;background:#fff;width:41px;height:41px;border-radius:50%;font-size:24px;line-height:1;flex:none}
+    .dialog-close:hover{background:#f4f3ef}
+    .dialog-content{padding:22px 25px 26px}
+    .dialog-lead{font-size:13px;line-height:1.7;color:#555;margin-bottom:18px}
+    .dialog-lead strong{color:#151515}
+    .course-list{display:grid;gap:10px}
+    .course-button{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:62px;padding:12px 16px;border:1px solid #dadad4;border-radius:11px;background:#fff;text-align:left;transition:border-color .18s,background .18s}
+    .course-button:hover{border-color:#151515;background:#f8f8f3}
+    .course-button strong{display:block;font-size:14px;line-height:1.3}
+    .course-button small{display:block;font-size:11px;color:#666;margin-top:2px}
+    .course-button .arrow{font-size:18px;color:#555}
+    .demo-note{font-size:11px;line-height:1.6;color:#5e4b2a;background:#fff3de;border:1px solid #f3dcae;border-radius:8px;padding:9px 12px;margin-bottom:16px}
+    .cal-form{display:grid;gap:15px}
+    .field{display:block}
+    .field-label{display:block;font-size:12px;font-weight:650;margin-bottom:6px}
+    .field input,.field select{width:100%;min-height:48px;border:1px solid #d6d6cf;border-radius:8px;padding:10px 14px;font-size:14px;background:#fff}
+    .field input[readonly]{background:#f4f3ef;color:#4b4b4b}
+    .field select:disabled{background:#f4f3ef;color:#777}
+    .field-pair{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .field-note{font-size:12px;line-height:1.6;color:#666;background:#f4f3ef;border-radius:8px;padding:10px 12px}
+    .form-message{display:none;font-size:12px;line-height:1.6;padding:10px 12px;border-radius:8px}
+    .form-message.is-visible{display:block}
+    .form-message.is-error{background:#fdeceb;color:#8f2514}
+    .form-actions{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:4px}
+    .form-actions .button{margin-left:auto}
+    .success{text-align:center;padding:8px 0 4px}
+    .success-icon{display:grid;place-items:center;width:54px;height:54px;margin:0 auto 14px;border-radius:50%;background:var(--ink);color:#fff}
+    .success-icon svg{width:24px;height:24px}
+    .success h3{font-size:20px}
+    .success p{font-size:13px;line-height:1.75;color:#555;margin:10px auto 20px;max-width:380px}
+
+    /* Rodapé */
+    .site-footer{background:#121212;color:#fff;padding:48px 0 0}
+    .footer-grid{display:grid;grid-template-columns:1.15fr .9fr 1fr;gap:60px}
+    .footer-grid .brand{margin-bottom:19px}
+    .footer-grid p{font-size:11px;color:#999;line-height:1.8}
+    .footer-grid h2{font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:#b9b9b9;margin-bottom:18px}
+    .footer-links{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px}
+    .footer-grid a:not(.brand){font-size:11px;color:#c9c9c9;line-height:1.7}
+    .footer-grid a:not(.brand):hover{text-decoration:underline}
+    .footer-contact>a{display:block;margin-bottom:10px;overflow-wrap:anywhere}
+    .footer-base{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-top:35px;border-top:1px solid #ffffff26;padding:20px 0 25px;font-size:9px;color:#888}
+    .footer-word{font-size:clamp(49px,12vw,182px);font-style:italic;font-weight:900;letter-spacing:-.07em;color:#ffffff0e;text-align:center;line-height:.92;white-space:nowrap;margin-top:8px;padding-bottom:9px;overflow:hidden}
+    .noscript{margin:24px auto;padding:18px 20px;background:#fff0dc;font-size:13px;border-radius:10px}
+
+    @media(max-width:1150px){:root{--gutter:30px}.main-nav{gap:19px}.nav-wrap{gap:19px}.main-nav>a{font-size:11px}.race-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.page-intro{grid-template-columns:minmax(0,1fr) 300px;gap:36px}}
+    @media(max-width:850px){:root{--gutter:24px;--head:72px}
+      .main-nav{display:none;position:absolute;top:var(--head);left:0;right:0;background:#161616;color:#fff;margin:0;padding:16px 24px 26px;max-height:calc(100dvh - var(--head));overflow:auto;box-shadow:0 15px 30px #0002}
+      .main-nav.open{display:block}
+      .main-nav>a{display:block;padding:15px 0;border-bottom:1px solid #fff2;font-size:14px}
+      .main-nav>a[aria-current=page]:after{left:auto;right:0;bottom:50%;width:24px;transform:translateY(50%)}
+      .menu-button{display:block}.nav-button{margin-left:auto}
+      .page-intro{grid-template-columns:1fr;gap:20px;padding:46px 0 30px}.page-intro p{max-width:480px}
+      .footer-grid{gap:35px;grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}}
+    @media(max-width:600px){:root{--gutter:21px;--head:70px}
+      .nav-wrap{gap:12px}.brand-text{font-size:10px}.brand-text small{font-size:6px;margin-top:4px;letter-spacing:.1em}
+      .brand .eon-symbol{width:49px}.nav-button{min-height:44px;padding:10px 13px;gap:8px}.menu-button{width:35px;padding:8px}
+      .page-intro{padding:36px 0 24px}.page-intro h1{font-size:46px}.page-intro p{font-size:14px}
+      .toolbar{padding:16px;gap:14px;border-radius:14px}.search-field input{font-size:16px}
+      .filter-row{align-items:flex-start}.filter-group{align-items:flex-start;flex-direction:column;gap:10px}
+      .chip{min-height:44px;padding-inline:16px}
+      .outside{flex-direction:column;align-items:stretch;gap:14px;padding:18px}.outside .button{width:100%}
+      .results{padding:22px 0 60px}.race-grid{grid-template-columns:1fr;gap:18px}
+      .race-body{padding:20px}.race-action{min-height:48px}
+      dialog{width:calc(100% - 24px);max-height:92dvh}.dialog-head{padding:17px 18px}.dialog-head h2{font-size:21px}.dialog-content{padding:18px 18px 22px}
+      .field input,.field select{font-size:16px}.field-pair{grid-template-columns:1fr}.form-actions{flex-direction:column-reverse;align-items:stretch}.form-actions .button{margin-left:0;width:100%}
+      .site-footer{padding-top:34px}.footer-grid{grid-template-columns:1fr;gap:29px}.footer-grid>div:first-child{grid-column:auto}.footer-links{max-width:310px;gap:0 20px}.footer-grid h2{font-size:9px}.footer-grid p,.footer-grid a:not(.brand){font-size:10px}.footer-grid a:not(.brand){display:flex;align-items:center;min-height:36px}.footer-contact>a{margin-bottom:0}.footer-base{display:block;margin-top:22px;padding-block:18px 24px;font-size:8px}.footer-word{font-size:12vw;margin-top:9px}}
+    @media(max-width:365px){:root{--gutter:17px}.brand-text{font-size:9px}.brand .eon-symbol{width:44px}.page-intro h1{font-size:40px}}
+    @media(pointer:coarse){.nav-button{min-height:44px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.race-card:hover,.button:hover{transform:none}.race-card:hover .race-media img{transform:none}}
+  </style>
+  <script>
+    // Google Analytics 4: só nos endereços oficiais (prévias e testes não contam no Analytics real).
+    (function () {
+      if (!/^(www\.)?enduranceon\.com\.br$/.test(location.hostname)) return;
+      var tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtag/js?id=G-PQX6YBZD9P';
+      document.head.appendChild(tag);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', 'G-PQX6YBZD9P');
+    })();
+  </script>
+  <link rel="canonical" href="https://www.enduranceon.com.br/calendario">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Endurance On">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Calendário de provas · Endurance On">
+  <meta property="og:description" content="Calendário de provas da Endurance On: veja as provas do EON Hub e avise seu treinador em quais você vai participar.">
+  <meta property="og:url" content="https://www.enduranceon.com.br/calendario">
+  <meta property="og:image" content="https://www.enduranceon.com.br/assets/images/hero/equipe-eon-comunidade-panoramica.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  <a class="skip-link" href="#provas">Pular para as provas</a>
+
+  <header class="site-header">
+    <div class="wrap nav-wrap">
+      <a class="brand" href="index.html" aria-label="Endurance On, voltar ao início">
+        <span class="symbol eon-symbol"><svg aria-hidden="true" focusable="false" width="1358" height="677" viewBox="277 272 1358 677"><image href="/images/logo/logo_simbolo_preto.png" width="1920" height="1216"/></svg></span>
+        <span class="brand-text">ENDURANCE ON<small>ASSESSORIA ESPORTIVA</small></span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
+        <a href="index.html#como-funciona">Como funciona</a>
+        <a href="index.html#treinadores">Treinadores</a>
+        <a href="index.html#historias">Histórias</a>
+        <a href="treinos-coletivos.html">Treinos coletivos</a>
+        <a href="calendario.html" aria-current="page">Calendário</a>
+      </nav>
+      <a class="button nav-button" href="index.html#planos">Planos<span class="arrow" aria-hidden="true">↗</span></a>
+      <button class="menu-button" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menu"><i></i><i></i></button>
+    </div>
+  </header>
+
+  <main id="provas">
+    <section class="wrap page-intro" aria-labelledby="page-title">
+      <div>
+        <span class="eyebrow">Próximas provas</span>
+        <h1 id="page-title">Calendário <em>de provas</em></h1>
+      </div>
+      <p>Confira as provas em que o nosso corpo técnico estará presente e avise seu treinador em quais você vai participar.</p>
+    </section>
+
+    <div class="wrap">
+      <div class="toolbar">
+        <div class="search-field">
+          <label class="sr-only" for="cal-search">Buscar por prova ou cidade</label>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+          <input id="cal-search" type="search" placeholder="Buscar por prova ou cidade" autocomplete="off" disabled>
+        </div>
+        <div class="filter-row">
+          <fieldset class="filter-group">
+            <legend class="filter-label">Modalidade</legend>
+            <div class="chips" id="cal-filters"></div>
+          </fieldset>
+          <p class="result-count" id="cal-count" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="outside">
+        <div>
+          <strong>Vai participar de uma prova fora do calendário?</strong>
+          <p>Avise seu treinador pelo mesmo fluxo do EON Hub.</p>
+        </div>
+        <button class="button dark" id="cal-outside" type="button" disabled>Avisar treinador<span class="arrow" aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+
+    <section class="wrap results" aria-label="Provas">
+      <div class="cal-status" id="cal-status" role="status">Carregando provas do EON Hub...</div>
+      <div class="race-grid" id="cal-grid" aria-busy="true">
+        <div class="race-skeleton" aria-hidden="true"></div>
+        <div class="race-skeleton" aria-hidden="true"></div>
+        <div class="race-skeleton" aria-hidden="true"></div>
+      </div>
+      <noscript><p class="noscript">O calendário precisa de JavaScript. Para saber das próximas provas, fale com a equipe pelo <a href="https://wa.me/5548991178688" rel="noopener noreferrer"><u>WhatsApp (48) 99117-8688</u></a>.</p></noscript>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="index.html" aria-label="Endurance On, início">
+          <span class="symbol eon-symbol"><svg aria-hidden="true" focusable="false" width="1358" height="677" viewBox="277 249 1358 677"><image href="/images/logo/logo-new-white.png" width="1920" height="1216"/></svg></span>
+          <span class="brand-text">ENDURANCE ON<small>ASSESSORIA ESPORTIVA</small></span>
+        </a>
+        <p>Corrida, triathlon e duas modalidades.<br>Florianópolis e acompanhamento online.</p>
+      </div>
+      <div>
+        <h2>Conheça a EON</h2>
+        <div class="footer-links">
+          <a href="index.html#como-funciona">Como funciona</a>
+          <a href="index.html#treinadores">Treinadores</a>
+          <a href="treinos-coletivos.html">Treinos coletivos</a>
+          <a href="calendario.html">Calendário</a>
+          <a href="parceiros.html">Parceiros</a>
+          <a href="contato.html">Contato</a>
+          <a href="https://www.enduranceon.com.br/pages/calculadoras.html" rel="noopener noreferrer" target="_blank">Calculadoras ↗</a>
+          <a href="https://www.enduranceon.com.br/pages/termos.html" rel="noopener noreferrer" target="_blank">Termos ↗</a>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <h2>Vamos conversar</h2>
+        <a href="https://wa.me/5548991178688" rel="noopener noreferrer" target="_blank">WhatsApp (48) 99117-8688 ↗</a>
+        <a href="https://www.instagram.com/endurance_on/" rel="noopener noreferrer" target="_blank">@endurance_on ↗</a>
+        <a href="mailto:contato@enduranceon.com.br">contato@enduranceon.com.br</a>
+      </div>
+    </div>
+    <div class="wrap footer-base"><span>© Endurance On</span></div>
+    <div class="footer-word" aria-hidden="true">ENDURANCE ON</div>
+  </footer>
+
+  <dialog id="cal-dialog" aria-labelledby="cal-dialog-title">
+    <div class="dialog-head">
+      <h2 id="cal-dialog-title"></h2>
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Fechar">×</button>
+    </div>
+    <div class="dialog-content" id="cal-dialog-body"></div>
+  </dialog>
+
+  <!-- Leitura: mesmas tabelas do calendário publicado, com a chave pública (publishable) já usada pelo site oficial.
+       Envio de interesse: "live" grava no EON Hub (função public-race-interest); "demo" não grava nada. -->
+  <script id="eon-calendar-config" type="application/json">{"version":1,"mode":"live","hub_url":"https://qsaowltbnefzpbphhwmr.supabase.co","publishable_key":"sb_publishable_UGtJz0CKuAQqJgqAdB7TNw_ao_Qxx94","interest_function":"public-race-interest","timeout_ms":12000}</script>
+  <script src="calendario.js"></script>
+</body>
+</html>
