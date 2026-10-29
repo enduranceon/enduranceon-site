@@ -31,7 +31,7 @@ Cada solicitação do GitHub gera uma prévia no Netlify. Nela dá para navegar 
 
 1. Teste real do cadastro com nascimento e gênero no www (página escondida de teste) e saída das duas páginas de teste (`teste-cadastro-novo` e `teste-contato-novo`). Feito em 29/10: as duas pastas foram removidas depois da troca.
 2. Texto de consentimento do formulário de contato aprovado.
-3. Decisão sobre o Vinicius Koerich (a home mostra retrato provisório e aviso) e a Elinai (sem planos no ar; o botão dela leva ao WhatsApp).
+3. Decisão sobre o Vinicius Koerich (retrato definitivo trocado em 29/10; o perfil detalhado dele ainda não existe e a home mostra um aviso curto) e a Elinai (sem planos no ar; o botão dela leva ao WhatsApp).
 4. Decisão sobre menores de 18 anos (hoje não há bloqueio nem aviso).
 5. Conferir na prévia: páginas, imagens, redirecionamentos e celular.
 
