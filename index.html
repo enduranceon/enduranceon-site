@@ -125,7 +125,6 @@ body{font-size:16px}button,a,summary{-webkit-tap-highlight-color:transparent}
 @media(prefers-reduced-motion:reduce){.reading-progress{transition:none}.coach-img-label{transform:none}.method-card,.photo-button{transform:none!important}}
 @media print{.site-header,.motion-shortcut,.footer-actions{display:none!important}.hero{min-height:450px;height:450px}.hero-copy{padding-top:75px}.reveal-wait{opacity:1;transform:none}.float-shell{animation:none}.pricing-shell{break-inside:avoid}.plan-card{break-inside:avoid}}
 .coach-image{display:block}.coach-portrait-button{overflow:visible}.option-photo,.selection-portrait,.summary-person-photo,.profile-photo{position:relative}.plan-contact span{min-width:0}
-.plan-family{margin:0 0 28px;max-width:520px}.plan-family legend{font-size:11px;font-weight:650;margin-bottom:10px}.plan-family .modality-tabs{max-width:520px}.plan-family .modality-tabs button{min-width:0}
 </style>
 <style id="pricing-choice-refinement-v1">
   .pricing-flow { justify-content: flex-start; gap: clamp(28px, 5vw, 72px); }
@@ -1210,7 +1209,6 @@ body{font-size:16px}button,a,summary{-webkit-tap-highlight-color:transparent}
 <section aria-labelledby="plans-title" class="plans" id="planos"><div class="wrap"><header class="plans-title"><div><span class="eyebrow">Planos da assessoria</span><h2 id="plans-title">Escolha com quem<br/>você vai treinar.</h2></div><p>Uma equipe. Escolha a modalidade, o treinador e o período. Os valores vêm do catálogo atual da EON.</p></header>
 <div class="pricing-shell"><div aria-label="Etapas da escolha" class="pricing-flow"><p data-flow-step="modality"><span>01</span><b>Seu treino</b></p><p aria-current="step" data-flow-step="coach"><span>02</span><b>Seu treinador</b></p><p data-flow-step="period"><span>03</span><b>Duração do plano</b></p></div>
 <div class="plan-picker"><fieldset><legend>O que você quer treinar?</legend><div class="modality-tabs"><button aria-pressed="true" data-modality="corrida" type="button">Corrida</button><button aria-pressed="false" data-modality="triathlon" type="button">Triathlon</button><button aria-pressed="false" data-modality="2-modalidades" type="button">Duas modalidades</button></div></fieldset><fieldset class="region-picker" id="plan-region"><legend>Preferência de atendimento</legend><div class="region-options"><label class="region-option"><input type="radio" name="plan-region" value="florianopolis" checked/><span>Florianópolis</span></label><label class="region-option"><input type="radio" name="plan-region" value="online"/><span>Online / outras cidades</span></label></div></fieldset></div>
-<fieldset id="plan-family" class="plan-family" hidden><legend>Tipo de acompanhamento</legend><div class="modality-tabs"><button type="button" data-family="regular" aria-pressed="true">Triathlon</button><button type="button" data-family="essencial" aria-pressed="false">Triathlon Essencial</button></div></fieldset>
 <div id="coach-choice-area"><div class="coach-choice-head"><h3>Com quem você quer treinar?</h3><button class="link-button" id="compare-prices" type="button" hidden>Comparar os valores ↗</button></div><fieldset><legend class="sr-only" id="coach-options-legend">Treinador para os planos de corrida</legend><div class="coach-choices"></div></fieldset><div class="coach-choice-help"><span>Você pode trocar de treinador antes de continuar.</span><button id="coach-help" type="button">Ainda não sei qual escolher</button></div></div>
 <div class="coach-selection-empty" id="choose-first"><p>Selecione um treinador acima para ver os planos mensal, trimestral e semestral.</p></div>
 <div class="coach-selection-empty" hidden="" id="no-offers"><h3 id="unpriced-modality">Carregando catálogo</h3><p>Buscando planos e treinadores no EON Store.</p><a class="link-button" href="https://wa.me/5548991178688" id="unpriced-contact" rel="noopener noreferrer" target="_blank" hidden>Consultar com a equipe ↗</a></div>
@@ -2194,24 +2192,29 @@ window.EON_RACE_GALLERY = [
     image.alt = 'Iniciais de ' + coach.name;
     image.src = 'data:image/svg+xml,' + encodeURIComponent(svg);
   }
+  const modalityOrder = ['corrida', 'triathlon', '2-modalidades'];
+  // Cada treinador vende só o que a loja escolheu para ele ("Planos que vende no site"): um plano por modalidade e duração.
+  // Sem plano escolhido numa modalidade, ele não aparece nela; não há plano geral para completar.
   function adaptCatalogue(data) {
-    if (!Array.isArray(data.modalities) || !Array.isArray(data.coaches) || !Array.isArray(data.plans)) throw new Error('Catálogo incompleto');
+    if (!Array.isArray(data.modalities) || !Array.isArray(data.coaches)) throw new Error('Catálogo incompleto');
     const modalityById = new Map(data.modalities.map(item => [item.id, plainName(item.name)]));
     const modalityKey = name => name === '2 modalidades' ? '2-modalidades' : name;
-    const plans = data.plans.filter(plan => [1, 3, 6].includes(Number(plan.period_months)) && Number.isFinite(Number(plan.price_total)) && Number(plan.price_total) > 0)
-      .map(plan => ({ ...plan, key: modalityKey(modalityById.get(plan.modality_id)), family: /essencial/i.test(plan.name) ? 'essencial' : 'regular' }));
-    const coaches = data.coaches.filter(coach => typeof coach.id === 'string' && typeof coach.name === 'string' && Array.isArray(coach.modality_ids))
+    const offers = [];
+    const coaches = data.coaches.filter(coach => typeof coach.id === 'string' && typeof coach.name === 'string' && Array.isArray(coach.site_plans))
       .map(coach => {
+        const coachOffers = coach.site_plans.filter(row => row && row.plan && row.plan.id && coach.modality_ids?.includes(row.modality_id) && modalityById.has(row.modality_id)
+            && [1, 3, 6].includes(Number(row.period_months)) && Number.isFinite(Number(row.plan.price_total)) && Number(row.plan.price_total) > 0)
+          .map(row => ({
+            id: row.plan.id, coach_id: coach.id, modality_id: modalityKey(modalityById.get(row.modality_id)), months: Number(row.period_months),
+            total_cents: Math.round(Number(row.plan.price_total) * 100), monthly_cents: Math.round(Number(row.plan.price_monthly) * 100),
+            fee_cents: Math.round(Number(row.plan.enrollment_fee || 0) * 100), max_installments: Number(row.plan.max_installments) || 1
+          }));
+        offers.push(...coachOffers);
         const profile = profileForLiveName(coach.name);
+        const keys = modalityOrder.filter(key => coachOffers.some(offer => offer.modality_id === key));
         return { id: coach.id, name: coach.name, short_name: coach.name.split(' ')[0], asset: profile?.asset || null,
-          specialties: coach.modality_ids.map(id => modalityNames[modalityKey(modalityById.get(id))]).filter(Boolean),
-          profile_url: profile?.profile_url || null, introduction: profile?.bio?.[0] || '', modality_ids: coach.modality_ids };
+          specialties: keys.map(key => modalityNames[key]), profile_url: profile?.profile_url || null, introduction: profile?.bio?.[0] || '' };
       });
-    const offers = coaches.flatMap(coach => plans.filter(plan => coach.modality_ids.includes(plan.modality_id)).map(plan => ({
-      id: plan.id, coach_id: coach.id, modality_id: plan.key, family: plan.family, months: Number(plan.period_months),
-      total_cents: Math.round(Number(plan.price_total) * 100), monthly_cents: Math.round(Number(plan.price_monthly) * 100),
-      fee_cents: Math.round(Number(plan.enrollment_fee || 0) * 100), max_installments: Number(plan.max_installments) || 1
-    })));
     if (!offers.length) throw new Error('Sem ofertas ativas');
     return { coaches, offers };
   }
@@ -2229,10 +2232,9 @@ window.EON_RACE_GALLERY = [
   const periodNames = { 1: 'Mensal', 3: 'Trimestral', 6: 'Semestral' };
   const periodPhrases = { 1: '1 mês', 3: '3 meses', 6: '6 meses' };
   const formatNames = { florianopolis: 'Florianópolis', online: 'Online / outras cidades' };
-  const state = { modality: 'corrida', family: 'regular', coach: null, months: null, format: 'florianopolis', savedCoach: new Map() };
+  const state = { modality: 'corrida', coach: null, months: null, format: 'florianopolis', savedCoach: new Map() };
   function byCoach(coachId, modality = state.modality) {
-    const family = modality === 'triathlon' ? state.family : 'regular';
-    return OFFERS.filter(offer => offer.coach_id === coachId && offer.modality_id === modality && offer.family === family).sort((a, b) => a.months - b.months);
+    return OFFERS.filter(offer => offer.coach_id === coachId && offer.modality_id === modality).sort((a, b) => a.months - b.months);
   }
   function selectedOffer(months = state.months) {
     return byCoach(state.coach).find(offer => offer.months === Number(months)) || null;
@@ -2255,7 +2257,6 @@ window.EON_RACE_GALLERY = [
     if (!Object.hasOwn(modalityNames, id)) return;
     if (state.coach) state.savedCoach.set(state.modality, state.coach);
     state.modality = id;
-    state.family = 'regular';
     const saved = state.savedCoach.get(id);
     state.coach = saved && byCoach(saved).length ? saved : null;
     renderPricing();
@@ -2267,9 +2268,6 @@ window.EON_RACE_GALLERY = [
       const liveId = liveIdForProfile(button.dataset.chooseCoach);
       button.hidden = !(liveId && byCoach(liveId, 'corrida').length);
     });
-    const hasEssencial = state.modality === 'triathlon' && OFFERS.some(offer => offer.modality_id === 'triathlon' && offer.family === 'essencial');
-    $('#plan-family').hidden = !hasEssencial;
-    $$('[data-family]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.family === state.family)));
     $$('#plan-region input').forEach(input => { input.checked = input.value === state.format; });
     const offeredCoaches = pricingConfig.coaches.filter(coach => byCoach(coach.id).length);
     const hasOffers = offeredCoaches.length > 0;
@@ -2312,7 +2310,7 @@ window.EON_RACE_GALLERY = [
     if (showRates) {
       setCoachPortrait($('#selection-photo'), chosen);
       text('#selection-coach', modalityNames[state.modality] + ' com ' + chosen.short_name);
-      text('#selection-context', formatNames[state.format] + ' · ' + (state.family === 'essencial' ? 'Triathlon Essencial' : 'preferência de atendimento'));
+      text('#selection-context', formatNames[state.format] + ' · preferência de atendimento');
       $$('.plan-card', $('#coach-result')).forEach(card => {
         const months = Number(card.dataset.months);
         const offer = offers.find(item => item.months === months);
@@ -2425,12 +2423,6 @@ window.EON_RACE_GALLERY = [
   $('#profile-choose').addEventListener('click', () => { profileDialog.close(); selectCoach(liveIdForProfile(profileId), true, true); });
   $('.coach-choices').addEventListener('change', event => { if (event.target.matches('input[name="coach"]') && event.target.checked) selectCoach(event.target.value); });
   $$('[data-modality]').forEach(button => button.addEventListener('click', () => chooseModality(button.dataset.modality)));
-  $$('[data-family]').forEach(button => button.addEventListener('click', () => {
-    state.family = button.dataset.family;
-    if (state.coach && !byCoach(state.coach).length) state.coach = null;
-    state.months = null;
-    renderPricing();
-  }));
   $('#plan-region').addEventListener('change', event => {
     if (!Object.hasOwn(formatNames, event.target.value)) return;
     state.format = event.target.value;
@@ -2472,7 +2464,6 @@ window.EON_RACE_GALLERY = [
     url.searchParams.set('regiao', state.format);
     url.searchParams.set('periodicidade', periodNames[offer.months].toLowerCase());
     url.searchParams.set('plan_id', offer.id);
-    if (state.family === 'essencial') url.searchParams.set('plano', 'essencial');
     url.searchParams.set('treinador', coach.name);
     url.searchParams.set('etapa', 'dados');
     return url;
@@ -2507,7 +2498,6 @@ window.EON_RACE_GALLERY = [
     const requestedFormat = params.get('atendimento') || params.get('regiao');
     if (Object.hasOwn(formatNames, requestedFormat)) state.format = requestedFormat;
     requestedCoach = params.get('coach');
-    if (params.get('plano') === 'essencial') state.family = 'essencial';
   } catch (_) { /* Abrir via file:// continua funcionando sem URL personalizada. */ }
   renderPricing();
   fetch(catalogUrl, { method: 'GET', headers: { Accept: 'application/json' } })
@@ -2528,7 +2518,7 @@ window.EON_RACE_GALLERY = [
       renderPricing();
     });
   // Gancho de leitura para testes locais; não fornece qualquer autorização no backend.
-  Object.defineProperty(window, 'EON_PREVIEW_STATE', { configurable: true, get: () => Object.freeze({ modality: state.modality, family: state.family, coach: state.coach, months: state.months, format: state.format, offer: selectedOffer()?.id || null, mode: catalogueStatus }) });
+  Object.defineProperty(window, 'EON_PREVIEW_STATE', { configurable: true, get: () => Object.freeze({ modality: state.modality, coach: state.coach, months: state.months, format: state.format, offer: selectedOffer()?.id || null, mode: catalogueStatus }) });
 
   // Atalho acessível para movimento e indicador discreto de leitura.
   const shortcut = $('#motion-shortcut');

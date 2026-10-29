@@ -68,7 +68,7 @@
         <section class="form-step is-active" data-step="1" aria-labelledby="step-plan-title">
           <div class="step-kicker">01 / Planejamento</div>
           <h1 id="step-plan-title" tabindex="-1">Escolha como você quer <em>treinar</em></h1>
-          <p class="step-subtitle">Confira a modalidade, o formato de atendimento e o período que melhor combina com seus objetivos.</p>
+          <p class="step-subtitle">Confira a modalidade e o formato de atendimento que melhor combinam com seus objetivos.</p>
 
           <fieldset class="choice-group">
             <legend>Modalidade</legend>
@@ -89,11 +89,6 @@
             </div>
           </fieldset>
 
-          <fieldset class="choice-group">
-            <legend>Plano</legend>
-            <div id="plan-options" class="plan-grid loading-box" aria-live="polite">Carregando planos…</div>
-          </fieldset>
-
           <div class="step-actions step-actions--end">
             <button type="button" class="primary-action" data-next-step>Continuar <span aria-hidden="true">→</span></button>
           </div>
@@ -103,8 +98,14 @@
         <section class="form-step" data-step="2" aria-labelledby="step-coach-title" hidden>
           <div class="step-kicker">02 / Treinador</div>
           <h1 id="step-coach-title" tabindex="-1">Escolha seu <em>treinador</em></h1>
-          <p class="step-subtitle">Selecione o profissional que vai acompanhar sua evolução. Aparecem aqui somente treinadores disponíveis no momento.</p>
+          <p class="step-subtitle">Selecione o profissional que vai acompanhar sua evolução e o período do plano. Aparecem aqui somente treinadores disponíveis no momento, cada um com os planos que oferece.</p>
           <div id="coach-options" class="coach-grid loading-box" aria-live="polite">Carregando treinadores…</div>
+
+          <fieldset class="choice-group">
+            <legend>Plano</legend>
+            <div id="plan-options" class="plan-grid loading-box" aria-live="polite">Carregando planos…</div>
+          </fieldset>
+
           <div class="step-actions">
             <button type="button" class="secondary-action" data-prev-step><span aria-hidden="true">←</span> Voltar</button>
             <button type="button" class="primary-action" data-next-step>Continuar <span aria-hidden="true">→</span></button>
