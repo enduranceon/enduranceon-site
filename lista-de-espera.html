@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#ffffff">
-  <title>Lista de espera · Endurance On</title>
-  <meta name="description" content="Entre na lista de espera do treinador e a equipe da Endurance On fala com você quando houver vaga.">
+  <title>Fila de espera · Endurance On</title>
+  <meta name="description" content="Entre na fila de espera do treinador e a equipe da Endurance On fala com você quando houver vaga.">
   <link rel="stylesheet" href="assets/brand.css">
   <link rel="stylesheet" href="assets/cadastro.css">
   <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
@@ -48,13 +48,13 @@
     <div class="onboarding-layout">
       <div class="onboarding-form">
         <section id="wl-loading" class="form-step waitlist-state" aria-live="polite">
-          <div class="step-kicker">Lista de espera</div>
+          <div class="step-kicker">Fila de espera</div>
           <h1 tabindex="-1">Carregando <em>treinador</em></h1>
           <p class="step-subtitle">Buscando as informações no sistema da Endurance On…</p>
         </section>
 
         <section id="wl-unavailable" class="form-step waitlist-state" hidden>
-          <div class="step-kicker">Lista de espera</div>
+          <div class="step-kicker">Fila de espera</div>
           <h1 id="wl-unavailable-title" tabindex="-1">Não encontramos este <em>treinador</em></h1>
           <p class="step-subtitle" id="wl-unavailable-text">Volte ao site e escolha um treinador na seção de planos.</p>
           <div class="step-actions step-actions--start">
@@ -63,9 +63,9 @@
         </section>
 
         <section id="wl-open" class="form-step waitlist-state" hidden>
-          <div class="step-kicker">Lista de espera</div>
+          <div class="step-kicker">Fila de espera</div>
           <h1 tabindex="-1"><em id="wl-open-name">Treinador</em> está recebendo alunos</h1>
-          <p class="step-subtitle">Não precisa de lista de espera: dá para fazer a pré-matrícula agora, escolhendo o plano.</p>
+          <p class="step-subtitle">Não precisa de fila de espera: dá para fazer a pré-matrícula agora, escolhendo o plano.</p>
           <div class="step-actions step-actions--start">
             <a class="primary-action" id="wl-open-link" href="index.html#planos">Escolher plano <span aria-hidden="true">→</span></a>
           </div>
@@ -76,8 +76,8 @@
             <label for="website">Website</label>
             <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
           </div>
-          <div class="step-kicker">Lista de espera</div>
-          <h1 id="wl-title" tabindex="-1">Entre na lista de espera de <em id="wl-coach-title">treinador</em></h1>
+          <div class="step-kicker">Fila de espera</div>
+          <h1 id="wl-title" tabindex="-1">Entre na fila de espera de <em id="wl-coach-title">treinador</em></h1>
           <p class="step-subtitle">Este treinador está sem vagas agora. Deixe seus dados: a equipe fala com você pelo WhatsApp quando houver vaga ou, se preferir, sugere outro treinador.</p>
 
           <div class="field-grid">
@@ -131,14 +131,14 @@
           </div>
           <div id="wl-status" class="form-status" role="status" aria-live="polite"></div>
           <div class="step-actions step-actions--end">
-            <button type="submit" class="primary-action submit-action">Entrar na lista de espera <span aria-hidden="true">→</span></button>
+            <button type="submit" class="primary-action submit-action">Entrar na fila de espera <span aria-hidden="true">→</span></button>
           </div>
           <p class="submit-disclaimer">Entrar na lista não gera cobrança nem garante a vaga.</p>
         </form>
 
         <section id="wl-done" class="form-step waitlist-state" hidden>
-          <div class="step-kicker">Lista de espera</div>
-          <h1 id="wl-done-title" tabindex="-1">Você está na <em>lista de espera</em></h1>
+          <div class="step-kicker">Fila de espera</div>
+          <h1 id="wl-done-title" tabindex="-1">Você está na <em>fila de espera</em></h1>
           <p class="step-subtitle" id="wl-done-text">A equipe da Endurance On vai falar com você pelo WhatsApp.</p>
           <p class="waitlist-reference" id="wl-done-reference"></p>
           <div class="step-actions step-actions--start">
@@ -149,10 +149,11 @@
 
       <aside class="selection-summary" aria-labelledby="wl-summary-title">
         <div class="summary-eyebrow">Sua escolha</div>
-        <h2 id="wl-summary-title">Lista de espera</h2>
+        <h2 id="wl-summary-title">Fila de espera</h2>
         <dl>
           <div><dt>Treinador</dt><dd id="wl-summary-coach">A escolher</dd></div>
           <div><dt>Modalidade</dt><dd id="wl-summary-modality">A definir com a equipe</dd></div>
+          <div><dt>Plano de interesse</dt><dd id="wl-summary-plan">A definir com a equipe</dd></div>
           <div><dt>Formato</dt><dd id="wl-summary-region">A escolher</dd></div>
         </dl>
         <div class="summary-security">
