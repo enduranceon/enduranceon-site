@@ -372,7 +372,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     return fallbackKey ? photos[fallbackKey] : "";
   }
 
-  // Treinador sem vagas: no lugar do cadastro, a pessoa entra na lista de espera dele.
+  // Treinador sem vagas: no lugar do cadastro, a pessoa entra na fila de espera dele.
   const isWaitlistCoach = (coach) => coach?.accepting_new_students === false;
 
   function waitlistUrl(coach) {
@@ -381,11 +381,13 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     const modality = selectedModality();
     if (modality) url.searchParams.set("modalidade", modality.name);
     if (fields.region.value) url.searchParams.set("regiao", fields.region.value);
+    const period = selectedPlan()?.period || query.get("periodicidade");
+    if (period) url.searchParams.set("periodicidade", period);
     Object.entries(utm()).forEach(([key, value]) => url.searchParams.set(key, value));
     return url.href;
   }
 
-  // Nome, WhatsApp e e-mail já digitados seguem para a lista de espera pela sessão do navegador (nunca pela URL).
+  // Nome, WhatsApp e e-mail já digitados seguem para a fila de espera pela sessão do navegador (nunca pela URL).
   function goToWaitlist(coach, keepTyped) {
     if (keepTyped) {
       try {
@@ -396,7 +398,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
           savedAt: Date.now(),
         }));
       } catch (storageError) {
-        console.warn("Não foi possível levar os dados já digitados para a lista de espera.", storageError);
+        console.warn("Não foi possível levar os dados já digitados para a fila de espera.", storageError);
       }
     }
     window.location.assign(waitlistUrl(coach));
@@ -553,7 +555,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
       const waitlist = isWaitlistCoach(coach);
       button.className = `coach-card${fields.coach.value === coach.id ? " is-selected" : ""}${waitlist ? " is-waitlist" : ""}`;
       button.dataset.coachId = coach.id;
-      if (!waitlist) button.setAttribute("aria-pressed", String(fields.coach.value === coach.id));
+      button.setAttribute("aria-pressed", String(fields.coach.value === coach.id));
       const photo = coachPhoto(coach.name);
       if (photo) {
         const imageWrap = document.createElement("span");
@@ -578,15 +580,11 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
       if (waitlist) {
         const tag = document.createElement("span");
         tag.className = "coach-card__tag";
-        tag.textContent = "Sem vagas · lista de espera";
+        tag.innerHTML = '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="12" height="12"><path fill="currentColor" d="M6 2h12v5.5L14 12l4 4.5V22H6v-5.5L10 12 6 7.5V2Zm2 2v2.7L12 11l4-4.3V4H8Zm4 9-4 4.4V20h8v-2.6L12 13Z"/></svg>Fila de espera';
         coachBody.appendChild(tag);
       }
       button.appendChild(coachBody);
       button.addEventListener("click", () => {
-        if (waitlist) {
-          goToWaitlist(coach, false);
-          return;
-        }
         const previousMonths = selectedPlan()?.period_months;
         fields.coach.value = coach.id;
         keepPeriod(previousMonths);
@@ -600,7 +598,20 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     });
   }
 
+  // Treinador sem vagas: o valor continua à vista, mas o passo 2 termina na fila de espera, não no cadastro.
+  function renderWaitlistNotice() {
+    const coach = selectedCoach();
+    const onWaitlist = isWaitlistCoach(coach);
+    el("waitlist-banner").hidden = !onWaitlist;
+    if (onWaitlist) {
+      el("waitlist-banner-text").textContent = `${coach.name} está sem vagas agora. Escolha o período que você quer e entre na fila: a equipe fala com você quando abrir uma vaga ou sugere outro treinador.`;
+    }
+    const next = form.querySelector('[data-step="2"] [data-next-step]');
+    next.innerHTML = `${onWaitlist ? "Entrar na fila de espera" : "Continuar"} <span aria-hidden="true">→</span>`;
+  }
+
   function updateSummary() {
+    renderWaitlistNotice();
     const plan = selectedPlan();
     const modality = selectedModality();
     const coach = selectedCoach();
@@ -707,6 +718,10 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
 
   form.querySelectorAll("[data-next-step]").forEach((button) => {
     button.addEventListener("click", () => {
+      if (currentStep === 2 && isWaitlistCoach(selectedCoach())) {
+        goToWaitlist(selectedCoach(), false);
+        return;
+      }
       if (validateStep(currentStep)) showStep(currentStep + 1);
     });
   });

@@ -1,4 +1,4 @@
-// Lista de espera de um treinador sem vagas. Depende de cadastro.js (carregado antes), que expõe EonEnrollmentUtils.
+// Fila de espera de um treinador sem vagas. Depende de cadastro.js (carregado antes), que expõe EonEnrollmentUtils.
 if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded", function () {
   const ENDPOINT = "https://bsiljrrodgtmtdilnuxr.supabase.co/functions/v1/public-coach-waitlist";
   const CATALOG_URL = "https://bsiljrrodgtmtdilnuxr.supabase.co/functions/v1/public-assessment-prospect";
@@ -35,6 +35,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
   let catalog = { modalities: [], coaches: [] };
   let coach = null;
   let modality = null;
+  let interestPlan = null;
   let region = query.get("regiao") === "online" || query.get("regiao") === "outras" ? "online" : "florianopolis";
   let isSubmitting = false;
 
@@ -106,6 +107,16 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     return match && coachPlansForModality(coach, match.id).length ? match : null;
   }
 
+  const money = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+  const planLabel = (plan) => `${String(plan.period || "").charAt(0).toUpperCase()}${String(plan.period || "").slice(1)} · ${money.format(Number(plan.price_monthly))}/mês`;
+
+  // Período que a pessoa estava olhando na home ou no cadastro; serve só de contexto para a equipe.
+  function interestPlanFromQuery() {
+    const wanted = slug(query.get("periodicidade"));
+    if (!wanted || !coach || !modality) return null;
+    return coachPlansForModality(coach, modality.id).find((plan) => slug(plan.period) === wanted) || null;
+  }
+
   // O cadastro guarda nome, WhatsApp e e-mail por alguns minutos quando o treinador lota no meio do preenchimento.
   function applyPrefill() {
     try {
@@ -123,6 +134,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
   function renderCoach() {
     el("wl-summary-coach").textContent = coach.name;
     el("wl-summary-modality").textContent = modality ? modalityLabel(modality) : "A definir com a equipe";
+    el("wl-summary-plan").textContent = interestPlan ? planLabel(interestPlan) : "A definir com a equipe";
     el("wl-coach-title").textContent = coach.name;
     renderRegions();
   }
@@ -150,6 +162,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
         return;
       }
       modality = modalityFromQuery();
+      interestPlan = interestPlanFromQuery();
       if (coach.accepting_new_students !== false) {
         el("wl-open-name").textContent = coach.name;
         showState("open");
@@ -318,7 +331,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     isSubmitting = true;
     submit.disabled = true;
     submit.innerHTML = "Enviando com segurança…";
-    setStatus("loading", "Registrando você na lista de espera…");
+    setStatus("loading", "Registrando você na fila de espera…");
     try {
       const response = await fetch(ENDPOINT, {
         method: "POST",
@@ -332,7 +345,8 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
           whatsapp: normalizeBrazilPhone(fields.whatsapp.value),
           email: clean(fields.email.value).toLowerCase(),
           region,
-          notes: String(fields.notes.value || "").trim().slice(0, 500),
+          notes: [interestPlan ? `Plano de interesse: ${planLabel(interestPlan)}.` : "", String(fields.notes.value || "").trim()]
+            .filter(Boolean).join("\n").slice(0, 500),
           turnstile_token: turnstileToken,
           website: fields.website.value,
           landing_page: window.location.href,
@@ -341,7 +355,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) {
-        const failure = new Error("Falha ao entrar na lista de espera");
+        const failure = new Error("Falha ao entrar na fila de espera");
         failure.kind = "server";
         failure.status = response.status;
         failure.data = data || {};
@@ -359,7 +373,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
       } catch (analyticsError) {
         console.warn("Não foi possível registrar o evento no Analytics.", analyticsError);
       }
-      el("wl-done-title").innerHTML = data.status === "duplicate" ? "Você já está na <em>lista de espera</em>" : "Você está na <em>lista de espera</em>";
+      el("wl-done-title").innerHTML = data.status === "duplicate" ? "Você já está na <em>fila de espera</em>" : "Você está na <em>fila de espera</em>";
       el("wl-done-text").textContent = `A equipe da Endurance On vai falar com você pelo WhatsApp sobre a vaga com ${coach.name}. Não precisa enviar de novo.`;
       el("wl-done-reference").textContent = `Referência: ${shortReference(requestId)}`;
       showState("done");
@@ -375,7 +389,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
       if (!confirmed) {
         isSubmitting = false;
         submit.disabled = false;
-        submit.innerHTML = 'Entrar na lista de espera <span aria-hidden="true">→</span>';
+        submit.innerHTML = 'Entrar na fila de espera <span aria-hidden="true">→</span>';
       }
     }
   });
