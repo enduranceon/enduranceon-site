@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#ffffff">
+  <title>Lista de espera · Endurance On</title>
+  <meta name="description" content="Entre na lista de espera do treinador e a equipe da Endurance On fala com você quando houver vaga.">
+  <link rel="stylesheet" href="assets/brand.css">
+  <link rel="stylesheet" href="assets/cadastro.css">
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,650;0,700;0,750;0,800;0,850;1,800;1,850&amp;display=swap" rel="stylesheet">
+  <script>
+    // Google Analytics 4: só nos endereços oficiais (prévias e testes não contam no Analytics real).
+    (function () {
+      if (!/^(www\.)?enduranceon\.com\.br$/.test(location.hostname)) return;
+      var tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtag/js?id=G-PQX6YBZD9P';
+      document.head.appendChild(tag);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', 'G-PQX6YBZD9P');
+    })();
+  </script>
+</head>
+<body>
+  <header class="onboarding-topbar">
+    <a class="brand" href="index.html" aria-label="Endurance On, voltar ao site">
+      <span class="symbol eon-symbol"><svg aria-hidden="true" focusable="false" width="1358" height="677" viewBox="277 272 1358 677"><image href="/images/logo/logo_simbolo_preto.png" width="1920" height="1216"/></svg></span>
+      <span class="brand-text">ENDURANCE ON<small>ASSESSORIA ESPORTIVA</small></span>
+    </a>
+    <div class="security-label" role="status" aria-label="Ambiente protegido">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4.5 5v6.2c0 4.8 3.1 9.1 7.5 10.8 4.4-1.7 7.5-6 7.5-10.8V5L12 2Zm3.4 8.1-4.1 4.2-2.5-2.5 1.2-1.2 1.3 1.3 2.9-3 1.2 1.2Z"/></svg>
+      Ambiente protegido
+    </div>
+    <a class="exit-link" href="index.html"><span aria-hidden="true">←</span> Voltar ao site</a>
+  </header>
+
+  <main class="onboarding-main">
+    <div class="onboarding-layout">
+      <div class="onboarding-form">
+        <section id="wl-loading" class="form-step waitlist-state" aria-live="polite">
+          <div class="step-kicker">Lista de espera</div>
+          <h1 tabindex="-1">Carregando <em>treinador</em></h1>
+          <p class="step-subtitle">Buscando as informações no sistema da Endurance On…</p>
+        </section>
+
+        <section id="wl-unavailable" class="form-step waitlist-state" hidden>
+          <div class="step-kicker">Lista de espera</div>
+          <h1 id="wl-unavailable-title" tabindex="-1">Não encontramos este <em>treinador</em></h1>
+          <p class="step-subtitle" id="wl-unavailable-text">Volte ao site e escolha um treinador na seção de planos.</p>
+          <div class="step-actions step-actions--start">
+            <a class="primary-action" href="index.html#planos">Ver planos e treinadores <span aria-hidden="true">→</span></a>
+          </div>
+        </section>
+
+        <section id="wl-open" class="form-step waitlist-state" hidden>
+          <div class="step-kicker">Lista de espera</div>
+          <h1 tabindex="-1"><em id="wl-open-name">Treinador</em> está recebendo alunos</h1>
+          <p class="step-subtitle">Não precisa de lista de espera: dá para fazer a pré-matrícula agora, escolhendo o plano.</p>
+          <div class="step-actions step-actions--start">
+            <a class="primary-action" id="wl-open-link" href="index.html#planos">Escolher plano <span aria-hidden="true">→</span></a>
+          </div>
+        </section>
+
+        <form id="wl-form" class="form-step" novalidate hidden>
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="step-kicker">Lista de espera</div>
+          <h1 id="wl-title" tabindex="-1">Entre na lista de espera de <em id="wl-coach-title">treinador</em></h1>
+          <p class="step-subtitle">Este treinador está sem vagas agora. Deixe seus dados: a equipe fala com você pelo WhatsApp quando houver vaga ou, se preferir, sugere outro treinador.</p>
+
+          <div class="field-grid">
+            <div class="field field--full">
+              <label for="wl-nome">Nome completo</label>
+              <input type="text" id="wl-nome" name="nome_completo" autocomplete="name" placeholder="Como você gostaria de ser chamado?" minlength="3" maxlength="160" aria-describedby="wl-nome-error" required>
+              <small id="wl-nome-error" class="field-error" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="wl-whatsapp">WhatsApp com DDD</label>
+              <input type="tel" id="wl-whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(48) 99999-9999" maxlength="19" aria-describedby="wl-whatsapp-error" required>
+              <small id="wl-whatsapp-error" class="field-error" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="wl-email">E-mail <span>(opcional)</span></label>
+              <input type="email" id="wl-email" name="email" autocomplete="email" placeholder="voce@email.com" maxlength="180" aria-describedby="wl-email-error">
+              <small id="wl-email-error" class="field-error" aria-live="polite"></small>
+            </div>
+          </div>
+
+          <fieldset class="choice-group waitlist-region">
+            <legend>Onde você vai treinar?</legend>
+            <div class="segment-grid segment-grid--region">
+              <button type="button" class="choice-tile" data-region="florianopolis">
+                <span class="choice-icon">⌖</span>
+                <span><strong>Florianópolis</strong><small>Com acesso à estrutura e pontos de apoio</small></span>
+              </button>
+              <button type="button" class="choice-tile" data-region="online">
+                <span class="choice-icon">◎</span>
+                <span><strong>Outras cidades</strong><small>Acompanhamento online, onde você estiver</small></span>
+              </button>
+            </div>
+            <small id="wl-region-error" class="field-error" aria-live="polite"></small>
+          </fieldset>
+
+          <div class="field field--full waitlist-notes">
+            <label for="wl-notes">Recado para a equipe <span>(opcional)</span></label>
+            <textarea id="wl-notes" name="notes" rows="3" maxlength="500" placeholder="Objetivo, prova que pretende fazer, horários que preferem…" aria-describedby="wl-notes-error"></textarea>
+            <small id="wl-notes-error" class="field-error" aria-live="polite"></small>
+          </div>
+
+          <div class="privacy-note">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4V7Zm3 9.7V18h-2v-1.3a2 2 0 1 1 2 0Z"/></svg>
+            <span><strong>Seus dados ficam protegidos.</strong> Eles vão direto para a equipe da Endurance On, só para falar com você sobre a vaga, e não são publicados.</span>
+          </div>
+
+          <div class="turnstile-wrap">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAEA611YLkFJnndKx" data-action="waitlist_submit" data-theme="light" data-expired-callback="eonTurnstileExpired" data-error-callback="eonTurnstileError"></div>
+            <small>Verificação anti-spam protegida pela Cloudflare.</small>
+            <small id="wl-turnstile-error" class="field-error" aria-live="polite"></small>
+          </div>
+          <div id="wl-status" class="form-status" role="status" aria-live="polite"></div>
+          <div class="step-actions step-actions--end">
+            <button type="submit" class="primary-action submit-action">Entrar na lista de espera <span aria-hidden="true">→</span></button>
+          </div>
+          <p class="submit-disclaimer">Entrar na lista não gera cobrança nem garante a vaga.</p>
+        </form>
+
+        <section id="wl-done" class="form-step waitlist-state" hidden>
+          <div class="step-kicker">Lista de espera</div>
+          <h1 id="wl-done-title" tabindex="-1">Você está na <em>lista de espera</em></h1>
+          <p class="step-subtitle" id="wl-done-text">A equipe da Endurance On vai falar com você pelo WhatsApp.</p>
+          <p class="waitlist-reference" id="wl-done-reference"></p>
+          <div class="step-actions step-actions--start">
+            <a class="primary-action" href="index.html">Voltar ao site <span aria-hidden="true">→</span></a>
+          </div>
+        </section>
+      </div>
+
+      <aside class="selection-summary" aria-labelledby="wl-summary-title">
+        <div class="summary-eyebrow">Sua escolha</div>
+        <h2 id="wl-summary-title">Lista de espera</h2>
+        <dl>
+          <div><dt>Treinador</dt><dd id="wl-summary-coach">A escolher</dd></div>
+          <div><dt>Modalidade</dt><dd id="wl-summary-modality">A definir com a equipe</dd></div>
+          <div><dt>Formato</dt><dd id="wl-summary-region">A escolher</dd></div>
+        </dl>
+        <div class="summary-security">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4.5 5v6.2c0 4.8 3.1 9.1 7.5 10.8 4.4-1.7 7.5-6 7.5-10.8V5L12 2Zm3.4 8.1-4.1 4.2-2.5-2.5 1.2-1.2 1.3 1.3 2.9-3 1.2 1.2Z"/></svg>
+          <span>Envio seguro direto para a equipe Endurance On.</span>
+        </div>
+        <p class="summary-help">Ficou com alguma dúvida?<br><a href="https://wa.me/5548991178688" target="_blank" rel="noopener noreferrer">Fale com a gente pelo WhatsApp</a></p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="onboarding-footer">
+    <span>© <span id="current-year"></span> Endurance On</span>
+    <span>Ambiente protegido · Privacidade e segurança</span>
+  </footer>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="cadastro.js" defer></script>
+  <script src="lista-de-espera.js" defer></script>
+</body>
+</html>

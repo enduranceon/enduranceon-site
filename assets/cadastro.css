@@ -224,6 +224,17 @@ svg{display:block}
 @media (max-width:340px){
   .coach-grid{grid-template-columns:1fr}
 }
+/* Lista de espera */
+.step-actions--start{justify-content:flex-start}
+.field textarea{width:100%;min-height:96px;padding:12px 14px;border:1px solid #cfcdc6;border-radius:10px;background:#fff;color:inherit;font:inherit;line-height:1.55;resize:vertical;transition:border-color .15s,box-shadow .15s}
+.field textarea:hover{border-color:#8a8a85}
+.field textarea:focus{border-color:var(--ink);outline:3px solid var(--focus);outline-offset:2px}
+.field textarea.is-invalid{border-color:var(--err);background:#fff8f7}
+.waitlist-region{margin-top:26px}
+.waitlist-notes{margin-top:22px}
+.waitlist-reference{margin:-12px 0 0;color:#6a6a6a;font-size:13px;font-weight:650}
+.coach-card.is-waitlist .coach-photo img{filter:grayscale(.35)}
+.coach-card__tag{display:block;margin-top:4px;color:var(--orange-ink);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}
