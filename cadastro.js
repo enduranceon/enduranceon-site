@@ -358,18 +358,48 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
   function coachPhoto(name) {
     const coachSlug = slug(name);
     const photos = {
-      "bruno-jeremias": "bruno-jeremias.jpg",
-      "elinai-freitas": "elinai-freitas.jpg",
-      "guto-fernandes": "guto-fernandes.jpg",
-      "jessica-vieira": "jessica-rodrigues.jpg",
-      "jessica-rodrigues": "jessica-rodrigues.jpg",
-      "thais-prando": "thais-prando.jpg",
+      "bruno-jeremias": "../images/treinadores/bruno-jeremias.jpg",
+      "elinai-freitas": "../images/treinadores/elinai-freitas.jpg",
+      "guto-fernandes": "../images/treinadores/guto-fernandes.jpg",
+      "jessica-vieira": "../images/treinadores/jessica-rodrigues.jpg",
+      "jessica-rodrigues": "../images/treinadores/jessica-rodrigues.jpg",
+      "thais-prando": "../images/treinadores/thais-prando.jpg",
+      "vinicius-koerich": "assets/vinicius-koerich.jpg",
     };
-    const exact = photos[coachSlug];
-    if (exact) return `../images/treinadores/${exact}`;
+    if (photos[coachSlug]) return photos[coachSlug];
     const firstName = coachSlug.split("-")[0];
     const fallbackKey = Object.keys(photos).find((key) => key.split("-")[0] === firstName);
-    return fallbackKey ? `../images/treinadores/${photos[fallbackKey]}` : "";
+    return fallbackKey ? photos[fallbackKey] : "";
+  }
+
+  // Treinador sem vagas: no lugar do cadastro, a pessoa entra na lista de espera dele.
+  const isWaitlistCoach = (coach) => coach?.accepting_new_students === false;
+
+  function waitlistUrl(coach) {
+    const url = new URL("lista-de-espera.html", window.location.href);
+    url.searchParams.set("coach", coach.id);
+    const modality = selectedModality();
+    if (modality) url.searchParams.set("modalidade", modality.name);
+    if (fields.region.value) url.searchParams.set("regiao", fields.region.value);
+    Object.entries(utm()).forEach(([key, value]) => url.searchParams.set(key, value));
+    return url.href;
+  }
+
+  // Nome, WhatsApp e e-mail já digitados seguem para a lista de espera pela sessão do navegador (nunca pela URL).
+  function goToWaitlist(coach, keepTyped) {
+    if (keepTyped) {
+      try {
+        window.sessionStorage.setItem("eonWaitlistPrefill", JSON.stringify({
+          name: clean(fields.name.value),
+          whatsapp: normalizeBrazilPhone(fields.whatsapp.value),
+          email: clean(fields.email.value).toLowerCase(),
+          savedAt: Date.now(),
+        }));
+      } catch (storageError) {
+        console.warn("Não foi possível levar os dados já digitados para a lista de espera.", storageError);
+      }
+    }
+    window.location.assign(waitlistUrl(coach));
   }
 
   function renderModalities() {
@@ -520,9 +550,10 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     coaches.forEach((coach) => {
       const button = document.createElement("button");
       button.type = "button";
-      button.className = `coach-card${fields.coach.value === coach.id ? " is-selected" : ""}`;
+      const waitlist = isWaitlistCoach(coach);
+      button.className = `coach-card${fields.coach.value === coach.id ? " is-selected" : ""}${waitlist ? " is-waitlist" : ""}`;
       button.dataset.coachId = coach.id;
-      button.setAttribute("aria-pressed", String(fields.coach.value === coach.id));
+      if (!waitlist) button.setAttribute("aria-pressed", String(fields.coach.value === coach.id));
       const photo = coachPhoto(coach.name);
       if (photo) {
         const imageWrap = document.createElement("span");
@@ -544,8 +575,18 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
       const coachName = document.createElement("strong");
       coachName.textContent = coach.name;
       coachBody.appendChild(coachName);
+      if (waitlist) {
+        const tag = document.createElement("span");
+        tag.className = "coach-card__tag";
+        tag.textContent = "Sem vagas · lista de espera";
+        coachBody.appendChild(tag);
+      }
       button.appendChild(coachBody);
       button.addEventListener("click", () => {
+        if (waitlist) {
+          goToWaitlist(coach, false);
+          return;
+        }
         const previousMonths = selectedPlan()?.period_months;
         fields.coach.value = coach.id;
         keepPeriod(previousMonths);
@@ -690,6 +731,10 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
       fields.region.value = query.get("regiao") === "online" || query.get("regiao") === "outras" ? "online" : "florianopolis";
       const wantedCoach = query.get("treinador");
       const coach = coachesForSelectedModality().find((item) => coachMatchesQuery(item, wantedCoach));
+      if (isWaitlistCoach(coach)) {
+        window.location.replace(waitlistUrl(coach));
+        return;
+      }
       if (coach) fields.coach.value = coach.id;
       selectInitialPlan();
       renderModalities();
@@ -952,6 +997,14 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     const nestedError = data.error && typeof data.error === "object" ? data.error : {};
     const code = String(data.code || nestedError.code || "").toUpperCase();
     const legacyMessage = typeof data.error === "string" ? data.error : "";
+
+    const coachFull = code === "COACH_WAITLIST" ||
+      normalizedServerErrors(data.field_errors || nestedError.field_errors)
+        .some((item) => String(item?.code || "").toUpperCase() === "COACH_WAITLIST");
+    if (coachFull && selectedCoach()) {
+      goToWaitlist(selectedCoach(), true);
+      return;
+    }
 
     if (!data.field_errors && !nestedError.field_errors) {
       if (/e-mail inválido/i.test(legacyMessage)) data.field_errors = [{ field: "email" }];
