@@ -1,0 +1,12 @@
+/* Botão flutuante de WhatsApp (criado por whatsapp.js) */
+.wa-float{position:fixed;z-index:90;right:max(16px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#1fa855;color:#fff;text-decoration:none;box-shadow:0 8px 22px #0000002e,0 0 0 4px #ffffffd9;transition:transform .2s,box-shadow .2s,background .2s}
+.wa-float:hover{background:#178f48;transform:translateY(-2px);box-shadow:0 12px 26px #00000038,0 0 0 4px #ffffffd9}
+.wa-float:focus-visible{outline:3px solid #08729b;outline-offset:4px}
+.wa-float svg{width:30px;height:30px;fill:currentColor}
+/* Na home já existe o botão de pausar movimento no canto: o WhatsApp fica acima dele. */
+body:has(.motion-shortcut) .wa-float{bottom:calc(max(17px,env(safe-area-inset-bottom)) + 38px + 14px)}
+/* "Conheça a EON" fica no canto da capa da home: sai da frente do botão. */
+body:has(.wa-float) .hero-bottom .scroll-down{margin-right:56px}
+@media (max-width:600px){.wa-float{width:52px;height:52px}.wa-float svg{width:28px;height:28px}}
+@media (prefers-reduced-motion:reduce){.wa-float{transition:none}.wa-float:hover{transform:none}}
+@media print{.wa-float{display:none}}
