@@ -381,8 +381,6 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     const modality = selectedModality();
     if (modality) url.searchParams.set("modalidade", modality.name);
     if (fields.region.value) url.searchParams.set("regiao", fields.region.value);
-    const period = selectedPlan()?.period || query.get("periodicidade");
-    if (period) url.searchParams.set("periodicidade", period);
     Object.entries(utm()).forEach(([key, value]) => url.searchParams.set(key, value));
     return url.href;
   }
@@ -598,13 +596,14 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     });
   }
 
-  // Treinador sem vagas: o valor continua à vista, mas o passo 2 termina na fila de espera, não no cadastro.
+  // Treinador sem vagas: não há plano a escolher; o passo 2 termina na fila de espera, não no cadastro.
   function renderWaitlistNotice() {
     const coach = selectedCoach();
     const onWaitlist = isWaitlistCoach(coach);
     el("waitlist-banner").hidden = !onWaitlist;
+    el("plan-group").hidden = onWaitlist;
     if (onWaitlist) {
-      el("waitlist-banner-text").textContent = `${coach.name} está sem vagas agora. Escolha o período que você quer e entre na fila: a equipe fala com você quando abrir uma vaga ou sugere outro treinador.`;
+      el("waitlist-banner-text").textContent = `${coach.name} está sem vagas agora. Entre na fila de espera: a equipe fala com você quando abrir uma vaga, conversa sobre o plano e, se preferir, sugere outro treinador.`;
     }
     const next = form.querySelector('[data-step="2"] [data-next-step]');
     next.innerHTML = `${onWaitlist ? "Entrar na fila de espera" : "Continuar"} <span aria-hidden="true">→</span>`;
@@ -612,13 +611,13 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
 
   function updateSummary() {
     renderWaitlistNotice();
-    const plan = selectedPlan();
     const modality = selectedModality();
     const coach = selectedCoach();
+    const plan = isWaitlistCoach(coach) ? null : selectedPlan();
     const regionLabel = fields.region.value === "florianopolis" ? "Florianópolis" : fields.region.value === "online" ? "Outras cidades / online" : "A escolher";
     el("summary-modality").textContent = modality ? modalityLabel(modality) : "A escolher";
     el("summary-region").textContent = regionLabel;
-    el("summary-plan").textContent = plan ? planTitle(plan) : "A escolher";
+    el("summary-plan").textContent = plan ? planTitle(plan) : isWaitlistCoach(coach) ? "A combinar com a equipe" : "A escolher";
     el("summary-coach").textContent = coach?.name || "A escolher";
     const priceBox = el("summary-price");
     if (!plan) {

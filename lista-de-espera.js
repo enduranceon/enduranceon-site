@@ -35,7 +35,6 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
   let catalog = { modalities: [], coaches: [] };
   let coach = null;
   let modality = null;
-  let interestPlan = null;
   let region = query.get("regiao") === "online" || query.get("regiao") === "outras" ? "online" : "florianopolis";
   let isSubmitting = false;
 
@@ -107,16 +106,6 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
     return match && coachPlansForModality(coach, match.id).length ? match : null;
   }
 
-  const money = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
-  const planLabel = (plan) => `${String(plan.period || "").charAt(0).toUpperCase()}${String(plan.period || "").slice(1)} · ${money.format(Number(plan.price_monthly))}/mês`;
-
-  // Período que a pessoa estava olhando na home ou no cadastro; serve só de contexto para a equipe.
-  function interestPlanFromQuery() {
-    const wanted = slug(query.get("periodicidade"));
-    if (!wanted || !coach || !modality) return null;
-    return coachPlansForModality(coach, modality.id).find((plan) => slug(plan.period) === wanted) || null;
-  }
-
   // O cadastro guarda nome, WhatsApp e e-mail por alguns minutos quando o treinador lota no meio do preenchimento.
   function applyPrefill() {
     try {
@@ -134,7 +123,6 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
   function renderCoach() {
     el("wl-summary-coach").textContent = coach.name;
     el("wl-summary-modality").textContent = modality ? modalityLabel(modality) : "A definir com a equipe";
-    el("wl-summary-plan").textContent = interestPlan ? planLabel(interestPlan) : "A definir com a equipe";
     el("wl-coach-title").textContent = coach.name;
     renderRegions();
   }
@@ -162,7 +150,6 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
         return;
       }
       modality = modalityFromQuery();
-      interestPlan = interestPlanFromQuery();
       if (coach.accepting_new_students !== false) {
         el("wl-open-name").textContent = coach.name;
         showState("open");
@@ -345,8 +332,7 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
           whatsapp: normalizeBrazilPhone(fields.whatsapp.value),
           email: clean(fields.email.value).toLowerCase(),
           region,
-          notes: [interestPlan ? `Plano de interesse: ${planLabel(interestPlan)}.` : "", String(fields.notes.value || "").trim()]
-            .filter(Boolean).join("\n").slice(0, 500),
+          notes: String(fields.notes.value || "").trim().slice(0, 500),
           turnstile_token: turnstileToken,
           website: fields.website.value,
           landing_page: window.location.href,
