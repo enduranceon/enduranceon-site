@@ -1,0 +1,188 @@
+/* ONE BY ONE 2026: página do evento (/onebyone).
+   Usa a base de pages.css (cabeçalho, rodapé, botões, foco) e acrescenta só o que o evento precisa.
+   Cores do briefing: fundo #050505, laranja #ff7900, azul #00acf4, superfície #f5f5f5, apoio #676c72.
+   Laranja e azul são usados como destaque (fundos, barras, números grandes). Em texto sobre fundo claro,
+   usam-se as versões escuras (--obo-orange-ink e --obo-blue-ink) para manter o contraste. */
+:root{--obo-bg:#050505;--obo-orange:#ff7900;--obo-blue:#00acf4;--obo-surface:#f5f5f5;--obo-muted:#676c72;--obo-soft:#bcc1c7;--obo-orange-ink:#a64900;--obo-line:#dcdcdc}
+body.obo{background:#fff}
+
+.obo-stripe{height:6px;background:linear-gradient(90deg,var(--obo-orange) 0 50%,var(--obo-blue) 50% 100%)}
+.obo-sec{padding:clamp(56px,8vw,104px) 0}
+.obo-dark{background:var(--obo-bg);color:#fff}
+.obo-surface{background:var(--obo-surface)}
+.obo summary:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.obo-dark a:focus-visible,.obo-dark summary:focus-visible{outline-color:#fff}
+
+.obo-eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.16em;line-height:1.4;text-transform:uppercase;color:var(--obo-orange-ink)}
+.obo-dark .obo-eyebrow{color:var(--obo-orange)}
+.obo main h2{margin-top:14px;max-width:22ch;font-size:clamp(30px,4.6vw,54px);line-height:1.04;font-weight:800;letter-spacing:-.05em}
+.obo main h3{font-weight:800;letter-spacing:-.035em}
+.obo-prose{max-width:62ch;font-size:17px;line-height:1.75;color:#2b2b2b}
+.obo-prose p+p{margin-top:16px}
+.obo-dark .obo-prose{color:#d6d9dd}
+.obo-quote{max-width:24ch;margin-top:44px;padding-left:22px;border-left:5px solid var(--obo-orange);font-size:clamp(22px,3vw,34px);line-height:1.15;font-weight:800;letter-spacing:-.045em}
+
+/* Botão de inscrição: o mesmo link nos três lugares */
+.button.obo-cta{min-height:56px;padding:16px 28px;border-radius:12px;background:var(--obo-orange);color:#050505;font-size:15px;font-weight:750}
+.button.obo-cta:hover{background:#ff9233}
+.obo-cta-note{margin-top:12px;font-size:14px;color:var(--obo-soft)}
+
+/* 01 Abertura */
+.obo-hero{padding:clamp(40px,6vw,80px) 0 clamp(56px,8vw,96px)}
+.obo-hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(32px,5vw,64px);align-items:center}
+.obo-hero h1{margin-top:16px;font-size:clamp(38px,6.4vw,84px);line-height:.95;font-weight:850;font-style:italic;letter-spacing:-.055em;text-transform:uppercase}
+.obo-lead{margin-top:22px;font-size:clamp(20px,2.4vw,28px);line-height:1.25;font-weight:750;letter-spacing:-.03em}
+.obo-lead strong{color:var(--obo-orange);font-weight:850}
+.obo-hero .obo-prose{margin-top:18px}
+.obo-facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.obo-facts li{padding:9px 16px;border:1px solid #ffffff4d;border-radius:999px;font-size:14px;font-weight:650;line-height:1.4}
+.obo-hero-cta{margin-top:30px}
+.obo-logo{display:block;width:min(100%,440px);height:auto;margin-inline:auto}
+
+/* 02 Propósito */
+.obo-pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px}
+.obo-pillars li{padding:24px 24px 28px;background:var(--obo-surface);border-top:5px solid var(--obo-orange);border-radius:14px;font-size:clamp(20px,2.2vw,26px);line-height:1.15;font-weight:800;letter-spacing:-.04em}
+.obo-pillars li:nth-child(2){border-top-color:var(--obo-blue)}
+.obo-pillars li:nth-child(3){border-top-color:#050505}
+.obo-purpose-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,72px);align-items:center;margin-top:36px}
+.obo-purpose-grid .obo-quote{max-width:none;margin-top:0}
+
+/* 03 Como funciona */
+.obo-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:40px}
+.obo-stat{padding:26px 24px;border:1px solid #ffffff26;border-radius:14px}
+.obo-stat strong{display:block;font-size:clamp(44px,6vw,76px);line-height:1;font-weight:850;font-style:italic;letter-spacing:-.06em;color:var(--obo-orange)}
+.obo-stat:nth-child(2) strong{color:var(--obo-blue)}
+.obo-stat strong small{margin-left:4px;font-size:.4em;font-style:normal;letter-spacing:-.02em}
+.obo-stat span{display:block;margin-top:10px;font-size:14px;color:var(--obo-soft)}
+.obo-laps{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:6px;margin-top:34px}
+.obo-laps i{height:34px;border-radius:3px;background:var(--obo-orange)}
+.obo-laps-note{margin-top:12px;font-size:13px;color:var(--obo-soft)}
+.obo-how .obo-prose{margin-top:34px}
+
+/* 04 Quarteto ou octeto */
+.obo-formats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:36px}
+.obo-format{padding:28px;background:#fff;border:1px solid var(--obo-line);border-top:6px solid var(--obo-orange);border-radius:16px}
+.obo-format.is-octet{border-top-color:var(--obo-blue)}
+.obo-format h3{font-size:clamp(28px,3.4vw,40px);line-height:1;font-weight:850;font-style:italic;letter-spacing:-.05em;text-transform:uppercase}
+.obo-dots{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.obo-dots i{width:18px;height:18px;border-radius:50%;background:var(--obo-orange)}
+.is-octet .obo-dots i{background:var(--obo-blue)}
+.obo-format dl{margin-top:22px}
+.obo-format dl>div{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-top:1px solid var(--obo-line);font-size:15px}
+.obo-format dt{color:var(--obo-muted)}
+.obo-format dd{font-weight:750;text-align:right}
+.obo-formats-note{margin-top:28px}
+.obo-formats-note p{max-width:62ch;font-size:16px;line-height:1.7;color:#2b2b2b}
+.obo-formats-note p+p{margin-top:10px}
+
+/* 05 Formação das equipes */
+.obo-team-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,5vw,72px);align-items:start}
+.obo-inform{margin-top:28px;padding:24px;background:var(--obo-surface);border-radius:14px}
+.obo-inform h3{font-size:14px;letter-spacing:-.01em}
+.obo-inform .check-list{margin-top:14px}
+
+/* 06 Duas disputas */
+.obo-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:36px}
+.obo-card{padding:28px;background:#fff;border:1px solid var(--obo-line);border-radius:16px}
+.obo-card .obo-tag{display:inline-block;padding:4px 12px;border-radius:999px;background:#050505;color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.obo-card h3{margin-top:16px;font-size:clamp(24px,2.8vw,32px);line-height:1.1}
+.obo-card p{margin-top:12px;font-size:16px;line-height:1.7;color:#2b2b2b}
+.obo-example{margin-top:28px;padding:clamp(22px,3vw,34px);background:#fff;border:1px solid var(--obo-line);border-radius:16px}
+.obo-example h3{font-size:clamp(22px,2.6vw,28px)}
+.obo-note{margin-top:8px;font-size:13px;line-height:1.55;color:var(--obo-muted)}
+.obo-table{width:100%;margin-top:22px;border-collapse:collapse;font-size:15px}
+.obo-table caption{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.obo-table th,.obo-table td{padding:14px 12px;text-align:left;border-bottom:1px solid var(--obo-line)}
+.obo-table thead th{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--obo-muted);border-bottom:2px solid #050505}
+.obo-table tbody th{font-weight:750}
+.obo-table .is-winner{background:#fff1e0}
+.obo-table .is-winner th,.obo-table .is-winner td{font-weight:800}
+.obo-win{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:#050505;color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle}
+.obo-example-text{max-width:70ch;margin-top:20px;font-size:16px;line-height:1.7;color:#2b2b2b}
+
+/* Título à esquerda, lista à direita (etapas e perguntas frequentes) */
+.obo-split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:clamp(28px,5vw,72px);align-items:start}
+.obo-split .obo-steps,.obo-split .obo-faq{max-width:none;margin-top:0}
+.obo-split-head{position:sticky;top:calc(var(--head) + 28px)}
+
+/* 07 Etapas */
+.obo-steps{display:grid;gap:14px;max-width:880px;margin:36px 0 0;padding:0;list-style:none}
+.obo-steps li{display:grid;grid-template-columns:170px minmax(0,1fr);gap:24px;align-items:start;padding:22px 24px;background:#fff;border:1px solid var(--obo-line);border-radius:14px}
+.obo-when{padding-left:14px;border-left:5px solid var(--obo-orange);font-size:20px;line-height:1.2;font-weight:850;letter-spacing:-.04em}
+.obo-steps h3{font-size:19px;line-height:1.2}
+.obo-steps p{margin-top:6px;font-size:15px;line-height:1.65;color:#444}
+.obo-steps li.is-day{background:#050505;border-color:#050505;color:#fff}
+.obo-steps li.is-day .obo-when{border-left-color:var(--obo-blue)}
+.obo-steps li.is-day p{color:#d6d9dd}
+
+/* 08 Inscrição e valor */
+.obo-signup-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center}
+.obo-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-top:26px}
+.obo-price strong{font-size:clamp(56px,8vw,104px);line-height:1;font-weight:850;font-style:italic;letter-spacing:-.06em;color:var(--obo-orange)}
+.obo-price span{font-size:20px;font-weight:700}
+.obo-signup .obo-prose{margin-top:18px}
+.obo-signup .obo-hero-cta{margin-top:28px}
+.obo-count{padding:28px;border:1px solid #ffffff26;border-radius:16px}
+.obo-count h3{font-size:clamp(22px,2.6vw,28px);line-height:1.15}
+.obo-count p{margin-top:12px;font-size:16px;line-height:1.7;color:#d6d9dd}
+
+/* 09 Perguntas frequentes */
+.obo-faq{display:grid;gap:10px;max-width:880px;margin-top:34px}
+.obo-faq details{background:#fff;border:1px solid var(--obo-line);border-radius:12px}
+.obo-faq details[open]{border-color:#050505}
+.obo-faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;padding:14px 20px;list-style:none;cursor:pointer;font-size:16px;line-height:1.35;font-weight:750;letter-spacing:-.02em}
+.obo-faq summary::-webkit-details-marker{display:none}
+.obo-faq summary:after{content:'+';flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#050505;color:#fff;font-size:18px;line-height:1}
+.obo-faq details[open] summary:after{content:'\2013'}
+.obo-faq .answer{max-width:68ch;padding:0 20px 20px;font-size:16px;line-height:1.7;color:#333}
+
+/* 10 Fechamento */
+.obo-close-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(32px,6vw,80px);align-items:center}
+.obo-close h2{max-width:none}
+.obo-close .obo-prose{margin-top:18px}
+.obo-close .obo-quote{margin-top:30px;font-size:clamp(20px,2.6vw,28px)}
+.obo-close .obo-hero-cta{margin-top:30px}
+.obo-sign{margin-top:36px;font-size:clamp(14px,1.8vw,18px);font-weight:850;font-style:italic;letter-spacing:.2em;color:var(--obo-blue)}
+.obo-qr{max-width:220px;text-align:center}
+.obo-qr img{display:block;width:180px;height:auto;margin-inline:auto;padding:12px;background:#fff;border-radius:14px}
+.obo-qr p{margin-top:14px;font-size:13px;line-height:1.55;color:var(--obo-soft)}
+
+@media(max-width:850px){
+  .obo-hero-grid,.obo-team-grid,.obo-signup-grid{grid-template-columns:minmax(0,1fr)}
+  .obo-hero{padding-top:28px}
+  .obo-hero-grid{gap:20px}
+  .obo-logo{order:-1;width:min(46%,180px);margin-inline:0}
+  .obo-facts{margin-top:22px}
+  .obo-hero-cta{margin-top:24px}
+  .obo-split,.obo-purpose-grid{grid-template-columns:minmax(0,1fr)}
+  .obo-split-head{position:static}
+  .obo-split .obo-steps,.obo-split .obo-faq{margin-top:34px}
+  .obo-purpose-grid .obo-quote{margin-top:8px}
+  .obo-hero h1{font-size:clamp(38px,11vw,60px)}
+  .obo-close-grid{grid-template-columns:minmax(0,1fr)}
+  .obo-qr{display:none}
+}
+@media(max-width:700px){
+  .obo-pillars,.obo-formats,.obo-duo{grid-template-columns:minmax(0,1fr)}
+  .obo-stats{grid-template-columns:minmax(0,1fr);gap:12px}
+  .obo-stat{display:flex;align-items:baseline;gap:18px;padding:20px 22px}
+  .obo-stat span{margin-top:0}
+  .obo-laps{grid-template-columns:repeat(10,minmax(0,1fr));gap:5px}
+  .obo-laps i{height:22px}
+  .obo-format,.obo-card,.obo-count{padding:24px 20px}
+}
+@media(max-width:600px){
+  .button.obo-cta{width:100%}
+  .obo-steps li{grid-template-columns:minmax(0,1fr);gap:10px;padding:20px}
+  .obo-faq summary{padding:12px 16px}
+  .obo-faq .answer{padding:0 16px 18px}
+  /* Tabela de equipes vira cartões no celular (os papéis mantêm a leitura como tabela). */
+  .obo-table,.obo-table tbody{display:block}
+  .obo-table thead{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0)}
+  .obo-table tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2px 16px;margin-top:12px;padding:14px 16px;border:1px solid var(--obo-line);border-radius:12px}
+  .obo-table th,.obo-table td{display:block;padding:6px 0;border:0}
+  .obo-table tbody th{grid-column:1/-1;font-size:17px}
+  .obo-table td:before{content:attr(data-label);display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--obo-muted)}
+  .obo-table .is-winner{background:#fff1e0}
+}
+@media(max-width:365px){.obo-hero h1{font-size:36px}}
