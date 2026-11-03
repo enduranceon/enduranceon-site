@@ -18,4 +18,16 @@
     } catch (_) { /* O Analytics nunca impede a conversa. */ }
   });
   document.body.append(link);
+
+  // Os demais links de WhatsApp da página (treinadores, planos, rodapé) também contam, com o lugar do clique.
+  document.addEventListener('click', (event) => {
+    const target = event.target instanceof Element
+      ? event.target.closest('a[href*="wa.me/"], a[href*="api.whatsapp.com/"]')
+      : null;
+    if (!target || target === link) return;
+    const place = target.closest('section[id], dialog[id]')?.id || (target.closest('footer') ? 'rodape' : 'pagina');
+    try {
+      if (typeof window.gtag === 'function') window.gtag('event', 'whatsapp_click', { link_location: place });
+    } catch (_) { /* O Analytics nunca impede a conversa. */ }
+  });
 })();
