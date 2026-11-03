@@ -48,9 +48,22 @@ test("números do evento: 40 voltas de 1.050 m = 42 km; quarteto 10 voltas, octe
 });
 
 test("datas, hora e valor do briefing", () => {
-  for (const trecho of ["19/12/2026", "05/12", "08/12", "19h", "R$ 40,00", "Google Meet", "Local e horário serão informados pela organização"]) {
+  for (const trecho of ["19/12/2026", "05/12", "08/12", "19h", "R$ 40,00", "Google Meet", "horário serão informados pela organização"]) {
     assert.ok(text.includes(trecho) || text.includes(trecho.replace(" ", " ")), `falta: ${trecho}`);
   }
+});
+
+test("local ainda a definir: as duas opções aparecem na abertura, nas etapas e na FAQ, sem endereço inventado", () => {
+  const abertura = html.match(/<p class="obo-where">[\s\S]*?<\/p>/)[0].replace(/<[^>]+>/g, "");
+  assert.match(abertura, /Local a definir/);
+  assert.match(abertura, /Deltaville ou Beira Mar Continental/);
+  const etapa = html.match(/<li class="is-day">[\s\S]*?<\/li>/)[0];
+  assert.match(etapa, /Local a definir \(opções: Deltaville ou Beira Mar Continental\)/);
+  const faq = html.match(/<summary>Onde e em que horário será o evento\?<\/summary>\s*<p class="answer">([\s\S]*?)<\/p>/)[1];
+  assert.match(faq, /ainda será definido \(opções: Deltaville ou Beira Mar Continental\)/);
+  assert.equal((text.match(/Deltaville/g) || []).length, 3);
+  assert.equal((text.match(/Beira Mar Continental/g) || []).length, 3);
+  assert.doesNotMatch(text, /\b(Rua|Avenida|Av\.|CEP)\b/, "nenhum endereço foi confirmado");
 });
 
 test("exemplo do Desafio da Precisão: diferença = |real - previsto| e posição pela menor diferença", () => {
