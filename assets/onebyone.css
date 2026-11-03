@@ -36,6 +36,9 @@ body.obo{background:#fff}
 .obo-hero .obo-prose{margin-top:18px}
 .obo-facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .obo-facts li{padding:9px 16px;border:1px solid #ffffff4d;border-radius:999px;font-size:14px;font-weight:650;line-height:1.4}
+.obo-where{margin-top:16px;font-size:15px;line-height:1.5;color:var(--obo-soft)}
+.obo-where strong{color:#fff;font-weight:750}
+.obo-nowrap{white-space:nowrap}
 .obo-hero-cta{margin-top:30px}
 .obo-logo{display:block;width:min(100%,440px);height:auto;margin-inline:auto}
 
