@@ -111,11 +111,11 @@
   setupTurnstile();
 
   function utmParams() {
-    const utm = {};
-    for (const [key, value] of new URLSearchParams(location.search)) {
-      if (key.startsWith('utm_') && Object.keys(utm).length < 8) utm[key.slice(0, 40)] = value.slice(0, 160);
-    }
-    return utm;
+    if (window.EonAcquisition) return window.EonAcquisition.getUtm();
+    const query = new URLSearchParams(location.search);
+    return Object.fromEntries(['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']
+      .map(key => [key, query.get(key)?.slice(0, 160)])
+      .filter(([, value]) => value));
   }
 
   async function send(data) {
@@ -156,6 +156,9 @@
 
   function showServerResult({ code, body }) {
     if (code === 200 || code === 201) {
+      if (body?.ok === true && body.request_id === requestId && ['created', 'duplicate'].includes(body.status)) {
+        window.EonAcquisition?.trackLead('contato_site', requestId);
+      }
       showStatus('ok', 'Mensagem enviada! Nossa equipe vai falar com você pelo WhatsApp.');
       form.reset();
       requestId = newRequestId();
