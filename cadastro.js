@@ -770,8 +770,9 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
   }
 
   function utm() {
+    if (window.EonAcquisition) return window.EonAcquisition.getUtm();
     return Object.fromEntries(["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"]
-      .map((key) => [key, query.get(key)])
+      .map((key) => [key, query.get(key)?.slice(0, 160)])
       .filter(([, value]) => value));
   }
 
@@ -1172,7 +1173,8 @@ if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded
       confirmed = true;
       const receiptStored = storeReceipt(receipt);
       try {
-        if (typeof window.gtag === "function") window.gtag("event", "submit_lead_form", { form_name: "onboarding_assessoria" });
+        if (window.EonAcquisition) window.EonAcquisition.trackLead("onboarding_assessoria", requestId);
+        else if (typeof window.gtag === "function") window.gtag("event", "submit_lead_form", { form_name: "onboarding_assessoria" });
       } catch (analyticsError) {
         console.warn("Não foi possível registrar a conversão no Analytics.", analyticsError);
       }
