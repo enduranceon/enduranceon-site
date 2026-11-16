@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#000000">
+    <title>Aero Race | Pré-venda aberta até 26/11 | Endurance On</title>
+    <meta name="description" content="Pré-venda Aero Race da Endurance On: Regata Earn Your Pace (R$ 270,00) e Cropped branco ou preto (R$ 230,00). Pedidos de 16/11 a 26/11/2026.">
+    <link rel="icon" href="/assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+    <link rel="canonical" href="https://www.enduranceon.com.br/aero-race/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Endurance On">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="Aero Race | Pré-venda aberta até 26/11 | Endurance On">
+    <meta property="og:description" content="Regata Earn Your Pace (R$ 270,00) e Cropped branco ou preto (R$ 230,00). Pré-venda de 16/11 a 26/11/2026, sem estoque: as peças são encomendadas a partir dos pedidos.">
+    <meta property="og:url" content="https://www.enduranceon.com.br/aero-race/">
+    <meta property="og:image" content="https://www.enduranceon.com.br/aero-race/og-aero-race.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Regata Aero Race e Cropped Aero Race branco e preto, da Endurance On">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #FF8012;
+            --orange-text: #B34D00; /* laranja escuro para texto sobre fundo claro (contraste) */
+            --blue: #38B6FF;
+            --ink: #111;
+            --muted: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f7f7f7;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: 12px;
+            top: -60px;
+            background: var(--orange);
+            color: #111;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            z-index: 300;
+            text-decoration: none;
+        }
+
+        .skip-link:focus {
+            top: 12px;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--blue);
+            outline-offset: 3px;
+        }
+
+        /* FAIXA PRÉ-VENDA ABERTA */
+        .banner-status {
+            background: var(--orange);
+            color: #111;
+            text-align: center;
+            padding: 13px 20px;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+
+        .banner-status .dot {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            margin-right: 10px;
+            border-radius: 50%;
+            background: #111;
+            vertical-align: 1px;
+            animation: pulso 1.8s ease-in-out infinite;
+        }
+
+        @keyframes pulso {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(0.8); }
+        }
+
+        .is-closed .banner-status {
+            background: #c0392b;
+            color: #fff;
+        }
+
+        /* HEADER */
+        header {
+            background: #000;
+            padding: 18px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+
+        .header-logo a {
+            text-decoration: none;
+            display: block;
+        }
+
+        .header-logo img {
+            height: 38px;
+            display: block;
+        }
+
+        .header-back {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+
+        .header-back:hover {
+            color: var(--orange);
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(160deg, #111 0%, #1c1c1c 60%, #222 100%);
+            color: white;
+            padding: 70px 40px 56px;
+            text-align: center;
+        }
+
+        .hero-eyebrow {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--orange);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: var(--orange);
+        }
+
+        .hero-lead {
+            font-size: 16px;
+            color: #c4c4c4;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .hero-lead strong {
+            color: #fff;
+        }
+
+        .no-stock {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            max-width: 640px;
+            margin: 30px auto 0;
+            padding: 18px 22px;
+            text-align: left;
+            background: rgba(255, 128, 18, 0.12);
+            border: 1px solid rgba(255, 128, 18, 0.55);
+            border-left: 5px solid var(--orange);
+            border-radius: 10px;
+            font-size: 14.5px;
+            line-height: 1.65;
+            color: #e8e8e8;
+        }
+
+        .no-stock svg {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            margin-top: 2px;
+            color: var(--orange);
+        }
+
+        .no-stock strong {
+            color: #FFB36B;
+            font-weight: 800;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            margin-top: 30px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.35);
+            padding: 12px 26px;
+            border-radius: 8px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .hero-cta:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        /* ACCENT LINE */
+        .accent-line {
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #FF8012, #38B6FF);
+            border-radius: 2px;
+            margin: 0 auto 50px;
+        }
+
+        /* SECTION */
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 30px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        /* CARDS GRID */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 28px;
+        }
+
+        .shirt-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* CARROSSEL FRENTE / COSTAS (fotos em fundo escuro, quadradas) */
+        .shirt-carousel {
+            background: #151515;
+        }
+
+        .carousel-stage {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            background: #242424;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.7s ease, visibility 0s linear 0.7s;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.7s ease, visibility 0s;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-controls {
+            display: flex;
+            width: max-content;
+            gap: 4px;
+            margin: 12px auto;
+            padding: 4px;
+            background: #2b2b2b;
+            border-radius: 999px;
+        }
+
+        .carousel-btn {
+            border: 0;
+            background: transparent;
+            color: #ddd;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 9px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .carousel-btn:hover {
+            color: #fff;
+        }
+
+        .carousel-btn.active {
+            background: var(--orange);
+            color: #111;
+        }
+
+        .shirt-body {
+            padding: 26px 26px 28px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shirt-tag {
+            align-self: flex-start;
+            background: #f0f0f0;
+            color: #666;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        .shirt-name {
+            font-size: 21px;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 6px;
+            line-height: 1.25;
+        }
+
+        .shirt-gender {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .shirt-desc {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .price-wrap {
+            margin-bottom: 16px;
+        }
+
+        .price-main {
+            font-size: 30px;
+            font-weight: 800;
+            color: #111;
+            line-height: 1;
+        }
+
+        .price-sub {
+            font-size: 12px;
+            color: #777;
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+
+        .sizes {
+            margin-bottom: 18px;
+        }
+
+        .sizes-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #777;
+            margin-bottom: 8px;
+        }
+
+        .sizes ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .sizes li {
+            font-size: 13px;
+            font-weight: 700;
+            color: #222;
+            border: 1.5px solid #d6d6d6;
+            border-radius: 6px;
+            padding: 4px 8px;
+            min-width: 36px;
+            text-align: center;
+        }
+
+        .tryon-badge {
+            display: block;
+            font-size: 12.5px;
+            font-weight: 600;
+            line-height: 1.5;
+            color: #222;
+            text-decoration: none;
+            background: #eaf6ff;
+            border-left: 4px solid var(--blue);
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin-bottom: 18px;
+        }
+
+        .tryon-badge span {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .card-note {
+            margin-top: auto;
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: #444;
+            background: #fff4e8;
+            border-left: 4px solid var(--orange);
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin-bottom: 14px;
+        }
+
+        .card-note strong {
+            color: #8a3b00;
+        }
+
+        .btn-pedido {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--orange);
+            color: #111;
+            padding: 15px 24px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-pedido:hover {
+            background: #ff9433;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(255, 128, 18, 0.35);
+        }
+
+        .btn-pedido.btn-encerrado,
+        .btn-pedido.btn-encerrado:hover {
+            background: #999;
+            color: #fff;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* BLOCO: PROVA DAS PEÇAS */
+        .try-on {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 24px;
+            margin-top: 32px;
+            padding: 28px 32px;
+            background: #111;
+            color: #fff;
+            border-radius: 14px;
+            border-left: 6px solid var(--orange);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+        }
+
+        .try-on-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(255, 128, 18, 0.15);
+            color: var(--orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .try-on-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .try-on-eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 6px;
+        }
+
+        .try-on h3 {
+            font-size: 21px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            line-height: 1.25;
+        }
+
+        .try-on p {
+            font-size: 14.5px;
+            line-height: 1.7;
+            color: #cfcfcf;
+        }
+
+        .try-on p strong {
+            color: #fff;
+        }
+
+        .try-on .try-on-sub {
+            margin-top: 6px;
+            font-size: 13.5px;
+            color: #aaa;
+        }
+
+        .try-on-link {
+            white-space: nowrap;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid var(--orange);
+            padding: 12px 22px;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .try-on-link:hover {
+            background: var(--orange);
+            color: #111;
+        }
+
+        /* COMO FUNCIONA */
+        .process-section {
+            background: #111;
+            color: white;
+            padding: 70px 30px;
+        }
+
+        .process-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .process-inner .section-title {
+            color: #fff;
+        }
+
+        .process-inner .section-subtitle {
+            color: #a0a0a0;
+            margin-bottom: 0;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 52px;
+            height: 52px;
+            background: var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: #111;
+            margin: 0 auto 14px;
+        }
+
+        .step h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 13.5px;
+            color: #a8a8a8;
+            line-height: 1.65;
+        }
+
+        /* CRONOGRAMA */
+        .timeline-section {
+            background: #f7f7f7;
+            padding: 70px 30px;
+        }
+
+        .timeline-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .timeline-inner .section-subtitle {
+            margin-bottom: 0;
+        }
+
+        .timeline-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .timeline-steps::before {
+            content: '';
+            position: absolute;
+            left: 25px;
+            top: 0;
+            bottom: 36px;
+            width: 2px;
+            background: linear-gradient(180deg, #FF8012, #38B6FF);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            padding: 0 0 36px 0;
+            text-align: left;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            width: 52px;
+            height: 52px;
+            min-width: 52px;
+            background: #fff;
+            border: 3px solid var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--orange-text);
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-content {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px 24px;
+            flex: 1;
+            min-width: 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--orange-text);
+            margin-bottom: 6px;
+        }
+
+        .timeline-content h3 {
+            font-size: 17px;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 6px;
+        }
+
+        .timeline-content p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* abertura (já aconteceu) */
+        .timeline-item--done .timeline-dot {
+            background: var(--orange);
+            color: #111;
+        }
+
+        /* último dia do pedido */
+        .timeline-item--highlight .timeline-dot {
+            background: #111;
+            border-color: #111;
+            color: #fff;
+        }
+
+        .timeline-item--highlight .timeline-content {
+            border-left: 4px solid #111;
+        }
+
+        .is-closed .timeline-item--highlight .timeline-dot {
+            background: #c0392b;
+            border-color: #c0392b;
+        }
+
+        .is-closed .timeline-item--highlight .timeline-content {
+            border-left-color: #c0392b;
+        }
+
+        /* ainda sem data */
+        .timeline-item--tbd .timeline-dot {
+            border-style: dashed;
+            border-color: #38B6FF;
+            color: #0a6fa6;
+            background: #fff;
+        }
+
+        .timeline-item--tbd .timeline-content {
+            border: 1.5px dashed #bcdff3;
+            box-shadow: none;
+            background: #fbfdff;
+        }
+
+        .timeline-item--tbd .timeline-date {
+            color: #0a6fa6;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #000;
+            color: #888;
+            padding: 36px 30px;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        footer a {
+            color: var(--orange);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--blue);
+        }
+
+        footer strong {
+            color: #ccc;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 860px) {
+            .try-on {
+                grid-template-columns: auto 1fr;
+            }
+
+            .try-on-link {
+                grid-column: 1 / -1;
+                text-align: center;
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 14px 20px;
+            }
+
+            .hero {
+                padding: 48px 20px 44px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .section {
+                padding: 50px 20px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-section,
+            .timeline-section {
+                padding: 50px 20px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner-status {
+                font-size: 13px;
+                padding: 12px 16px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .no-stock {
+                padding: 16px;
+                gap: 12px;
+            }
+
+            .try-on {
+                grid-template-columns: 1fr;
+                padding: 24px 20px;
+                gap: 16px;
+            }
+
+            .timeline-steps::before {
+                left: 21px;
+            }
+
+            .timeline-item {
+                gap: 14px;
+            }
+
+            .timeline-dot {
+                width: 44px;
+                height: 44px;
+                min-width: 44px;
+                font-size: 16px;
+            }
+
+            .timeline-content {
+                padding: 16px 16px;
+            }
+
+            .shirt-body {
+                padding: 22px 20px 24px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .banner-status .dot { animation: none; }
+            .carousel-slide,
+            .carousel-slide.active { transition: none; }
+            .btn-pedido { transition: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <a class="skip-link" href="#modelos">Pular para os modelos</a>
+
+    <!-- FAIXA PRÉ-VENDA ABERTA -->
+    <div class="banner-status" role="status">
+        <span class="only-open"><span class="dot" aria-hidden="true"></span>Pré-venda aberta até 26/11</span>
+        <span class="only-closed" hidden>Pré-venda encerrada em 26/11</span>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-logo">
+            <a href="https://www.enduranceon.com.br">
+                <img src="https://www.enduranceon.com.br/images/logo-branca.png" alt="Endurance On" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <span style="display:none; color:white; font-size:20px; font-weight:800; letter-spacing:1px;">ENDURANCE<span style="color:#FF8012;">ON</span></span>
+            </a>
+        </div>
+        <a href="https://www.enduranceon.com.br" class="header-back">← Voltar ao site</a>
+    </header>
+
+    <main>
+
+    <!-- HERO -->
+    <section class="hero">
+        <p class="hero-eyebrow">Uniformes Endurance On</p>
+        <h1>Coleção <span>Aero Race</span></h1>
+        <p class="hero-lead only-open">Regata e cropped da coleção Aero Race em pré-venda. Escolha seu modelo e faça o pedido <strong>de 16/11 a 26/11/2026</strong>, até as 23h59 (horário de Brasília).</p>
+        <p class="hero-lead only-closed" hidden>A pré-venda da coleção Aero Race foi encerrada em 26/11/2026. Fique de olho nas próximas coleções!</p>
+
+        <div class="no-stock only-open" role="note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+            <p><strong>Não teremos o produto em estoque.</strong> Esta é uma pré-venda: as peças são encomendadas a partir dos pedidos feitos até o fim da pré-venda, em 26/11/2026.</p>
+        </div>
+
+        <a class="hero-cta" href="#modelos">Ver os modelos ↓</a>
+    </section>
+
+    <!-- MODELOS -->
+    <div class="section" id="modelos">
+        <div class="accent-line"></div>
+        <h2 class="section-title">Modelos da Coleção</h2>
+        <p class="section-subtitle">Três modelos em pré-venda. Alterne entre frente e costas para ver cada peça.</p>
+
+        <div class="cards-grid">
+
+            <!-- Regata Aero Race - Earn Your Pace -->
+            <article class="shirt-card">
+                <div class="shirt-carousel" data-carousel>
+                    <div class="carousel-stage">
+                    <div class="carousel-slide active">
+                        <img src="./regata-frente.webp" width="900" height="900" alt="Regata Aero Race Earn Your Pace, vista da frente: peça branca com degradê para o azul-escuro, faixas azul e laranja nos ombros e o logo EO no peito">
+                    </div>
+                    <div class="carousel-slide" aria-hidden="true">
+                        <img src="./regata-costas.webp" width="900" height="900" loading="lazy" alt="Regata Aero Race Earn Your Pace, vista de costas: malha vazada azul-escura com faixas laranja, azul e cinza">
+                    </div>
+                    </div>
+                    <div class="carousel-controls" role="group" aria-label="Escolher a vista da Regata Aero Race">
+                        <button type="button" class="carousel-btn active" aria-pressed="true">Frente</button>
+                        <button type="button" class="carousel-btn" aria-pressed="false">Costas</button>
+                    </div>
+                </div>
+                <div class="shirt-body">
+                    <span class="shirt-tag">Modelo 01</span>
+                    <h3 class="shirt-name">Regata Aero Race - Earn Your Pace</h3>
+                    <p class="shirt-gender">Masculino e feminino</p>
+                    <p class="shirt-desc">Frente branca com degradê para o azul-escuro e a frase “Earn Your Pace”. Costas em malha vazada, com faixas laranja, azul e cinza.</p>
+                    <div class="price-wrap">
+                        <div class="price-main">R$ 270,00</div>
+                        <div class="price-sub">Valor da pré-venda</div>
+                    </div>
+                    <div class="sizes">
+                        <span class="sizes-label">Tamanhos</span>
+                        <ul>
+                            <li>PP</li><li>P</li><li>M</li><li>G</li><li>GG</li><li>XGG</li>
+                        </ul>
+                    </div>
+                    <p class="card-note">
+                        <strong>Sem estoque:</strong> as peças são encomendadas a partir dos pedidos.<br>
+                        <span class="only-open">Pedidos de 16/11 a 26/11/2026, até as 23h59 (horário de Brasília).</span>
+                        <span class="only-closed" hidden>Os pedidos foram encerrados em 26/11/2026.</span>
+                    </p>
+                    <a class="btn-pedido js-order" href="https://eon-store.netlify.app/checkout/aero-race" target="_blank" rel="noopener">Fazer meu pedido<span class="sr-only"> da Regata Aero Race - Earn Your Pace</span> <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+
+            <!-- Cropped Aero Race - Branco -->
+            <article class="shirt-card">
+                <div class="shirt-carousel" data-carousel>
+                    <div class="carousel-stage">
+                    <div class="carousel-slide active">
+                        <img src="./cropped-branco-frente.webp" width="900" height="900" loading="lazy" alt="Cropped Aero Race branco, vista da frente: logo EO preto no peito e detalhes laranja e azul nas laterais">
+                    </div>
+                    <div class="carousel-slide" aria-hidden="true">
+                        <img src="./cropped-branco-costas.webp" width="900" height="900" loading="lazy" alt="Cropped Aero Race branco, vista de costas: malha vazada com faixas laranja, azul e cinza">
+                    </div>
+                    </div>
+                    <div class="carousel-controls" role="group" aria-label="Escolher a vista do Cropped Aero Race branco">
+                        <button type="button" class="carousel-btn active" aria-pressed="true">Frente</button>
+                        <button type="button" class="carousel-btn" aria-pressed="false">Costas</button>
+                    </div>
+                </div>
+                <div class="shirt-body">
+                    <span class="shirt-tag">Modelo 02</span>
+                    <h3 class="shirt-name">Cropped Aero Race - Branco</h3>
+                    <p class="shirt-gender">Feminino</p>
+                    <p class="shirt-desc">Frente branca com o logo EO e detalhes laranja e azul. Costas em malha vazada, com faixas laranja, azul e cinza.</p>
+                    <div class="price-wrap">
+                        <div class="price-main">R$ 230,00</div>
+                        <div class="price-sub">Valor da pré-venda</div>
+                    </div>
+                    <div class="sizes">
+                        <span class="sizes-label">Tamanhos</span>
+                        <ul>
+                            <li>PP a XGG</li>
+                        </ul>
+                    </div>
+                    <a class="tryon-badge" href="#prova">Peça modelo nos tamanhos M e P, nos treinos coletivos, para provar antes de pedir. <span>Saiba mais</span></a>
+                    <p class="card-note">
+                        <strong>Sem estoque:</strong> as peças são encomendadas a partir dos pedidos.<br>
+                        <span class="only-open">Pedidos de 16/11 a 26/11/2026, até as 23h59 (horário de Brasília).</span>
+                        <span class="only-closed" hidden>Os pedidos foram encerrados em 26/11/2026.</span>
+                    </p>
+                    <a class="btn-pedido js-order" href="https://eon-store.netlify.app/checkout/aero-race" target="_blank" rel="noopener">Fazer meu pedido<span class="sr-only"> do Cropped Aero Race - Branco</span> <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+
+            <!-- Cropped Aero Race - Preto -->
+            <article class="shirt-card">
+                <div class="shirt-carousel" data-carousel>
+                    <div class="carousel-stage">
+                    <div class="carousel-slide active">
+                        <img src="./cropped-preto-frente.webp" width="900" height="900" loading="lazy" alt="Cropped Aero Race preto, vista da frente: logo EO branco no peito e detalhes laranja e azul nas laterais">
+                    </div>
+                    <div class="carousel-slide" aria-hidden="true">
+                        <img src="./cropped-preto-costas.webp" width="900" height="900" loading="lazy" alt="Cropped Aero Race preto, vista de costas: malha vazada com faixas laranja, azul e cinza">
+                    </div>
+                    </div>
+                    <div class="carousel-controls" role="group" aria-label="Escolher a vista do Cropped Aero Race preto">
+                        <button type="button" class="carousel-btn active" aria-pressed="true">Frente</button>
+                        <button type="button" class="carousel-btn" aria-pressed="false">Costas</button>
+                    </div>
+                </div>
+                <div class="shirt-body">
+                    <span class="shirt-tag">Modelo 03</span>
+                    <h3 class="shirt-name">Cropped Aero Race - Preto</h3>
+                    <p class="shirt-gender">Feminino</p>
+                    <p class="shirt-desc">Frente preta com o logo EO e detalhes laranja e azul. Costas em malha vazada, com faixas laranja, azul e cinza.</p>
+                    <div class="price-wrap">
+                        <div class="price-main">R$ 230,00</div>
+                        <div class="price-sub">Valor da pré-venda</div>
+                    </div>
+                    <div class="sizes">
+                        <span class="sizes-label">Tamanhos</span>
+                        <ul>
+                            <li>PP a XGG</li>
+                        </ul>
+                    </div>
+                    <a class="tryon-badge" href="#prova">Peça modelo nos tamanhos M e P, nos treinos coletivos, para provar antes de pedir. <span>Saiba mais</span></a>
+                    <p class="card-note">
+                        <strong>Sem estoque:</strong> as peças são encomendadas a partir dos pedidos.<br>
+                        <span class="only-open">Pedidos de 16/11 a 26/11/2026, até as 23h59 (horário de Brasília).</span>
+                        <span class="only-closed" hidden>Os pedidos foram encerrados em 26/11/2026.</span>
+                    </p>
+                    <a class="btn-pedido js-order" href="https://eon-store.netlify.app/checkout/aero-race" target="_blank" rel="noopener">Fazer meu pedido<span class="sr-only"> do Cropped Aero Race - Preto</span> <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- PROVA DAS PEÇAS (CROPPED) -->
+        <aside class="try-on" id="prova" aria-labelledby="prova-titulo">
+            <div class="try-on-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3 4 6l1.5 4L8 9v12h8V9l2.5 1L20 6l-5-3a3 3 0 0 1-6 0z"/></svg>
+            </div>
+            <div class="try-on-text">
+                <p class="try-on-eyebrow">Cropped · Feminino</p>
+                <h3 id="prova-titulo">Prove o cropped antes de pedir</h3>
+                <p>Haverá peça modelo do cropped nos tamanhos <strong>M</strong> e <strong>P</strong> (feminino) nos treinos coletivos, para você provar antes de fazer o pedido.</p>
+                <p class="try-on-sub">Dias, horários e locais da prova das peças: <strong>a confirmar</strong>.</p>
+            </div>
+            <a class="try-on-link" href="/treinos-coletivos.html">Veja os treinos coletivos <span aria-hidden="true">→</span></a>
+        </aside>
+    </div>
+
+    <!-- COMO FUNCIONA -->
+    <section class="process-section">
+        <div class="process-inner">
+            <h2 class="section-title">Como Funciona</h2>
+            <p class="section-subtitle">Em três passos, até 26/11/2026.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Escolha o Modelo</h3>
+                    <p>Veja a regata e os dois croppeds e decida qual é o seu.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Clique e Escolha o Tamanho</h3>
+                    <p>Em “Fazer meu pedido”, você vai para a página do pedido e escolhe o tamanho lá.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Finalize o Pedido</h3>
+                    <p>Conclua o pedido na página do pedido. Os detalhes de entrega e pagamento aparecem lá.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CRONOGRAMA -->
+    <section class="timeline-section" id="cronograma">
+        <div class="timeline-inner">
+            <div class="accent-line"></div>
+            <h2 class="section-title">Cronograma</h2>
+            <p class="section-subtitle">Datas da pré-venda Aero Race. O que ainda não tem data aparece como “data a confirmar”.</p>
+
+            <div class="timeline-steps">
+
+                <div class="timeline-item timeline-item--done">
+                    <div class="timeline-dot" aria-hidden="true">✓</div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">16/11/2026</div>
+                        <h3>Abertura da pré-venda</h3>
+                        <p>Os pedidos foram abertos na página do pedido, onde você escolhe o tamanho.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item timeline-item--tbd">
+                    <div class="timeline-dot" aria-hidden="true">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Data a confirmar</div>
+                        <h3>Prova das peças nos treinos coletivos</h3>
+                        <p>Peça modelo do cropped, nos tamanhos M e P (feminino), para provar antes de pedir. Dias, horários e locais: a confirmar.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item timeline-item--highlight">
+                    <div class="timeline-dot" aria-hidden="true">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">26/11/2026<span class="only-closed" hidden> — Encerrada</span></div>
+                        <h3><span class="only-open">Último dia para fazer o pedido</span><span class="only-closed" hidden>Pré-venda encerrada</span></h3>
+                        <p><span class="only-open">A pré-venda encerra às 23h59, horário de Brasília.</span><span class="only-closed" hidden>A pré-venda encerrou às 23h59, horário de Brasília. Não é mais possível fazer pedidos desta coleção.</span></p>
+                    </div>
+                </div>
+
+                <div class="timeline-item timeline-item--tbd">
+                    <div class="timeline-dot" aria-hidden="true">4</div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Data a confirmar</div>
+                        <h3>Entrega</h3>
+                        <p>Os detalhes de entrega e pagamento aparecem na página do pedido.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Endurance On</strong> – Assessoria Esportiva</p>
+        <p>
+            <a href="tel:+5548991178688">(48) 99117-8688</a> &nbsp;|&nbsp;
+            <a href="mailto:contato@enduranceon.com.br">contato@enduranceon.com.br</a> &nbsp;|&nbsp;
+            <a href="https://www.enduranceon.com.br" target="_blank" rel="noopener">www.enduranceon.com.br</a>
+        </p>
+        <p style="margin-top:12px; font-size:11px; color:#777;">© 2026 Endurance On. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        /* Carrossel frente/costas: troca sozinho a cada 4 s, mas o visitante também escolhe.
+           Pausa com o mouse ou o foco em cima e para de vez depois de um clique. */
+        (function () {
+            var reduzirMovimento = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            document.querySelectorAll('[data-carousel]').forEach(function (raiz) {
+                var slides = raiz.querySelectorAll('.carousel-slide');
+                var botoes = raiz.querySelectorAll('.carousel-btn');
+                var atual = 0;
+                var timer = null;
+                var escolhaManual = false;
+
+                function mostrar(i) {
+                    atual = i;
+                    slides.forEach(function (slide, j) {
+                        slide.classList.toggle('active', j === i);
+                        slide.setAttribute('aria-hidden', j === i ? 'false' : 'true');
+                    });
+                    botoes.forEach(function (botao, j) {
+                        botao.classList.toggle('active', j === i);
+                        botao.setAttribute('aria-pressed', j === i ? 'true' : 'false');
+                    });
+                }
+
+                function parar() {
+                    clearInterval(timer);
+                    timer = null;
+                }
+
+                function iniciar() {
+                    if (reduzirMovimento || escolhaManual || timer) return;
+                    timer = setInterval(function () {
+                        mostrar((atual + 1) % slides.length);
+                    }, 4000);
+                }
+
+                botoes.forEach(function (botao, i) {
+                    botao.addEventListener('click', function () {
+                        escolhaManual = true;
+                        parar();
+                        mostrar(i);
+                    });
+                });
+
+                raiz.addEventListener('mouseenter', parar);
+                raiz.addEventListener('mouseleave', iniciar);
+                raiz.addEventListener('focusin', parar);
+                raiz.addEventListener('focusout', iniciar);
+
+                iniciar();
+            });
+        })();
+
+        /* Encerramento da pré-venda.
+           Prazo fixo em horário de Brasília (America/Sao_Paulo, UTC-03:00, sem horário de verão),
+           comparado com o relógio absoluto do navegador: o fuso do visitante não interfere.
+           Depois de 26/11/2026 23:59:59 os botões viram "Pré-venda encerrada" (desativados). */
+        (function () {
+            var FIM_PRE_VENDA = new Date('2026-11-26T23:59:59-03:00').getTime();
+
+            function encerrar() {
+                document.documentElement.classList.add('is-closed');
+                document.title = 'Aero Race | Pré-venda encerrada | Endurance On';
+
+                document.querySelectorAll('.only-open').forEach(function (el) { el.hidden = true; });
+                document.querySelectorAll('.only-closed').forEach(function (el) { el.hidden = false; });
+
+                document.querySelectorAll('.js-order').forEach(function (link) {
+                    var botao = document.createElement('button');
+                    botao.type = 'button';
+                    botao.disabled = true;
+                    botao.className = 'btn-pedido btn-encerrado';
+                    botao.textContent = 'Pré-venda encerrada';
+                    link.replaceWith(botao);
+                });
+            }
+
+            function verificar() {
+                if (Date.now() > FIM_PRE_VENDA) {
+                    encerrar();
+                    return true;
+                }
+                return false;
+            }
+
+            if (!verificar()) {
+                // Quem deixar a página aberta durante a virada também vê o encerramento.
+                var vigia = setInterval(function () {
+                    if (verificar()) clearInterval(vigia);
+                }, 30000);
+            }
+        })();
+    </script>
+
+</body>
+</html>
