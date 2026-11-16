@@ -609,6 +609,85 @@
             color: #111;
         }
 
+        /* BLOCO: SOBRE A PEÇA */
+        .about {
+            margin-top: 44px;
+            padding: 36px 32px 32px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .about-eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #b45800;
+            margin-bottom: 8px;
+        }
+
+        .about-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 8px;
+            line-height: 1.25;
+        }
+
+        .about-lead {
+            max-width: 620px;
+            margin: 0 auto 28px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        .about-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+            gap: 18px;
+            text-align: left;
+        }
+
+        .about-list li {
+            padding: 20px 18px;
+            background: #f7f7f7;
+            border-radius: 12px;
+        }
+
+        .about-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 128, 18, 0.14);
+            color: var(--orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .about-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .about-list h4 {
+            font-size: 15.5px;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 6px;
+        }
+
+        .about-list p {
+            font-size: 13.5px;
+            line-height: 1.65;
+            color: #666;
+        }
+
         /* COMO FUNCIONA */
         .process-section {
             background: #111;
@@ -902,6 +981,10 @@
                 gap: 16px;
             }
 
+            .about {
+                padding: 28px 18px 22px;
+            }
+
             .timeline-steps::before {
                 left: 21px;
             }
@@ -967,7 +1050,7 @@
 
         <div class="no-stock only-open" role="note">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>
-            <p><strong>Não teremos o produto em estoque.</strong> Esta é uma pré-venda: as peças são encomendadas a partir dos pedidos feitos até o fim da pré-venda, em 26/11/2026.</p>
+            <p><strong>Não teremos o produto em estoque.</strong> Esta é uma pré-venda: as peças são encomendadas direto da China, a partir dos pedidos feitos até o fim da pré-venda, em 26/11/2026.</p>
         </div>
 
         <a class="hero-cta" href="#modelos">Ver os modelos ↓</a>
@@ -1104,6 +1187,35 @@
             </article>
 
         </div>
+
+        <!-- SOBRE A PEÇA -->
+        <section class="about" aria-labelledby="sobre-titulo">
+            <p class="about-eyebrow">Sobre a peça</p>
+            <h3 class="about-title" id="sobre-titulo">Feita para correr leve</h3>
+            <p class="about-lead">Peças encomendadas direto da China, em tecido de alta qualidade, pensado para leveza e resfriamento.</p>
+            <ul class="about-list">
+                <li>
+                    <span class="about-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+                    <h4>Direto da China</h4>
+                    <p>As peças são encomendadas direto da China, a partir dos pedidos da pré-venda.</p>
+                </li>
+                <li>
+                    <span class="about-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></span>
+                    <h4>Tecido de alta qualidade</h4>
+                    <p>Tecido de muita qualidade, escolhido para o treino e para a prova.</p>
+                </li>
+                <li>
+                    <span class="about-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8 2 22"/><path d="M17.5 15H9"/></svg></span>
+                    <h4>Leveza</h4>
+                    <p>Foco em leveza, para a peça acompanhar o movimento sem pesar.</p>
+                </li>
+                <li>
+                    <span class="about-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg></span>
+                    <h4>Resfriamento</h4>
+                    <p>Pensada para ajudar a manter o corpo fresco, com costas em malha vazada.</p>
+                </li>
+            </ul>
+        </section>
 
         <!-- PROVA DAS PEÇAS (CROPPED) -->
         <aside class="try-on" id="prova" aria-labelledby="prova-titulo">
