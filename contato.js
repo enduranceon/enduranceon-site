@@ -156,6 +156,9 @@
 
   function showServerResult({ code, body }) {
     if (code === 200 || code === 201) {
+      try {
+        if (typeof window.gtag === 'function') window.gtag('event', 'contact_submit', { form_name: 'contato' });
+      } catch (_) { /* O Analytics nunca impede o envio. */ }
       showStatus('ok', 'Mensagem enviada! Nossa equipe vai falar com você pelo WhatsApp.');
       form.reset();
       requestId = newRequestId();

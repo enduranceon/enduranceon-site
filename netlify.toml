@@ -117,55 +117,58 @@ status = 301
 force = true
 
 # ---- Páginas de plano antigas
-# Deixe comentado até conferir no Google Analytics se alguém ainda entra por elas.
-# Confirmar também que o destino com #planos funciona no Netlify antes de ligar.
-# [[redirects]]
-# from = "/pages/treine-com-a-gente"
-# to = "/#planos"
-# status = 301
-# force = true
+# Continuavam no ar com o visual e os valores antigos (ex.: R$ 200 a R$ 265) e abertas ao Google.
+# Levam para a seção de planos da home, já com a modalidade escolhida (mesmo formato dos links
+# "Ver planos" das páginas de treinador). Se o Netlify não mantiver o #planos, a home abre no topo
+# com a modalidade certa, sem quebrar.
 
-# [[redirects]]
-# from = "/pages/treine-com-a-gente.html"
-# to = "/#planos"
-# status = 301
-# force = true
+[[redirects]]
+from = "/pages/treine-com-a-gente"
+to = "/#planos"
+status = 301
+force = true
 
-# [[redirects]]
-# from = "/pages/corrida"
-# to = "/#planos"
-# status = 301
-# force = true
+[[redirects]]
+from = "/pages/treine-com-a-gente.html"
+to = "/#planos"
+status = 301
+force = true
 
-# [[redirects]]
-# from = "/pages/corrida.html"
-# to = "/#planos"
-# status = 301
-# force = true
+[[redirects]]
+from = "/pages/corrida"
+to = "/?modalidade=corrida#planos"
+status = 301
+force = true
 
-# [[redirects]]
-# from = "/pages/triathlon"
-# to = "/#planos"
-# status = 301
-# force = true
+[[redirects]]
+from = "/pages/corrida.html"
+to = "/?modalidade=corrida#planos"
+status = 301
+force = true
 
-# [[redirects]]
-# from = "/pages/triathlon.html"
-# to = "/#planos"
-# status = 301
-# force = true
+[[redirects]]
+from = "/pages/triathlon"
+to = "/?modalidade=triathlon#planos"
+status = 301
+force = true
 
-# [[redirects]]
-# from = "/pages/multisport"
-# to = "/#planos"
-# status = 301
-# force = true
+[[redirects]]
+from = "/pages/triathlon.html"
+to = "/?modalidade=triathlon#planos"
+status = 301
+force = true
 
-# [[redirects]]
-# from = "/pages/multisport.html"
-# to = "/#planos"
-# status = 301
-# force = true
+[[redirects]]
+from = "/pages/multisport"
+to = "/?modalidade=2-modalidades#planos"
+status = 301
+force = true
+
+[[redirects]]
+from = "/pages/multisport.html"
+to = "/?modalidade=2-modalidades#planos"
+status = 301
+force = true
 
 # Pré-matrícula no visual novo: só depois de ligada e testada no www (MAPA-URLS.md, seção 9).
 # Conferir se a query string (modalidade, plan_id, treinador, utm_*) chega ao destino.
