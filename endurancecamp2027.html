@@ -10,7 +10,7 @@
 <link rel="icon" href="/assets/icons/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;0,900;1,800;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;650;700;750;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#111313;--ink2:#1a1c1c;--orange:#ff8012;--blue:#35aff6;--paper:#f0efeb;--white:#fff;--muted:#acb2b3;--hair:rgba(255,255,255,.19);--width:1380px}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}body{margin:0;background:var(--ink);color:#fff;font:16px/1.6 'DM Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased}h1,h2,h3,h4,p,figure{margin:0}h1,h2,h3,h4{font-family:Montserrat,Arial,sans-serif;letter-spacing:-.055em;line-height:1.05}button,a{font:inherit}a{color:inherit;text-decoration:none}button{cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:4px}img{display:block;max-width:100%;width:100%;height:100%;object-fit:cover}.container{width:min(var(--width),calc(100% - 88px));margin:auto}.small{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;font-family:Montserrat,Arial,sans-serif}.orange{color:var(--orange)}.blue{color:var(--blue)}
@@ -28,6 +28,69 @@ footer{border-top:1px solid #ffffff34;background:#0c1010;padding:28px 0}.footer-
 @media(max-width:1020px){.container{width:calc(100% - 54px)}.day{grid-template-columns:13% 34% 1fr;gap:3%}.day-visual{height:235px}.navigation{gap:17px}.hero{min-height:760px}.hero h1{font-size:clamp(65px,10vw,112px)}}
 @media(max-width:720px){.container{width:calc(100% - 36px)}.site-head{height:76px}.brand-mark{width:145px;height:55px}.navigation>a:not(.nav-cta){display:none}.navigation .nav-cta{font-size:9px;padding:9px 10px}.hero{height:auto;min-height:760px;padding:150px 0 125px;align-items:center}.hero-photo{left:0;background-position:60% center}.hero:before{background:linear-gradient(90deg,#101414d6 0%,#10141455 100%),linear-gradient(0deg,#101414 0%,transparent 38%,#10141480 100%)}.hero-content{padding-top:15px}.hero h1{font-size:clamp(55px,15vw,92px)}.hero-desc{display:block}.hero-desc p{font-size:14px}.hero-side{margin-top:24px}.hero-footer{bottom:25px}.hero-footer .container{align-items:start}.scroll-hint{display:none}.section{padding:78px 0}.split-heading{display:block}.split-heading>.kicker{margin-bottom:23px}.intro-copy{font-size:15px}.facts{gap:18px;margin-top:50px}.fact strong{font-size:43px}.fact span{font-size:9px}.immersive{min-height:470px}.immersive blockquote{font-size:clamp(44px,10vw,72px)}.program-top{display:block}.program-top p{margin-top:24px}.day{grid-template-columns:66px 1fr;gap:17px;padding:25px 0}.day-num{font-size:53px;align-self:start}.day-visual{grid-column:2;height:200px;grid-row:1}.day-main{grid-column:1 / -1}.day-main h3{font-size:31px}.gallery{padding:75px 0}.gallery-head{display:block}.gallery-head p{margin-top:18px}.mosaic{grid-template-columns:1fr 1fr;grid-template-rows:230px 155px 185px;gap:8px}.mosaic figure:first-child{grid-column:span 2;grid-row:span 1}.mosaic figure:nth-child(4){grid-column:span 2}.cta-section{min-height:530px;padding:75px 0}.cta-section h2{font-size:clamp(52px,12vw,85px)}.footer-flex{align-items:start;flex-direction:column}.footer-flex img{width:135px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.day-visual img,.mosaic img{transition:none}}
+
+/* Revisao tipografica 2027: coerencia com o site institucional EON */
+body{font-family:'Montserrat',Arial,Helvetica,sans-serif;font-weight:400;line-height:1.72}
+h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-.042em;line-height:1.09}
+.small,.kicker{font-weight:650;letter-spacing:.12em;font-size:12px}
+.navigation>a:not(.nav-cta),.nav-cta{font-weight:650;letter-spacing:.055em;font-size:12px}
+.navigation>a:not(.nav-cta){padding:13px 0}
+.nav-cta{border-radius:8px;background:#11131365;border-color:#ffffffa0}
+.site-head{background:linear-gradient(180deg,#0c1010c9,transparent);border-bottom-color:#ffffff35}
+.hero h1{font-style:normal;font-weight:800;letter-spacing:-.046em;line-height:1.02;font-size:clamp(54px,7.1vw,108px);max-width:1090px;text-wrap:balance}
+.hero h1 .outline{color:#fff;-webkit-text-stroke:0}
+.hero h1 .accent{color:var(--orange)}
+.hero-label{margin-bottom:26px}
+.hero-desc{margin-top:31px;gap:44px}
+.hero-desc p{font-size:16px;max-width:490px;line-height:1.75}
+.hero-side{font-weight:650;letter-spacing:.095em;font-size:11px;line-height:1.9}
+.hero-date{font-weight:800;letter-spacing:-.035em}
+.hero-date small{font-size:11px;letter-spacing:.1em;line-height:1.6}
+.scroll-hint{font-size:12px;color:#f5f5f5}
+.ghost-line{font-weight:650;font-size:11px;letter-spacing:.12em}
+.display{font-weight:800;font-style:normal;letter-spacing:-.048em;line-height:1.07;font-size:clamp(40px,5.5vw,82px)}
+.display em{font-style:normal}
+.intro-copy{line-height:1.85}
+.statement{padding:105px 0 115px}
+.statement .display{font-size:clamp(42px,5.4vw,80px)}
+.facts{margin-top:65px}
+.fact strong{font-weight:800;letter-spacing:-.05em}
+.fact span{font-weight:600;font-size:12px;letter-spacing:.08em}
+.immersive blockquote{font-weight:800;font-style:normal;font-size:clamp(43px,6.5vw,96px);letter-spacing:-.045em;line-height:1.08}
+.immersive .caption{font-size:12px;letter-spacing:.07em;color:#f0f0f0}
+.program-top .display{font-size:clamp(40px,5.5vw,82px)}
+.program-top p,.day-main p{font-size:15px;line-height:1.75}
+.day-num{font-weight:800;letter-spacing:-.055em}
+.day-main h3{font-weight:800;font-style:normal;letter-spacing:-.035em;line-height:1.13;font-size:clamp(27px,3vw,43px)}
+.day-num small,.time-line .time{font-weight:700}
+.time-line .text{font-size:14px}
+.gallery-head .display{font-size:clamp(40px,5.4vw,76px)}
+.gallery-head p{font-size:15px;line-height:1.7}
+.mosaic figcaption{font-weight:650;font-size:12px;letter-spacing:.06em}
+.cta-section h2{font-weight:800;font-style:normal;letter-spacing:-.048em;line-height:1.05;font-size:clamp(48px,6.5vw,94px)}
+.cta-section h2 em{font-style:normal}
+.whatsapp-button{font-weight:750;letter-spacing:.03em;border-radius:8px}
+.footer-flex a{font-weight:650}
+@media(max-width:1020px){.hero h1{font-size:clamp(56px,8.2vw,92px)}}
+@media(max-width:720px){
+ .site-head{background:linear-gradient(180deg,#0c1010cf,transparent)}
+ .navigation .nav-cta{font-size:11px;padding:10px 12px}
+ .hero{min-height:740px}
+ .hero h1{font-size:clamp(48px,11.6vw,75px);letter-spacing:-.055em;overflow-wrap:normal;hyphens:none}
+ .hero-label{font-size:10px;letter-spacing:.085em}
+ .hero-desc p{font-size:14px}
+ .hero-side{font-size:11px}
+ .hero-date{font-size:clamp(18px,4.6vw,25px)}
+ .hero-date small{font-size:9px;letter-spacing:.055em}
+ .statement .display,.display,.program-top .display,.gallery-head .display{font-size:clamp(36px,9vw,58px)}
+ .statement{padding:78px 0}
+ .fact span{font-size:10px}
+ .immersive blockquote{font-size:clamp(38px,9vw,65px)}
+ .day-main h3{font-size:29px}
+ .day-num{font-size:49px}
+ .cta-section h2{font-size:clamp(44px,10vw,67px)}
+}
+@media(max-width:390px){.hero h1{font-size:clamp(43px,11vw,52px)}.hero-label{letter-spacing:.04em}}
 </style>
 </head>
 <body>
