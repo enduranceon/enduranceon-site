@@ -180,3 +180,10 @@ force = true
 # to = "/cadastro"
 # status = 301
 # force = true
+
+# Endurance Camp 2027 — página nova em desenvolvimento
+[[redirects]]
+from = "/endurancecamp2027"
+to = "/endurancecamp2027.html"
+status = 200
+force = true
