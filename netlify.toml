@@ -183,7 +183,7 @@ force = true
 
 # Endurance Camp 2027 — página nova em desenvolvimento
 [[redirects]]
-from = "/endurancecamp2027"
+from = "/endurance-camp-2027"
 to = "/endurancecamp2027.html"
 status = 200
 force = true
