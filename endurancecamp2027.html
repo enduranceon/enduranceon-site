@@ -273,6 +273,8 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
 .hero-price span{font-size:14px;color:#e0e4e3}
 .hero-participation .whatsapp-button{margin:0}
 .hero-invite-note{margin-top:14px;max-width:560px;color:#e0e4e3;font-size:14px;line-height:1.65}
+.participation-link{display:inline-block;color:#fff;font-weight:650;text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:5px}
+.participation-link:hover{color:var(--orange)}
 .whatsapp-button{justify-content:center;gap:12px;min-height:58px;min-width:0;padding:17px 24px;font-size:14px;font-weight:750;letter-spacing:.015em;text-align:center;line-height:1.5;box-shadow:0 8px 26px #ff801218;transition:background .2s,box-shadow .2s}
 .whatsapp-button:hover{background:#ff982f;box-shadow:0 10px 30px #ff80122b}
 
@@ -311,12 +313,15 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
 .kit-option h3{font-size:32px;font-weight:750;letter-spacing:-.035em}
 .kit-option p:not(.kit-label){margin-top:22px;max-width:490px;font-size:18px;line-height:1.75;color:#d6dcd8}
 .kit-option strong{font-weight:650;color:white}
-.registration-how{margin-top:54px}
-.registration-how h3{font-size:26px;font-weight:700;letter-spacing:-.025em}
+.participation{background:#171c1b;border-top:1px solid #ffffff12;border-bottom:1px solid #ffffff12}
+.participation-head{display:grid;grid-template-columns:1.2fr 1fr;align-items:end;gap:60px;margin-bottom:40px}
+.participation-head .kicker{font-size:14px;margin-bottom:18px}
+.participation-head .display{font-size:clamp(40px,5.2vw,76px)}
+.participation-intro{font-size:17px;line-height:1.75;color:#c6cdca;max-width:500px}
 .registration-steps{list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
 .registration-steps li{border-top:1px solid #ffffff30;padding-top:23px}
 .registration-steps .step-date{display:block;color:var(--orange);font-size:15px;font-weight:750;letter-spacing:.02em;margin-bottom:14px}
-.registration-steps h4{font-size:20px;font-weight:650;letter-spacing:-.02em;line-height:1.35}
+.registration-steps h3{font-size:20px;font-weight:650;letter-spacing:-.02em;line-height:1.35}
 .registration-steps p{font-size:16px;color:#bfc8c3;margin-top:12px;line-height:1.75}
 .registration-action{display:flex;justify-content:space-between;align-items:center;gap:30px;border-top:1px solid #ffffff20;margin-top:40px;padding-top:30px}
 .registration-action p{font-size:16px;color:#d6dcd8;max-width:490px}
@@ -373,8 +378,9 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
  .kit-option{padding:26px}
  .kit-option h3{font-size:29px}
  .kit-option p:not(.kit-label){font-size:17px;margin-top:17px}
- .registration-how{margin-top:38px}
- .registration-how h3{font-size:24px}
+ .participation-head{grid-template-columns:1fr;gap:22px;margin-bottom:30px}
+ .participation-head .display{font-size:clamp(36px,9vw,58px)}
+ .participation-intro{font-size:16px}
  .registration-steps{grid-template-columns:1fr;gap:25px;margin-top:22px}
  .registration-steps li{padding-top:22px}
  .registration-steps .step-date{margin-bottom:10px}
@@ -399,7 +405,7 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
   <div class="container">
     <a href="/" aria-label="Ir para Endurance On"><img class="brand-mark" src="/assets/camp-2027/logo.png" alt="Endurance Camp Nova Veneza 2027"></a>
     <nav class="navigation" aria-label="Navegação da página">
-      <a href="#experiencia">A experiência</a><a href="#programacao">Programação</a><a href="#inscricoes">Inscrições</a><a href="#galeria">Galeria</a><a href="#grupo-do-camp" class="nav-cta" data-camp-whatsapp>Grupo do Camp</a>
+      <a href="#experiencia">A experiência</a><a href="#programacao">Programação</a><a href="#como-participar">Como participar</a><a href="#galeria">Galeria</a><a href="#grupo-do-camp" class="nav-cta" data-camp-whatsapp>Grupo do Camp</a>
     </nav>
   </div>
 </header>
@@ -417,7 +423,7 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
       <p class="hero-price"><strong>R$ 700,00</strong><span>em até 4x</span></p>
       <a class="whatsapp-button" href="#grupo-do-camp" data-camp-whatsapp>ENTRAR NO GRUPO DO CAMP</a>
     </div>
-    <p class="hero-invite-note">O link de inscrição será enviado no grupo no dia 3 de dezembro.</p>
+    <p class="hero-invite-note">Primeiro, entre no grupo do WhatsApp. O link de inscrição chega por lá em <time datetime="2026-12-03">03/12.</time> <a class="participation-link" href="#como-participar">Veja como vai funcionar.</a></p>
   </div>
   <div class="hero-footer"><div class="container"><div class="hero-date">06—09 FEV / 2027<small>NOVA VENEZA · SANTA CATARINA · CARNAVAL</small></div><a class="scroll-hint" href="#experiencia">CONHEÇA O CAMP</a></div></div>
 </section>
@@ -461,6 +467,20 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
   </div>
  </div>
 </section>
+<section class="section participation" id="como-participar" aria-labelledby="participation-title">
+ <div class="container">
+  <div class="participation-head">
+   <div><p class="kicker">INSCRIÇÕES DO CAMP</p><h2 class="display" id="participation-title">COMO VAI<br><span class="orange">FUNCIONAR.</span></h2></div>
+   <p class="participation-intro">O primeiro passo é entrar no grupo do WhatsApp. Por lá, vamos compartilhar as informações do Camp e enviar o link para você fazer sua inscrição.</p>
+  </div>
+  <ol class="registration-steps">
+   <li><span class="step-date">AGORA</span><h3>Entre no grupo do WhatsApp</h3><p>Clique no botão abaixo para entrar no grupo do Camp e acompanhar as informações.</p></li>
+   <li><time class="step-date" datetime="2026-12-03">03/12/2026</time><h3>Receba o link de inscrição</h3><p>No dia 3 de dezembro, vamos enviar no grupo o link para reservar sua vaga e preencher o formulário de inscrição.</p></li>
+   <li><time class="step-date" datetime="2026-12-14">14/12/2026</time><h3>Encerramento das inscrições</h3><p>As inscrições encerram no dia 14 de dezembro. Preencha o formulário até essa data para participar.</p></li>
+  </ol>
+  <div class="registration-action"><p>Entrar no grupo é o primeiro passo. A reserva da vaga será feita pelo link enviado em <strong>03/12.</strong><br><a class="participation-link" href="#inscricoes">Ver valor e opções de kit</a></p><a class="whatsapp-button" href="#grupo-do-camp" data-camp-whatsapp>ENTRAR NO GRUPO DO WHATSAPP</a></div>
+ </div>
+</section>
 <section class="section program" id="programacao">
  <div class="container"><div class="program-top"><div><p class="kicker reveal">02 / PROGRAMAÇÃO</p><h2 class="display reveal">O QUE VAMOS<br><span class="orange">FAZER</span><br>POR LÁ.</h2></div><p>Treinos pela manhã e momentos para reunir a turma ao longo do dia. Confira a programação prevista para os quatro dias.</p></div>
  <div class="day reveal"><div class="day-num">06<small>SÁBADO<br>FEV</small></div><div class="day-visual camp-carousel" role="group" aria-roledescription="carrossel" aria-label="Fotos do dia 1 — edições anteriores" data-camp-location="faxinal"><div class="camp-slides"><figure class="camp-slide is-current"><img src="/assets/camp-2027/faxinal/lagoa-faxinal-turma-na-agua-2026.webp" alt="Vista ampla da Lagoa do Faxinal com a turma reunida dentro da água no Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>Turma na Lagoa do Faxinal <span>Camp 2026</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/faxinal/lagoa-faxinal-turma-na-margem-2026.webp" alt="Participantes do Endurance Camp 2026 posam com toucas e roupas de natação na margem da Lagoa do Faxinal." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>Juntos na Lagoa do Faxinal <span>Camp 2026</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/faxinal/lagoa-faxinal-aquathlon-2026.webp" alt="Atletas avançam pela água rasa da Lagoa do Faxinal durante o aquathlon do Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>Aquathlon na Lagoa do Faxinal <span>Camp 2026</span></figcaption></figure></div><div class="camp-controls"><button type="button" class="camp-prev" aria-label="Foto anterior do dia 1">‹</button><span class="camp-counter" aria-live="polite">01 / 03</span><button type="button" class="camp-next" aria-label="Próxima foto do dia 1">›</button></div></div><div class="day-main"><p class="kicker">DIA 01 / SÁBADO</p><h3>ÁGUAS ABERTAS<br><span class="blue">+ AQUATHLON</span></h3><p>Natação em águas abertas na Lagoa do Faxinal, dinâmica de aquathlon e corrida leve. À noite, é hora de reunir a turma e abrir oficialmente o Camp.</p><div class="time-line"><span class="time">06H30</span><span class="text">Natação, aquathlon e corrida</span></div><div class="time-line"><span class="time">18H30</span><span class="text">Jantar, kits e briefing</span></div></div></div>
@@ -479,14 +499,6 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
   <div class="kit-options">
    <article class="kit-option"><p class="kit-label">KIT INCLUÍDO</p><h3>Multisport</h3><p><strong>1 jersey de ciclismo</strong><br>+ <strong>1 camisa ou regata de corrida.</strong></p></article>
    <article class="kit-option kit-running"><p class="kit-label">KIT INCLUÍDO</p><h3>Corrida</h3><p><strong>2 peças de corrida,</strong><br>podendo combinar camisa e regata.</p></article>
-  </div>
-  <div class="registration-how">
-   <h3>Como vai funcionar</h3>
-   <ol class="registration-steps">
-    <li><span class="step-date">AGORA</span><h4>Entre no grupo</h4><p>O primeiro passo é entrar no grupo do WhatsApp para acompanhar as informações do Camp.</p></li>
-    <li><time class="step-date" datetime="2026-12-03">03/12/2026</time><h4>Reserva e inscrição</h4><p>Enviaremos no grupo o link para reservar sua vaga e preencher o formulário de inscrição.</p></li>
-    <li><time class="step-date" datetime="2026-12-14">14/12/2026</time><h4>Encerramento das inscrições</h4><p>As inscrições ficam abertas até o dia 14 de dezembro.</p></li>
-   </ol>
   </div>
   <div class="registration-action"><p>Receba no grupo o link de inscrição no dia <strong>3 de dezembro.</strong></p><a class="whatsapp-button" href="#grupo-do-camp" data-camp-whatsapp>ENTRAR NO GRUPO DO CAMP</a></div>
  </div>
