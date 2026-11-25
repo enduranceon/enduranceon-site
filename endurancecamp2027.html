@@ -260,6 +260,137 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
 .camp-carousel[data-camp-location]{height:auto;min-height:0;aspect-ratio:3/2}
 .camp-carousel[data-camp-location] .camp-slide img{object-fit:contain}
 
+/* Inscricoes, kit e acesso ao grupo do Camp. */
+.navigation{gap:25px}
+.navigation .nav-cta{background:var(--orange);border-color:var(--orange);color:var(--ink);font-weight:750}
+.navigation .nav-cta:hover{background:#ff982f;color:var(--ink)}
+.hero{min-height:900px;height:auto;padding:155px 0 145px}
+.hero-content{padding-top:0}
+.hero-side span{display:block}
+.hero-participation{display:flex;align-items:center;flex-wrap:wrap;gap:20px 30px;margin-top:30px}
+.hero-price{display:flex;flex-direction:column;gap:2px;line-height:1.4}
+.hero-price strong{font-size:28px;font-weight:750;letter-spacing:-.035em}
+.hero-price span{font-size:14px;color:#e0e4e3}
+.hero-participation .whatsapp-button{margin:0}
+.hero-invite-note{margin-top:14px;max-width:560px;color:#e0e4e3;font-size:14px;line-height:1.65}
+.whatsapp-button{justify-content:center;gap:12px;min-height:58px;min-width:0;padding:17px 24px;font-size:14px;font-weight:750;letter-spacing:.015em;text-align:center;line-height:1.5;box-shadow:0 8px 26px #ff801218;transition:background .2s,box-shadow .2s}
+.whatsapp-button:hover{background:#ff982f;box-shadow:0 10px 30px #ff80122b}
+
+/* Cinco registros reais, com foco individual e transicao suave. */
+.immersive{min-height:clamp(600px,49vw,760px);padding:65px 0;align-items:flex-end;background:#111313;isolation:isolate}
+.immersive-slides{position:absolute;inset:0;z-index:-2}
+.immersive-slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity 1.1s ease}
+.immersive-slide.is-current{opacity:1}
+.immersive .immersive-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--photo-focus,50% 35%);filter:none}
+.immersive:after{z-index:-1;background:linear-gradient(0deg,#101414ed 0%,#10141485 29%,#10141410 65%),linear-gradient(90deg,#10141430,transparent 75%)}
+.immersive .container{z-index:1;margin:0 auto}
+.camp-sr-only{position:absolute!important;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.immersive blockquote{max-width:890px;margin:0;font-size:clamp(40px,4.8vw,70px);line-height:1.08;text-wrap:balance;text-shadow:0 2px 20px #0003}
+.immersive-meta{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:28px}
+.immersive .caption{margin:0;font-size:14px;font-weight:500;letter-spacing:0;text-transform:none;color:#f1f3ef}
+.immersive-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;flex-shrink:0}
+.immersive-controls button{border:1px solid #ffffff60;border-radius:22px;background:#11131385;color:#fff;padding:9px 14px;min-height:42px;font-size:14px;line-height:1.4}
+.immersive-controls button:hover{background:#ffffff20}
+.immersive-counter{min-width:56px;text-align:center;font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+.immersive-motion{margin-left:6px}
+
+.registration{background:#171c1b;border-top:1px solid #ffffff12;border-bottom:1px solid #ffffff12}
+.registration-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:42px}
+.registration-head .kicker{font-size:14px;margin-bottom:18px}
+.registration-head .display{font-size:clamp(42px,5.2vw,76px)}
+.registration-head p:not(.kicker){max-width:570px;color:#c6cdca;font-size:16px;margin-top:22px;line-height:1.75}
+.registration-price{flex:0 0 auto;border-left:3px solid var(--orange);padding:4px 0 4px 30px;display:flex;flex-direction:column;gap:5px}
+.registration-price small{font-size:14px;color:#c6cdca}
+.registration-price strong{font-size:clamp(40px,4.3vw,66px);line-height:1.15;font-weight:750;letter-spacing:-.055em;white-space:nowrap}
+.registration-price span{font-size:18px;color:#fff}
+.kit-options{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.kit-option{border:1px solid #ffffff26;border-top:3px solid var(--orange);border-radius:9px;padding:32px;background:#1d2422}
+.kit-option.kit-running{border-top-color:var(--blue)}
+.kit-option .kit-label{font-size:14px;font-weight:600;color:var(--orange);margin-bottom:12px}
+.kit-running .kit-label{color:var(--blue)}
+.kit-option h3{font-size:32px;font-weight:750;letter-spacing:-.035em}
+.kit-option p:not(.kit-label){margin-top:22px;max-width:490px;font-size:18px;line-height:1.75;color:#d6dcd8}
+.kit-option strong{font-weight:650;color:white}
+.registration-how{margin-top:54px}
+.registration-how h3{font-size:26px;font-weight:700;letter-spacing:-.025em}
+.registration-steps{list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.registration-steps li{border-top:1px solid #ffffff30;padding-top:23px}
+.registration-steps .step-date{display:block;color:var(--orange);font-size:15px;font-weight:750;letter-spacing:.02em;margin-bottom:14px}
+.registration-steps h4{font-size:20px;font-weight:650;letter-spacing:-.02em;line-height:1.35}
+.registration-steps p{font-size:16px;color:#bfc8c3;margin-top:12px;line-height:1.75}
+.registration-action{display:flex;justify-content:space-between;align-items:center;gap:30px;border-top:1px solid #ffffff20;margin-top:40px;padding-top:30px}
+.registration-action p{font-size:16px;color:#d6dcd8;max-width:490px}
+.registration-action .whatsapp-button{margin:0;flex-shrink:0}
+.cta-section .cta-price{font-size:18px;color:#fff;margin-top:24px}
+.cta-price strong{font-size:27px;font-weight:750;letter-spacing:-.025em}
+.cta-section .small-note{font-size:14px!important;color:#c6cdca!important}
+.camp-mobile-action{display:none}
+.camp-group-dialog{width:min(490px,calc(100% - 36px));padding:30px;border:1px solid #ffffff35;border-radius:14px;background:#171c1b;color:#fff}
+.camp-group-dialog::backdrop{background:#06100de8}
+.camp-group-dialog h2{font-size:27px;font-weight:750;margin-bottom:18px}
+.camp-group-dialog p{font-size:16px;line-height:1.75;color:#d6dcd8}
+.camp-group-dialog form{margin:0}
+.camp-group-dialog .whatsapp-button{margin-top:25px;width:100%}
+@media(min-width:1800px){.immersive{min-height:820px}}
+@media(max-width:1050px){
+ .navigation{gap:17px}
+ .immersive-meta{align-items:flex-start;flex-direction:column;gap:18px}
+ .registration-head{align-items:flex-start;flex-direction:column;gap:30px}
+ .registration-price{padding-left:24px}
+ .registration-price strong{font-size:46px}
+ .registration-steps{gap:22px}
+}
+@media(max-width:950px){.navigation>a:not(.nav-cta){display:none}}
+@media(max-width:720px){
+ body{padding-bottom:calc(90px + env(safe-area-inset-bottom,0px))}
+ .hero{min-height:830px;padding:130px 0 125px}
+ .hero-content{padding-top:0}
+ .hero-footer{bottom:80px}
+ .hero-desc p{font-size:16px}
+ .hero-side{display:flex;flex-wrap:wrap;gap:7px 16px;padding-left:0;border-left:0;margin-top:20px;font-size:10px}
+ .hero-participation{align-items:flex-start;gap:18px;margin-top:26px}
+ .hero-price{flex-direction:row;align-items:baseline;gap:12px}
+ .hero-price strong{font-size:27px}
+ .hero-participation .whatsapp-button{width:100%;padding:16px 18px}
+ .hero-invite-note{font-size:14px;margin-top:12px}
+ .immersive{min-height:0;display:block;padding:66.6667vw 0 32px}
+ .immersive-slides{height:66.6667vw;bottom:auto}
+ .immersive .immersive-slide img{object-fit:contain;object-position:50% 50%}
+ .immersive:after{height:66.6667vw;bottom:auto;background:linear-gradient(0deg,#111313bb,transparent 25%)}
+ .immersive .container{padding-top:26px}
+ .immersive blockquote{font-size:clamp(31px,8.1vw,47px);max-width:620px;text-shadow:none}
+ .immersive-meta{gap:18px;margin-top:22px}
+ .immersive .caption{font-size:14px;line-height:1.6}
+ .immersive-controls{gap:6px;width:100%}
+ .immersive-controls button{font-size:13px;padding:9px 12px}
+ .immersive-motion{margin-left:auto}
+ .immersive-counter{font-size:13px;min-width:48px}
+ .registration-head{gap:28px;margin-bottom:30px}
+ .registration-head .display{font-size:clamp(36px,9vw,58px)}
+ .registration-price strong{font-size:46px}
+ .registration-price span{font-size:16px}
+ .kit-options{grid-template-columns:1fr;gap:18px}
+ .kit-option{padding:26px}
+ .kit-option h3{font-size:29px}
+ .kit-option p:not(.kit-label){font-size:17px;margin-top:17px}
+ .registration-how{margin-top:38px}
+ .registration-how h3{font-size:24px}
+ .registration-steps{grid-template-columns:1fr;gap:25px;margin-top:22px}
+ .registration-steps li{padding-top:22px}
+ .registration-steps .step-date{margin-bottom:10px}
+ .registration-steps p{margin-top:9px}
+ .registration-action{flex-direction:column;align-items:stretch;gap:22px;margin-top:30px;padding-top:26px}
+ .registration-action .whatsapp-button{width:100%}
+ .cta-section .whatsapp-button{width:100%;padding:17px 18px}
+ .camp-mobile-action{display:flex;position:fixed;z-index:70;left:0;right:0;bottom:0;align-items:center;justify-content:space-between;gap:14px;padding:12px 18px calc(12px + env(safe-area-inset-bottom,0px));background:#101614f5;border-top:1px solid #ffffff2e;box-shadow:0 -5px 25px #0002}
+ .camp-mobile-price{display:flex;flex-direction:column;gap:1px;line-height:1.4;flex-shrink:0}
+ .camp-mobile-price strong{font-size:19px;letter-spacing:-.035em}
+ .camp-mobile-price span{font-size:12px;color:#c8d0cb}
+ .camp-mobile-action .whatsapp-button{margin:0;min-height:48px;padding:12px 17px;font-size:13px;flex:1;max-width:230px}
+}
+@media(max-width:370px){.immersive-controls{gap:4px}.immersive-controls button{padding:9px 10px}.immersive-counter{min-width:42px}.camp-mobile-action{gap:10px;padding-left:14px;padding-right:14px}.camp-mobile-action .whatsapp-button{padding:12px 10px}}
+@media(prefers-reduced-motion:reduce){.immersive-slide,.whatsapp-button{transition:none}}
+
 </style>
 </head>
 <body>
@@ -268,7 +399,7 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
   <div class="container">
     <a href="/" aria-label="Ir para Endurance On"><img class="brand-mark" src="/assets/camp-2027/logo.png" alt="Endurance Camp Nova Veneza 2027"></a>
     <nav class="navigation" aria-label="Navegação da página">
-      <a href="#experiencia">A experiência</a><a href="#programacao">Programação</a><a href="#galeria">Galeria</a><a href="#comunidade" class="nav-cta">Grupo do Camp ↗</a>
+      <a href="#experiencia">A experiência</a><a href="#programacao">Programação</a><a href="#inscricoes">Inscrições</a><a href="#galeria">Galeria</a><a href="#grupo-do-camp" class="nav-cta" data-camp-whatsapp>Grupo do Camp</a>
     </nav>
   </div>
 </header>
@@ -280,8 +411,13 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
     <h1 id="hero-title"><span class="outline">VIVA ESSA</span><span class="accent">EXPERIÊNCIA.</span></h1>
     <div class="hero-desc">
       <p>Quatro dias em Nova Veneza para treinar, conhecer lugares e compartilhar bons momentos com a turma.</p>
-      <div class="hero-side">RUNNING<br>CYCLING<br>SWIMMING<br>COMMUNITY</div>
+      <div class="hero-side"><span>RUNNING</span><span>CYCLING</span><span>SWIMMING</span><span>COMMUNITY</span></div>
     </div>
+    <div class="hero-participation">
+      <p class="hero-price"><strong>R$ 700,00</strong><span>em até 4x</span></p>
+      <a class="whatsapp-button" href="#grupo-do-camp" data-camp-whatsapp>ENTRAR NO GRUPO DO CAMP</a>
+    </div>
+    <p class="hero-invite-note">O link de inscrição será enviado no grupo no dia 3 de dezembro.</p>
   </div>
   <div class="hero-footer"><div class="container"><div class="hero-date">06—09 FEV / 2027<small>NOVA VENEZA · SANTA CATARINA · CARNAVAL</small></div><a class="scroll-hint" href="#experiencia">CONHEÇA O CAMP</a></div></div>
 </section>
@@ -293,17 +429,66 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
   <p class="intro-copy reveal">A gente se encontra cedo para treinar, passa por lugares diferentes e aproveita o resto do dia junto. Tem corrida, ciclismo, natação e tempo para conversar, descansar e conhecer melhor a turma. Essa é a proposta do Endurance Camp.</p></div>
  </div><div class="facts"><div class="fact reveal"><strong>04</strong><span>Dias juntos</span></div><div class="fact reveal"><strong>03</strong><span>Modalidades</span></div><div class="fact reveal"><strong>01</strong><span>Turma</span></div></div></div>
 </section>
-<section class="immersive" aria-label="Mensagem Endurance Camp">
- <img src="/assets/camp-2027/hero-run.jpg" alt="Corredores em estrada arborizada durante o Endurance Camp" loading="lazy">
- <div class="container"><blockquote class="reveal">O MELHOR É <span>VIVER TUDO</span> ISSO JUNTO.</blockquote><p class="caption">Edição anterior · registro real do Endurance Camp</p></div>
+<section class="immersive" id="momentos" aria-label="Momentos do Endurance Camp 2026" aria-roledescription="carrossel">
+ <div class="immersive-slides">
+  <figure class="immersive-slide is-current" style="--photo-focus:50% 36%" data-caption="Sorrisos pelo caminho">
+   <img src="/assets/camp-2027/2026/corrida-tre-0330.webp" alt="Quatro participantes correm juntos e sorriem para a câmera no Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async">
+  </figure>
+  <figure class="immersive-slide" aria-hidden="true" style="--photo-focus:50% 35%" data-caption="Um abraço no alto da serra">
+   <picture><source media="(max-width:720px)" srcset="/assets/camp-2027/2026/thumbs/existing-day2-friends-2026.webp"><img src="/assets/camp-2027/day2-friends-2026.jpg" alt="Participantes se abraçam junto às bicicletas durante o Endurance Camp 2026." width="3500" height="2333" loading="lazy" decoding="async"></picture>
+  </figure>
+  <figure class="immersive-slide" aria-hidden="true" style="--photo-focus:50% 35%" data-caption="Boas companhias à mesa">
+   <img src="/assets/camp-2027/2026/jantar-tre-0085.webp" alt="Duas pessoas sorriem lado a lado durante o jantar do Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async">
+  </figure>
+  <figure class="immersive-slide" aria-hidden="true" style="--photo-focus:50% 10%" data-caption="Leveza durante a corrida">
+   <img src="/assets/camp-2027/2026/d1-tre-0670.webp" alt="Corredor sorri e faz um gesto para a câmera durante o Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async">
+  </figure>
+  <figure class="immersive-slide" aria-hidden="true" style="--photo-focus:50% 35%" data-caption="Juntos no alto da serra">
+   <img src="/assets/camp-2027/2026/serra-tre-0660.webp" alt="Quatro participantes sorriem junto às bicicletas em um dia de neblina no Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async">
+  </figure>
+ </div>
+ <div class="container">
+  <blockquote class="reveal">O MELHOR É <span>VIVER TUDO</span> ISSO JUNTO.</blockquote>
+  <div class="immersive-meta">
+   <p class="caption" id="moment-caption">Sorrisos pelo caminho · Camp 2026</p>
+   <p class="camp-sr-only" id="moment-status" role="status" aria-live="polite" aria-atomic="true"></p>
+   <div class="immersive-controls" role="group" aria-label="Navegar pelos momentos do Camp">
+    <button class="immersive-prev" type="button" aria-label="Foto anterior dos momentos do Camp">Anterior</button>
+    <span class="immersive-counter" aria-live="off">01 / 05</span>
+    <button class="immersive-next" type="button" aria-label="Próxima foto dos momentos do Camp">Próxima</button>
+    <button class="immersive-motion" type="button" aria-pressed="false">Pausar fotos</button>
+   </div>
+  </div>
+ </div>
 </section>
 <section class="section program" id="programacao">
  <div class="container"><div class="program-top"><div><p class="kicker reveal">02 / PROGRAMAÇÃO</p><h2 class="display reveal">O QUE VAMOS<br><span class="orange">FAZER</span><br>POR LÁ.</h2></div><p>Treinos pela manhã e momentos para reunir a turma ao longo do dia. Confira a programação prevista para os quatro dias.</p></div>
  <div class="day reveal"><div class="day-num">06<small>SÁBADO<br>FEV</small></div><div class="day-visual camp-carousel" role="group" aria-roledescription="carrossel" aria-label="Fotos do dia 1 — edições anteriores" data-camp-location="faxinal"><div class="camp-slides"><figure class="camp-slide is-current"><img src="/assets/camp-2027/faxinal/lagoa-faxinal-turma-na-agua-2026.webp" alt="Vista ampla da Lagoa do Faxinal com a turma reunida dentro da água no Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>Turma na Lagoa do Faxinal <span>Camp 2026</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/faxinal/lagoa-faxinal-turma-na-margem-2026.webp" alt="Participantes do Endurance Camp 2026 posam com toucas e roupas de natação na margem da Lagoa do Faxinal." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>Juntos na Lagoa do Faxinal <span>Camp 2026</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/faxinal/lagoa-faxinal-aquathlon-2026.webp" alt="Atletas avançam pela água rasa da Lagoa do Faxinal durante o aquathlon do Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>Aquathlon na Lagoa do Faxinal <span>Camp 2026</span></figcaption></figure></div><div class="camp-controls"><button type="button" class="camp-prev" aria-label="Foto anterior do dia 1">‹</button><span class="camp-counter" aria-live="polite">01 / 03</span><button type="button" class="camp-next" aria-label="Próxima foto do dia 1">›</button></div></div><div class="day-main"><p class="kicker">DIA 01 / SÁBADO</p><h3>ÁGUAS ABERTAS<br><span class="blue">+ AQUATHLON</span></h3><p>Natação em águas abertas na Lagoa do Faxinal, dinâmica de aquathlon e corrida leve. À noite, é hora de reunir a turma e abrir oficialmente o Camp.</p><div class="time-line"><span class="time">06H30</span><span class="text">Natação, aquathlon e corrida</span></div><div class="time-line"><span class="time">18H30</span><span class="text">Jantar, kits e briefing</span></div></div></div>
  <div class="day reveal"><div class="day-num">07<small>DOMINGO<br>FEV</small></div><div class="day-visual camp-carousel" role="group" aria-roledescription="carrossel" aria-label="Fotos do dia 2 — edições anteriores" data-camp-location="serra-rio-do-rastro"><div class="camp-slides"><figure class="camp-slide is-current"><img src="/assets/camp-2027/2024/day2-bike-hha24trcc1351.webp" alt="Participantes do Endurance Camp 2024 reunidos no mirante da Serra do Rio do Rastro, com a paisagem ao fundo." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>Turma no mirante da Serra <span>Camp 2024</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/2024/day2-bike-hha24trcc10119.webp" alt="Ciclista percorre uma curva da Serra do Rio do Rastro, com montanhas verdes ao fundo, no Endurance Camp 2024." width="1800" height="1196" loading="lazy" decoding="async"><figcaption>Pedal nas curvas da Serra <span>Camp 2024</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/serra-rio-do-rastro/2026-tre-0390.webp" alt="Participante de camiseta clara percorre a estrada da Serra do Rio do Rastro, com paredões cobertos de vegetação ao fundo, no Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>A pé pela Serra <span>Camp 2026</span></figcaption></figure></div><div class="camp-controls"><button type="button" class="camp-prev" aria-label="Foto anterior do dia 2">‹</button><span class="camp-counter" aria-live="polite">01 / 03</span><button type="button" class="camp-next" aria-label="Próxima foto do dia 2">›</button></div></div><div class="day-main"><p class="kicker">DIA 02 / DOMINGO</p><h3>SERRA DO<br><span class="orange">RIO DO RASTRO</span></h3><p>Pedal ou corrida na Serra do Rio do Rastro. À tarde, tempo para recuperação e convivência.</p><div class="time-line"><span class="time">07H00</span><span class="text">Desafio da Serra</span></div><div class="time-line"><span class="time">15–18H</span><span class="text">Recovery e convivência</span></div></div></div>
- <div class="day reveal" id="dia-03"><div class="day-num">08<small>SEGUNDA<br>FEV</small></div><div class="day-visual camp-carousel" role="group" aria-roledescription="carrossel" aria-label="Fotos do dia 3 — edições anteriores" data-camp-location="corrida-nova-veneza"><div class="camp-slides"><figure class="camp-slide is-current"><img src="/assets/camp-2027/2026/corrida-tre-0330.webp" alt="Grupo de corredores sorri e faz gestos para a câmera durante a corrida em Nova Veneza, no Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>Sorrisos pelo caminho <span>Camp 2026</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/2026/corrida-tre-0030.webp" alt="Quatro atletas correm juntos sob a decoração suspensa de uma rua em Nova Veneza no Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>Pelas ruas de Nova Veneza <span>Camp 2026</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/2026/corrida-tre-0008.webp" alt="Turma do Endurance Camp 2026 reunida na Praça Humberto Bortoluzzi, diante do coreto de Nova Veneza." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>A turma reunida em Nova Veneza <span>Camp 2026</span></figcaption></figure></div><div class="camp-controls"><button type="button" class="camp-prev" aria-label="Foto anterior do dia 3">‹</button><span class="camp-counter" aria-live="polite">01 / 03</span><button type="button" class="camp-next" aria-label="Próxima foto do dia 3">›</button></div></div><div class="day-main"><p class="kicker">DIA 03 / SEGUNDA</p><h3>CORRIDA<br><span class="blue">NOVA VENEZA</span></h3><p>Longão coletivo com opções de distância, pontos de apoio e paisagens da região. À tarde, um encontro sobre treinamento e métricas.</p><div class="time-line"><span class="time">06H30</span><span class="text">Corrida longa</span></div><div class="time-line"><span class="time">13H00</span><span class="text">Clínica de treinamento</span></div></div></div>
- <div class="day reveal" id="dia-04"><div class="day-num">09<small>TERÇA<br>FEV</small></div><div class="day-visual camp-carousel" role="group" aria-roledescription="carrossel" aria-label="Fotos do dia 4 — Endurance Camp 2026" data-camp-location="time-trial"><div class="camp-slides"><figure class="camp-slide is-current"><img src="/assets/camp-2027/2026/day4-time-trial-tre-0001.webp" alt="Participantes do Endurance Camp 2026 reunidos com suas bicicletas ao lado do coreto de Nova Veneza antes do Time Trial." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>A turma antes do Time Trial <span>Camp 2026</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/2026/trial-hha-0077.webp" alt="Ciclista de capacete branco em posição aerodinâmica no Time Trial do Endurance Camp 2026, com campos ao fundo." width="1800" height="1196" loading="lazy" decoding="async"><figcaption>Foco no contrarrelógio <span>Camp 2026</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/2026/day4-time-trial-tre-0109.webp" alt="Atleta de capacete rosa pedala em posição aerodinâmica no percurso do Time Trial do Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>Velocidade no percurso <span>Camp 2026</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/2026/day4-time-trial-tre-0005.webp" alt="Turma do Endurance Camp 2026 reunida com suas bicicletas diante do coreto de Nova Veneza no dia do Time Trial." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>A turma do Time Trial <span>Camp 2026</span></figcaption></figure></div><div class="camp-controls"><button type="button" class="camp-prev" aria-label="Foto anterior do dia 4">‹</button><span class="camp-counter" aria-live="polite">01 / 04</span><button type="button" class="camp-next" aria-label="Próxima foto do dia 4">›</button></div></div><div class="day-main"><p class="kicker">DIA 04 / TERÇA</p><h3>TIME TRIAL<br><span class="orange">+ VELOCIDADE</span></h3><p>Pedal com dinâmica de contrarrelógio, atividade de velocidade na corrida e um último encontro antes da despedida.</p><div class="time-line"><span class="time">06H30</span><span class="text">Time Trial EON e corrida</span></div><div class="time-line"><span class="time">DEPOIS</span><span class="text">Confraternização de encerramento</span></div></div></div>
+ <div class="day reveal" id="dia-03"><div class="day-num">08<small>SEGUNDA<br>FEV</small></div><div class="day-visual camp-carousel" role="group" aria-roledescription="carrossel" aria-label="Fotos do dia 3 — edições anteriores" data-camp-location="corrida-nova-veneza"><div class="camp-slides"><figure class="camp-slide is-current"><img src="/assets/camp-2027/2026/corrida-tre-0330.webp" alt="Grupo de corredores sorri e faz gestos para a câmera durante a corrida em Nova Veneza, no Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>Sorrisos pelo caminho <span>Camp 2026</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/2026/corrida-tre-0030.webp" alt="Quatro atletas correm juntos sob a decoração suspensa de uma rua em Nova Veneza no Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>Pelas ruas de Nova Veneza <span>Camp 2026</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/2026/corrida-tre-0008.webp" alt="Turma do Endurance Camp 2026 reunida na Praça Humberto Bortoluzzi, diante do coreto de Nova Veneza." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>A turma reunida em Nova Veneza <span>Camp 2026</span></figcaption></figure></div><div class="camp-controls"><button type="button" class="camp-prev" aria-label="Foto anterior do dia 3">‹</button><span class="camp-counter" aria-live="polite">01 / 03</span><button type="button" class="camp-next" aria-label="Próxima foto do dia 3">›</button></div></div><div class="day-main"><p class="kicker">DIA 03 / SEGUNDA</p><h3>CORRIDA<br><span class="blue">NOVA VENEZA</span></h3><p>Longão coletivo com opções de distância, pontos de apoio e paisagens da região. À tarde, uma dinâmica em grupo, ainda a definir.</p><div class="time-line"><span class="time">06H30</span><span class="text">Corrida longa</span></div><div class="time-line"><span class="time">14H00</span><span class="text">A definir — Alguma dinâmica em grupo</span></div></div></div>
+ <div class="day reveal" id="dia-04"><div class="day-num">09<small>TERÇA<br>FEV</small></div><div class="day-visual camp-carousel" role="group" aria-roledescription="carrossel" aria-label="Fotos do dia 4 — Endurance Camp 2026" data-camp-location="time-trial"><div class="camp-slides"><figure class="camp-slide is-current"><img src="/assets/camp-2027/2026/day4-time-trial-tre-0001.webp" alt="Participantes do Endurance Camp 2026 reunidos com suas bicicletas ao lado do coreto de Nova Veneza antes do Time Trial." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>A turma antes do Time Trial <span>Camp 2026</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/2026/trial-hha-0077.webp" alt="Ciclista de capacete branco em posição aerodinâmica no Time Trial do Endurance Camp 2026, com campos ao fundo." width="1800" height="1196" loading="lazy" decoding="async"><figcaption>Foco no contrarrelógio <span>Camp 2026</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/2026/day4-time-trial-tre-0109.webp" alt="Atleta de capacete rosa pedala em posição aerodinâmica no percurso do Time Trial do Endurance Camp 2026." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>Velocidade no percurso <span>Camp 2026</span></figcaption></figure><figure class="camp-slide" aria-hidden="true"><img src="/assets/camp-2027/2026/day4-time-trial-tre-0005.webp" alt="Turma do Endurance Camp 2026 reunida com suas bicicletas diante do coreto de Nova Veneza no dia do Time Trial." width="1800" height="1200" loading="lazy" decoding="async"><figcaption>A turma do Time Trial <span>Camp 2026</span></figcaption></figure></div><div class="camp-controls"><button type="button" class="camp-prev" aria-label="Foto anterior do dia 4">‹</button><span class="camp-counter" aria-live="polite">01 / 04</span><button type="button" class="camp-next" aria-label="Próxima foto do dia 4">›</button></div></div><div class="day-main"><p class="kicker">DIA 04 / TERÇA</p><h3>TIME <span class="orange">TRIAL</span></h3><p>Manhã de Time Trial, com pedal em formato de contrarrelógio.</p><div class="time-line"><span class="time">06H30</span><span class="text">Time Trial EON</span></div></div></div>
  <p class="provisional">Programação preliminar de 2027 baseada na edição de 2026. Locais, percursos e detalhes operacionais sujeitos a confirmação.</p>
+ </div>
+</section>
+<section class="section registration" id="inscricoes" aria-labelledby="registration-title">
+ <div class="container">
+  <div class="registration-head">
+   <div><p class="kicker reveal">ENDURANCE CAMP 2027</p><h2 class="display reveal" id="registration-title">INSCRIÇÕES<br><span class="orange">E KIT.</span></h2><p>Escolha como você vai participar do Camp e confira o kit de cada inscrição.</p></div>
+   <div class="registration-price"><small>Valor da inscrição</small><strong>R$ 700,00</strong><span>em até 4x</span></div>
+  </div>
+  <div class="kit-options">
+   <article class="kit-option"><p class="kit-label">KIT INCLUÍDO</p><h3>Multisport</h3><p><strong>1 jersey de ciclismo</strong><br>+ <strong>1 camisa ou regata de corrida.</strong></p></article>
+   <article class="kit-option kit-running"><p class="kit-label">KIT INCLUÍDO</p><h3>Corrida</h3><p><strong>2 peças de corrida,</strong><br>podendo combinar camisa e regata.</p></article>
+  </div>
+  <div class="registration-how">
+   <h3>Como vai funcionar</h3>
+   <ol class="registration-steps">
+    <li><span class="step-date">AGORA</span><h4>Entre no grupo</h4><p>O primeiro passo é entrar no grupo do WhatsApp para acompanhar as informações do Camp.</p></li>
+    <li><time class="step-date" datetime="2026-12-03">03/12/2026</time><h4>Reserva e inscrição</h4><p>Enviaremos no grupo o link para reservar sua vaga e preencher o formulário de inscrição.</p></li>
+    <li><time class="step-date" datetime="2026-12-14">14/12/2026</time><h4>Encerramento das inscrições</h4><p>As inscrições ficam abertas até o dia 14 de dezembro.</p></li>
+   </ol>
+  </div>
+  <div class="registration-action"><p>Receba no grupo o link de inscrição no dia <strong>3 de dezembro.</strong></p><a class="whatsapp-button" href="#grupo-do-camp" data-camp-whatsapp>ENTRAR NO GRUPO DO CAMP</a></div>
  </div>
 </section>
 <section class="gallery" id="galeria">
@@ -349,10 +534,79 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
  </dialog>
 </section>
 <section class="cta-section" id="comunidade">
- <div class="container"><p class="kicker reveal">04 / ENDURANCE CAMP 2027</p><h2 class="reveal">VEM VIVER<br><em>ESSA EXPERIÊNCIA.</em></h2><p>De 6 a 9 de fevereiro, em Nova Veneza. Em breve vamos compartilhar por aqui mais informações sobre a participação.</p><button class="whatsapp-button" type="button" disabled aria-label="Entrar no grupo de WhatsApp, disponível em breve">ENTRAR NO GRUPO DO WHATSAPP <span aria-hidden="true">↗</span></button><p class="small-note">O link do grupo será disponibilizado em breve.</p></div>
+ <div class="container"><p class="kicker reveal">ENDURANCE CAMP 2027</p><h2 class="reveal">VEM VIVER<br><em>ESSA EXPERIÊNCIA.</em></h2><p>De 6 a 9 de fevereiro, em Nova Veneza. Entre no grupo para acompanhar as informações e receber o link de inscrição em 3 de dezembro.</p><p class="cta-price"><strong>R$ 700,00</strong> · em até 4x</p><a class="whatsapp-button" href="#grupo-do-camp" data-camp-whatsapp>ENTRAR NO GRUPO DO CAMP</a><p class="small-note">Inscrições de 03 a 14 de dezembro de 2026.</p></div>
 </section>
 </main>
 <footer><div class="container footer-flex"><img src="/assets/camp-2027/logo.png" alt="Endurance Camp 2027"><p>© 2027 ENDURANCE ON · EARN YOUR PACE. ENJOY THE PROCESS.</p><a href="/">VOLTAR PARA A ENDURANCE ON ↗</a></div></footer>
+<aside class="camp-mobile-action" aria-label="Participar do Endurance Camp"><p class="camp-mobile-price"><strong>R$ 700,00</strong><span>em até 4x</span></p><a class="whatsapp-button" href="#grupo-do-camp" data-camp-whatsapp aria-label="Entrar no grupo do Camp no WhatsApp">ENTRAR NO GRUPO</a></aside>
+<dialog class="camp-group-dialog" id="grupo-do-camp" aria-labelledby="camp-group-title" aria-describedby="camp-group-note">
+ <form method="dialog"><h2 id="camp-group-title">Grupo do Camp</h2><p id="camp-group-note">O link de convite estará disponível em breve.</p><button class="whatsapp-button" type="submit">FECHAR</button></form>
+</dialog>
+<script>
+/* Substituir pelo convite real quando ele estiver definido. */
+const campWhatsAppUrl = '';
+const campGroupDialog = document.querySelector('#grupo-do-camp');
+document.querySelectorAll('[data-camp-whatsapp]').forEach(link => {
+ if (campWhatsAppUrl) {
+  link.href = campWhatsAppUrl;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+ } else {
+  link.addEventListener('click', event => {
+   event.preventDefault();
+   if (campGroupDialog && !campGroupDialog.open) campGroupDialog.showModal();
+  });
+ }
+});
+
+(() => {
+ const section = document.querySelector('#momentos');
+ if (!section) return;
+ const slides = [...section.querySelectorAll('.immersive-slide')];
+ const caption = section.querySelector('.caption');
+ const counter = section.querySelector('.immersive-counter');
+ const status = section.querySelector('#moment-status');
+ const motion = section.querySelector('.immersive-motion');
+ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+ let index = 0, timer = null, request = 0;
+ let userPaused = reducedMotion.matches, focusPaused = false, inView = false;
+ function stop() { if (timer !== null) { clearInterval(timer); timer = null; } }
+ function syncPlayback() {
+  stop();
+  motion.textContent = userPaused ? 'Reproduzir fotos' : 'Pausar fotos';
+  motion.setAttribute('aria-pressed', String(userPaused));
+  if (inView && !userPaused && !focusPaused && !document.hidden) timer = setInterval(() => show(index + 1), 6500);
+ }
+ async function show(next, announce = false) {
+  const thisRequest = ++request;
+  const nextIndex = (next + slides.length) % slides.length;
+  const img = slides[nextIndex].querySelector('img');
+  try { if (img.decode) await img.decode(); } catch { if (!img.naturalWidth) return; }
+  if (thisRequest !== request) return;
+  index = nextIndex;
+  slides.forEach((slide, i) => {
+   const active = i === index;
+   slide.classList.toggle('is-current', active);
+   slide.setAttribute('aria-hidden', String(!active));
+  });
+  counter.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+  caption.textContent = slides[index].dataset.caption + ' · Camp 2026';
+  if (announce) status.textContent = 'Foto ' + (index + 1) + ' de ' + slides.length + '. ' + caption.textContent;
+ }
+ function step(direction) { userPaused = true; syncPlayback(); show(index + direction, true); }
+ section.querySelector('.immersive-prev').addEventListener('click', () => step(-1));
+ section.querySelector('.immersive-next').addEventListener('click', () => step(1));
+ motion.addEventListener('click', () => { userPaused = !userPaused; focusPaused = false; syncPlayback(); });
+ section.addEventListener('focusin', () => { focusPaused = true; syncPlayback(); });
+ section.addEventListener('focusout', event => { if (!section.contains(event.relatedTarget)) { focusPaused = false; syncPlayback(); } });
+ document.addEventListener('visibilitychange', syncPlayback);
+ reducedMotion.addEventListener?.('change', () => { userPaused = reducedMotion.matches; syncPlayback(); });
+ if ('IntersectionObserver' in window) {
+  new IntersectionObserver(entries => { inView = entries[0].isIntersecting; syncPlayback(); }, {threshold:0.12}).observe(section);
+ } else { inView = true; }
+ syncPlayback();
+})();
+</script>
 <script>
 const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!reduced && 'IntersectionObserver' in window) {
