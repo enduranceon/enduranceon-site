@@ -1,3 +1,5 @@
+"$schema" = "https://open-api.netlify.com/netlify.schema.json"
+
 # Redirecionamentos do site (troca de 29/10/2026).
 # URLs novas e curtas (/calendario, /treinos-coletivos, /parceiros, /contato, /treinador-<nome>);
 # as antigas redirecionam para elas com 301 (force = true: vale mesmo que o arquivo antigo ainda exista).
@@ -181,9 +183,27 @@ force = true
 # status = 301
 # force = true
 
-# Endurance Camp 2027 — página nova em desenvolvimento
+# Endurance Camp — endereço público da edição de 2027
 [[redirects]]
-from = "/endurance-camp-2027"
+from = "/endurance-camp"
 to = "/endurancecamp2027.html"
 status = 200
+force = true
+
+[[redirects]]
+from = "/endurance-camp-2027"
+to = "/endurance-camp"
+status = 301
+force = true
+
+[[redirects]]
+from = "/endurancecamp2027"
+to = "/endurance-camp"
+status = 301
+force = true
+
+[[redirects]]
+from = "/endurancecamp2027.html"
+to = "/endurance-camp"
+status = 301
 force = true
