@@ -1,0 +1,992 @@
+[
+  {
+    "id": "camp-2026-corrida-tre-0008",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/corrida-tre-0008.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/corrida-tre-0008.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Turma do Endurance Camp 2026 reunida para uma foto na praça, diante de um coreto.",
+    "caption": "A turma reunida em Nova Veneza"
+  },
+  {
+    "id": "2025-HHA25TRE0327",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0327.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0327.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Grupo de participantes corre por uma curva asfaltada; algumas pessoas sorriem, com árvores e vegetação ao fundo.",
+    "caption": "Corrida em grupo"
+  },
+  {
+    "id": "2024-day1-hha24tre1640",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day1-hha24tre1640.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day1-hha24tre1640.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Grupo de participantes posa em frente a uma tenda, à beira de uma rua cercada de vegetação.",
+    "caption": "Todo mundo junto"
+  },
+  {
+    "id": "2025-HHA25TRE0883",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0883.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0883.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Duas pessoas de capacete sorriem ao lado de suas bicicletas sobre uma ponte, com um riacho e árvores ao fundo.",
+    "caption": "Sorrisos na pausa do pedal"
+  },
+  {
+    "id": "2024-day3-swim-hha24trcc0034",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day3-swim-hha24trcc0034.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day3-swim-hha24trcc0034.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Grupo de participantes com toucas de natação levanta os braços dentro do rio, entre margens cobertas de vegetação.",
+    "caption": "Juntos dentro d’água"
+  },
+  {
+    "id": "camp-2026-d1-tre-0040",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/d1-tre-0040.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/d1-tre-0040.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Dois atletas de touca e roupa de natação posam dentro da lagoa no Endurance Camp 2026.",
+    "caption": "Sorrisos na lagoa"
+  },
+  {
+    "id": "2024-day3-run-hha24trcc2112",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day3-run-hha24trcc2112.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day3-run-hha24trcc2112.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Três participantes correm lado a lado por uma estrada; duas usam camisetas escuras e uma usa top branco.",
+    "caption": "Corrida em boa companhia"
+  },
+  {
+    "id": "camp-2026-serra-tre-0660",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/serra-tre-0660.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/serra-tre-0660.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Quatro participantes sorriem junto às bicicletas em um dia de neblina no Endurance Camp 2026.",
+    "caption": "Juntos no alto da Serra"
+  },
+  {
+    "id": "2025-HHA25TRE1039",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE1039.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE1039.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Duas pessoas com roupas de ciclismo sorriem abraçadas junto a um guarda-corpo, com paisagem verde ao fundo.",
+    "caption": "A turma também se encontra nas pausas"
+  },
+  {
+    "id": "camp-2026-jantar-tre-0001",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/jantar-tre-0001.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/jantar-tre-0001.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Participantes conversam em uma mesa comprida durante o jantar do Endurance Camp 2026.",
+    "caption": "A conversa continua à mesa"
+  },
+  {
+    "id": "2025-HHA25TRE1076",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE1076.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE1076.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Duas pessoas sorriem juntas em um mirante; uma delas segura um capacete, com morros ao fundo.",
+    "caption": "Boas companhias no Camp"
+  },
+  {
+    "id": "2024-day4-bike-hha24trcc0094",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day4-bike-hha24trcc0094.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day4-bike-hha24trcc0094.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Dois ciclistas pedalam lado a lado por uma estrada, sorrindo, com vegetação ao fundo.",
+    "caption": "Sorrisos no pedal"
+  },
+  {
+    "id": "2025-HHA25TRE1104",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE1104.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE1104.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Participante com roupa de ciclismo sorri e ergue uma lata em um mirante com morros verdes ao fundo.",
+    "caption": "Um brinde aos bons momentos"
+  },
+  {
+    "id": "2024-day1-community-2024",
+    "year": "2024",
+    "src": "/assets/camp-2027/day1-community-2024.jpg",
+    "thumb": "/assets/camp-2027/2024/thumbs/existing-day1-community-2024.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Turma reunida no Camp no Endurance Camp 2024",
+    "caption": "Turma reunida no Camp"
+  },
+  {
+    "id": "2026-day2-community-2026",
+    "year": "2026",
+    "src": "/assets/camp-2027/day2-community-2026.jpg",
+    "thumb": "/assets/camp-2027/2026/thumbs/existing-day2-community-2026.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Atletas reunidos na Serra no Endurance Camp 2026",
+    "caption": "Atletas reunidos na Serra"
+  },
+  {
+    "id": "2024-day2-bikes-2024",
+    "year": "2024",
+    "src": "/assets/camp-2027/day2-bikes-2024.jpg",
+    "thumb": "/assets/camp-2027/2024/thumbs/existing-day2-bikes-2024.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Pelotão na região no Endurance Camp 2024",
+    "caption": "Pelotão na região"
+  },
+  {
+    "id": "2026-community-dinner-2026",
+    "year": "2026",
+    "src": "/assets/camp-2027/community-dinner-2026.jpg",
+    "thumb": "/assets/camp-2027/2026/thumbs/existing-community-dinner-2026.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Amizades à mesa no Endurance Camp 2026",
+    "caption": "Amizades à mesa"
+  },
+  {
+    "id": "2025-DSC_0300",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/DSC_0300.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/DSC_0300.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Participante de boné sorri e faz sinal de vitória com a mão enquanto corre pela estrada, sob céu azul.",
+    "caption": "Sorriso durante a corrida"
+  },
+  {
+    "id": "camp-2026-d1-tre-0738",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/d1-tre-0738.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/d1-tre-0738.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Grupo de atletas corre lado a lado por uma rua durante o Endurance Camp 2026.",
+    "caption": "Corrida com a turma"
+  },
+  {
+    "id": "2025-HHA25TRE0833",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0833.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0833.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Grupo de participantes corre por uma estrada de terra, com vegetação e céu azul ao fundo.",
+    "caption": "Corrida em boa companhia"
+  },
+  {
+    "id": "2024-day3-run-hha24trcc2430",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day3-run-hha24trcc2430.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day3-run-hha24trcc2430.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Dois participantes sentados no chão sorriem para a câmera, com uma garrafa de água ao lado.",
+    "caption": "Pausa para uma foto"
+  },
+  {
+    "id": "2025-HHA25TRE0933",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0933.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0933.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Participantes correm por uma estrada de terra, com morros verdes e aerogeradores ao fundo.",
+    "caption": "Treino com vista para os aerogeradores"
+  },
+  {
+    "id": "2024-workshop-workshop-com-ciclovil",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/workshop-workshop-com-ciclovil.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/workshop-workshop-com-ciclovil.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Grupo de participantes posa em uma sala com cadeiras, janelas e paredes verdes.",
+    "caption": "Encontro no workshop"
+  },
+  {
+    "id": "camp-2026-corrida-tre-0030",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/corrida-tre-0030.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/corrida-tre-0030.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Quatro atletas correm juntos sob a decoração suspensa de uma rua em Nova Veneza no Endurance Camp 2026.",
+    "caption": "Pelas ruas de Nova Veneza"
+  },
+  {
+    "id": "2024-day1-hha24tre1559",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day1-hha24tre1559.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day1-hha24tre1559.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Dois participantes correm pela rua enquanto uma pessoa à esquerda ergue a mão em direção a eles.",
+    "caption": "Incentivo no percurso"
+  },
+  {
+    "id": "camp-2026-serra-tre-0491",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/serra-tre-0491.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/serra-tre-0491.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Atleta pedala em uma curva da Serra do Rio do Rastro, com montanhas e neblina ao fundo, no Endurance Camp 2026.",
+    "caption": "Pedal entre as montanhas"
+  },
+  {
+    "id": "2025-DSC_0494",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/DSC_0494.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/DSC_0494.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Grupo de participantes corre sobre uma ponte baixa cercada de árvores e vegetação, sob céu azul.",
+    "caption": "Grupo atravessando a ponte"
+  },
+  {
+    "id": "camp-2026-jantar-tre-0078",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/jantar-tre-0078.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/jantar-tre-0078.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Dois participantes sorriem sentados à mesa no jantar do Endurance Camp 2026.",
+    "caption": "Boa companhia no jantar"
+  },
+  {
+    "id": "2025-HHA25TRE0574",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0574.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0574.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Três ciclistas percorrem uma estrada ondulada entre árvores e morros verdes.",
+    "caption": "Trecho de ciclismo em grupo"
+  },
+  {
+    "id": "2024-day3-swim-hha24trcc0002",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day3-swim-hha24trcc0002.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day3-swim-hha24trcc0002.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Participantes com toucas e óculos de natação conversam e sorriem dentro do rio, junto a uma boia laranja.",
+    "caption": "Conversa no rio"
+  },
+  {
+    "id": "2025-HHA25TRE0796",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0796.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0796.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Dois ciclistas pedalam lado a lado em uma estrada cercada por vegetação.",
+    "caption": "Dupla no percurso"
+  },
+  {
+    "id": "2024-day2-bike-hha24trcc1351",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day2-bike-hha24trcc1351.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day2-bike-hha24trcc1351.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Um grande grupo posa ao ar livre e várias pessoas levantam os braços; motocicletas aparecem à frente.",
+    "caption": "A turma reunida na serra"
+  },
+  {
+    "id": "camp-2026-oficina-tre-0006",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/oficina-tre-0006.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/oficina-tre-0006.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Participantes acompanham uma apresentação em uma sala de aula durante a oficina do Endurance Camp 2026.",
+    "caption": "Aprendizado com a turma"
+  },
+  {
+    "id": "2024-day1-hha24tre1616",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day1-hha24tre1616.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day1-hha24tre1616.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Participante corre por uma rua segurando um cone laranja sobre a cabeça.",
+    "caption": "Leveza pelo caminho"
+  },
+  {
+    "id": "camp-2026-d1-tre-0020",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/d1-tre-0020.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/d1-tre-0020.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Atletas de touca e roupa de natação se reúnem para ouvir orientações à beira da lagoa no Endurance Camp 2026.",
+    "caption": "Orientações antes da água"
+  },
+  {
+    "id": "2025-HHA_0277",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA_0277.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA_0277.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Participante de viseira corre por um trecho aberto, com estrada, campos e aerogeradores ao fundo.",
+    "caption": "Treino com a paisagem ao fundo"
+  },
+  {
+    "id": "camp-2026-corrida-tre-0330",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/corrida-tre-0330.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/corrida-tre-0330.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Grupo de corredores sorri e faz gestos para a câmera em um percurso arborizado do Endurance Camp 2026.",
+    "caption": "Sorrisos pelo caminho"
+  },
+  {
+    "id": "2025-DSC_0269",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/DSC_0269.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/DSC_0269.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Três participantes correm em estrada asfaltada, cercada de vegetação e flores amarelas, sob céu azul.",
+    "caption": "Corrida em estrada cercada de verde"
+  },
+  {
+    "id": "2024-day3-run-hha24trcc2418",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day3-run-hha24trcc2418.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day3-run-hha24trcc2418.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Participante de boné e óculos sorri segurando um cachorro em uma estrada cercada de árvores.",
+    "caption": "Companhia pelo caminho"
+  },
+  {
+    "id": "2025-DSC_0350",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/DSC_0350.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/DSC_0350.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Participante de camiseta clara e shorts escuros corre em estrada ladeada por vegetação e flores amarelas.",
+    "caption": "Corrida ao ar livre"
+  },
+  {
+    "id": "2024-day2-bike-hha24trcc10350",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day2-bike-hha24trcc10350.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day2-bike-hha24trcc10350.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Ciclista levanta um braço enquanto pedala numa estrada ondulada, com outro ciclista ao fundo.",
+    "caption": "Um aceno na estrada"
+  },
+  {
+    "id": "camp-2026-trial-tre-0032",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/trial-tre-0032.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/trial-tre-0032.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Ciclista passa por uma estrada diante de campos e montanhas durante o contrarrelógio do Endurance Camp 2026.",
+    "caption": "Ritmo no contrarrelógio"
+  },
+  {
+    "id": "2024-day3-swim-hha24trcc0738",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day3-swim-hha24trcc0738.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day3-swim-hha24trcc0738.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Participante sorri dentro do rio segurando uma criança no colo, com outras pessoas ao fundo.",
+    "caption": "Encontro na água"
+  },
+  {
+    "id": "camp-2026-jantar-tre-0085",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/jantar-tre-0085.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/jantar-tre-0085.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Dois participantes sorriem lado a lado à mesa durante o jantar do Endurance Camp 2026.",
+    "caption": "Encontros fora do treino"
+  },
+  {
+    "id": "2025-HHA25TRE0436",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0436.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0436.webp",
+    "width": 598,
+    "height": 900,
+    "alt": "Participante de regata clara e boné virado para trás corre por uma curva asfaltada, com árvores ao fundo.",
+    "caption": "Corrida na curva"
+  },
+  {
+    "id": "camp-2026-serra-tre-0010",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/serra-tre-0010.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/serra-tre-0010.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Atleta corre por uma curva da Serra do Rio do Rastro, com montanhas ao fundo, no Endurance Camp 2026.",
+    "caption": "Corrida na Serra"
+  },
+  {
+    "id": "2025-HHA25TRE0909",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0909.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0909.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Ciclista de capacete branco e camisa lilás sorri ao lado de uma bicicleta vermelha em uma ponte sobre um riacho.",
+    "caption": "Sorriso junto à bicicleta"
+  },
+  {
+    "id": "2024-day1-hha24tre0219",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day1-hha24tre0219.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day1-hha24tre0219.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Participante de touca vermelha e roupa de triathlon sai da água correndo, com outros nadadores e montanhas ao fundo.",
+    "caption": "Saída da água"
+  },
+  {
+    "id": "2025-HHA_0118",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA_0118.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA_0118.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Ciclista com capacete branco pedala uma bicicleta vermelha, com outras bicicletas e morros verdes ao fundo.",
+    "caption": "Pedal entre as paisagens do Camp"
+  },
+  {
+    "id": "2024-day4-bike-hha24trcc10809",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day4-bike-hha24trcc10809.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day4-bike-hha24trcc10809.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Dois ciclistas pedalam próximos, vistos de lado, com montanhas cobertas de vegetação ao fundo.",
+    "caption": "Pedal em dupla"
+  },
+  {
+    "id": "camp-2026-d1-tre-0605",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/d1-tre-0605.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/d1-tre-0605.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Atleta sai correndo da lagoa durante a atividade de aquathlon do Endurance Camp 2026.",
+    "caption": "Da água para o próximo desafio"
+  },
+  {
+    "id": "2024-day3-run-hha24trcc1427",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day3-run-hha24trcc1427.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day3-run-hha24trcc1427.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Grupo de participantes posa em frente a um coreto, com árvores e a luz do sol ao fundo.",
+    "caption": "A turma na praça"
+  },
+  {
+    "id": "camp-2026-corrida-tre-0469",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/corrida-tre-0469.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/corrida-tre-0469.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Três atletas correm juntas por uma estrada cercada de verde no Endurance Camp 2026.",
+    "caption": "Quilômetros em boa companhia"
+  },
+  {
+    "id": "2025-HHA_0150",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA_0150.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA_0150.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Ciclista de roupa escura pedala uma bicicleta azul em um trecho cercado por vegetação.",
+    "caption": "Mais uma volta de bike"
+  },
+  {
+    "id": "camp-2026-oficina-tre-0029",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/oficina-tre-0029.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/oficina-tre-0029.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Participante com um computador no colo faz um gesto positivo durante a oficina do Endurance Camp 2026.",
+    "caption": "Troca de experiências"
+  },
+  {
+    "id": "2025-HHA_0194",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA_0194.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA_0194.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Participante de boné branco corre em um trecho cercado por vegetação, com morros ao fundo.",
+    "caption": "Corrida entre os morros"
+  },
+  {
+    "id": "2024-day2-bike-hha24trcc0030",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day2-bike-hha24trcc0030.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day2-bike-hha24trcc0030.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Três ciclistas pedalam em sequência numa estrada asfaltada ao lado de uma área verde.",
+    "caption": "Na mesma estrada"
+  },
+  {
+    "id": "2025-HHA_0234",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA_0234.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA_0234.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Participante de boné e shorts verdes corre ao lado de uma estrada, com vegetação ao fundo.",
+    "caption": "Ritmo nos caminhos do Camp"
+  },
+  {
+    "id": "2024-day3-swim-hha24trcc0227",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day3-swim-hha24trcc0227.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day3-swim-hha24trcc0227.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Duas participantes com toucas e óculos nadam próximas uma da outra no rio.",
+    "caption": "Braçadas em companhia"
+  },
+  {
+    "id": "camp-2026-jantar-tre-0099",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/jantar-tre-0099.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/jantar-tre-0099.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Dois participantes sorriem para a câmera durante o jantar do Endurance Camp 2026.",
+    "caption": "O Camp também acontece à mesa"
+  },
+  {
+    "id": "2024-day1-hha24tre0422",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day1-hha24tre0422.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day1-hha24tre0422.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Participante com roupa escura de triathlon corre por uma rua, com outros corredores ao fundo.",
+    "caption": "Passadas pela cidade"
+  },
+  {
+    "id": "camp-2026-trial-tre-0186",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/trial-tre-0186.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/trial-tre-0186.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Ciclista com camiseta vermelha pedala diante de campos e montanhas no Endurance Camp 2026.",
+    "caption": "Pedal com vista aberta"
+  },
+  {
+    "id": "2025-HHA25TRE0886",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0886.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0886.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Participante corre por uma estrada de terra entre campos verdes, sob céu azul.",
+    "caption": "Passadas ao ar livre"
+  },
+  {
+    "id": "camp-2026-d1-tre-0670",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/d1-tre-0670.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/d1-tre-0670.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Atleta corre sorrindo por uma rua durante a atividade de aquathlon do Endurance Camp 2026.",
+    "caption": "Energia para seguir"
+  },
+  {
+    "id": "2025-HHA25TRE0978",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0978.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0978.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Participante de boné e shorts verdes corre por uma estrada de terra sob céu azul.",
+    "caption": "Corrida pelos caminhos do Camp"
+  },
+  {
+    "id": "2024-day4-bike-hha24trcc10734",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day4-bike-hha24trcc10734.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day4-bike-hha24trcc10734.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Ciclista passa por uma estrada ao lado de um campo iluminado pelo sol, com montanhas ao fundo.",
+    "caption": "Pedal com vista"
+  },
+  {
+    "id": "2025-DSC_0404",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/DSC_0404.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/DSC_0404.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Dois participantes correm em sequência por uma estrada asfaltada ao lado de vegetação com flores amarelas.",
+    "caption": "Participantes no percurso de corrida"
+  },
+  {
+    "id": "2024-day3-swim-hha24trcc0247",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day3-swim-hha24trcc0247.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day3-swim-hha24trcc0247.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Participante de touca rosa e óculos nada crawl no rio, com uma boia laranja ao lado.",
+    "caption": "Natação no rio"
+  },
+  {
+    "id": "camp-2026-corrida-tre-0747",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/corrida-tre-0747.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/corrida-tre-0747.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Duas atletas correm por uma estrada e uma delas acena para a câmera no Endurance Camp 2026.",
+    "caption": "Um aceno no percurso"
+  },
+  {
+    "id": "2024-day4-bike-hha24trcc0009",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day4-bike-hha24trcc0009.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day4-bike-hha24trcc0009.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Grupo de participantes posa com bicicletas em frente a um coreto na praça.",
+    "caption": "A turma e as bikes"
+  },
+  {
+    "id": "camp-2026-serra-dsc-0251",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/serra-dsc-0251.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/serra-dsc-0251.webp",
+    "width": 506,
+    "height": 900,
+    "alt": "Ciclista de capacete pedala pela Serra do Rio do Rastro, cercada por montanhas verdes, no Endurance Camp 2026.",
+    "caption": "Subida na Serra do Rio do Rastro"
+  },
+  {
+    "id": "2025-HHA25TRE0383",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0383.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0383.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Participantes com camisetas claras correm em sequência por uma curva de estrada, com vegetação ao fundo.",
+    "caption": "Companhia no treino de corrida"
+  },
+  {
+    "id": "camp-2026-jantar-tre-0106",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/jantar-tre-0106.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/jantar-tre-0106.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Dois participantes posam juntos à mesa durante o jantar do Endurance Camp 2026.",
+    "caption": "Mais um encontro para guardar"
+  },
+  {
+    "id": "2025-HHA25TRE0477",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0477.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0477.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Participante de óculos esportivos, camiseta clara e tênis amarelos corre por uma curva de estrada.",
+    "caption": "Passadas no asfalto"
+  },
+  {
+    "id": "2024-day2-bike-hha24trcc10119",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day2-bike-hha24trcc10119.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day2-bike-hha24trcc10119.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Ciclista percorre uma curva de estrada na montanha, junto a um muro baixo, sob céu azul.",
+    "caption": "Curvas da serra"
+  },
+  {
+    "id": "2025-HHA25TRE0526",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0526.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0526.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Participante de viseira preta, óculos esportivos e camiseta do Endurance Camp aparece em primeiro plano durante a corrida.",
+    "caption": "Retrato durante a corrida"
+  },
+  {
+    "id": "2024-day3-swim-hha24trcc0146",
+    "year": "2024",
+    "src": "/assets/camp-2027/2024/day3-swim-hha24trcc0146.webp",
+    "thumb": "/assets/camp-2027/2024/thumbs/day3-swim-hha24trcc0146.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Participante de touca vermelha e óculos nada crawl na água verde do rio, com um braço fora da água.",
+    "caption": "Mais uma braçada"
+  },
+  {
+    "id": "camp-2026-trial-hha-0077",
+    "year": "2026",
+    "src": "/assets/camp-2027/2026/trial-hha-0077.webp",
+    "thumb": "/assets/camp-2027/2026/thumbs/trial-hha-0077.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Ciclista de capacete branco usa o apoio aerodinâmico da bicicleta durante o contrarrelógio do Endurance Camp 2026.",
+    "caption": "Foco no pedal"
+  },
+  {
+    "id": "2024-day4-bikes-2024",
+    "year": "2024",
+    "src": "/assets/camp-2027/day4-bikes-2024.jpg",
+    "thumb": "/assets/camp-2027/2024/thumbs/existing-day4-bikes-2024.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Pedal em Nova Veneza no Endurance Camp 2024",
+    "caption": "Pedal em Nova Veneza"
+  },
+  {
+    "id": "2026-community-friends-2026",
+    "year": "2026",
+    "src": "/assets/camp-2027/community-friends-2026.jpg",
+    "thumb": "/assets/camp-2027/2026/thumbs/existing-community-friends-2026.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Momentos fora dos treinos no Endurance Camp 2026",
+    "caption": "Momentos fora dos treinos"
+  },
+  {
+    "id": "2025-DSC_0453",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/DSC_0453.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/DSC_0453.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Participante de óculos esportivos e shorts verdes corre sobre uma ponte baixa cercada de árvores, sob céu azul.",
+    "caption": "Corrida entre as árvores"
+  },
+  {
+    "id": "2026-day2-friends-2026",
+    "year": "2026",
+    "src": "/assets/camp-2027/day2-friends-2026.jpg",
+    "thumb": "/assets/camp-2027/2026/thumbs/existing-day2-friends-2026.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Abraço após o desafio no Endurance Camp 2026",
+    "caption": "Abraço após o desafio"
+  },
+  {
+    "id": "2025-DSC_0521",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/DSC_0521.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/DSC_0521.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Participante de regata clara e boné escuro corre sobre uma ponte cercada de árvores e vegetação.",
+    "caption": "Corrida na ponte"
+  },
+  {
+    "id": "2024-day1-swim-2024",
+    "year": "2024",
+    "src": "/assets/camp-2027/day1-swim-2024.jpg",
+    "thumb": "/assets/camp-2027/2024/thumbs/existing-day1-swim-2024.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Natação em águas abertas no Endurance Camp 2024",
+    "caption": "Natação em águas abertas"
+  },
+  {
+    "id": "2025-HHA25TRE0444",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0444.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0444.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Ciclista com capacete branco e camisa lilás pedala uma bicicleta vermelha em estrada cercada por vegetação.",
+    "caption": "Ciclismo na estrada"
+  },
+  {
+    "id": "2026-day3-friends-2026",
+    "year": "2026",
+    "src": "/assets/camp-2027/day3-friends-2026.jpg",
+    "thumb": "/assets/camp-2027/2026/thumbs/existing-day3-friends-2026.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Corrida em companhia no Endurance Camp 2026",
+    "caption": "Corrida em companhia"
+  },
+  {
+    "id": "2026-day3-runners-2026",
+    "year": "2026",
+    "src": "/assets/camp-2027/day3-runners-2026.jpg",
+    "thumb": "/assets/camp-2027/2026/thumbs/existing-day3-runners-2026.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Treino em grupo no Endurance Camp 2026",
+    "caption": "Treino em grupo"
+  },
+  {
+    "id": "2025-HHA25TRE0473",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0473.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0473.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Ciclista com capacete colorido e roupa preta pedala apoiado no guidão aerodinâmico, com morros verdes ao fundo.",
+    "caption": "Pedal em posição aerodinâmica"
+  },
+  {
+    "id": "2026-day3-trail-2026",
+    "year": "2026",
+    "src": "/assets/camp-2027/day3-trail-2026.jpg",
+    "thumb": "/assets/camp-2027/2026/thumbs/existing-day3-trail-2026.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Caminhos de Nova Veneza no Endurance Camp 2026",
+    "caption": "Caminhos de Nova Veneza"
+  },
+  {
+    "id": "2025-HHA25TRE0523",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0523.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0523.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Ciclista com capacete rosa à frente de outros participantes em estrada arborizada, com um carro vermelho à direita.",
+    "caption": "Ciclistas no percurso"
+  },
+  {
+    "id": "2025-HHA25TRE0622",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0622.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0622.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Ciclista com camisa lilás e sapatilhas rosas pedala em posição aerodinâmica, com outros participantes ao fundo.",
+    "caption": "Concentração no pedal"
+  },
+  {
+    "id": "2026-hero-run",
+    "year": "2026",
+    "src": "/assets/camp-2027/hero-run.jpg",
+    "thumb": "/assets/camp-2027/2026/thumbs/existing-hero-run.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Corrida entre amigos no Endurance Camp 2026",
+    "caption": "Corrida entre amigos"
+  },
+  {
+    "id": "2026-day1-run-2026",
+    "year": "2026",
+    "src": "/assets/camp-2027/day1-run-2026.jpg",
+    "thumb": "/assets/camp-2027/2026/thumbs/existing-day1-run-2026.webp",
+    "width": 600,
+    "height": 900,
+    "alt": "Corrida durante o Camp no Endurance Camp 2026",
+    "caption": "Corrida durante o Camp"
+  },
+  {
+    "id": "2025-HHA25TRE0667",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0667.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0667.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Ciclista de roupa preta em uma estrada cercada por vegetação e morros.",
+    "caption": "Pedal entre os morros"
+  },
+  {
+    "id": "2026-day4-trial-2026",
+    "year": "2026",
+    "src": "/assets/camp-2027/day4-trial-2026.jpg",
+    "thumb": "/assets/camp-2027/2026/thumbs/existing-day4-trial-2026.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Contrarrelógio da edição 2026 no Endurance Camp 2026",
+    "caption": "Contrarrelógio da edição 2026"
+  },
+  {
+    "id": "2025-HHA25TRE0711",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0711.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0711.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Ciclista de capacete branco pedala à frente de outro participante, com um carro ao lado e morros ao fundo.",
+    "caption": "Ciclismo na estrada arborizada"
+  },
+  {
+    "id": "2025-HHA25TRE0754",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0754.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0754.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Ciclista de roupa preta pedala em posição aerodinâmica em uma estrada com morros verdes ao fundo.",
+    "caption": "Ciclista em ação"
+  },
+  {
+    "id": "2026-day4-training-2026",
+    "year": "2026",
+    "src": "/assets/camp-2027/day4-training-2026.jpg",
+    "thumb": "/assets/camp-2027/2026/thumbs/existing-day4-training-2026.webp",
+    "width": 900,
+    "height": 598,
+    "alt": "Pedal do Camp no Endurance Camp 2026",
+    "caption": "Pedal do Camp"
+  },
+  {
+    "id": "2025-HHA25TRE0847",
+    "year": "2025",
+    "src": "/assets/camp-2027/2025/HHA25TRE0847.webp",
+    "thumb": "/assets/camp-2027/2025/thumbs/HHA25TRE0847.webp",
+    "width": 900,
+    "height": 600,
+    "alt": "Ciclista com capacete preto pedala em uma estrada, com árvores e morros ao fundo.",
+    "caption": "Detalhe do pedal"
+  }
+]

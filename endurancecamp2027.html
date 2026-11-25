@@ -122,7 +122,7 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
 .gallery-photo:hover img,.gallery-photo:focus-visible img{transform:scale(1.045)}
 .gallery-photo[hidden]{display:none!important}
 .photo-caption{position:absolute;left:0;right:0;bottom:0;padding:35px 15px 14px;background:linear-gradient(transparent,#000b);color:#fff;font-size:13px;font-weight:650;line-height:1.35;display:flex;align-items:end;justify-content:space-between;gap:10px}
-.photo-caption small{font-size:11px}
+.photo-caption small{font-size:12px}
 .photo-lightbox{border:0;padding:16px;background:#121414;color:#fff;max-width:min(96vw,1100px);max-height:94vh;border-radius:9px;overflow:auto}
 .photo-lightbox::backdrop{background:#000d}
 .photo-lightbox img{display:block;width:auto;max-width:100%;height:auto;max-height:80vh;object-fit:contain}
@@ -176,6 +176,84 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
  .album-2025 .gallery-photo:nth-child(1),.album-2025 .gallery-photo:nth-child(2){grid-column:span 2}
  .album-2025 .photo-caption{font-size:12px}
 }
+
+/* Galeria em movimento: as faixas inclinam; os controles permanecem retos. */
+.gallery{overflow:hidden;overflow:clip;padding-bottom:88px}
+.gallery [hidden]{display:none!important}
+.gallery-tools{align-items:flex-end;gap:24px}
+.gallery-tools>div:first-child{min-width:0}
+.gallery-tools p{font-size:14px}
+.gallery-tools .gallery-count{margin-top:6px;font-size:12px;color:#727770}
+.gallery-actions{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex-wrap:wrap}
+.gallery-filters{margin-top:0}
+.gallery-filters .filter-photo{font-size:14px;padding:9px 15px}
+.filter-photo:disabled{opacity:.4;cursor:default}
+.gallery-motion{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:42px;border:1px solid #b85108;border-radius:24px;background:transparent;color:#8e3c02;padding:9px 15px;font-size:14px;font-weight:700;white-space:nowrap}
+.gallery-motion:before{content:"";width:9px;height:12px;border-left:3px solid currentColor;border-right:3px solid currentColor;box-sizing:border-box}
+.gallery-motion[aria-pressed="true"]:before{width:0;height:0;border:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid currentColor}
+.gallery-motion:hover{background:#ff8012;color:#191b19;border-color:#ff8012}
+.gallery-motion:disabled{cursor:default;opacity:.7;background:transparent;color:#626968;border-color:#aeb2aa}
+.gallery-motion:disabled:before{border:0;width:9px;height:9px;border-radius:50%;background:currentColor}
+.diagonal-gallery{--ribbon-card-height:clamp(152px,17vw,238px);--ribbon-gap:18px;position:relative;overflow:hidden;overflow:clip;contain:paint;padding:calc(7.5vw + 18px) 0;margin-top:18px;isolation:isolate}
+.gallery-ribbons{display:flex;flex-direction:column;gap:var(--ribbon-gap)}
+.gallery-ribbon{position:relative;width:120%;margin-left:-10%;height:var(--ribbon-card-height);transform:rotate(-7deg);transform-origin:center;direction:ltr}
+.ribbon-track{display:flex;width:max-content;will-change:transform}
+.ribbon-group{position:relative;display:flex;flex:0 0 auto;gap:var(--ribbon-gap);padding-right:var(--ribbon-gap);width:max-content;box-sizing:border-box}
+.gallery-card{display:block;flex:0 0 auto;position:relative;height:var(--ribbon-card-height);width:calc(var(--ribbon-card-height) * var(--photo-ratio,1.5));min-width:0;margin:0;padding:0;border:0;border-radius:5px;background:#d7dbd2;overflow:hidden;cursor:zoom-in;font:inherit;box-shadow:0 5px 16px #11181516}
+.gallery-card img{width:100%;height:100%;object-fit:cover;object-position:center 46%;transition:transform .35s ease}
+.gallery-card.is-portrait img{object-position:center 40%}
+.gallery-card .photo-caption{padding:40px 14px 12px;font-size:13px;gap:10px;text-shadow:0 1px 2px #0006}
+.gallery-card .photo-caption>span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.gallery-card .photo-caption small{flex:0 0 auto;font-size:12px;font-weight:800;letter-spacing:.08em}
+.gallery-card:focus-visible{outline:4px solid #ff8012;outline-offset:-4px}
+.gallery-card:focus-visible img{transform:none}
+.gallery-footnote{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:8px;border-top:1px solid #c9cbc5;padding-top:20px;color:#676b68;font-size:14px}
+.gallery-footnote strong{font-family:Montserrat,Arial,sans-serif;font-weight:800;color:#313630;font-size:12px;letter-spacing:.09em;text-transform:uppercase}
+.gallery-fallback{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:35px}
+.gallery-fallback .gallery-photo{display:block;aspect-ratio:3/2}
+.gallery-fallback .photo-caption{font-size:13px}
+.gallery-empty{padding:35px 0;color:#626968;font-size:16px}
+.photo-lightbox{width:min(96vw,1180px);max-width:1180px;max-height:94vh;max-height:94dvh;padding:18px;border:1px solid #ffffff18;border-radius:10px;background:#111513;color:#fff;overflow:auto}
+.photo-lightbox[open]{display:flex;flex-direction:column;gap:16px}
+.photo-lightbox::backdrop{background:#07100df0}
+.lightbox-stage{position:relative;display:grid;place-items:center;flex:0 1 auto;height:min(73vh,810px);min-height:180px;background:#0a100d;border-radius:4px;overflow:hidden}
+.photo-lightbox .lightbox-image{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}
+.lightbox-close{right:26px;top:26px;width:44px;height:44px;z-index:3;border:1px solid #ffffff33;background:#111513e8}
+.lightbox-footer{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.lightbox-description{min-width:0;flex:1}
+.photo-lightbox .lightbox-caption{margin:0;color:#f3f5ef;font-size:15px;line-height:1.5}
+.photo-lightbox .lightbox-counter{margin:5px 0 0;color:#aeb8b0;font-size:12px}
+.lightbox-navigation{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.lightbox-navigation button{min-height:42px;border:1px solid #68736a;border-radius:24px;background:transparent;color:#fff;padding:10px 17px;font-size:14px;font-weight:650}
+.lightbox-navigation button:hover{background:#ff8012;border-color:#ff8012;color:#111513}
+.lightbox-navigation button:disabled{opacity:.35;cursor:default}
+.lightbox-status{position:absolute;left:20px;right:20px;bottom:20px;text-align:center;background:#111513e8;padding:12px;border-radius:4px}
+@media(hover:hover){.gallery-card:hover img{transform:scale(1.035)}}
+@media(max-width:900px){.gallery-tools{align-items:flex-start;flex-direction:column}.gallery-actions{justify-content:flex-start}.gallery-fallback{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:720px){
+ .gallery{padding-bottom:65px}
+ .gallery-tools{display:flex;gap:18px}
+ .gallery-actions{width:100%;justify-content:space-between;gap:12px}
+ .gallery-filters{gap:5px}
+ .gallery-filters .filter-photo{font-size:14px;padding:8px 12px}
+ .gallery-motion{font-size:14px;min-height:39px;padding:8px 13px}
+ .diagonal-gallery{--ribbon-card-height:168px;--ribbon-gap:12px;margin-top:10px;padding:calc(7.5vw + 18px) 0}
+ .gallery-card{border-radius:4px}
+ .gallery-card .photo-caption{padding:34px 10px 10px;font-size:12px;gap:7px}
+ .gallery-card .photo-caption small{font-size:12px}
+ .gallery-footnote{align-items:flex-start;flex-direction:column;gap:7px;font-size:13px}
+ .gallery-fallback{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:26px}
+ .gallery-fallback .photo-caption{font-size:11px}
+ .photo-lightbox{width:96vw;padding:10px;gap:12px}
+ .lightbox-stage{height:65vh;height:65dvh;min-height:150px}
+ .lightbox-close{top:18px;right:18px;width:40px;height:40px}
+ .lightbox-footer{align-items:stretch;flex-direction:column;gap:12px}
+ .lightbox-navigation{justify-content:space-between}
+ .lightbox-navigation button{padding:9px 20px}
+ .photo-lightbox .lightbox-caption{font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){.gallery-card img{transition:none}.gallery-card:hover img{transform:none}}
+
 </style>
 </head>
 <body>
@@ -223,52 +301,46 @@ h1,h2,h3,h4{font-family:'Montserrat',Arial,Helvetica,sans-serif;letter-spacing:-
  </div>
 </section>
 <section class="gallery" id="galeria">
- <div class="container"><div class="gallery-head"><div><p class="kicker reveal">03 / FOTOS DO CAMP</p><h2 class="display reveal">A GENTE<br><em>VIVEU ISSO.</em></h2></div><p>Histórias reais de quem fez parte das edições de 2024, 2025 e 2026.</p></div>
- <div class="gallery-tools"><p>Três edições, muita gente e vários momentos para lembrar.</p><div class="gallery-filters" role="group" aria-label="Filtrar fotos por edição"><button class="filter-photo is-selected" type="button" data-year="all" aria-pressed="true">Todas</button><button class="filter-photo" type="button" data-year="2026" aria-pressed="false">2026</button><button class="filter-photo" type="button" data-year="2025" aria-pressed="false">2025</button><button class="filter-photo" type="button" data-year="2024" aria-pressed="false">2024</button></div></div><section class="album-group album-2025-group" aria-label="Fotos da edição 2025">
- <div class="album-heading"><div><p class="kicker">EDIÇÃO 2025 / NOVA VENEZA</p><h3>Mais histórias para lembrar.</h3></div><p>Corrida, pedal e boas companhias. Momentos que fizeram parte da edição de 2025.</p></div>
- <div class="camp-gallery album-gallery album-2025">
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0327.webp" data-caption="Corrida em grupo · Camp 2025" aria-label="Ampliar foto: Corrida em grupo, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0327.webp" width="900" height="598" alt="Grupo de participantes corre por uma curva asfaltada; algumas pessoas sorriem, com árvores e vegetação ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Corrida em grupo<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0883.webp" data-caption="Sorrisos na pausa do pedal · Camp 2025" aria-label="Ampliar foto: Sorrisos na pausa do pedal, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0883.webp" width="900" height="600" alt="Duas pessoas de capacete sorriem ao lado de suas bicicletas sobre uma ponte, com um riacho e árvores ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Sorrisos na pausa do pedal<small>2025</small></span></button>
-  <button class="gallery-photo is-portrait" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE1039.webp" data-caption="A turma também se encontra nas pausas · Camp 2025" aria-label="Ampliar foto: A turma também se encontra nas pausas, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE1039.webp" width="600" height="900" alt="Duas pessoas com roupas de ciclismo sorriem abraçadas junto a um guarda-corpo, com paisagem verde ao fundo." loading="lazy" decoding="async"><span class="photo-caption">A turma também se encontra nas pausas<small>2025</small></span></button>
-  <button class="gallery-photo is-portrait" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE1076.webp" data-caption="Boas companhias no Camp · Camp 2025" aria-label="Ampliar foto: Boas companhias no Camp, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE1076.webp" width="600" height="900" alt="Duas pessoas sorriem juntas em um mirante; uma delas segura um capacete, com morros ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Boas companhias no Camp<small>2025</small></span></button>
-  <button class="gallery-photo is-portrait" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE1104.webp" data-caption="Um brinde aos bons momentos · Camp 2025" aria-label="Ampliar foto: Um brinde aos bons momentos, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE1104.webp" width="600" height="900" alt="Participante com roupa de ciclismo sorri e ergue uma lata em um mirante com morros verdes ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Um brinde aos bons momentos<small>2025</small></span></button>
-  <button class="gallery-photo is-portrait" type="button" data-year="2025" data-src="/assets/camp-2027/2025/DSC_0300.webp" data-caption="Sorriso durante a corrida · Camp 2025" aria-label="Ampliar foto: Sorriso durante a corrida, edição 2025"><img src="/assets/camp-2027/2025/thumbs/DSC_0300.webp" width="600" height="900" alt="Participante de boné sorri e faz sinal de vitória com a mão enquanto corre pela estrada, sob céu azul." loading="lazy" decoding="async"><span class="photo-caption">Sorriso durante a corrida<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0833.webp" data-caption="Corrida em boa companhia · Camp 2025" aria-label="Ampliar foto: Corrida em boa companhia, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0833.webp" width="900" height="600" alt="Grupo de participantes corre por uma estrada de terra, com vegetação e céu azul ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Corrida em boa companhia<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0933.webp" data-caption="Treino com vista para os aerogeradores · Camp 2025" aria-label="Ampliar foto: Treino com vista para os aerogeradores, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0933.webp" width="900" height="600" alt="Participantes correm por uma estrada de terra, com morros verdes e aerogeradores ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Treino com vista para os aerogeradores<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/DSC_0494.webp" data-caption="Grupo atravessando a ponte · Camp 2025" aria-label="Ampliar foto: Grupo atravessando a ponte, edição 2025"><img src="/assets/camp-2027/2025/thumbs/DSC_0494.webp" width="900" height="600" alt="Grupo de participantes corre sobre uma ponte baixa cercada de árvores e vegetação, sob céu azul." loading="lazy" decoding="async"><span class="photo-caption">Grupo atravessando a ponte<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0574.webp" data-caption="Trecho de ciclismo em grupo · Camp 2025" aria-label="Ampliar foto: Trecho de ciclismo em grupo, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0574.webp" width="900" height="600" alt="Três ciclistas percorrem uma estrada ondulada entre árvores e morros verdes." loading="lazy" decoding="async"><span class="photo-caption">Trecho de ciclismo em grupo<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0796.webp" data-caption="Dupla no percurso · Camp 2025" aria-label="Ampliar foto: Dupla no percurso, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0796.webp" width="900" height="600" alt="Dois ciclistas pedalam lado a lado em uma estrada cercada por vegetação." loading="lazy" decoding="async"><span class="photo-caption">Dupla no percurso<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA_0277.webp" data-caption="Treino com a paisagem ao fundo · Camp 2025" aria-label="Ampliar foto: Treino com a paisagem ao fundo, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA_0277.webp" width="900" height="598" alt="Participante de viseira corre por um trecho aberto, com estrada, campos e aerogeradores ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Treino com a paisagem ao fundo<small>2025</small></span></button>
-  <button class="gallery-photo is-portrait" type="button" data-year="2025" data-src="/assets/camp-2027/2025/DSC_0269.webp" data-caption="Corrida em estrada cercada de verde · Camp 2025" aria-label="Ampliar foto: Corrida em estrada cercada de verde, edição 2025"><img src="/assets/camp-2027/2025/thumbs/DSC_0269.webp" width="600" height="900" alt="Três participantes correm em estrada asfaltada, cercada de vegetação e flores amarelas, sob céu azul." loading="lazy" decoding="async"><span class="photo-caption">Corrida em estrada cercada de verde<small>2025</small></span></button>
-  <button class="gallery-photo is-portrait" type="button" data-year="2025" data-src="/assets/camp-2027/2025/DSC_0350.webp" data-caption="Corrida ao ar livre · Camp 2025" aria-label="Ampliar foto: Corrida ao ar livre, edição 2025"><img src="/assets/camp-2027/2025/thumbs/DSC_0350.webp" width="600" height="900" alt="Participante de camiseta clara e shorts escuros corre em estrada ladeada por vegetação e flores amarelas." loading="lazy" decoding="async"><span class="photo-caption">Corrida ao ar livre<small>2025</small></span></button>
-  <button class="gallery-photo is-portrait" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0436.webp" data-caption="Corrida na curva · Camp 2025" aria-label="Ampliar foto: Corrida na curva, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0436.webp" width="598" height="900" alt="Participante de regata clara e boné virado para trás corre por uma curva asfaltada, com árvores ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Corrida na curva<small>2025</small></span></button>
-  <button class="gallery-photo is-portrait" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0909.webp" data-caption="Sorriso junto à bicicleta · Camp 2025" aria-label="Ampliar foto: Sorriso junto à bicicleta, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0909.webp" width="600" height="900" alt="Ciclista de capacete branco e camisa lilás sorri ao lado de uma bicicleta vermelha em uma ponte sobre um riacho." loading="lazy" decoding="async"><span class="photo-caption">Sorriso junto à bicicleta<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA_0118.webp" data-caption="Pedal entre as paisagens do Camp · Camp 2025" aria-label="Ampliar foto: Pedal entre as paisagens do Camp, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA_0118.webp" width="900" height="598" alt="Ciclista com capacete branco pedala uma bicicleta vermelha, com outras bicicletas e morros verdes ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Pedal entre as paisagens do Camp<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA_0150.webp" data-caption="Mais uma volta de bike · Camp 2025" aria-label="Ampliar foto: Mais uma volta de bike, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA_0150.webp" width="900" height="598" alt="Ciclista de roupa escura pedala uma bicicleta azul em um trecho cercado por vegetação." loading="lazy" decoding="async"><span class="photo-caption">Mais uma volta de bike<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA_0194.webp" data-caption="Corrida entre os morros · Camp 2025" aria-label="Ampliar foto: Corrida entre os morros, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA_0194.webp" width="900" height="598" alt="Participante de boné branco corre em um trecho cercado por vegetação, com morros ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Corrida entre os morros<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA_0234.webp" data-caption="Ritmo nos caminhos do Camp · Camp 2025" aria-label="Ampliar foto: Ritmo nos caminhos do Camp, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA_0234.webp" width="900" height="598" alt="Participante de boné e shorts verdes corre ao lado de uma estrada, com vegetação ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Ritmo nos caminhos do Camp<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0886.webp" data-caption="Passadas ao ar livre · Camp 2025" aria-label="Ampliar foto: Passadas ao ar livre, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0886.webp" width="900" height="600" alt="Participante corre por uma estrada de terra entre campos verdes, sob céu azul." loading="lazy" decoding="async"><span class="photo-caption">Passadas ao ar livre<small>2025</small></span></button>
-  <button class="gallery-photo is-portrait" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0978.webp" data-caption="Corrida pelos caminhos do Camp · Camp 2025" aria-label="Ampliar foto: Corrida pelos caminhos do Camp, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0978.webp" width="600" height="900" alt="Participante de boné e shorts verdes corre por uma estrada de terra sob céu azul." loading="lazy" decoding="async"><span class="photo-caption">Corrida pelos caminhos do Camp<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/DSC_0404.webp" data-caption="Participantes no percurso de corrida · Camp 2025" aria-label="Ampliar foto: Participantes no percurso de corrida, edição 2025"><img src="/assets/camp-2027/2025/thumbs/DSC_0404.webp" width="900" height="600" alt="Dois participantes correm em sequência por uma estrada asfaltada ao lado de vegetação com flores amarelas." loading="lazy" decoding="async"><span class="photo-caption">Participantes no percurso de corrida<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0383.webp" data-caption="Companhia no treino de corrida · Camp 2025" aria-label="Ampliar foto: Companhia no treino de corrida, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0383.webp" width="900" height="598" alt="Participantes com camisetas claras correm em sequência por uma curva de estrada, com vegetação ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Companhia no treino de corrida<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0477.webp" data-caption="Passadas no asfalto · Camp 2025" aria-label="Ampliar foto: Passadas no asfalto, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0477.webp" width="900" height="598" alt="Participante de óculos esportivos, camiseta clara e tênis amarelos corre por uma curva de estrada." loading="lazy" decoding="async"><span class="photo-caption">Passadas no asfalto<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0526.webp" data-caption="Retrato durante a corrida · Camp 2025" aria-label="Ampliar foto: Retrato durante a corrida, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0526.webp" width="900" height="598" alt="Participante de viseira preta, óculos esportivos e camiseta do Endurance Camp aparece em primeiro plano durante a corrida." loading="lazy" decoding="async"><span class="photo-caption">Retrato durante a corrida<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/DSC_0453.webp" data-caption="Corrida entre as árvores · Camp 2025" aria-label="Ampliar foto: Corrida entre as árvores, edição 2025"><img src="/assets/camp-2027/2025/thumbs/DSC_0453.webp" width="900" height="600" alt="Participante de óculos esportivos e shorts verdes corre sobre uma ponte baixa cercada de árvores, sob céu azul." loading="lazy" decoding="async"><span class="photo-caption">Corrida entre as árvores<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/DSC_0521.webp" data-caption="Corrida na ponte · Camp 2025" aria-label="Ampliar foto: Corrida na ponte, edição 2025"><img src="/assets/camp-2027/2025/thumbs/DSC_0521.webp" width="900" height="600" alt="Participante de regata clara e boné escuro corre sobre uma ponte cercada de árvores e vegetação." loading="lazy" decoding="async"><span class="photo-caption">Corrida na ponte<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0444.webp" data-caption="Ciclismo na estrada · Camp 2025" aria-label="Ampliar foto: Ciclismo na estrada, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0444.webp" width="900" height="600" alt="Ciclista com capacete branco e camisa lilás pedala uma bicicleta vermelha em estrada cercada por vegetação." loading="lazy" decoding="async"><span class="photo-caption">Ciclismo na estrada<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0473.webp" data-caption="Pedal em posição aerodinâmica · Camp 2025" aria-label="Ampliar foto: Pedal em posição aerodinâmica, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0473.webp" width="900" height="600" alt="Ciclista com capacete colorido e roupa preta pedala apoiado no guidão aerodinâmico, com morros verdes ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Pedal em posição aerodinâmica<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0523.webp" data-caption="Ciclistas no percurso · Camp 2025" aria-label="Ampliar foto: Ciclistas no percurso, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0523.webp" width="900" height="600" alt="Ciclista com capacete rosa à frente de outros participantes em estrada arborizada, com um carro vermelho à direita." loading="lazy" decoding="async"><span class="photo-caption">Ciclistas no percurso<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0622.webp" data-caption="Concentração no pedal · Camp 2025" aria-label="Ampliar foto: Concentração no pedal, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0622.webp" width="900" height="600" alt="Ciclista com camisa lilás e sapatilhas rosas pedala em posição aerodinâmica, com outros participantes ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Concentração no pedal<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0667.webp" data-caption="Pedal entre os morros · Camp 2025" aria-label="Ampliar foto: Pedal entre os morros, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0667.webp" width="900" height="600" alt="Ciclista de roupa preta em uma estrada cercada por vegetação e morros." loading="lazy" decoding="async"><span class="photo-caption">Pedal entre os morros<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0711.webp" data-caption="Ciclismo na estrada arborizada · Camp 2025" aria-label="Ampliar foto: Ciclismo na estrada arborizada, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0711.webp" width="900" height="600" alt="Ciclista de capacete branco pedala à frente de outro participante, com um carro ao lado e morros ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Ciclismo na estrada arborizada<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0754.webp" data-caption="Ciclista em ação · Camp 2025" aria-label="Ampliar foto: Ciclista em ação, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0754.webp" width="900" height="600" alt="Ciclista de roupa preta pedala em posição aerodinâmica em uma estrada com morros verdes ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Ciclista em ação<small>2025</small></span></button>
-  <button class="gallery-photo" type="button" data-year="2025" data-src="/assets/camp-2027/2025/HHA25TRE0847.webp" data-caption="Detalhe do pedal · Camp 2025" aria-label="Ampliar foto: Detalhe do pedal, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0847.webp" width="900" height="600" alt="Ciclista com capacete preto pedala em uma estrada, com árvores e morros ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Detalhe do pedal<small>2025</small></span></button>
+ <div class="container">
+  <div class="gallery-head"><div><p class="kicker reveal">03 / FOTOS DO CAMP</p><h2 class="display reveal">A GENTE<br><em>VIVEU ISSO.</em></h2></div><p>Histórias reais de quem fez parte das edições de 2024, 2025 e 2026.</p></div>
+  <div class="gallery-tools">
+   <div><p>Três edições, muita gente e vários momentos para lembrar.</p><p class="gallery-count" aria-live="polite" aria-atomic="true">Uma seleção das edições de 2024, 2025 e 2026.</p></div>
+   <div class="gallery-actions" hidden>
+    <div class="gallery-filters" role="group" aria-label="Filtrar fotos por edição">
+     <button class="filter-photo is-selected" type="button" data-year="all" aria-pressed="true">Todas</button>
+     <button class="filter-photo" type="button" data-year="2026" aria-pressed="false">2026</button>
+     <button class="filter-photo" type="button" data-year="2025" aria-pressed="false">2025</button>
+     <button class="filter-photo" type="button" data-year="2024" aria-pressed="false">2024</button>
+    </div>
+    <button class="gallery-motion" type="button" aria-pressed="false" aria-controls="camp-diagonal-gallery" hidden>Pausar movimento</button>
+   </div>
+  </div>
+  <div class="gallery-fallback" aria-label="Fotos de edições anteriores">
+  <a class="gallery-photo" href="/assets/camp-2027/2026/corrida-tre-0008.webp" data-photo-id="camp-2026-corrida-tre-0008" data-year="2026" data-caption="A turma reunida em Nova Veneza" aria-label="Ampliar foto: A turma reunida em Nova Veneza, edição 2026"><img src="/assets/camp-2027/2026/thumbs/corrida-tre-0008.webp" width="900" height="600" alt="Turma do Endurance Camp 2026 reunida para uma foto na praça, diante de um coreto." loading="lazy" decoding="async"><span class="photo-caption">A turma reunida em Nova Veneza<small>2026</small></span></a>
+  <a class="gallery-photo" href="/assets/camp-2027/2025/HHA25TRE0327.webp" data-photo-id="2025-HHA25TRE0327" data-year="2025" data-caption="Corrida em grupo" aria-label="Ampliar foto: Corrida em grupo, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0327.webp" width="900" height="598" alt="Grupo de participantes corre por uma curva asfaltada; algumas pessoas sorriem, com árvores e vegetação ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Corrida em grupo<small>2025</small></span></a>
+  <a class="gallery-photo" href="/assets/camp-2027/2024/day1-hha24tre1640.webp" data-photo-id="2024-day1-hha24tre1640" data-year="2024" data-caption="Todo mundo junto" aria-label="Ampliar foto: Todo mundo junto, edição 2024"><img src="/assets/camp-2027/2024/thumbs/day1-hha24tre1640.webp" width="900" height="600" alt="Grupo de participantes posa em frente a uma tenda, à beira de uma rua cercada de vegetação." loading="lazy" decoding="async"><span class="photo-caption">Todo mundo junto<small>2024</small></span></a>
+  <a class="gallery-photo" href="/assets/camp-2027/2025/HHA25TRE0883.webp" data-photo-id="2025-HHA25TRE0883" data-year="2025" data-caption="Sorrisos na pausa do pedal" aria-label="Ampliar foto: Sorrisos na pausa do pedal, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE0883.webp" width="900" height="600" alt="Duas pessoas de capacete sorriem ao lado de suas bicicletas sobre uma ponte, com um riacho e árvores ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Sorrisos na pausa do pedal<small>2025</small></span></a>
+  <a class="gallery-photo" href="/assets/camp-2027/2024/day3-swim-hha24trcc0034.webp" data-photo-id="2024-day3-swim-hha24trcc0034" data-year="2024" data-caption="Juntos dentro d’água" aria-label="Ampliar foto: Juntos dentro d’água, edição 2024"><img src="/assets/camp-2027/2024/thumbs/day3-swim-hha24trcc0034.webp" width="900" height="600" alt="Grupo de participantes com toucas de natação levanta os braços dentro do rio, entre margens cobertas de vegetação." loading="lazy" decoding="async"><span class="photo-caption">Juntos dentro d’água<small>2024</small></span></a>
+  <a class="gallery-photo" href="/assets/camp-2027/2026/d1-tre-0040.webp" data-photo-id="camp-2026-d1-tre-0040" data-year="2026" data-caption="Sorrisos na lagoa" aria-label="Ampliar foto: Sorrisos na lagoa, edição 2026"><img src="/assets/camp-2027/2026/thumbs/d1-tre-0040.webp" width="600" height="900" alt="Dois atletas de touca e roupa de natação posam dentro da lagoa no Endurance Camp 2026." loading="lazy" decoding="async"><span class="photo-caption">Sorrisos na lagoa<small>2026</small></span></a>
+  <a class="gallery-photo" href="/assets/camp-2027/2024/day3-run-hha24trcc2112.webp" data-photo-id="2024-day3-run-hha24trcc2112" data-year="2024" data-caption="Corrida em boa companhia" aria-label="Ampliar foto: Corrida em boa companhia, edição 2024"><img src="/assets/camp-2027/2024/thumbs/day3-run-hha24trcc2112.webp" width="900" height="600" alt="Três participantes correm lado a lado por uma estrada; duas usam camisetas escuras e uma usa top branco." loading="lazy" decoding="async"><span class="photo-caption">Corrida em boa companhia<small>2024</small></span></a>
+  <a class="gallery-photo" href="/assets/camp-2027/2026/serra-tre-0660.webp" data-photo-id="camp-2026-serra-tre-0660" data-year="2026" data-caption="Juntos no alto da Serra" aria-label="Ampliar foto: Juntos no alto da Serra, edição 2026"><img src="/assets/camp-2027/2026/thumbs/serra-tre-0660.webp" width="900" height="600" alt="Quatro participantes sorriem junto às bicicletas em um dia de neblina no Endurance Camp 2026." loading="lazy" decoding="async"><span class="photo-caption">Juntos no alto da Serra<small>2026</small></span></a>
+  <a class="gallery-photo" href="/assets/camp-2027/2025/HHA25TRE1039.webp" data-photo-id="2025-HHA25TRE1039" data-year="2025" data-caption="A turma também se encontra nas pausas" aria-label="Ampliar foto: A turma também se encontra nas pausas, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE1039.webp" width="600" height="900" alt="Duas pessoas com roupas de ciclismo sorriem abraçadas junto a um guarda-corpo, com paisagem verde ao fundo." loading="lazy" decoding="async"><span class="photo-caption">A turma também se encontra nas pausas<small>2025</small></span></a>
+  <a class="gallery-photo" href="/assets/camp-2027/2026/jantar-tre-0001.webp" data-photo-id="camp-2026-jantar-tre-0001" data-year="2026" data-caption="A conversa continua à mesa" aria-label="Ampliar foto: A conversa continua à mesa, edição 2026"><img src="/assets/camp-2027/2026/thumbs/jantar-tre-0001.webp" width="900" height="600" alt="Participantes conversam em uma mesa comprida durante o jantar do Endurance Camp 2026." loading="lazy" decoding="async"><span class="photo-caption">A conversa continua à mesa<small>2026</small></span></a>
+  <a class="gallery-photo" href="/assets/camp-2027/2025/HHA25TRE1076.webp" data-photo-id="2025-HHA25TRE1076" data-year="2025" data-caption="Boas companhias no Camp" aria-label="Ampliar foto: Boas companhias no Camp, edição 2025"><img src="/assets/camp-2027/2025/thumbs/HHA25TRE1076.webp" width="600" height="900" alt="Duas pessoas sorriem juntas em um mirante; uma delas segura um capacete, com morros ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Boas companhias no Camp<small>2025</small></span></a>
+  <a class="gallery-photo" href="/assets/camp-2027/2024/day4-bike-hha24trcc0094.webp" data-photo-id="2024-day4-bike-hha24trcc0094" data-year="2024" data-caption="Sorrisos no pedal" aria-label="Ampliar foto: Sorrisos no pedal, edição 2024"><img src="/assets/camp-2027/2024/thumbs/day4-bike-hha24trcc0094.webp" width="900" height="600" alt="Dois ciclistas pedalam lado a lado por uma estrada, sorrindo, com vegetação ao fundo." loading="lazy" decoding="async"><span class="photo-caption">Sorrisos no pedal<small>2024</small></span></a>
+  </div>
+  <p class="gallery-empty" hidden>Nenhuma foto nesta edição por enquanto.</p>
  </div>
-</section>
-<section class="album-group" aria-label="Mais do que treinar juntos."><div class="album-heading"><div><p class="kicker">01 / A TURMA</p><h3>Mais do que treinar juntos.</h3></div><p>Os encontros, as conversas e as amizades que ficam.</p></div><div class="camp-gallery album-gallery album-1"><button class="gallery-photo" type="button" data-year="2024" data-src="/assets/camp-2027/day1-community-2024.jpg" data-caption="Turma reunida no Camp · Camp 2024" aria-label="Ampliar foto: Turma reunida no Camp, edição 2024"><img src="/assets/camp-2027/day1-community-2024.jpg" alt="Turma reunida no Camp no Endurance Camp 2024" loading="lazy" decoding="async"><span class="photo-caption">Turma reunida no Camp<small>2024</small></span></button><button class="gallery-photo" type="button" data-year="2026" data-src="/assets/camp-2027/day2-community-2026.jpg" data-caption="Atletas reunidos na Serra · Camp 2026" aria-label="Ampliar foto: Atletas reunidos na Serra, edição 2026"><img src="/assets/camp-2027/day2-community-2026.jpg" alt="Atletas reunidos na Serra no Endurance Camp 2026" loading="lazy" decoding="async"><span class="photo-caption">Atletas reunidos na Serra<small>2026</small></span></button><button class="gallery-photo" type="button" data-year="2026" data-src="/assets/camp-2027/community-dinner-2026.jpg" data-caption="Amizades à mesa · Camp 2026" aria-label="Ampliar foto: Amizades à mesa, edição 2026"><img src="/assets/camp-2027/community-dinner-2026.jpg" alt="Amizades à mesa no Endurance Camp 2026" loading="lazy" decoding="async"><span class="photo-caption">Amizades à mesa<small>2026</small></span></button><button class="gallery-photo" type="button" data-year="2026" data-src="/assets/camp-2027/community-friends-2026.jpg" data-caption="Momentos fora dos treinos · Camp 2026" aria-label="Ampliar foto: Momentos fora dos treinos, edição 2026"><img src="/assets/camp-2027/community-friends-2026.jpg" alt="Momentos fora dos treinos no Endurance Camp 2026" loading="lazy" decoding="async"><span class="photo-caption">Momentos fora dos treinos<small>2026</small></span></button><button class="gallery-photo" type="button" data-year="2026" data-src="/assets/camp-2027/day2-friends-2026.jpg" data-caption="Abraço após o desafio · Camp 2026" aria-label="Ampliar foto: Abraço após o desafio, edição 2026"><img src="/assets/camp-2027/day2-friends-2026.jpg" alt="Abraço após o desafio no Endurance Camp 2026" loading="lazy" decoding="async"><span class="photo-caption">Abraço após o desafio<small>2026</small></span></button><button class="gallery-photo" type="button" data-year="2026" data-src="/assets/camp-2027/turma-serra-2026.jpg" data-caption="Nossa turma na Serra · Camp 2026" aria-label="Ampliar foto: Nossa turma na Serra, edição 2026"><img src="/assets/camp-2027/turma-serra-2026.jpg" alt="Nossa turma na Serra no Endurance Camp 2026" loading="lazy" decoding="async"><span class="photo-caption">Nossa turma na Serra<small>2026</small></span></button></div></section>
-<section class="album-group" aria-label="Cada dia, uma história."><div class="album-heading"><div><p class="kicker">02 / AS EXPERIÊNCIAS</p><h3>Cada dia, uma história.</h3></div><p>Paisagens, desafios e o prazer de descobrir novos lugares em boa companhia.</p></div><div class="camp-gallery album-gallery album-2"><button class="gallery-photo" type="button" data-year="2026" data-src="/assets/camp-2027/day3-friends-2026.jpg" data-caption="Corrida em companhia · Camp 2026" aria-label="Ampliar foto: Corrida em companhia, edição 2026"><img src="/assets/camp-2027/day3-friends-2026.jpg" alt="Corrida em companhia no Endurance Camp 2026" loading="lazy" decoding="async"><span class="photo-caption">Corrida em companhia<small>2026</small></span></button><button class="gallery-photo" type="button" data-year="2026" data-src="/assets/camp-2027/day3-runners-2026.jpg" data-caption="Treino em grupo · Camp 2026" aria-label="Ampliar foto: Treino em grupo, edição 2026"><img src="/assets/camp-2027/day3-runners-2026.jpg" alt="Treino em grupo no Endurance Camp 2026" loading="lazy" decoding="async"><span class="photo-caption">Treino em grupo<small>2026</small></span></button><button class="gallery-photo" type="button" data-year="2026" data-src="/assets/camp-2027/day3-trail-2026.jpg" data-caption="Caminhos de Nova Veneza · Camp 2026" aria-label="Ampliar foto: Caminhos de Nova Veneza, edição 2026"><img src="/assets/camp-2027/day3-trail-2026.jpg" alt="Caminhos de Nova Veneza no Endurance Camp 2026" loading="lazy" decoding="async"><span class="photo-caption">Caminhos de Nova Veneza<small>2026</small></span></button><button class="gallery-photo" type="button" data-year="2024" data-src="/assets/camp-2027/day2-bikes-2024.jpg" data-caption="Pelotão na região · Camp 2024" aria-label="Ampliar foto: Pelotão na região, edição 2024"><img src="/assets/camp-2027/day2-bikes-2024.jpg" alt="Pelotão na região no Endurance Camp 2024" loading="lazy" decoding="async"><span class="photo-caption">Pelotão na região<small>2024</small></span></button><button class="gallery-photo" type="button" data-year="2024" data-src="/assets/camp-2027/day4-bikes-2024.jpg" data-caption="Pedal em Nova Veneza · Camp 2024" aria-label="Ampliar foto: Pedal em Nova Veneza, edição 2024"><img src="/assets/camp-2027/day4-bikes-2024.jpg" alt="Pedal em Nova Veneza no Endurance Camp 2024" loading="lazy" decoding="async"><span class="photo-caption">Pedal em Nova Veneza<small>2024</small></span></button><button class="gallery-photo" type="button" data-year="2026" data-src="/assets/camp-2027/hero-run.jpg" data-caption="Corrida entre amigos · Camp 2026" aria-label="Ampliar foto: Corrida entre amigos, edição 2026"><img src="/assets/camp-2027/hero-run.jpg" alt="Corrida entre amigos no Endurance Camp 2026" loading="lazy" decoding="async"><span class="photo-caption">Corrida entre amigos<small>2026</small></span></button></div></section>
-<section class="album-group" aria-label="Do primeiro mergulho à última volta."><div class="album-heading"><div><p class="kicker">03 / OS TREINOS</p><h3>Do primeiro mergulho à última volta.</h3></div><p>Natação, corrida e ciclismo em diferentes momentos dos Camps.</p></div><div class="camp-gallery album-gallery album-3"><button class="gallery-photo" type="button" data-year="2024" data-src="/assets/camp-2027/day1-swim-2024.jpg" data-caption="Natação em águas abertas · Camp 2024" aria-label="Ampliar foto: Natação em águas abertas, edição 2024"><img src="/assets/camp-2027/day1-swim-2024.jpg" alt="Natação em águas abertas no Endurance Camp 2024" loading="lazy" decoding="async"><span class="photo-caption">Natação em águas abertas<small>2024</small></span></button><button class="gallery-photo" type="button" data-year="2026" data-src="/assets/camp-2027/day1-run-2026.jpg" data-caption="Corrida durante o Camp · Camp 2026" aria-label="Ampliar foto: Corrida durante o Camp, edição 2026"><img src="/assets/camp-2027/day1-run-2026.jpg" alt="Corrida durante o Camp no Endurance Camp 2026" loading="lazy" decoding="async"><span class="photo-caption">Corrida durante o Camp<small>2026</small></span></button><button class="gallery-photo" type="button" data-year="2026" data-src="/assets/camp-2027/day4-trial-2026.jpg" data-caption="Contrarrelógio da edição 2026 · Camp 2026" aria-label="Ampliar foto: Contrarrelógio da edição 2026, edição 2026"><img src="/assets/camp-2027/day4-trial-2026.jpg" alt="Contrarrelógio da edição 2026 no Endurance Camp 2026" loading="lazy" decoding="async"><span class="photo-caption">Contrarrelógio da edição 2026<small>2026</small></span></button><button class="gallery-photo" type="button" data-year="2026" data-src="/assets/camp-2027/day4-training-2026.jpg" data-caption="Pedal do Camp · Camp 2026" aria-label="Ampliar foto: Pedal do Camp, edição 2026"><img src="/assets/camp-2027/day4-training-2026.jpg" alt="Pedal do Camp no Endurance Camp 2026" loading="lazy" decoding="async"><span class="photo-caption">Pedal do Camp<small>2026</small></span></button></div></section><dialog class="photo-lightbox" aria-label="Fotografia ampliada"><button type="button" class="lightbox-close" aria-label="Fechar fotografia">×</button><img alt=""><p></p></dialog>
- </div>
+ <div class="diagonal-gallery" id="camp-diagonal-gallery" role="region" aria-label="Galeria de fotos do Endurance Camp" aria-live="off" hidden><div class="gallery-ribbons"></div></div>
+ <div class="container gallery-footnote"><p>Clique em uma foto para ampliar e passe pelos outros momentos.</p><strong>Corrida, pedal e boas companhias.</strong></div>
+ <dialog class="photo-lightbox" aria-label="Fotografia ampliada" aria-describedby="camp-photo-caption">
+  <button type="button" class="lightbox-close" aria-label="Fechar fotografia" autofocus>×</button>
+  <div class="lightbox-stage"><img class="lightbox-image" alt=""><p class="lightbox-status" role="status" hidden></p></div>
+  <div class="lightbox-footer">
+   <div class="lightbox-description"><p class="lightbox-caption" id="camp-photo-caption"></p><p class="lightbox-counter" aria-live="polite" aria-atomic="true"></p></div>
+   <div class="lightbox-navigation" role="group" aria-label="Navegar entre fotografias"><button type="button" class="lightbox-prev">Anterior</button><button type="button" class="lightbox-next">Próxima</button></div>
+  </div>
+ </dialog>
 </section>
 <section class="cta-section" id="comunidade">
  <div class="container"><p class="kicker reveal">04 / ENDURANCE CAMP 2027</p><h2 class="reveal">VEM VIVER<br><em>ESSA EXPERIÊNCIA.</em></h2><p>De 6 a 9 de fevereiro, em Nova Veneza. Em breve vamos compartilhar por aqui mais informações sobre a participação.</p><button class="whatsapp-button" type="button" disabled aria-label="Entrar no grupo de WhatsApp, disponível em breve">ENTRAR NO GRUPO DO WHATSAPP <span aria-hidden="true">↗</span></button><p class="small-note">O link do grupo será disponibilizado em breve.</p></div>
@@ -300,22 +372,254 @@ document.querySelectorAll('.camp-carousel').forEach(carousel=>{
  document.addEventListener('visibilitychange',play);reducedMotion.addEventListener?.('change',play);
  show(0);play();
 });
-document.querySelectorAll('.filter-photo').forEach(button=>button.addEventListener('click',()=>{
- const year=button.dataset.year;
- document.querySelectorAll('.filter-photo').forEach(b=>{const on=b===button;b.classList.toggle('is-selected',on);b.setAttribute('aria-pressed',String(on))});
- document.querySelectorAll('.gallery-photo').forEach(photo=>{photo.hidden=year!=='all'&&photo.dataset.year!==year});document.querySelectorAll('.album-group').forEach(group=>{group.hidden=![...group.querySelectorAll('.gallery-photo')].some(photo=>!photo.hidden)});
-}));
-const lightbox=document.querySelector('.photo-lightbox');
-if(lightbox&&typeof lightbox.showModal==='function'){
- document.querySelectorAll('.gallery-photo').forEach(button=>button.addEventListener('click',()=>{
- lightbox.querySelector('img').src=button.dataset.src;
- lightbox.querySelector('img').alt=button.querySelector('img').alt;
- lightbox.querySelector('p').textContent=button.dataset.caption;
- lightbox.showModal();
+
+/* A single clock moves three measured, duplicated strips without a loop seam. */
+(()=>{
+ const gallery=document.querySelector('#galeria');
+ if(!gallery)return;
+ const stage=gallery.querySelector('.diagonal-gallery');
+ const ribbons=gallery.querySelector('.gallery-ribbons');
+ const fallback=gallery.querySelector('.gallery-fallback');
+ const empty=gallery.querySelector('.gallery-empty');
+ const filters=[...gallery.querySelectorAll('.filter-photo')];
+ const motionButton=gallery.querySelector('.gallery-motion');
+ const count=gallery.querySelector('.gallery-count');
+ const lightbox=gallery.querySelector('.photo-lightbox');
+ const lightboxImage=lightbox.querySelector('.lightbox-image');
+ const lightboxCaption=lightbox.querySelector('.lightbox-caption');
+ const lightboxCounter=lightbox.querySelector('.lightbox-counter');
+ const lightboxStatus=lightbox.querySelector('.lightbox-status');
+ const previousButton=lightbox.querySelector('.lightbox-prev');
+ const nextButton=lightbox.querySelector('.lightbox-next');
+ const closeButton=lightbox.querySelector('.lightbox-close');
+ const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+ const fallbackCards=[...fallback.querySelectorAll('.gallery-photo')];
+ const fallbackPhotos=fallbackCards.map(card=>({
+  id:card.dataset.photoId,year:card.dataset.year,src:card.getAttribute('href'),
+  thumb:card.querySelector('img').getAttribute('src'),
+  width:Number(card.querySelector('img').getAttribute('width'))||900,
+  height:Number(card.querySelector('img').getAttribute('height'))||600,
+  alt:card.querySelector('img').alt,caption:card.dataset.caption
  }));
- lightbox.querySelector('.lightbox-close').addEventListener('click',()=>lightbox.close());
- lightbox.addEventListener('click',e=>{if(e.target===lightbox)lightbox.close()});
-}
+ let photos=fallbackPhotos,visiblePhotos=fallbackPhotos.slice(),currentYear='all';
+ let ready=false,lanes=[],frameId=0,lastFrame=0,resizeFrame=0,lastWidth=0;
+ let userPaused=false,hovered=false,inViewport=false,activePhotoIndex=0,returnFocus=null,bodyOverflow='',keyboardNavigation=false;
+ const originals=new Map();
+ gallery.querySelector('.gallery-actions').hidden=false;
+ gallery.dataset.galleryState='loading';
+
+ function updateCount(){
+  count.textContent=visiblePhotos.length+' '+(visiblePhotos.length===1?'foto':'fotos')+(currentYear==='all'?' · 2024, 2025 e 2026':' · edição '+currentYear);
+ }
+ function paintLane(lane){
+  const x=lane.direction<0?-lane.offset:lane.offset-lane.distance;
+  lane.track.style.transform='translate3d('+x.toFixed(3)+'px,0,0)';
+ }
+ function stopClock(){
+  if(frameId)cancelAnimationFrame(frameId);
+  frameId=0;lastFrame=0;
+ }
+ function canMove(){
+  return ready&&lanes.length&&inViewport&&!userPaused&&!reducedMotion.matches&&!document.hidden&&!hovered&&!lightbox.open&&!stage.contains(document.activeElement);
+ }
+ function tick(time){
+  frameId=0;
+  if(!canMove()){lastFrame=0;return;}
+  const elapsed=lastFrame?Math.min(time-lastFrame,64):0;
+  lastFrame=time;
+  lanes.forEach(lane=>{lane.offset=(lane.offset+elapsed*lane.speed/1000)%lane.distance;paintLane(lane)});
+  frameId=requestAnimationFrame(tick);
+ }
+ function syncMotion(){
+  const reduced=reducedMotion.matches;
+  motionButton.hidden=!ready;
+  motionButton.disabled=reduced;
+  motionButton.setAttribute('aria-pressed',String(userPaused||reduced));
+  motionButton.textContent=reduced?'Movimento reduzido':userPaused?'Retomar movimento':'Pausar movimento';
+  motionButton.title=reduced?'A preferência de movimento reduzido do seu dispositivo está ativa.':'';
+  gallery.dataset.motion=canMove()?'playing':'paused';
+  if(canMove()){if(!frameId)frameId=requestAnimationFrame(tick)}
+  else stopClock();
+ }
+ function createCard(photo,clone=false){
+  const card=document.createElement(clone?'div':'button');
+  card.className='gallery-photo gallery-card'+(photo.height>photo.width?' is-portrait':'');
+  card.dataset.photoId=photo.id;
+  card.dataset.year=photo.year;
+  card.style.setProperty('--photo-ratio',String(Math.max(.68,Math.min(1.65,photo.width/photo.height))));
+  if(clone){card.setAttribute('aria-hidden','true');card.dataset.clone='true'}
+  else{card.type='button';card.setAttribute('aria-label',photo.caption+', edição '+photo.year+'. Ampliar foto.');originals.set(photo.id,card)}
+  const image=document.createElement('img');
+  image.src=photo.thumb;image.alt=clone?'':photo.alt;image.width=photo.width;image.height=photo.height;
+  image.loading='lazy';image.decoding='async';image.draggable=false;
+  const caption=document.createElement('span');caption.className='photo-caption';
+  const label=document.createElement('span');label.textContent=photo.caption;
+  const year=document.createElement('small');year.textContent=photo.year;
+  caption.append(label,year);card.append(image,caption);
+  return card;
+ }
+ function measureGroup(group){
+  return parseFloat(getComputedStyle(group).width)||group.offsetWidth;
+ }
+ function focusPhoto(card){
+  const lane=lanes.find(item=>item.element.contains(card));
+  if(!lane)return;
+  const desired=Math.max(0,Math.min(lane.distance-.001,card.offsetLeft-(lane.element.clientWidth-card.offsetWidth)/2));
+  lane.offset=lane.direction<0?desired:lane.distance-desired;
+  paintLane(lane);
+  stage.scrollLeft=0;
+ }
+ function renderLanes(preserve=false){
+  stopClock();
+  const phases=preserve?lanes.map(lane=>lane.offset/lane.distance):[0,.16,.31];
+  const focused=stage.contains(document.activeElement)?document.activeElement.dataset.photoId:null;
+  originals.clear();lanes=[];ribbons.replaceChildren();
+  stage.hidden=visiblePhotos.length===0;fallback.hidden=true;empty.hidden=visiblePhotos.length!==0;
+  if(!visiblePhotos.length){syncMotion();return;}
+  const size=Math.ceil(visiblePhotos.length/3);
+  for(let i=0;i<3;i++){
+   const selection=visiblePhotos.slice(i*size,(i+1)*size);
+   if(!selection.length)selection.push(visiblePhotos[i%visiblePhotos.length]);
+   const laneElement=document.createElement('div');
+   laneElement.className='gallery-ribbon';laneElement.setAttribute('role','group');
+   laneElement.setAttribute('aria-label','Faixa de fotografias '+(i+1)+' de 3');
+   const track=document.createElement('div');track.className='ribbon-track';
+   const first=document.createElement('div');first.className='ribbon-group';
+   selection.forEach(photo=>first.append(createCard(photo,originals.has(photo.id))));
+   track.append(first);laneElement.append(track);ribbons.append(laneElement);
+   const minimum=laneElement.clientWidth+first.firstElementChild.offsetWidth;
+   const copies=Math.max(1,Math.ceil(minimum/measureGroup(first)));
+   // Short selections are repeated before duplicating the whole measured period.
+   for(let repeat=1;repeat<copies;repeat++)selection.forEach(photo=>first.append(createCard(photo,true)));
+   const second=document.createElement('div');second.className='ribbon-group';
+   second.setAttribute('aria-hidden','true');
+   for(let repeat=0;repeat<copies;repeat++)selection.forEach(photo=>second.append(createCard(photo,true)));
+   track.append(second);
+   const distance=measureGroup(first);
+   const lane={element:laneElement,track,distance,offset:(phases[i]||0)*distance,direction:i%2?1:-1,speed:[23,19,21][i]};
+   lanes.push(lane);paintLane(lane);
+  }
+  lastWidth=stage.clientWidth;
+  if(focused&&originals.has(focused)){const card=originals.get(focused);card.focus({preventScroll:true});focusPhoto(card)}
+  checkViewport();syncMotion();
+ }
+ function applyFilter(year){
+  currentYear=year;
+  visiblePhotos=photos.filter(photo=>year==='all'||photo.year===year);
+  filters.forEach(button=>{
+   const selected=button.dataset.year===year;
+   button.classList.toggle('is-selected',selected);button.setAttribute('aria-pressed',String(selected));
+   button.disabled=button.dataset.year!=='all'&&!photos.some(photo=>photo.year===button.dataset.year);
+  });
+  if(ready)renderLanes();
+  else{
+   fallbackCards.forEach(card=>card.hidden=year!=='all'&&card.dataset.year!==year);
+   empty.hidden=visiblePhotos.length!==0;
+  }
+  updateCount();
+ }
+ function showPhoto(next){
+  if(!visiblePhotos.length)return;
+  activePhotoIndex=(next+visiblePhotos.length)%visiblePhotos.length;
+  const photo=visiblePhotos[activePhotoIndex];
+  lightboxStatus.hidden=true;
+  lightboxImage.alt=photo.alt;
+  lightboxImage.src=photo.src;
+  lightboxCaption.textContent=photo.caption+' · Camp '+photo.year;
+  lightboxCounter.textContent=(activePhotoIndex+1)+' de '+visiblePhotos.length+' fotos';
+  previousButton.disabled=nextButton.disabled=visiblePhotos.length<2;
+ }
+ function openPhoto(id,trigger){
+  const index=visiblePhotos.findIndex(photo=>photo.id===id);
+  if(index<0)return;
+  if(typeof lightbox.showModal!=='function'){window.location.href=visiblePhotos[index].src;return;}
+  returnFocus=trigger.matches('button,a')&&!trigger.closest('[aria-hidden="true"]')?trigger:originals.get(id)||filters.find(button=>button.dataset.year===currentYear);
+  showPhoto(index);
+  bodyOverflow=document.body.style.overflow;
+  document.body.style.overflow='hidden';
+  lightbox.showModal();closeButton.focus({preventScroll:true});syncMotion();
+ }
+ gallery.addEventListener('click',event=>{
+  const card=event.target.closest('.gallery-photo[data-photo-id]');
+  if(!card||!gallery.contains(card))return;
+  event.preventDefault();openPhoto(card.dataset.photoId,card);
+ });
+ filters.forEach(button=>button.addEventListener('click',()=>applyFilter(button.dataset.year)));
+ motionButton.addEventListener('click',()=>{userPaused=!userPaused;syncMotion()});
+ stage.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse'){hovered=true;syncMotion()}});
+ stage.addEventListener('pointerleave',()=>{hovered=false;syncMotion()});
+ // Pointer focus must not move a card between pointerdown and click.
+ document.addEventListener('pointerdown',()=>{keyboardNavigation=false},true);
+ document.addEventListener('keydown',event=>{if(event.key==='Tab')keyboardNavigation=true},true);
+ stage.addEventListener('focusin',event=>{syncMotion();const card=event.target.closest('.gallery-card');if(keyboardNavigation&&card&&!card.dataset.clone)focusPhoto(card)});
+ stage.addEventListener('focusout',()=>setTimeout(syncMotion,0));
+ previousButton.addEventListener('click',()=>showPhoto(activePhotoIndex-1));
+ nextButton.addEventListener('click',()=>showPhoto(activePhotoIndex+1));
+ closeButton.addEventListener('click',()=>lightbox.close());
+ lightbox.addEventListener('keydown',event=>{
+  if(event.altKey||event.ctrlKey||event.metaKey)return;
+  if(event.key==='ArrowLeft'){event.preventDefault();showPhoto(activePhotoIndex-1)}
+  if(event.key==='ArrowRight'){event.preventDefault();showPhoto(activePhotoIndex+1)}
+ });
+ lightbox.addEventListener('click',event=>{
+  if(event.target!==lightbox)return;
+  const bounds=lightbox.getBoundingClientRect();
+  if(event.clientX<bounds.left||event.clientX>bounds.right||event.clientY<bounds.top||event.clientY>bounds.bottom)lightbox.close();
+ });
+ lightbox.addEventListener('close',()=>{
+  document.body.style.overflow=bodyOverflow;
+  lightboxImage.removeAttribute('src');
+  const target=returnFocus?.isConnected?returnFocus:filters.find(button=>button.dataset.year===currentYear);
+  if(target&&stage.contains(target))focusPhoto(target);
+  target?.focus({preventScroll:true});syncMotion();
+ });
+ lightboxImage.addEventListener('error',()=>{if(lightbox.open){lightboxStatus.textContent='Não foi possível carregar esta foto. Tente a próxima imagem.';lightboxStatus.hidden=false}});
+ lightboxImage.addEventListener('load',()=>lightboxStatus.hidden=true);
+ document.addEventListener('visibilitychange',syncMotion);
+ reducedMotion.addEventListener?.('change',syncMotion);
+ function checkViewport(){
+  const bounds=stage.getBoundingClientRect();
+  inViewport=!stage.hidden&&bounds.bottom>0&&bounds.top<window.innerHeight;
+ }
+ if('IntersectionObserver' in window){
+  const observer=new IntersectionObserver(entries=>{inViewport=entries[0].isIntersecting;syncMotion()},{threshold:0});
+  observer.observe(stage);
+ }else window.addEventListener('scroll',()=>{checkViewport();syncMotion()},{passive:true});
+ function scheduleResize(){
+  if(!ready||stage.hidden||Math.abs(stage.clientWidth-lastWidth)<1)return;
+  cancelAnimationFrame(resizeFrame);
+  resizeFrame=requestAnimationFrame(()=>renderLanes(true));
+ }
+ if('ResizeObserver' in window)new ResizeObserver(scheduleResize).observe(stage);
+ else window.addEventListener('resize',scheduleResize,{passive:true});
+ function assetUrl(value){
+  if(typeof value!=='string')return '';
+  try{const url=new URL(value,window.location.href);return url.origin===window.location.origin&&url.pathname.startsWith('/assets/camp-2027/')?url.pathname+url.search:''}catch{return ''}
+ }
+ function normalize(input){
+  if(!Array.isArray(input))return [];
+  const seen=new Set();
+  return input.flatMap(item=>{
+   const id=String(item.id||''),year=String(item.year||''),src=assetUrl(item.src),thumb=assetUrl(item.thumb);
+   if(!id||seen.has(id)||!['2024','2025','2026'].includes(year)||!src||!thumb)return [];
+   seen.add(id);
+   return [{id,year,src,thumb,width:Math.max(1,Number(item.width)||900),height:Math.max(1,Number(item.height)||600),alt:String(item.alt||'Participantes do Endurance Camp '+year),caption:String(item.caption||'Memórias do Camp')}];
+  });
+ }
+ applyFilter('all');
+ const controller=new AbortController();
+ const timeout=setTimeout(()=>controller.abort(),10000);
+ fetch('/assets/camp-2027/gallery-photos.json',{credentials:'same-origin',signal:controller.signal})
+  .then(response=>{if(!response.ok)throw new Error('gallery unavailable');return response.json()})
+  .then(data=>{
+   const next=normalize(data);
+   if(!next.length)throw new Error('empty gallery');
+   photos=next;ready=true;gallery.dataset.galleryState='ready';applyFilter(currentYear);
+  })
+  .catch(()=>{gallery.dataset.galleryState='fallback';motionButton.hidden=true})
+  .finally(()=>clearTimeout(timeout));
+})();
+
 </script>
 </body>
 </html>
